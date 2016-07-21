@@ -702,9 +702,7 @@ while opt != "0":
                             arquivo_regras_redundantes.write("Detectada a redundancia acima entre o fluxo " + str(i) + " e entre o fluxo " + str(j) + " no switch " + str(contSwitch) + "\n\n")
                             redundancia(i,j,contSwitch)
                             flag_confRed = 1
-
                     j = j + 1
-
                 i = i + 1
 
             lista_csv.append(dicFlows)                  # E' adicionado na lista_csv cada switch com seus respectivos fluxos
@@ -1277,201 +1275,8 @@ while opt != "0":
 
             for durFW in json_dataFW[0:-1]:
                 dicAuxFW = json_dataFW[contSwitchFW]
-                if dicAuxFW.has_key('eth_src') == True:
-                    lista_eth_src.append(str(json_dataFW[contFW]['eth_src']))
-                else:
-                    lista_eth_src.append("x")
 
-                if dicAuxFW.has_key('eth_dst') == True:
-                    lista_eth_dst.append(str(json_dataFW[contFW]['eth_dst']))
-                else:
-                    lista_eth_dst.append("x")
-
-                if dicAuxFW.has_key('eth_type') == True:
-                    lista_eth_type.append(str(json_dataFW[contFW]['eth_type']))
-                else:
-                    lista_eth_type.append("x")
-
-                if dicAuxFW.has_key('in_port') == True:
-                    lista_in_port.append(str(json_dataFW[contFW]['in_port']))
-                else:
-                    lista_in_port.append("x")
-
-                if dicAuxFW.has_key('eth_vlan_vid') == True:
-                    lista_eth_vlan_vid.append(str(json_dataFW[contFW]['eth_vlan_vid']))
-                else:
-                    lista_eth_vlan_vid.append("x")
-
-                if dicAuxFW.has_key('eth_vlan_pcp') == True:
-                    lista_eth_vlan_pcp.append(str(json_dataFW[contFW]['eth_vlan_pcp']))
-                else:
-                    lista_eth_vlan_pcp.append("x")
-
-                if dicAuxFW.has_key('ip_proto') == True:
-                    lista_ip_proto.append(str(json_dataFW[contFW]['ip_proto']))
-                else:
-                    lista_ip_proto.append("x")
-
-                if dicAuxFW.has_key('ipv4_src') == True:
-                    lista_ipv4_src.append(str(json_dataFW[contFW]['ipv4_src']))
-                else:
-                    lista_ipv4_src.append("x")
-
-                if dicAuxFW.has_key('ipv4_dst') == True:
-                    lista_ipv4_dst.append(str(json_dataFW[contFW]['ipv4_dst']))
-                else:
-                    lista_ipv4_dst.append("x")
-
-                if dicAuxFW.has_key('ipv6_src') == True:
-                    lista_ipv6_src.append(str(json_dataFW[contFW]['ipv6_src']))
-                else:
-                    lista_ipv6_src.append("x")
-
-                if dicAuxFW.has_key('ipv6_dst') == True:
-                    lista_ipv6_dst.append(str(json_dataFW[contFW]['ipv6_dst']))
-                else:
-                    lista_ipv6_dst.append("x")
-
-                if dicAuxFW.has_key('ipv6_label') == True:
-                    lista_ipv6_label.append(str(json_dataFW[contFW]['ipv6_label']))
-                else:
-                    lista_ipv6_label.append("x")
-
-                if dicAuxFW.has_key('ip_tos') == True:
-                    lista_ip_tos.append(str(json_dataFW[contFW]['ip_tos']))
-                else:
-                    lista_ip_tos.append("x")
-
-                if dicAuxFW.has_key('ip_ecn') == True:
-                 lista_ip_ecn.append(str(json_dataFW[contFW]['ip_ecn']))
-                else:
-                    lista_ip_ecn.append("x")
-
-                if dicAuxFW.has_key('ip_dscp') == True:
-                    lista_ip_dscp.append(str(json_dataFW[contFW]['ip_dscp']))
-                else:
-                    lista_ip_dscp.append("x")
-
-                if dicAuxFW.has_key('tp_src') == True:
-                    lista_tp_src.append(str(json_dataFW[contFW]['tp_src']))
-                else:
-                    lista_tp_src.append("x")
-
-                if dicAuxFW.has_key('tp_dst') == True:
-                    lista_tp_dst.append(str(json_dataFW[contFW]['tp_dst']))
-                else:
-                    lista_tp_dst.append("x")
-
-                if dicAuxFW.has_key('udp_src') == True:
-                    lista_udp_src.append(str(json_dataFW[contFW]['udp_src']))
-                else:
-                    lista_udp_src.append("x")
-
-                if dicAuxFW.has_key('udp_dst') == True:
-                    lista_udp_dst.append(str(json_dataFW[contFW]['udp_dst']))
-                else:
-                    lista_udp_dst.append("x")
-
-                if dicAuxFW.has_key('tcp_src') == True:
-                    lista_tcp_src.append(str(json_dataFW[contFW]['tcp_src']))
-                else:
-                    lista_tcp_src.append("x")
-
-                if dicAuxFW.has_key('tcp_dst') == True:
-                    lista_tcp_dst.append(str(json_dataFW[contFW]['tcp_dst']))
-                else:
-                    lista_tcp_dst.append("x")
-
-                if dicAuxFW.has_key('sctp_src') == True:
-                    lista_sctp_src.append(str(json_dataFW[contFW]['sctp_src']))
-                else:
-                    lista_sctp_src.append("x")
-
-                if dicAuxFW.has_key('sctp_dst') == True:
-                    lista_sctp_dst.append(str(json_dataFW[contFW]['sctp_dst']))
-                else:
-                    lista_sctp_dst.append("x")
-
-                if dicAuxFW.has_key('icmpv4_type') == True:
-                    lista_icmpv4_type.append(str(json_dataFW[contFW]['icmpv4_type']))
-                else:
-                    lista_icmpv4_type.append("x")
-
-                if dicAuxFW.has_key('icmpv4_code') == True:
-                    lista_icmpv4_code.append(str(json_dataFW[contFW]['icmpv4_code']))
-                else:
-                    lista_icmpv4_code.append("x")
-
-                if dicAuxFW.has_key('icmpv6_type') == True:
-                    lista_icmpv6_type.append(str(json_dataFW[contFW]['icmpv6_type']))
-                else:
-                    lista_icmpv6_type.append("x")
-
-                if dicAuxFW.has_key('icmpv6_code') == True:
-                    lista_icmpv6_code.append(str(json_dataFW[contFW]['icmpv6_code']))
-                else:
-                    lista_icmpv6_code.append("x")
-
-                if dicAuxFW.has_key('ipv6_nd_ssl') == True:
-                    lista_ipv6_nd_ssl.append(str(json_dataFW[contFW]['ipv6_nd_ssl']))
-                else:
-                    lista_ipv6_nd_ssl.append("x")
-
-                if dicAuxFW.has_key('ipv6_nd_ttl') == True:
-                    lista_ipv6_nd_ttl.append(str(json_dataFW[contFW]['ipv6_nd_ttl']))
-                else:
-                    lista_ipv6_nd_ttl.append("x")
-
-                if dicAuxFW.has_key('ipv6_nd_target') == True:
-                    lista_ipv6_nd_target.append(str(json_dataFW[contFW]['ipv6_nd_target']))
-                else:
-                    lista_ipv6_nd_target.append("x")
-
-                if dicAuxFW.has_key('arp_opcode') == True:
-                    lista_arp_opcode.append(str(json_dataFW[contFW]['arp_opcode']))
-                else:
-                    lista_arp_opcode.append("x")
-
-                if dicAuxFW.has_key('arp_tha') == True:
-                    lista_arp_tha.append(str(json_dataFW[contFW]['arp_tha']))
-                else:
-                    lista_arp_tha.append("x")
-
-                if dicAuxFW.has_key('arp_spa') == True:
-                    lista_arp_spa.append(str(json_dataFW[contFW]['arp_spa']))
-                else:
-                    lista_arp_spa.append("x")
-
-                if dicAuxFW.has_key('arp_tpa') == True:
-                    lista_arp_tpa.append(str(json_dataFW[contFW]['arp_tpa']))
-                else:
-                    lista_arp_tpa.append("x")
-
-                if dicAuxFW.has_key('mpls_label') == True:
-                    lista_mpls_label.append(str(json_dataFW[contFW]['mpls_label']))
-                else:
-                    lista_mpls_label.append("x")
-
-                if dicAuxFW.has_key('mpls_tc') == True:
-                    lista_mpls_tc.append(str(json_dataFW[contFW]['mpls_tc']))
-                else:
-                    lista_mpls_tc.append("x")
-
-                if dicAuxFW.has_key('mpls_bos') == True:
-                    lista_mpls_bos.append(str(json_dataFW[contFW]['mpls_bos']))
-                else:
-                    lista_mpls_bos.append("x")
-
-                if dicAuxFW.has_key('tunnel_id') == True:
-                    lista_tunnel_id.append(str(json_dataFW[contFW]['tunnel_id']))
-                else:
-                    lista_tunnel_id.append("x")
-
-                if dicAuxFW.has_key('metadata') == True:
-                    lista_metadata.append(str(json_dataFW[contFW]['metadata']))
-                else:
-                    lista_metadata.append("x")
-
+                # Informacoes apenas do Firewall
                 if dicAuxFW.has_key('version') == True:
                     lista_version.append(str(json_dataFW[contFW]['version']))
                 else:
@@ -1610,48 +1415,478 @@ while opt != "0":
                 if dicAuxFW.has_key('dl_dst') == True:
                     lista_dl_dst.append(str(json_dataFW[contFW]['dl_dst']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_dl_dst.append("x")
 
                 if dicAuxFW.has_key('any_tp_src') == True:
                     lista_any_tp_src.append(str(json_dataFW[contFW]['any_tp_src']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_any_tp_src.append("x")
 
                 if dicAuxFW.has_key('outPort') == True:
                     lista_outPort.append(str(json_dataFW[contFW]['outPort']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_outPort.append("x")
 
                 if dicAuxFW.has_key('src_mac') == True:
                     lista_src_mac.append(str(json_dataFW[contFW]['src_mac']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_src_mac.append("x")
 
                 if dicAuxFW.has_key('dst_mac') == True:
                     lista_dst_mac.append(str(json_dataFW[contFW]['dst_mac']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_dst_mac.append("x")
 
                 if dicAuxFW.has_key('action') == True:
                     lista_action.append(str(json_dataFW[contFW]['action']))
                 else:
-                    lista_ipv6_dst.append("x")
+                    lista_action.append("x")
+
+                if dicAuxFW.has_key('match') == True:
+                    dicAuxFW = dicAuxFW["match"]
+
+                    if dicAuxFW.has_key('eth_src') == True:
+                        lista_eth_src.append(str(json_dataFW[contFW]['eth_src']))
+                    else:
+                        lista_eth_src.append("x")
+
+                    if dicAuxFW.has_key('eth_dst') == True:
+                        lista_eth_dst.append(str(json_dataFW[contFW]['eth_dst']))
+                    else:
+                        lista_eth_dst.append("x")
+
+                    if dicAuxFW.has_key('eth_type') == True:
+                        lista_eth_type.append(str(json_dataFW[contFW]['eth_type']))
+                    else:
+                        lista_eth_type.append("x")
+
+                    if dicAuxFW.has_key('in_port') == True:
+                        lista_in_port.append(str(json_dataFW[contFW]['in_port']))
+                    else:
+                        lista_in_port.append("x")
+
+                    if dicAuxFW.has_key('eth_vlan_vid') == True:
+                        lista_eth_vlan_vid.append(str(json_dataFW[contFW]['eth_vlan_vid']))
+                    else:
+                        lista_eth_vlan_vid.append("x")
+
+                    if dicAuxFW.has_key('eth_vlan_pcp') == True:
+                        lista_eth_vlan_pcp.append(str(json_dataFW[contFW]['eth_vlan_pcp']))
+                    else:
+                        lista_eth_vlan_pcp.append("x")
+
+                    if dicAuxFW.has_key('ip_proto') == True:
+                        lista_ip_proto.append(str(json_dataFW[contFW]['ip_proto']))
+                    else:
+                        lista_ip_proto.append("x")
+
+                    if dicAuxFW.has_key('ipv4_src') == True:
+                        lista_ipv4_src.append(str(json_dataFW[contFW]['ipv4_src']))
+                    else:
+                        lista_ipv4_src.append("x")
+
+                    if dicAuxFW.has_key('ipv4_dst') == True:
+                        lista_ipv4_dst.append(str(json_dataFW[contFW]['ipv4_dst']))
+                    else:
+                        lista_ipv4_dst.append("x")
+
+                    if dicAuxFW.has_key('ipv6_src') == True:
+                        lista_ipv6_src.append(str(json_dataFW[contFW]['ipv6_src']))
+                    else:
+                        lista_ipv6_src.append("x")
+
+                    if dicAuxFW.has_key('ipv6_dst') == True:
+                        lista_ipv6_dst.append(str(json_dataFW[contFW]['ipv6_dst']))
+                    else:
+                        lista_ipv6_dst.append("x")
+
+                    if dicAuxFW.has_key('ipv6_label') == True:
+                        lista_ipv6_label.append(str(json_dataFW[contFW]['ipv6_label']))
+                    else:
+                        lista_ipv6_label.append("x")
+
+                    if dicAuxFW.has_key('ip_tos') == True:
+                        lista_ip_tos.append(str(json_dataFW[contFW]['ip_tos']))
+                    else:
+                        lista_ip_tos.append("x")
+
+                    if dicAuxFW.has_key('ip_ecn') == True:
+                     lista_ip_ecn.append(str(json_dataFW[contFW]['ip_ecn']))
+                    else:
+                        lista_ip_ecn.append("x")
+
+                    if dicAuxFW.has_key('ip_dscp') == True:
+                        lista_ip_dscp.append(str(json_dataFW[contFW]['ip_dscp']))
+                    else:
+                        lista_ip_dscp.append("x")
+
+                    if dicAuxFW.has_key('tp_src') == True:
+                        lista_tp_src.append(str(json_dataFW[contFW]['tp_src']))
+                    else:
+                        lista_tp_src.append("x")
+
+                    if dicAuxFW.has_key('tp_dst') == True:
+                        lista_tp_dst.append(str(json_dataFW[contFW]['tp_dst']))
+                    else:
+                        lista_tp_dst.append("x")
+
+                    if dicAuxFW.has_key('udp_src') == True:
+                        lista_udp_src.append(str(json_dataFW[contFW]['udp_src']))
+                    else:
+                        lista_udp_src.append("x")
+
+                    if dicAuxFW.has_key('udp_dst') == True:
+                        lista_udp_dst.append(str(json_dataFW[contFW]['udp_dst']))
+                    else:
+                        lista_udp_dst.append("x")
+
+                    if dicAuxFW.has_key('tcp_src') == True:
+                        lista_tcp_src.append(str(json_dataFW[contFW]['tcp_src']))
+                    else:
+                        lista_tcp_src.append("x")
+
+                    if dicAuxFW.has_key('tcp_dst') == True:
+                        lista_tcp_dst.append(str(json_dataFW[contFW]['tcp_dst']))
+                    else:
+                        lista_tcp_dst.append("x")
+
+                    if dicAuxFW.has_key('sctp_src') == True:
+                        lista_sctp_src.append(str(json_dataFW[contFW]['sctp_src']))
+                    else:
+                        lista_sctp_src.append("x")
+
+                    if dicAuxFW.has_key('sctp_dst') == True:
+                        lista_sctp_dst.append(str(json_dataFW[contFW]['sctp_dst']))
+                    else:
+                        lista_sctp_dst.append("x")
+
+                    if dicAuxFW.has_key('icmpv4_type') == True:
+                        lista_icmpv4_type.append(str(json_dataFW[contFW]['icmpv4_type']))
+                    else:
+                        lista_icmpv4_type.append("x")
+
+                    if dicAuxFW.has_key('icmpv4_code') == True:
+                        lista_icmpv4_code.append(str(json_dataFW[contFW]['icmpv4_code']))
+                    else:
+                        lista_icmpv4_code.append("x")
+
+                    if dicAuxFW.has_key('icmpv6_type') == True:
+                        lista_icmpv6_type.append(str(json_dataFW[contFW]['icmpv6_type']))
+                    else:
+                        lista_icmpv6_type.append("x")
+
+                    if dicAuxFW.has_key('icmpv6_code') == True:
+                        lista_icmpv6_code.append(str(json_dataFW[contFW]['icmpv6_code']))
+                    else:
+                        lista_icmpv6_code.append("x")
+
+                    if dicAuxFW.has_key('ipv6_nd_ssl') == True:
+                        lista_ipv6_nd_ssl.append(str(json_dataFW[contFW]['ipv6_nd_ssl']))
+                    else:
+                        lista_ipv6_nd_ssl.append("x")
+
+                    if dicAuxFW.has_key('arp_spa') == True:
+                        lista_arp_spa.append(str(json_dataFW[contFW]['arp_spa']))
+                    else:
+                        lista_arp_spa.append("x")
+
+                    if dicAuxFW.has_key('arp_tpa') == True:
+                        lista_arp_tpa.append(str(json_dataFW[contFW]['arp_tpa']))
+                    else:
+                        lista_arp_tpa.append("x")
+
+                    if dicAuxFW.has_key('ipv6_nd_target') == True:
+                        lista_ipv6_nd_target.append(str(json_dataFW[contFW]['ipv6_nd_target']))
+                    else:
+                        lista_ipv6_nd_target.append("x")
+
+                    if dicAuxFW.has_key('arp_opcode') == True:
+                        lista_arp_opcode.append(str(json_dataFW[contFW]['arp_opcode']))
+                    else:
+                        lista_arp_opcode.append("x")
+
+                    if dicAuxFW.has_key('arp_tha') == True:
+                        lista_arp_tha.append(str(json_dataFW[contFW]['arp_tha']))
+                    else:
+                        lista_arp_tha.append("x")
+
+                    if dicAuxFW.has_key('arp_spa') == True:
+                        lista_arp_spa.append(str(json_dataFW[contFW]['arp_spa']))
+                    else:
+                        lista_arp_spa.append("x")
+
+                    if dicAuxFW.has_key('arp_tpa') == True:
+                        lista_arp_tpa.append(str(json_dataFW[contFW]['arp_tpa']))
+                    else:
+                        lista_arp_tpa.append("x")
+
+                    if dicAuxFW.has_key('mpls_label') == True:
+                        lista_mpls_label.append(str(json_dataFW[contFW]['mpls_label']))
+                    else:
+                        lista_mpls_label.append("x")
+
+                    if dicAuxFW.has_key('mpls_tc') == True:
+                        lista_mpls_tc.append(str(json_dataFW[contFW]['mpls_tc']))
+                    else:
+                        lista_mpls_tc.append("x")
+
+                    if dicAuxFW.has_key('mpls_bos') == True:
+                        lista_mpls_bos.append(str(json_dataFW[contFW]['mpls_bos']))
+                    else:
+                        lista_mpls_bos.append("x")
+
+                    if dicAuxFW.has_key('tunnel_id') == True:
+                        lista_tunnel_id.append(str(json_dataFW[contFW]['tunnel_id']))
+                    else:
+                        lista_tunnel_id.append("x")
+
+                    if dicAuxFW.has_key('metadata') == True:
+                        lista_metadata.append(str(json_dataFW[contFW]['metadata']))
+                    else:
+                        lista_metadata.append("x")
+
+                contFW += 1
+            flowContFW = 0
+
+            arquivo_regrasFW.write("[Switch: " + str(contSwitchFW + 1) + "]\n")
+
+            for mfw in range(contFW):
+                arquivo_regrasFW.write("(" + str(lista_eth_src[flowContFW]) + " ^ " + str(lista_eth_dst[flowContFW]) + " ^ " + str(lista_eth_type[flowContFW]) + " ^ " + str(lista_in_porteth_vlan_videth_vlan_pcp[flowContFW]) + " ^ " + str(lista_ip_proto[flowContFW]) + " ^ " + str(lista_ipv4_src[flowContFW]) + " ^ " + str(lista_ipv4_dstipv6_src[flowContFW]) + " ^ " + str(lista_ipv6_dst[flowContFW]) + " ^ " + str(lista_ipv6_label[flowContFW]) + " ^ " + str(lista_ip_tos[flowContFW]) + " ^ " + str(lista_ip_ecn[flowContFW]) + " ^ " + str(lista_ip_dscp[flowContFW]) + " ^ " + str(lista_tp_src[flowContFW]) + " ^ " + str(lista_tp_dst[flowContFW]) + " ^ " + str(lista_udp_src[flowContFW]) + " ^ " + str(lista_udp_dst[flowContFW]) + " ^ " + str(lista_tcp_srctcp_dst[flowContFW]) + " ^ " + str(lista_sctp_src[flowContFW]) + " ^ " + str(lista_sctp_dst[flowContFW]) + " ^ " + str(lista_icmpv4_type[flowContFW]) + " ^ " + str(lista_icmpv4_code[flowContFW]) + " ^ " + str(lista_icmpv6_type[flowContFW]) + " ^ " + str(lista_icmpv6_code[flowContFW]) + " ^ " + str(lista_ipv6_nd_ssl[flowContFW]) + " ^ " + str(lista_ipv6_nd_ttl[flowContFW]) + " ^ " + str(lista_arp_tpa[flowContFW]) + " ^ " + str(lista_ipv6_nd_target[flowContFW]) + " ^ " + str(lista_arp_opcode[flowContFW]) + " ^ " + str(lista_arp_tha[flowContFW]) + " ^ " + str(lista_arp_spa[flowContFW]) + " ^ " + str(lista_arp_tpaipv6_label[flowContFW]) + " ^ " + str(lista_ip_tos[flowContFW]) + " ^ " + str(lista_ip_ecn[flowContFW]) + " ^ " + str(lista_ip_dscp[flowContFW]) + " ^ " + str(lista_tp_src[flowContFW]) + " ^ " + str(lista_tp_dst[flowContFW]) + " ^ " + str(lista_udp_src[flowContFW]) + " ^ " + str(lista_udp_dst[flowContFW]) + " ^ " + str(lista_tcp_src[flowContFW]) + " ^ " + str(lista_tcp_dst[flowContFW]) + " ^ " + str(lista_sctp_src[flowContFW]) + " ^ " + str(lista_sctp_dst[flowContFW]) + " ^ " + str(lista_icmpv4_type[flowContFW]) + " ^ " + str(lista_icmpv4_code[flowContFW]) + " ^ " + str(lista_icmpv6_type[flowContFW]) + " ^ " + str(lista_icmpv6_code[flowContFW]) + " ^ " + str(lista_ipv6_nd_ssl[flowContFW]) + " ^ " + str(lista_ipv6_nd_ttl[flowContFW]) + " ^ " + str(lista_ipv6_nd_target[flowContFW]) + " ^ " + str(lista_arp_opcode[flowContFW]) + " ^ " + str(lista_arp_tha[flowContFW]) + " ^ " + str(lista_arp_spa[flowContFW]) + " ^ " + str(lista_arp_tpa[flowContFW]) + " ^ " + str(lista_mpls_label[flowContFW]) + " ^ " + str(lista_mpls_tc[flowContFW]) + " ^ " + str(lista_mpls_bos[flowContFW]) + " ^ " + str(lista_tunnel_id[flowContFW]) + " ^ " + str(lista_metadata[flowContFW]) + " ^ " + str(lista_version[flowContFW]) + " ^ " + str(lista_command[flowContFW]) + " ^ " + str(lista_cookie[flowContFW]) + " ^ " + str(lista_src_ip[flowContFW]) + " ^ " + str(lista_dst_ip[flowContFW]) + " ^ " + str(lista_dl_type[flowContFW]) + " ^ " + str(lista_nw_dst_prefix[flowContFW]) + " ^ " + str(lista_nw_src_prefix[flowContFW]) + " ^ " + str(lista_nw_src_maskbits[flowContFW]) + " ^ " + str(lista_nw_dst_maskbits[flowContFW]) + " ^ " + str(lista_any_nw_dst[flowContFW]) + " ^ " + str(lista_any_nw_proto[flowContFW]) + " ^ " + str(lista_any_in_port[flowContFW]) + " ^ " + str(lista_any_nw_srcany_tp_ds[flowContFW]) + " ^ " + str(lista_ruleid[flowContFW]) + " ^ " + str(lista_idleTimeoutSec[flowContFW]) + " ^ " + str(lista_hardTimeoutSec[flowContFW]) + " ^ " + str(lista_any_dl_type[flowContFW]) + " ^ " + str(lista_priority[flowContFW]) + " ^ " + str(lista_in_port[flowContFW]) + " ^ " + str(lista_any_dpid[flowContFW]) + " ^ " + str(lista_dl_src[flowContFW]) + " ^ " + str(lista_dpid[flowContFW]) + " ^ " + str(lista_tp_src[flowContFW]) + " ^ " + str(lista_any_dl_dst[flowContFW]) + " ^ " + str(lista_nw_proto[flowContFW]) + " ^ " + str(lista_tp_dst[flowContFW]) + " ^ " + str(lista_dl_dst[flowContFW]) + " ^ " + str(lista_any_tp_src[flowContFW]) + " ^ " + str(lista_outPort[flowContFW]) + " ^ " + str(lista_src_mac[flowContFW]) + " ^ " + str(lista_dst_mac[flowContFW]) + " ^ " + ") -> " + str(lista_action[flowContFW]) + "\n")
+
+                dicFlowsFW.update({str(mfw):[lista_eth_src[flowContFW], lista_eth_dst[flowContFW], lista_eth_type[flowContFW], lista_in_porteth_vlan_videth_vlan_pcp[flowContFW], lista_ip_proto[flowContFW], lista_ipv4_src[flowContFW], lista_ipv4_dstipv6_src[flowContFW], lista_ipv6_dst[flowContFW], lista_ipv6_label[flowContFW], lista_ip_tos[flowContFW], lista_ip_ecn[flowContFW], lista_ip_dscp[flowContFW], lista_tp_src[flowContFW], lista_tp_dst[flowContFW], lista_udp_src[flowContFW], lista_udp_dst[flowContFW], lista_tcp_srctcp_dst[flowContFW], lista_sctp_src[flowContFW], lista_sctp_dst[flowContFW], lista_icmpv4_type[flowContFW], lista_icmpv4_code[flowContFW], lista_icmpv6_type[flowContFW], lista_icmpv6_code[flowContFW], lista_ipv6_nd_ssl[flowContFW], lista_ipv6_nd_ttl[flowContFW], lista_arp_tpa[flowContFW], lista_ipv6_nd_target[flowContFW], lista_arp_opcode[flowContFW], lista_arp_tha[flowContFW], lista_arp_spa[flowContFW], lista_arp_tpaipv6_label[flowContFW], lista_ip_tos[flowContFW], lista_ip_ecn[flowContFW], lista_ip_dscp[flowContFW], lista_tp_src[flowContFW], lista_tp_dst[flowContFW], lista_udp_src[flowContFW], lista_udp_dst[flowContFW], lista_tcp_src[flowContFW], lista_tcp_dst[flowContFW], lista_sctp_src[flowContFW], lista_sctp_dst[flowContFW], lista_icmpv4_type[flowContFW], lista_icmpv4_code[flowContFW], lista_icmpv6_type[flowContFW], lista_icmpv6_code[flowContFW], lista_ipv6_nd_ssl[flowContFW], lista_ipv6_nd_ttl[flowContFW], lista_ipv6_nd_target[flowContFW], lista_arp_opcode[flowContFW], lista_arp_tha[flowContFW], lista_arp_spa[flowContFW], lista_arp_tpa[flowContFW], lista_mpls_label[flowContFW], lista_mpls_tc[flowContFW], lista_mpls_bos[flowContFW], lista_tunnel_id[flowContFW], lista_metadata[flowContFW], lista_[flowContFW], lista_version[flowContFW], lista_command[flowContFW], lista_cookie[flowContFW], lista_src_ip[flowContFW], lista_dst_ip[flowContFW], lista_dl_type[flowContFW], lista_nw_dst_prefix[flowContFW], lista_nw_src_prefix[flowContFW], lista_nw_src_maskbits[flowContFW], lista_nw_dst_maskbits[flowContFW], lista_any_nw_dst[flowContFW], lista_any_nw_proto[flowContFW], lista_any_in_port[flowContFW], lista_any_nw_srcany_tp_ds[flowContFW], lista_ruleid[flowContFW], lista_idleTimeoutSec[flowContFW], lista_hardTimeoutSec[flowContFW], lista_any_dl_type[flowContFW], lista_priority[flowContFW], lista_in_port[flowContFW], lista_any_dpid[flowContFW], lista_dl_src[flowContFW], lista_dpid[flowContFW], lista_tp_src[flowContFW], lista_any_dl_dst[flowContFW], lista_nw_proto[flowContFW], lista_tp_dst[flowContFW], lista_dl_dst[flowContFW], lista_any_tp_src[flowContFW], lista_outPort[flowContFW], lista_src_mac[flowContFW], lista_dst_mac[flowContFW], lista_action[flowContFW]]})
+                flowContFW += 1
+            arquivo_regrasFW.write("\n\n")
+            contSwitchFW += 1
+
+            # Algoritmo de verificacao
+            ifw = 0
+            jfw = 0
+
+            for lfw in range(len(lista_actions) - 1):
+                jfw = ifw + 1
+                for kfw in range(len(lista_actions) - (ifw + 1)):
+                    if (lista_eth_src[ifw] == 'x'):
+                        lista_eth_src[ifw] = lista_eth_src[jfw]
+                    if (lista_eth_dst[ifw] == 'x'):
+                        lista_eth_dst[ifw] = lista_eth_dst[jfw]
+                    if (lista_eth_type[ifw] == 'x'):
+                        lista_eth_type[ifw] = lista_eth_type[jfw]
+                    if (lista_in_porteth_vlan_videth_vlan_pcp[ifw] == 'x'):
+                        lista_in_porteth_vlan_videth_vlan_pcp[ifw] = lista_in_porteth_vlan_videth_vlan_pcp[jfw]
+                    if (lista_ip_proto[ifw] == 'x'):
+                        lista_ip_proto[ifw] = lista_ip_proto[jfw]
+                    if (lista_ipv4_src[ifw] == 'x'):
+                        lista_ipv4_src[ifw] = lista_ipv4_src[jfw]
+                    if (lista_ipv4_dstipv6_src[ifw] == 'x'):
+                        lista_ipv4_dstipv6_src[ifw] = lista_ipv4_dstipv6_src[jfw]
+                    if (lista_ipv6_dst[ifw] == 'x'):
+                        lista_ipv6_dst[ifw] = lista_ipv6_dst[jfw]
+                    if (lista_ipv6_label[ifw] == 'x'):
+                        lista_ipv6_label[ifw] = lista_ipv6_label[jfw]
+                    if (lista_ip_tos[ifw] == 'x'):
+                        lista_ip_tos[ifw] = lista_ip_tos[jfw]
+                    if (lista_ip_ecn[ifw] == 'x'):
+                        lista_ip_ecn[ifw] = lista_ip_ecn[jfw]
+                    if (lista_ip_dscp[ifw] == 'x'):
+                        lista_ip_dscp[ifw] = lista_ip_dscp[jfw]
+                    if (lista_tp_src[ifw] == 'x'):
+                        lista_tp_src[ifw] = lista_tp_src[jfw]
+                    if (lista_tp_dst[ifw] == 'x'):
+                        lista_tp_dst[ifw] = lista_tp_dst[jfw]
+                    if (lista_udp_src[ifw] == 'x'):
+                        lista_udp_src[ifw] = lista_udp_src[jfw]
+                    if (lista_udp_dst[ifw] == 'x'):
+                        lista_udp_dst[ifw] = lista_udp_dst[jfw]
+                    if (lista_tcp_srctcp_dst[ifw] == 'x'):
+                        lista_tcp_srctcp_dst[ifw] = lista_tcp_srctcp_dst[jfw]
+                    if (lista_sctp_src[ifw] == 'x'):
+                        lista_sctp_src[ifw] = lista_sctp_src[jfw]
+                    if (lista_sctp_dst[ifw] == 'x'):
+                        lista_sctp_dst[ifw] = lista_sctp_dst[jfw]
+                    if (lista_icmpv4_type[ifw] == 'x'):
+                        lista_icmpv4_type[ifw] = lista_icmpv4_type[jfw]
+                    if (lista_icmpv4_code[ifw] == 'x'):
+                        lista_icmpv4_code[ifw] = lista_icmpv4_code[jfw]
+                    if (lista_icmpv6_type[ifw] == 'x'):
+                        lista_icmpv6_type[ifw] = lista_icmpv6_type[jfw]
+                    if (lista_icmpv6_code[ifw] == 'x'):
+                        lista_icmpv6_code[ifw] = lista_icmpv6_code[jfw]
+                    if (lista_ipv6_nd_ssl[ifw] == 'x'):
+                        lista_ipv6_nd_ssl[ifw] = lista_ipv6_nd_ssl[jfw]
+                    if (lista_ipv6_nd_ttl[ifw] == 'x'):
+                        lista_ipv6_nd_ttl[ifw] = lista_ipv6_nd_ttl[jfw]
+                    if (lista_arp_tpa[ifw] == 'x'):
+                        lista_arp_tpa[ifw] = lista_arp_tpa[jfw]
+                    if (lista_ipv6_nd_target[ifw] == 'x'):
+                        lista_ipv6_nd_target[ifw] = lista_ipv6_nd_target[jfw]
+                    if (lista_arp_opcode[ifw] == 'x'):
+                        lista_arp_opcode[ifw] = lista_arp_opcode[jfw]
+                    if (lista_arp_tha[ifw] == 'x'):
+                        lista_arp_tha[ifw] = lista_arp_tha[jfw]
+                    if (lista_arp_spa[ifw] == 'x'):
+                        lista_arp_spa[ifw] = lista_arp_spa[jfw]
+                    if (lista_arp_tpaipv6_label[ifw] == 'x'):
+                        lista_arp_tpaipv6_label[ifw] = lista_arp_tpaipv6_label[jfw]
+                    if (lista_ip_tos[ifw] == 'x'):
+                        lista_ip_tos[ifw] = lista_ip_tos[jfw]
+                    if (lista_ip_ecn[ifw] == 'x'):
+                        lista_ip_ecn[ifw] = lista_ip_ecn[jfw]
+                    if (lista_ip_dscp[ifw] == 'x'):
+                        lista_ip_dscp[ifw] = lista_ip_dscp[jfw]
+                    if (lista_tp_src[ifw] == 'x'):
+                        lista_tp_src[ifw] = lista_tp_src[jfw]
+                    if (lista_tp_dst[ifw] == 'x'):
+                        lista_tp_dst[ifw] = lista_tp_dst[jfw]
+                    if (lista_udp_src[ifw] == 'x'):
+                        lista_udp_src[ifw] = lista_udp_src[jfw]
+                    if (lista_udp_dst[ifw] == 'x'):
+                        lista_udp_dst[ifw] = lista_udp_dst[jfw]
+                    if (lista_tcp_src[ifw] == 'x'):
+                        lista_tcp_src[ifw] = lista_tcp_src[jfw]
+                    if (lista_tcp_dst[ifw] == 'x'):
+                        lista_tcp_dst[ifw] = lista_tcp_dst[jfw]
+                    if (lista_sctp_src[ifw] == 'x'):
+                        lista_sctp_src[ifw] = lista_sctp_src[jfw]
+                    if (lista_sctp_dst[ifw] == 'x'):
+                        lista_sctp_dst[ifw] = lista_sctp_dst[jfw]
+                    if (lista_icmpv4_type[ifw] == 'x'):
+                        lista_icmpv4_type[ifw] = lista_icmpv4_type[jfw]
+                    if (lista_icmpv4_code[ifw] == 'x'):
+                        lista_icmpv4_code[ifw] = lista_icmpv4_code[jfw]
+                    if (lista_icmpv6_type[ifw] == 'x'):
+                        lista_icmpv6_type[ifw] = lista_icmpv6_type[jfw]
+                    if (lista_icmpv6_code[ifw] == 'x'):
+                        lista_icmpv6_code[ifw] = lista_icmpv6_code[jfw]
+                    if (lista_ipv6_nd_ssl[ifw] == 'x'):
+                        lista_ipv6_nd_ssl[ifw] = lista_ipv6_nd_ssl[jfw]
+                    if (lista_ipv6_nd_ttl[ifw] == 'x'):
+                        lista_ipv6_nd_ttl[ifw] = lista_ipv6_nd_ttl[jfw]
+                    if (lista_ipv6_nd_target[ifw] == 'x'):
+                        lista_ipv6_nd_target[ifw] = lista_ipv6_nd_target[jfw]
+                    if (lista_arp_opcode[ifw] == 'x'):
+                        lista_arp_opcode[ifw] = lista_arp_opcode[jfw]
+                    if (lista_arp_tha[ifw] == 'x'):
+                        lista_arp_tha[ifw] = lista_arp_tha[jfw]
+                    if (lista_arp_spa[ifw] == 'x'):
+                        lista_arp_spa[ifw] = lista_arp_spa[jfw]
+                    if (lista_arp_tpa[ifw] == 'x'):
+                        lista_arp_tpa[ifw] = lista_arp_tpa[jfw]
+                    if (lista_mpls_label[ifw] == 'x'):
+                        lista_mpls_label[ifw] = lista_mpls_label[jfw]
+                    if (lista_mpls_tc[ifw] == 'x'):
+                        lista_mpls_tc[ifw] = lista_mpls_tc[jfw]
+                    if (lista_mpls_bos[ifw] == 'x'):
+                        lista_mpls_bos[ifw] = lista_mpls_bos[jfw]
+                    if (lista_tunnel_id[ifw] == 'x'):
+                        lista_tunnel_id[ifw] = lista_tunnel_id[jfw]
+                    if (lista_metadata[ifw] == 'x'):
+                        lista_metadata[ifw] = lista_metadata[jfw]
+                    if (lista_[ifw] == 'x'):
+                        lista_[ifw] = lista_[jfw]
+                    if (lista_version[ifw] == 'x'):
+                        lista_version[ifw] = lista_version[jfw]
+                    if (lista_command[ifw] == 'x'):
+                        lista_command[ifw] = lista_command[jfw]
+                    if (lista_cookie[ifw] == 'x'):
+                        lista_cookie[ifw] = lista_cookie[jfw]
+                    if (lista_src_ip[ifw] == 'x'):
+                        lista_src_ip[ifw] = lista_src_ip[jfw]
+                    if (lista_dst_ip[ifw] == 'x'):
+                        lista_dst_ip[ifw] = lista_dst_ip[jfw]
+                    if (lista_dl_type[ifw] == 'x'):
+                        lista_dl_type[ifw] = lista_dl_type[jfw]
+                    if (lista_nw_dst_prefix[ifw] == 'x'):
+                        lista_nw_dst_prefix[ifw] = lista_nw_dst_prefix[jfw]
+                    if (lista_nw_src_prefix[ifw] == 'x'):
+                        lista_nw_src_prefix[ifw] = lista_nw_src_prefix[jfw]
+                    if (lista_nw_src_maskbits[ifw] == 'x'):
+                        lista_nw_src_maskbits[ifw] = lista_nw_src_maskbits[jfw]
+                    if (lista_nw_dst_maskbits[ifw] == 'x'):
+                        lista_nw_dst_maskbits[ifw] = lista_nw_dst_maskbits[jfw]
+                    if (lista_any_nw_dst[ifw] == 'x'):
+                        lista_any_nw_dst[ifw] = lista_any_nw_dst[jfw]
+                    if (lista_any_nw_proto[ifw] == 'x'):
+                        lista_any_nw_proto[ifw] = lista_any_nw_proto[jfw]
+                    if (lista_any_in_port[ifw] == 'x'):
+                        lista_any_in_port[ifw] = lista_any_in_port[jfw]
+                    if (lista_any_nw_srcany_tp_ds[ifw] == 'x'):
+                        lista_any_nw_srcany_tp_ds[ifw] = lista_any_nw_srcany_tp_ds[jfw]
+                    if (lista_ruleid[ifw] == 'x'):
+                        lista_ruleid[ifw] = lista_ruleid[jfw]
+                    if (lista_idleTimeoutSec[ifw] == 'x'):
+                        lista_idleTimeoutSec[ifw] = lista_idleTimeoutSec[jfw]
+                    if (lista_hardTimeoutSec[ifw] == 'x'):
+                        lista_hardTimeoutSec[ifw] = lista_hardTimeoutSec[jfw]
+                    if (lista_any_dl_type[ifw] == 'x'):
+                        lista_any_dl_type[ifw] = lista_any_dl_type[jfw]
+                    if (lista_priority[ifw] == 'x'):
+                        lista_priority[ifw] = lista_priority[jfw]
+                    if (lista_in_port[ifw] == 'x'):
+                        lista_in_port[ifw] = lista_in_port[jfw]
+                    if (lista_any_dpid[ifw] == 'x'):
+                        lista_any_dpid[ifw] = lista_any_dpid[jfw]
+                    if (lista_dl_src[ifw] == 'x'):
+                            lista_dl_src[ifw] = lista_dl_src[jfw]
+                    if (lista_dpid[ifw] == 'x'):
+                        lista_dpid[ifw] = lista_dpid[jfw]
+                    if (lista_tp_src[ifw] == 'x'):
+                        lista_tp_src[ifw] = lista_tp_src[jfw]
+                    if (lista_any_dl_dst[ifw] == 'x'):
+                        lista_any_dl_dst[ifw] = lista_any_dl_dst[jfw]
+                    if (lista_nw_proto[ifw] == 'x'):
+                        lista_nw_proto[ifw] = lista_nw_proto[jfw]
+                    if (lista_tp_dst[ifw] == 'x'):
+                        lista_tp_dst[ifw] = lista_tp_dst[jfw]
+                    if (lista_dl_dst[ifw] == 'x'):
+                        lista_dl_dst[ifw] = lista_dl_dst[jfw]
+                    if (lista_any_tp_src[ifw] == 'x'):
+                        lista_any_tp_src[ifw] = lista_any_tp_src[jfw]
+                    if (lista_outPort[ifw] == 'x'):
+                        lista_outPort[ifw] = lista_outPort[jfw]
+                    if (lista_src_mac[ifw] == 'x'):
+                        lista_src_mac[ifw] = lista_src_mac[jfw]
+                    if (lista_dst_mac[ifw] == 'x'):
+                        lista_dst_mac[ifw] = lista_dst_mac[jfw]
+                    if (lista_action[ifw] == 'x'):
+                        lista_action[ifw] = lista_action[jfw]
+
+                    if(lista_eth_src[ifw]==lista_eth_src[jfw] and lista_eth_dst[ifw]==lista_eth_dst[jfw] and lista_eth_type[ifw]==lista_eth_type[jfw] and lista_in_porteth_vlan_videth_vlan_pcp[ifw]==lista_in_porteth_vlan_videth_vlan_pcp[jfw] and lista_ip_proto[ifw]==lista_ip_proto[jfw] and lista_ipv4_src[ifw]==lista_ipv4_src[jfw] and lista_ipv4_dstipv6_src[ifw]==lista_ipv4_dstipv6_src[jfw] and lista_ipv6_dst[ifw]==lista_ipv6_dst[jfw] and lista_ipv6_label[ifw]==lista_ipv6_label[jfw] and lista_ip_tos[ifw]==lista_ip_tos[jfw] and lista_ip_ecn[ifw]==lista_ip_ecn[jfw] and lista_ip_dscp[ifw]==lista_ip_dscp[jfw] and lista_tp_src[ifw]==lista_tp_src[jfw] and lista_tp_dst[ifw]==lista_tp_dst[jfw] and lista_udp_src[ifw]==lista_udp_src[jfw] and lista_udp_dst[ifw]==lista_udp_dst[jfw] and lista_tcp_srctcp_dst[ifw]==lista_tcp_srctcp_dst[jfw] and lista_sctp_src[ifw]==lista_sctp_src[jfw] and lista_sctp_dst[ifw]==lista_sctp_dst[jfw] and lista_icmpv4_type[ifw]==lista_icmpv4_type[jfw] and lista_icmpv4_code[ifw]==lista_icmpv4_code[jfw] and lista_icmpv6_type[ifw]==lista_icmpv6_type[jfw] and lista_icmpv6_code[ifw]==lista_icmpv6_code[jfw] and lista_ipv6_nd_ssl[ifw]==lista_ipv6_nd_ssl[jfw] and lista_ipv6_nd_ttl[ifw]==lista_ipv6_nd_ttl[jfw] and lista_arp_tpa[ifw]==lista_arp_tpa[jfw] and lista_ipv6_nd_target[ifw]==lista_ipv6_nd_target[jfw] and lista_arp_opcode[ifw]==lista_arp_opcode[jfw] and lista_arp_tha[ifw]==lista_arp_tha[jfw] and lista_arp_spa[ifw]==lista_arp_spa[jfw] and lista_arp_tpaipv6_label[ifw]==lista_arp_tpaipv6_label[jfw] and lista_ip_tos[ifw]==lista_ip_tos[jfw] and lista_ip_ecn[ifw]==lista_ip_ecn[jfw] and lista_ip_dscp[ifw]==lista_ip_dscp[jfw] and lista_tp_src[ifw]==lista_tp_src[jfw] and lista_tp_dst[ifw]==lista_tp_dst[jfw] and lista_udp_src[ifw]==lista_udp_src[jfw] and lista_udp_dst[ifw]==lista_udp_dst[jfw] and lista_tcp_src[ifw]==lista_tcp_src[jfw] and lista_tcp_dst[ifw]==lista_tcp_dst[jfw] and lista_sctp_src[ifw]==lista_sctp_src[jfw] and lista_sctp_dst[ifw]==lista_sctp_dst[jfw] and lista_icmpv4_type[ifw]==lista_icmpv4_type[jfw] and lista_icmpv4_code[ifw]==lista_icmpv4_code[jfw] and lista_icmpv6_type[ifw]==lista_icmpv6_type[jfw] and lista_icmpv6_code[ifw]==lista_icmpv6_code[jfw] and lista_ipv6_nd_ssl[ifw]==lista_ipv6_nd_ssl[jfw] and lista_ipv6_nd_ttl[ifw]==lista_ipv6_nd_ttl[jfw] and lista_ipv6_nd_target[ifw]==lista_ipv6_nd_target[jfw] and lista_arp_opcode[ifw]==lista_arp_opcode[jfw] and lista_arp_tha[ifw]==lista_arp_tha[jfw] and lista_arp_spa[ifw]==lista_arp_spa[jfw] and lista_arp_tpa[ifw]==lista_arp_tpa[jfw] and lista_mpls_label[ifw]==lista_mpls_label[jfw] and lista_mpls_tc[ifw]==lista_mpls_tc[jfw] and lista_mpls_bos[ifw]==lista_mpls_bos[jfw] and lista_tunnel_id[ifw]==lista_tunnel_id[jfw] and lista_metadata[ifw]==lista_metadata[jfw] and lista_[ifw]==lista_[jfw] and lista_version[ifw]==lista_version[jfw] and lista_command[ifw]==lista_command[jfw] and lista_cookie[ifw]==lista_cookie[jfw] and lista_src_ip[ifw]==lista_src_ip[jfw] and lista_dst_ip[ifw]==lista_dst_ip[jfw] and lista_dl_type[ifw]==lista_dl_type[jfw] and lista_nw_dst_prefix[ifw]==lista_nw_dst_prefix[jfw] and lista_nw_src_prefix[ifw]==lista_nw_src_prefix[jfw] and lista_nw_src_maskbits[ifw]==lista_nw_src_maskbits[jfw] and lista_nw_dst_maskbits[ifw]==lista_nw_dst_maskbits[jfw] and lista_any_nw_dst[ifw]==lista_any_nw_dst[jfw] and lista_any_nw_proto[ifw]==lista_any_nw_proto[jfw] and lista_any_in_port[ifw]==lista_any_in_port[jfw] and lista_any_nw_srcany_tp_ds[ifw]==lista_any_nw_srcany_tp_ds[jfw] and lista_ruleid[ifw]==lista_ruleid[jfw] and lista_idleTimeoutSec[ifw]==lista_idleTimeoutSec[jfw] and lista_hardTimeoutSec[ifw]==lista_hardTimeoutSec[jfw] and lista_any_dl_type[ifw]==lista_any_dl_type[jfw] and lista_priority[ifw]==lista_priority[jfw] and lista_in_port[ifw]==lista_in_port[jfw] and lista_any_dpid[ifw]==lista_any_dpid[jfw] and lista_dl_src[ifw]==lista_dl_src[jfw] and lista_dpid[ifw]==lista_dpid[jfw] and lista_tp_src[ifw]==lista_tp_src[jfw] and lista_any_dl_dst[ifw]==lista_any_dl_dst[jfw] and lista_nw_proto[ifw]==lista_nw_proto[jfw] and lista_tp_dst[ifw]==lista_tp_dst[jfw] and lista_dl_dst[ifw]==lista_dl_dst[jfw] and lista_any_tp_src[ifw]==lista_any_tp_src[jfw] and lista_outPort[ifw]==lista_outPort[jfw] and lista_src_mac[ifw]==lista_src_mac[jfw] and lista_dst_mac[ifw]==lista_dst_mac[jfw] and lista_action[ifw]==lista_action[jfw]):
+
+                        if(lista_action[ifw] == lista_action[jfw]):
+                            arquivo_regras_conflitantesFW.write("(" + str(lista_eth_src[ifw]) + " ^ " + str(lista_eth_dst[ifw]) + " ^ " + str(lista_eth_type[ifw]) + " ^ " + str(lista_in_porteth_vlan_videth_vlan_pcp[ifw]) + " ^ " + str(lista_ip_proto[ifw]) + " ^ " + str(lista_ipv4_src[ifw]) + " ^ " + str(lista_ipv4_dstipv6_src[ifw]) + " ^ " + str(lista_ipv6_dst[ifw]) + " ^ " + str(lista_ipv6_label[ifw]) + " ^ " + str(lista_ip_tos[ifw]) + " ^ " + str(lista_ip_ecn[ifw]) + " ^ " + str(lista_ip_dscp[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_udp_src[ifw]) + " ^ " + str(lista_udp_dst[ifw]) + " ^ " + str(lista_tcp_srctcp_dst[ifw]) + " ^ " + str(lista_sctp_src[ifw]) + " ^ " + str(lista_sctp_dst[ifw]) + " ^ " + str(lista_icmpv4_type[ifw]) + " ^ " + str(lista_icmpv4_code[ifw]) + " ^ " + str(lista_icmpv6_type[ifw]) + " ^ " + str(lista_icmpv6_code[ifw]) + " ^ " + str(lista_ipv6_nd_ssl[ifw]) + " ^ " + str(lista_ipv6_nd_ttl[ifw]) + " ^ " + str(lista_arp_tpa[ifw]) + " ^ " + str(lista_ipv6_nd_target[ifw]) + " ^ " + str(lista_arp_opcode[ifw]) + " ^ " + str(lista_arp_tha[ifw]) + " ^ " + str(lista_arp_spa[ifw]) + " ^ " + str(lista_arp_tpaipv6_label[ifw]) + " ^ " + str(lista_ip_tos[ifw]) + " ^ " + str(lista_ip_ecn[ifw]) + " ^ " + str(lista_ip_dscp[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_udp_src[ifw]) + " ^ " + str(lista_udp_dst[ifw]) + " ^ " + str(lista_tcp_src[ifw]) + " ^ " + str(lista_tcp_dst[ifw]) + " ^ " + str(lista_sctp_src[ifw]) + " ^ " + str(lista_sctp_dst[ifw]) + " ^ " + str(lista_icmpv4_type[ifw]) + " ^ " + str(lista_icmpv4_code[ifw]) + " ^ " + str(lista_icmpv6_type[ifw]) + " ^ " + str(lista_icmpv6_code[ifw]) + " ^ " + str(lista_ipv6_nd_ssl[ifw]) + " ^ " + str(lista_ipv6_nd_ttl[ifw]) + " ^ " + str(lista_ipv6_nd_target[ifw]) + " ^ " + str(lista_arp_opcode[ifw]) + " ^ " + str(lista_arp_tha[ifw]) + " ^ " + str(lista_arp_spa[ifw]) + " ^ " + str(lista_arp_tpa[ifw]) + " ^ " + str(lista_mpls_label[ifw]) + " ^ " + str(lista_mpls_tc[ifw]) + " ^ " + str(lista_mpls_bos[ifw]) + " ^ " + str(lista_tunnel_id[ifw]) + " ^ " + str(lista_metadata[ifw]) + " ^ " + str(lista_[ifw]) + " ^ " + str(lista_version[ifw]) + " ^ " + str(lista_command[ifw]) + " ^ " + str(lista_cookie[ifw]) + " ^ " + str(lista_src_ip[ifw]) + " ^ " + str(lista_dst_ip[ifw]) + " ^ " + str(lista_dl_type[ifw]) + " ^ " + str(lista_nw_dst_prefix[ifw]) + " ^ " + str(lista_nw_src_prefix[ifw]) + " ^ " + str(lista_nw_src_maskbits[ifw]) + " ^ " + str(lista_nw_dst_maskbits[ifw]) + " ^ " + str(lista_any_nw_dst[ifw]) + " ^ " + str(lista_any_nw_proto[ifw]) + " ^ " + str(lista_any_in_port[ifw]) + " ^ " + str(lista_any_nw_srcany_tp_ds[ifw]) + " ^ " + str(lista_ruleid[ifw]) + " ^ " + str(lista_idleTimeoutSec[ifw]) + " ^ " + str(lista_hardTimeoutSec[ifw]) + " ^ " + str(lista_any_dl_type[ifw]) + " ^ " + str(lista_priority[ifw]) + " ^ " + str(lista_in_port[ifw]) + " ^ " + str(lista_any_dpid[ifw]) + " ^ " + str(lista_dl_src[ifw]) + " ^ " + str(lista_dpid[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_any_dl_dst[ifw]) + " ^ " + str(lista_nw_proto[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_dl_dst[ifw]) + " ^ " + str(lista_any_tp_src[ifw]) + " ^ " + str(lista_outPort[ifw]) + " ^ " + str(lista_src_mac[ifw]) + " ^ " + str(lista_dst_mac[ifw]) + ") -> " + str(lista_actions[ifw]) + "\n")
+                            arquivo_regras_conflitantesFW.write("Detectado conflito entre o fluxo " + str(ifw) + " e entre o fluxo " + str(jfw) + " no switch " + str(contSwitchFW) + "\n\n")
+                            conflito(ifw, jfw, contSwitchFW)
+                            flag_confRedFW = 1
+                        else:
+                            arquivo_regras_redundantesFW.write("(" + str(lista_eth_src[ifw]) + " ^ " + str(lista_eth_dst[ifw]) + " ^ " + str(lista_eth_type[ifw]) + " ^ " + str(lista_in_porteth_vlan_videth_vlan_pcp[ifw]) + " ^ " + str(lista_ip_proto[ifw]) + " ^ " + str(lista_ipv4_src[ifw]) + " ^ " + str(lista_ipv4_dstipv6_src[ifw]) + " ^ " + str(lista_ipv6_dst[ifw]) + " ^ " + str(lista_ipv6_label[ifw]) + " ^ " + str(lista_ip_tos[ifw]) + " ^ " + str(lista_ip_ecn[ifw]) + " ^ " + str(lista_ip_dscp[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_udp_src[ifw]) + " ^ " + str(lista_udp_dst[ifw]) + " ^ " + str(lista_tcp_srctcp_dst[ifw]) + " ^ " + str(lista_sctp_src[ifw]) + " ^ " + str(lista_sctp_dst[ifw]) + " ^ " + str(lista_icmpv4_type[ifw]) + " ^ " + str(lista_icmpv4_code[ifw]) + " ^ " + str(lista_icmpv6_type[ifw]) + " ^ " + str(lista_icmpv6_code[ifw]) + " ^ " + str(lista_ipv6_nd_ssl[ifw]) + " ^ " + str(lista_ipv6_nd_ttl[ifw]) + " ^ " + str(lista_arp_tpa[ifw]) + " ^ " + str(lista_ipv6_nd_target[ifw]) + " ^ " + str(lista_arp_opcode[ifw]) + " ^ " + str(lista_arp_tha[ifw]) + " ^ " + str(lista_arp_spa[ifw]) + " ^ " + str(lista_arp_tpaipv6_label[ifw]) + " ^ " + str(lista_ip_tos[ifw]) + " ^ " + str(lista_ip_ecn[ifw]) + " ^ " + str(lista_ip_dscp[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_udp_src[ifw]) + " ^ " + str(lista_udp_dst[ifw]) + " ^ " + str(lista_tcp_src[ifw]) + " ^ " + str(lista_tcp_dst[ifw]) + " ^ " + str(lista_sctp_src[ifw]) + " ^ " + str(lista_sctp_dst[ifw]) + " ^ " + str(lista_icmpv4_type[ifw]) + " ^ " + str(lista_icmpv4_code[ifw]) + " ^ " + str(lista_icmpv6_type[ifw]) + " ^ " + str(lista_icmpv6_code[ifw]) + " ^ " + str(lista_ipv6_nd_ssl[ifw]) + " ^ " + str(lista_ipv6_nd_ttl[ifw]) + " ^ " + str(lista_ipv6_nd_target[ifw]) + " ^ " + str(lista_arp_opcode[ifw]) + " ^ " + str(lista_arp_tha[ifw]) + " ^ " + str(lista_arp_spa[ifw]) + " ^ " + str(lista_arp_tpa[ifw]) + " ^ " + str(lista_mpls_label[ifw]) + " ^ " + str(lista_mpls_tc[ifw]) + " ^ " + str(lista_mpls_bos[ifw]) + " ^ " + str(lista_tunnel_id[ifw]) + " ^ " + str(lista_metadata[ifw]) + " ^ " + str(lista_[ifw]) + " ^ " + str(lista_version[ifw]) + " ^ " + str(lista_command[ifw]) + " ^ " + str(lista_cookie[ifw]) + " ^ " + str(lista_src_ip[ifw]) + " ^ " + str(lista_dst_ip[ifw]) + " ^ " + str(lista_dl_type[ifw]) + " ^ " + str(lista_nw_dst_prefix[ifw]) + " ^ " + str(lista_nw_src_prefix[ifw]) + " ^ " + str(lista_nw_src_maskbits[ifw]) + " ^ " + str(lista_nw_dst_maskbits[ifw]) + " ^ " + str(lista_any_nw_dst[ifw]) + " ^ " + str(lista_any_nw_proto[ifw]) + " ^ " + str(lista_any_in_port[ifw]) + " ^ " + str(lista_any_nw_srcany_tp_ds[ifw]) + " ^ " + str(lista_ruleid[ifw]) + " ^ " + str(lista_idleTimeoutSec[ifw]) + " ^ " + str(lista_hardTimeoutSec[ifw]) + " ^ " + str(lista_any_dl_type[ifw]) + " ^ " + str(lista_priority[ifw]) + " ^ " + str(lista_in_port[ifw]) + " ^ " + str(lista_any_dpid[ifw]) + " ^ " + str(lista_dl_src[ifw]) + " ^ " + str(lista_dpid[ifw]) + " ^ " + str(lista_tp_src[ifw]) + " ^ " + str(lista_any_dl_dst[ifw]) + " ^ " + str(lista_nw_proto[ifw]) + " ^ " + str(lista_tp_dst[ifw]) + " ^ " + str(lista_dl_dst[ifw]) + " ^ " + str(lista_any_tp_src[ifw]) + " ^ " + str(lista_outPort[ifw]) + " ^ " + str(lista_src_mac[ifw]) + " ^ " + str(lista_dst_mac[ifw]) + ") -> " + str(lista_actions[ifw]) + "\n")
+                            arquivo_regras_redundantesFW.write("Detectada a redundancia acima entre o fluxo " + str(ifw) + " e entre o fluxo " + str(jfw) + " no switch " + str(contSwitchFW) + "\n\n")
+                        redundancia(ifw, jfw, contSwitchFW)
+                        flag_confRedFW = 1
+                jfw += 1
+            ifw += 1
+        lista_csvFW.append(dicFlowsFW)
+    arquivo_regrasFW.close()
+    arquivo_regras_conflitantesFW.close()
+    arquivo_regras_redundantesFW.close()
+    arquivoDadosCSVFW = open("../data/arquivoDadosFW.csv", "w")
+
+    if flag_confRed != 1:
+        print "\nNenhum conflito e nenhuma redundancia foram encontrados no Firewall!\n"
+
+    # len(lista_csvFW[rfw]) e' igual ao numero de fluxos contidos na lista_csv[r]
+    for rfw in range(len(lista_csvFW)):
+        dicAux_CSV = lista_csvFW[r]
+        # print dicAux_CSVFW
+        for nfw in range(len(lista_csvFW[r])):
+            arquivoDadosCSVFW.write(str(dicAux_CSVFW[str(nfw)]) + "\n")
+        arquivoDadosCSVFW.write("\n")
+
+    arquivoDadosCSVFW.close()
 
 
-
-
-
-
-
-
-
-
-
-
-        end_fw = time.time()
+    end_fw = time.time()
 
         ############+++++++++++++++++++++++++++++++++++++++++++++++++++####
 
-        raw_input("\nPressione [Enter] para voltar ao menu principal\n")
-        system("clear")
-
+    raw_input("\nPressione [Enter] para voltar ao menu principal\n")
+    system("clear")
