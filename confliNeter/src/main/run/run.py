@@ -10,7 +10,8 @@ import time
 
 cont_time = 0
 
-arquivoFormatadoJson = "../data/dataflow_formato.json"
+arquivoFormatadoJsonVB = "../data/dataflow_formatoVB.json"
+arquivoFormatadoJson = "../data/dataflow_formato.json"  # VB: Variable buffer
 
 # Inicializando variaveis - Adicionar regras no Firewall (opt 2)
 #-> Informações - Match - Flowtable
@@ -80,7 +81,7 @@ action = ""
 
 ''' Funcoes principais '''
 # Para formatacao de arquivos json gerados pela rede
-def formatarJson(nome_do_arquivo, var_buffer):
+def formatarJson(nome_do_arquivo):
 	arquivo_json = nome_do_arquivo
 	var_buffer = open(arquivo_json, "r")
 	dicionario = ""
@@ -120,7 +121,7 @@ def formatarJson(nome_do_arquivo, var_buffer):
 	    else:
 		    strings += l
 
-	var_buffer = open(arquivo_json, "w")
+	var_buffer = open(arquivoFormatadoJsonVB, "w")
 	var_buffer.write(strings)
 	var_buffer.close()
 ###########################################################
@@ -162,14 +163,12 @@ while opt != "0":
     if opt=="1":
         start = time.time()
         print "\n"
-        '''
-        ip = raw_input("|----- Insira o IP da maquina: ")
-        porta = raw_input("|----- Insira a porta: ")
-        command = "curl -s http://" + ip + ":" + porta + "/wm/core/switch/all/flow/json"
-        '''
 
-        '''
-        command = "curl -s http://143.54.12.11:8080/wm/core/switch/all/flow/json"
+        #ip = raw_input("|----- Insira o IP da maquina: ")
+        #porta = raw_input("|----- Insira a porta: ")
+        #command = "curl -s http://" + ip + ":" + porta + "/wm/core/switch/all/flow/json"
+
+        command = "curl -s http://143.54.12.10:8080/wm/core/switch/all/flow/json"
 
         command_output = os.popen(command).read()
         topology = json.loads(command_output)
@@ -179,25 +178,25 @@ while opt != "0":
         fluxos_dados.write(str(topology))
         fluxos_dados.close()
 
-        '''
+
         ################################################################ >>>>>> DESCOMENTAR PORQUE TA FORMATANDO O ARQUIVO A CADA EXECUCAO
-        #formatarJson("dataflow.json", "arquivoJson")
+        formatarJson("dataflow.json")
 
         flag_confRed = 0
 
-
-
         strings = ""
-        arquivo_dados = open(arquivoFormatadoJson, "r")
+        arquivo_dados = open(arquivoFormatadoJsonVB, "r")
         for i in arquivo_dados:
             strings += i
         arquivo_dados.close()
 
-        with open(arquivoFormatadoJson) as f:
+        with open(arquivoFormatadoJsonVB) as f:
             data = f.read()
             json_data = json.loads(data)
 
+
         lista_switches = json_data.keys()
+        print lista_switches
 
         # Arquivos de regras
         arquivo_regras = open("../data/regras.txt", "w")
