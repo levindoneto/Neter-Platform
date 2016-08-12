@@ -5,12 +5,10 @@ from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 import time
-csvData = "../data/arquivoDados.csv"
+csvData = "../data/data.csv"
 
-allow = classBit.makeBitVector(1)
-deny = classBit.makeBitVector(0)
-
-
+#allow = classBit.makeBitVector(1)
+#deny = classBit.makeBitVector(0)
 
 # Parsing CSV (Regras)
 auxMatchKey = BitVector(size=0) # __init__ BitVect
@@ -53,21 +51,19 @@ print type(classBitList.bitList[0]), " -> ", type(classBitList.actionList[0])
 
 print (classBitList.bitList[0] in classBitList.bitList)  #So'
 
-
-
 # Insirindo pacote de teste
-testePack = raw_input("Insira o pacote de teste[String de bits]: ")
+testePack = raw_input("Insert the test package [Bit String]: ")
 testePack = classBit.stringToBit(testePack)
 
 start = time.time()  #__init time
 if (testePack in classBitList.bitList):
     index_testePack = classBitList.bitList.index(testePack)
     if (classBitList.actionList[index_testePack] == allow):
-        print "OK"
+        print "Package pass"
     elif (classBitList.actionList[index_testePack] == deny):
-        print "NAO OK"
+        print "Package does not pass"
 else:
-    print "pacote nao encontrado"
+    print "Package not found"
 print type(testePack)
 
 end = time.time()
