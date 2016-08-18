@@ -44,23 +44,26 @@ with open(csvData, "rb") as csvfile:
         if (len(classBitList.bitList[rule_index]) == 0):
             print "incrementou swinc"
 
-
         rule_index += 1
-
-swinc = 0
-for i in range(len(classBitList.bitList)):
-    if (len(classBitList.bitList[i]) == 0):
+a=0
+swinc = 1
+for rule_index in range(len(classBitList.bitList)):
+    if (len(classBitList.bitList[rule_index]) == 0):
         swinc += 1
-    for j in range(len(classBitList.bitList[0])): # All lists have the same len
-
+    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  #penultima posicao <- swinc
+    for info_index in range(len(classBitList.bitList[0])):                      # All lists have the same len
         try:
-            print "sw: ", swinc
-            print classBitList.bitList[i][j]
+            a = a+1
+            #print classBitList.bitList[rule_index][info_index]
         except:
             pass
-#print classBitList.bitList[64][6]
+
+
+print "\n\n\n", classBitList.bitList[1][6]
 #print classBitList.bitList[64][9]
 
+
+'''
 new_index = 0
 # Catch match informations and put this in a specific list
 for rule_id in classBitList.bitList:
@@ -69,19 +72,16 @@ for rule_id in classBitList.bitList:
         auxPredicate += info_id
     classBitList.bitList[new_index] = auxPredicate
     new_index += 1
-
+'''
 print ">>>>>", classBitList.actionList ,"<<<<"
 
-#print classBitList.bitList[0], " -> ", classBitList.actionList[0]
+print classBitList.bitList[0]
 #print classBitList.bitList[2], " -> ", classBitList.actionList[2]
 #print type(classBitList.bitList[0]), " -> ", type(classBitList.actionList[0])
 #print classBitList.bitList[4][-1]
 
 print (classBitList.bitList[0] in classBitList.bitList)  #So'
 
-# Insirindo pacote de teste
-testePack = raw_input("Insert the test package [Bit String]: ")
-testePack = classBit.stringToBit(testePack)
 
 start = time.time()  #__init time
 '''
