@@ -97,3 +97,9 @@ print type(testePack)
 '''
 end = time.time()
 print (end - start), "seconds"
+
+''' Creating a package list
+lista_regras = [1,2,42,9007199254740992,4,2,806,3]
+lista_regras = classBit.makeTest(lista_regras)
+print "\n\n", lista_regras, "\n\n"
+'''
