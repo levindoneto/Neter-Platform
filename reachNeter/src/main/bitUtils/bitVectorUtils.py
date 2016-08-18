@@ -9,12 +9,13 @@ import csv
 from os import system
 import time
 #from bitarray import bitarray
+from src.main.data import bitList as classBitList
+from BitVector import BitVector
 from BitVector import BitVector
 
-
 ''' Convert a string atomic predicate in a integer atomic predicate
-    @parameter : int
-    @return    : BitVector '''
+    @:parameter : Integer
+    @:return    : BitVector '''
 def stringToIntFormated (stringp):
     #Retirando caracteres nao numericos
     if (stringp == ''):
@@ -28,23 +29,23 @@ def stringToIntFormated (stringp):
         return newAtomicPredicate
 
 ''' Return a package in form of in-predicate (LSB=1, it's 1, because a package in always try to pass)
-    @parameter : int
-    @return    : BitVector '''
+    @:parameter : Integer
+    @:return    : BitVector '''
 def makePackVector(packVector):
     packVector = int(packVector) * 2
     packVector = BitVector(intVal=(packVector + 1))
     return packVector
 
 ''' Convert a integer atomic predicate in a Bitvector atomic predicate
-    @parameter : int
-    @return    : BitVector '''
+    @:parameter : Integer
+    @:return    : BitVector '''
 def makeBitVector(AtomicPredicate):
     AtomicPredicate = BitVector(intVal=AtomicPredicate)
     return AtomicPredicate
 
 '''Return a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
-    @parameter : string
-    @return    : BitVector '''
+    @:parameter : String
+    @:return    : BitVector '''
 def makePredicateVector(value):
     #Retirando caracteres nao numericos
     new_value = ""
@@ -56,22 +57,39 @@ def makePredicateVector(value):
     return new_value
 
 '''Return the MSB (n-1, Match) bits of a vector with n bits
-    @parameter : BitVector
-    @return    : BitVector '''
+    @:parameter : BitVector
+    @:return    : BitVector '''
 def sliceMatch(predicadoM):
     predicadoM = predicadoM[0:((len(predicadoM))-1)]
     return predicadoM
 
 ''' Return the LSB (Action) of a vector with n bits
-    @parameter : BitVector
-    @return    : BitVector '''
+    @:parameter : BitVector
+    @:return    : BitVector '''
 def sliceAction(predicadoA):
     predicadoA = predicadoA[((len(predicadoA))-1):len(predicadoA)]
     return predicadoA
 
 ''' Convert a bit string in BitVector
-    @parameter : string
-    @return    : BitVector '''
+    @:parameter : String
+    @:return    : BitVector '''
 def stringToBit(bvstring):
     bvstring = BitVector(bitstring=str(bvstring))
     return bvstring
+
+''' Convert a integer output in a BitVector Action with 8 bits width
+    @:parameter: Integer
+    @:return: BitVector '''
+def outputToAction(output):
+    action = classBit.makeBitVector(output)
+    return action
+
+''' Receive a list with informations about header of one rule and return a BitVector package test
+    @:parameter: *List
+    @:return: BitVector package
+'''
+def makeTest(rule):
+    auxRule = BitVector(size=0)
+    for j in range(len(rule)):
+        auxRule += makeBitVector(rule[j]) # Concatenating for to generate a package (int)
+    return auxRule
