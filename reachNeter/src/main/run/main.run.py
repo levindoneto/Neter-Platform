@@ -45,11 +45,15 @@ with open(csvData, "rb") as csvfile:
 a=0
 swinc = 1
 for rule_index in range(len(classBitList.bitList)):
-    if (len(classBitList.bitList[rule_index]) == 0):
-        swinc += 1
-    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
-
-print "\n\n\n", classBitList.bitList[1][6]
+    if (len(classBitList.bitList[rule_index]) == 0): # Row == None
+        a+=1
+        classBitList.dstList.append(None)
+    else:
+        classBitList.dstList.append(classBitList.bitList[a][6])
+        if (len(classBitList.bitList[rule_index]) == 0):
+            swinc += 1
+        classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
+        a+=1
 
 
 indexBV_rule = 0
@@ -60,6 +64,13 @@ for rule_id in classBitList.bitList:                  # Rule by rule
         auxPredicate += info_id                       # Forming a BitVector mask predicate
     classBitList.bitList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
+
+graph = [] # _init
+
+
+#graph = [[match[tudo],switch[9],destino[6],action[10]],[]] -> 6,9,10 -> salvar em outra lista
+
+#ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
 '''
 
 start = time.time()  #__init time
