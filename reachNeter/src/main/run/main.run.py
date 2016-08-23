@@ -22,8 +22,6 @@ with open(csvData, "rb") as csvfile:
         info_index = 0           # Indice
         classBitList.bitList.append([])
 
-
-
         for ind in range(len(row)):          # Coluna a coluna do csv
             ''' FAZER NESSE MODELO O ACTION
             # Catch action informations and put this in a specific list
@@ -33,10 +31,9 @@ with open(csvData, "rb") as csvfile:
                 n += 1
             '''
 
-            row[info_index] = classBit.stringToIntFormated(row[info_index])  #Tudo vira inteiro
-            row[info_index] = classBit.makeBitVector(row[info_index])
-            classBitList.bitList[rule_index].append(row[info_index])
-
+            row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
+            row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
+            classBitList.bitList[rule_index].append(row[info_index])         # Add in the list the BitVectors
 
             #adicionar mais uma coluna com o switch, talvez algo antes, que mexa direto no arquivo de maneira separada
 
@@ -50,7 +47,7 @@ swinc = 1
 for rule_index in range(len(classBitList.bitList)):
     if (len(classBitList.bitList[rule_index]) == 0):
         swinc += 1
-    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  #penultima posicao <- swinc
+    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position <- swinc
     for info_index in range(len(classBitList.bitList[0])):                      # All lists have the same len
         try:
             a = a+1
@@ -80,7 +77,6 @@ print classBitList.bitList[0]
 #print type(classBitList.bitList[0]), " -> ", type(classBitList.actionList[0])
 #print classBitList.bitList[4][-1]
 
-print (classBitList.bitList[0] in classBitList.bitList)  #So'
 
 
 start = time.time()  #__init time
