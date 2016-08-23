@@ -38,8 +38,8 @@ with open(csvData, "rb") as csvfile:
             #adicionar mais uma coluna com o switch, talvez algo antes, que mexa direto no arquivo de maneira separada
 
             info_index += 1
-        if (len(classBitList.bitList[rule_index]) == 0):
-            print "incrementou swinc"
+        #if (len(classBitList.bitList[rule_index]) == 0):
+            #print "swinc++"
 
         rule_index += 1
 a=0
@@ -47,13 +47,7 @@ swinc = 1
 for rule_index in range(len(classBitList.bitList)):
     if (len(classBitList.bitList[rule_index]) == 0):
         swinc += 1
-    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position <- swinc
-    for info_index in range(len(classBitList.bitList[0])):                      # All lists have the same len
-        try:
-            a = a+1
-            #print classBitList.bitList[rule_index][info_index]
-        except:
-            pass
+    classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
 
 
 print "\n\n\n", classBitList.bitList[1][6]
@@ -70,14 +64,6 @@ for rule_id in classBitList.bitList:
     classBitList.bitList[new_index] = auxPredicate
     new_index += 1
 '''
-print ">>>>>", classBitList.actionList ,"<<<<"
-
-print classBitList.bitList[0]
-#print classBitList.bitList[2], " -> ", classBitList.actionList[2]
-#print type(classBitList.bitList[0]), " -> ", type(classBitList.actionList[0])
-#print classBitList.bitList[4][-1]
-
-
 
 start = time.time()  #__init time
 '''
@@ -92,7 +78,7 @@ else:
 print type(testePack)
 '''
 end = time.time()
-print (end - start), "seconds"
+#print (end - start), "seconds"
 
 ''' Creating a package list
 lista_regras = [1,2,42,9007199254740992,4,2,806,3]
