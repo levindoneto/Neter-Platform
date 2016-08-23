@@ -49,24 +49,21 @@ for rule_index in range(len(classBitList.bitList)):
         swinc += 1
     classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
 
-
 print "\n\n\n", classBitList.bitList[1][6]
-#print classBitList.bitList[64][9]
 
 
-'''
-new_index = 0
+indexBV_rule = 0
 # Catch match informations and put this in a specific list
-for rule_id in classBitList.bitList:
+for rule_id in classBitList.bitList:                  # Rule by rule
     auxPredicate = BitVector(size=0)
-    for info_id in rule_id[0:-2]:
-        auxPredicate += info_id
-    classBitList.bitList[new_index] = auxPredicate
-    new_index += 1
+    for info_id in rule_id[0:-3]:                     # -1: action, -2: switch  [information a information of a rule]
+        auxPredicate += info_id                       # Forming a BitVector mask predicate
+    classBitList.bitList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
+    indexBV_rule += 1
 '''
 
 start = time.time()  #__init time
-'''
+
 if (testePack in classBitList.bitList):
     index_testePack = classBitList.bitList.index(testePack)
     if (classBitList.actionList[index_testePack] == allow):
@@ -76,11 +73,13 @@ if (testePack in classBitList.bitList):
 else:
     print "Package not found"
 print type(testePack)
-'''
+
+
 end = time.time()
 #print (end - start), "seconds"
-
-''' Creating a package list
+'''
+'''
+# Creating a package list
 lista_regras = [1,2,42,9007199254740992,4,2,806,3]
 lista_regras = classBit.makeTest(lista_regras)
 print "\n\n", lista_regras, "\n\n"
