@@ -89,7 +89,11 @@ def outputToAction(output):
     @:return: BitVector package
 '''
 def makeTest(rule):
+    dst = makeBitVector(rule[6])
+    package = []  # Informations: rule, destination
     auxRule = BitVector(size=0)
     for j in range(len(rule)):
         auxRule += makeBitVector(rule[j]) # Concatenating for to generate a package (int)
-    return auxRule
+    package.append(auxRule)
+    package.append(dst)
+    return package
