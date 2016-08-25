@@ -20,12 +20,12 @@ with open(csvData, "rb") as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='\'')
     for row in spamreader:   #Linha a linha do csv
         info_index = 0           # Indice
-        classBitList.bitList.append([])
+        classBitList.matchList.append([])
 
         for ind in range(len(row)):          # Coluna a coluna do csv
             row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
             row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
-            classBitList.bitList[rule_index].append(row[info_index])         # Add in the list the BitVectors
+            classBitList.matchList[rule_index].append(row[info_index])         # Add in the list the BitVectors
 
             #adicionar mais uma coluna com o switch, talvez algo antes, que mexa direto no arquivo de maneira separada
 
@@ -37,8 +37,8 @@ with open(csvData, "rb") as csvfile:
 
 predicate=0
 swinc = 1
-for rule_index in range(len(classBitList.bitList)):
-    if (len(classBitList.bitList[rule_index]) == 0): # Row == None
+for rule_index in range(len(classBitList.matchList)):
+    if (len(classBitList.matchList[rule_index]) == 0): # Row == None
         predicate+=1
         swinc+=1
         classBitList.dstList.append(None)
@@ -46,20 +46,20 @@ for rule_index in range(len(classBitList.bitList)):
         classBitList.actionList.append(None)
 
     else:
-        classBitList.dstList.append(classBitList.bitList[predicate][6])
+        classBitList.dstList.append(classBitList.matchList[predicate][6])
         classBitList.switchList.append(classBit.makeBitVector(swinc))
-        classBitList.actionList.append(classBitList.bitList[predicate][-1])
+        classBitList.actionList.append(classBitList.matchList[predicate][-1])
         #classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
         predicate+=1
 
 
 indexBV_rule = 0
 # Catch match informations and put this in a specific list
-for rule_id in classBitList.bitList:                  # Rule by rule
+for rule_id in classBitList.matchList:                  # Rule by rule
     auxPredicate = BitVector(size=0)
     for info_id in rule_id[0:-1]:                     # [information a information of a rule]
         auxPredicate += info_id                       # Forming a BitVector mask predicate
-    classBitList.bitList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
+    classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
 graph = [] # _init
@@ -69,7 +69,7 @@ graph = [] # _init
 
 #ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
 
-print classBitList.bitList[0]
+print classBitList.matchList[0]
 print classBitList.actionList[0]
 print classBitList.dstList[0]
 print classBitList.switchList[0]
