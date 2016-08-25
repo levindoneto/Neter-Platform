@@ -42,17 +42,23 @@ with open(csvData, "rb") as csvfile:
             #print "swinc++"
 
         rule_index += 1
-a=0
+
+predicate=0
 swinc = 1
 for rule_index in range(len(classBitList.bitList)):
     if (len(classBitList.bitList[rule_index]) == 0): # Row == None
-        a+=1
+        predicate+=1
+        swinc+=1
         classBitList.dstList.append(None)
+        classBitList.actionList.append(None)
+        classBitList.switchList.append(None)
     else:
-        classBitList.dstList.append(classBitList.bitList[a][6])
+        classBitList.dstList.append(classBitList.bitList[predicate][6])
         if (len(classBitList.bitList[rule_index]) == 0):
             swinc += 1
-        classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
+        classBitList.switchList.append(classBit.makeBitVector(swinc))
+        
+        #classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
         a+=1
 
 
@@ -71,6 +77,11 @@ graph = [] # _init
 #graph = [[match[tudo],switch[9],destino[6],action[10]],[]] -> 6,9,10 -> salvar em outra lista
 
 #ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
+
+print classBitList.dstList[0]
+print classBitList.switchList[-1]
+
+
 '''
 
 start = time.time()  #__init time
