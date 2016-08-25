@@ -57,9 +57,9 @@ for rule_index in range(len(classBitList.bitList)):
         if (len(classBitList.bitList[rule_index]) == 0):
             swinc += 1
         classBitList.switchList.append(classBit.makeBitVector(swinc))
-        
+        classBitList.actionList.append(classBitList.bitList[predicate][-1])
         #classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
-        a+=1
+        predicate+=1
 
 
 indexBV_rule = 0
@@ -78,6 +78,7 @@ graph = [] # _init
 
 #ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
 
+print classBitList.actionList[0]
 print classBitList.dstList[0]
 print classBitList.switchList[-1]
 
