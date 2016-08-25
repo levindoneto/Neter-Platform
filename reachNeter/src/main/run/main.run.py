@@ -23,14 +23,6 @@ with open(csvData, "rb") as csvfile:
         classBitList.bitList.append([])
 
         for ind in range(len(row)):          # Coluna a coluna do csv
-            ''' FAZER NESSE MODELO O ACTION
-            # Catch action informations and put this in a specific list
-            n = 0
-            for rule_id in range(len(classBitList.bitList)):
-                classBitList.actionList.append(classBitList.bitList[n][-1])                           # <<<< NAO VAI TER MAIS ESSE LANCE DE PEGAR O ULTIMO COM -1
-                n += 1
-            '''
-
             row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
             row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
             classBitList.bitList[rule_index].append(row[info_index])         # Add in the list the BitVectors
@@ -50,12 +42,11 @@ for rule_index in range(len(classBitList.bitList)):
         predicate+=1
         swinc+=1
         classBitList.dstList.append(None)
-        classBitList.actionList.append(None)
         classBitList.switchList.append(None)
+        classBitList.actionList.append(None)
+
     else:
         classBitList.dstList.append(classBitList.bitList[predicate][6])
-        if (len(classBitList.bitList[rule_index]) == 0):
-            swinc += 1
         classBitList.switchList.append(classBit.makeBitVector(swinc))
         classBitList.actionList.append(classBitList.bitList[predicate][-1])
         #classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
@@ -66,7 +57,7 @@ indexBV_rule = 0
 # Catch match informations and put this in a specific list
 for rule_id in classBitList.bitList:                  # Rule by rule
     auxPredicate = BitVector(size=0)
-    for info_id in rule_id[0:-3]:                     # -1: action, -2: switch  [information a information of a rule]
+    for info_id in rule_id[0:-1]:                     # [information a information of a rule]
         auxPredicate += info_id                       # Forming a BitVector mask predicate
     classBitList.bitList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
@@ -78,9 +69,10 @@ graph = [] # _init
 
 #ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
 
+print classBitList.bitList[0]
 print classBitList.actionList[0]
 print classBitList.dstList[0]
-print classBitList.switchList[-1]
+print classBitList.switchList[0]
 
 
 '''
@@ -101,9 +93,10 @@ print type(testePack)
 end = time.time()
 #print (end - start), "seconds"
 '''
-'''
+
 # Creating a package list
-lista_regras = [1,2,42,9007199254740992,4,2,806,3]
+lista_regras = [1,2,42,1,9007199254740992,4,2,806,3]
 lista_regras = classBit.makeTest(lista_regras)
 print "\n\n", lista_regras, "\n\n"
-'''
+
+print lista_regras[0], lista_regras[1]
