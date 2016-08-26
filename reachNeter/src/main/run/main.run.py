@@ -3,6 +3,7 @@
 import csv
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
+from src.main.bitUtils import bfsGraphs as bfs
 from BitVector import BitVector
 import time
 csvData = "../data/data.csv"
