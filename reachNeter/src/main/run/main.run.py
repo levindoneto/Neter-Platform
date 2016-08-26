@@ -3,7 +3,7 @@
 import csv
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
-#from src.main.bitUtils import bfsGraphs as ClassBFS
+from src.main.bitUtils import bfsGraphs as ClassBFS
 from BitVector import BitVector
 import time
 csvData = "../data/data.csv"
@@ -66,11 +66,14 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     indexBV_rule += 1
 
 
+grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList) #test
+
+'''
 print classBitList.matchList[0]
 print classBitList.actionList[0]
 print classBitList.dstList[0]
 print classBitList.switchList[0]
-
+'''
 "TESTE BFS"
 
 '''
