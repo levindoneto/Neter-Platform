@@ -3,7 +3,7 @@
 import csv
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
-from src.main.bitUtils import bfsGraphs as bfs
+#from src.main.bitUtils import bfsGraphs as ClassBFS
 from BitVector import BitVector
 import time
 csvData = "../data/data.csv"
@@ -26,7 +26,7 @@ with open(csvData, "rb") as csvfile:
         for ind in range(len(row)):          # Coluna a coluna do csv
             row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
             row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
-            classBitList.matchList[rule_index].append(row[info_index])         # Add in the list the BitVectors
+            classBitList.matchList[rule_index].append(row[info_index])       # Add in the list the BitVectors
 
             #adicionar mais uma coluna com o switch, talvez algo antes, que mexa direto no arquivo de maneira separada
 
@@ -38,6 +38,7 @@ with open(csvData, "rb") as csvfile:
 
 predicate=0
 swinc = 1
+classBitList.theSwitchList.append(classBit.makeBitVector(swinc))
 for rule_index in range(len(classBitList.matchList)):
     if (len(classBitList.matchList[rule_index]) == 0): # Row == None
         predicate+=1
@@ -45,6 +46,7 @@ for rule_index in range(len(classBitList.matchList)):
         classBitList.dstList.append(None)
         classBitList.switchList.append(None)
         classBitList.actionList.append(None)
+        classBitList.theSwitchList.append(classBit.makeBitVector(swinc)) # Add a different switch in the network topology
 
     else:
         classBitList.dstList.append(classBitList.matchList[predicate][6])
@@ -63,18 +65,13 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
-graph = [] # _init
-
-
-#graph = [[match[tudo],switch[9],destino[6],action[10]],[]] -> 6,9,10 -> salvar em outra lista
-
-#ADICIONAR classBitList.bitList[i] em outra lista no primeiro indice, junto com switch, action e destino.
 
 print classBitList.matchList[0]
 print classBitList.actionList[0]
 print classBitList.dstList[0]
 print classBitList.switchList[0]
 
+"TESTE BFS"
 
 '''
 
