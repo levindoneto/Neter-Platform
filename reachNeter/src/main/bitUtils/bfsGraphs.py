@@ -38,15 +38,16 @@ def find_isolated_nodes(graph):
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
     graph = {}
     for i in range(len(diffSwitches)):
+        i+=1          # For the switch to start at one
         ruleList = [] # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+                      # __init__ the list each switch
         for j in range(len(Switch_rule)):
-            ruleList.append()  #Sublist
+            ruleList.append([])               # Sublist
             ruleList[j].append(Match[j])
             ruleList[j].append(Destination[j])
-            ruleLIst[j].append(Action[j])
-        graph.update(i:Rule_list)
-
-
+            ruleList[j].append(Action[j])
+        #graph.update({2:[2,3]})
+        graph.update({classBit.makeBitVector(i):ruleList})
     return graph
 
 #print(find_isolated_nodes(graph))
