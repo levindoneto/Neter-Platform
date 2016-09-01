@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import time
-import topologiaLevindo
+import topology
 import argparse
 from functools import partial #to can use the RemoteController
 
@@ -48,7 +48,7 @@ while opt != "0":
     elif opt == "1":
         x = 1
 	#143.54.12.10
-        net = Mininet(topo = topologiaLevindo.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = '143.54.12.10', port=6653))
+        net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = '143.54.12.10', port=6653))
 
         #net.addController('c0')     # Para deixar controlador local, basta nao especificar o controlador
         net.start()                  # Inicializando a rede
