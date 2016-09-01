@@ -6,8 +6,7 @@ from src.main.data import bitList as classBitList
 from src.main.bitUtils import bfsGraphs as ClassBFS
 from BitVector import BitVector
 import time
-csvData = "../data/data.csv"
-
+csvData = "../data/arquivoDados.csv"
 
 allow = classBit.makeBitVector(1)
 deny = classBit.makeBitVector(0)
