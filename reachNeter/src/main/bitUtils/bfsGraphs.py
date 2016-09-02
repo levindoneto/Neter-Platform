@@ -37,7 +37,6 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
             ruleList[j].append(Match[j])
             ruleList[j].append(Destination[j])
             ruleList[j].append(Action[j])
-        #graph.update({2:[2,3]})
         graph.update({classBit.makeBitVector(i):ruleList})
     return graph
 

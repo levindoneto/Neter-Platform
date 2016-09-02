@@ -8,11 +8,12 @@ from BitVector import BitVector
 import time
 csvData = "../data/arquivoDados.csv"
 
-allow = classBit.makeBitVector(1)
-deny = classBit.makeBitVector(0)
+start = time.time()  #__init time
+
+ALLOW = classBit.makeBitVector(1)
+DENY = classBit.makeBitVector(0)
 
 swinc = 0    # Switch counter (for csv file)
-
 # Parsing CSV (Regras)
 auxMatchKey = BitVector(size=0) # __init__ BitVect
 rule_index = 0
@@ -21,7 +22,6 @@ with open(csvData, "rb") as csvfile:
     for row in spamreader:   #Linha a linha do csv
         info_index = 0           # Indice
         classBitList.matchList.append([])
-
         for ind in range(len(row)):          # Coluna a coluna do csv
             row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
             row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
@@ -32,7 +32,6 @@ with open(csvData, "rb") as csvfile:
             info_index += 1
         #if (len(classBitList.bitList[rule_index]) == 0):
             #print "swinc++"
-
         rule_index += 1
 
 predicate=0
@@ -64,37 +63,16 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
-
+# Making the BV network graph
 grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList) #test
-
-'''
-print classBitList.matchList[0]
-print classBitList.actionList[0]
-print classBitList.dstList[0]
-print classBitList.switchList[0]
-'''
-"TESTE BFS"
-
-'''
-
-start = time.time()  #__init time
-
-if (testePack in classBitList.bitList):
-    index_testePack = classBitList.bitList.index(testePack)
-    if (classBitList.actionList[index_testePack] == allow):
-        print "Package pass"
-    elif (classBitList.actionList[index_testePack] == deny):
-        print "Package does not pass"
-else:
-    print "Package not found"
-print type(testePack)
 
 
 end = time.time()
-#print (end - start), "seconds"
+print (end - start), "seconds"
 '''
-
 # Creating a package list
 lista_regras = [1,2,42,1,9007199254740992,4,2,806,3]
 lista_regras = classBit.makeTest(lista_regras)
 print "\n\n", lista_regras, "\n\n"
+
+#
