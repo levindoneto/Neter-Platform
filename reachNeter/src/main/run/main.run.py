@@ -68,7 +68,6 @@ grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList,
 '''
 aux_list = grafo.values()
 print aux_list[2][0][1]
-
 '''
 
 end = time.time()
