@@ -36,8 +36,8 @@
       <file leaf-file-name="bfsGraphs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/bitUtils/bfsGraphs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14614122">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8029557">
+              <caret line="73" column="33" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
               <folding>
                 <element signature="e#1037#1657#0" expanded="false" />
               </folding>
@@ -404,8 +404,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/bitUtils/bfsGraphs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14614122">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8029557">
+          <caret line="73" column="33" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
           <folding>
             <element signature="e#1037#1657#0" expanded="false" />
           </folding>
