@@ -98,5 +98,3 @@ end = time.time()
 lista_regras = [1,2,42,1,9007199254740992,4,2,806,3]
 lista_regras = classBit.makeTest(lista_regras)
 print "\n\n", lista_regras, "\n\n"
-
-print lista_regras[0], lista_regras[1]

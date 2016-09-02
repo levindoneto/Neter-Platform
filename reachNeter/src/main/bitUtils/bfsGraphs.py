@@ -7,14 +7,6 @@ from BitVector import BitVector
 import time
 csvData = "../data/data.csv"
 
-graph = {"a": ["c"],
-         "b": ["c", "e"],
-         "c": ["a", "b", "d", "e"],
-         "d": ["c"],
-         "e": ["c", "b"],
-         "f": []
-         }
-
 def generate_edges(graph):
     edges = []
     for node in graph:
@@ -31,7 +23,7 @@ def find_isolated_nodes(graph):
             isolated += node
     return isolated
 
-''' Convert a integer atomic predicate in a Bitvector atomic predicate
+''' Convert a list of rules and others informations in a graph
     @:parameter : BV Lists: switches, match, destination, action
     @:return    : BV Graph '''
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
