@@ -30,14 +30,14 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
     graph = {}
     for i in range(len(diffSwitches)):
         i+=1          # For the switch to start at one
-        ruleList = [] # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+        ruleID = [] # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
                       # __init__ the list each switch
         for j in range(len(Switch_rule)):
-            ruleList.append([])               # Sublist
-            ruleList[j].append(Match[j])
-            ruleList[j].append(Destination[j])
-            ruleList[j].append(Action[j])
-        graph.update({classBit.makeBitVector(i):ruleList})
+            ruleID.append([])               # Sublist
+            ruleID[j].append(Match[j])
+            ruleID[j].append(Destination[j])
+            ruleID[j].append(Action[j])
+        graph.update({classBit.makeBitVector(i):ruleID})
     return graph
 
 class NetQueue: # just an implementation of a queue
@@ -69,7 +69,6 @@ class NetQueue: # just an implementation of a queue
 #print(find_isolated_nodes(graph))
 
 def BFS(graph,start,end,q):
-	
 	temp_path = [start]
 	
 	q.enqueue(temp_path)

@@ -64,7 +64,7 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     indexBV_rule += 1
 
 # Making the BV network graph
-grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList) #test
+grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 
 print grafo
 
