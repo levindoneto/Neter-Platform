@@ -5,4 +5,8 @@ The Placidus is a formal verification platform for Software Defined Networks (SD
 
 ## Reachability verifier 
 
+<<<<<<< HEAD
 ![Graph Network](/resources/graph_network.png)
+=======
+![Graph Network](reachNeter/src/main/graph_network.png)
+>>>>>>> 889d2d5f4a965736699bd6c232751b6c8725e75b
