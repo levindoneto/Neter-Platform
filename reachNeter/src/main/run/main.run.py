@@ -67,12 +67,12 @@ for rule_id in classBitList.matchList:                  # Rule by rule
 graph_t = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 print type(graph_t)
 
-
+'''
 aux_listK = graph_t.keys()
 print aux_listK[0]
 aux_listV = graph_t.values()
 print aux_listV[2][0][1]
-
+'''
 
 end = time.time()
 print (end - start), "seconds"

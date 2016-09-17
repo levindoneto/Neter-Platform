@@ -7,6 +7,7 @@ from BitVector import BitVector
 import time
 csvData = "../data/data.csv"
 
+
 def generate_edges(graph):
     edges = []
     for node in graph:
@@ -28,16 +29,16 @@ def find_isolated_nodes(graph):
     @:return    : BV Graph '''
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
     graph = {}
-    for i in range(len(diffSwitches)):
-        i+=1          # For the switch to start at one
-        ruleID = [] # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
-                      # __init__ the list each switch
+    for i in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
+        i+=1                           # For the switch to start at one
+        ruleID = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+                                       # __init__ the list each switch
         for j in range(len(Switch_rule)):
-            ruleID.append([])               # Sublist
+            ruleID.append([])          # Sublist
             ruleID[j].append(Match[j])
             ruleID[j].append(Destination[j])
             ruleID[j].append(Action[j])
-        graph.update({classBit.makeBitVector(i):ruleID})
+        graph.update({classBit.makeBitVector(i):ruleID}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
     return graph
 
 class NetQueue: # just an implementation of a queue
