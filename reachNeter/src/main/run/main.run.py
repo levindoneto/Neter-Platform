@@ -64,13 +64,15 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     indexBV_rule += 1
 
 # Making the BV network graph
-grafo = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+graph_t = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+print type(graph_t)
 
-'''
-aux_list = grafo.values()
-print aux_list[2][0][1]
 
-'''
+aux_listK = graph_t.keys()
+print aux_listK[0]
+aux_listV = graph_t.values()
+print aux_listV[2][0][1]
+
 
 end = time.time()
 print (end - start), "seconds"
