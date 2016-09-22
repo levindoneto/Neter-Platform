@@ -85,3 +85,10 @@ def BFS(graph,start,end,q):
 				new_path = []
 				new_path = tmp_path + [link_node]
 				q.enqueue(new_path)
+
+''' This method given a package, search this package in a network topology
+	(graph of rules).
+    @:parameter : BV package, BV graph
+    @:return    : BV Graph '''
+def graphSearch(package, network_topology):
+	#TODO

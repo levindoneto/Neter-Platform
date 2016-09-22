@@ -63,22 +63,42 @@ for rule_id in classBitList.matchList:                  # Rule by rule
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
-# Making the BV network graph
-graph_t = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-print type(graph_t)
 
-'''
-aux_listK = graph_t.keys()
+'''*************************************************************************************************
+****  General execution of Reachability Verification with a network topology in a graph format  ****
+*************************************************************************************************'''
+
+# Making the BV network graph
+''' graph_t is the topology test in a graph format'''
+graph_topology = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+
+''' It's working
+// @DEBUG Topology Network Graph
+#print type(graph_topology)
+aux_listK = graph_topology.keys()
 print aux_listK[0]
-aux_listV = graph_t.values()
+aux_listV = graph_topology.values()
 print aux_listV[2][0][1]
 '''
 
+# Creating a package list
+''' The list of parameters of parameters is converted in a list
+*   of BitVector informations, that are Match and Destination
+*   of the package.
+'''
+package_t = [1,2,42,1,9007199254740992,4,2,806,3]
+package_t = classBit.makeTest(package_t)
+print "\n\n", package_t[1], "\n\n"
+
+''' Package enters in the topology network graph, the search is
+*   made by a iterative bitwise comparison, that is made by a
+*   XNOR gate between the package->match and the matches of
+*   node->rule_list->match (This node is a graph vertice that
+*   contains informations about a rule, these informations are
+*   match, destination and action of the rule)
+'''
+graphSearch(package_t, graph_topology)
+
+
 end = time.time()
 print (end - start), "seconds"
-'''
-# Creating a package list
-lista_regras = [1,2,42,1,9007199254740992,4,2,806,3]
-lista_regras = classBit.makeTest(lista_regras)
-print "\n\n", lista_regras, "\n\n"
-'''
