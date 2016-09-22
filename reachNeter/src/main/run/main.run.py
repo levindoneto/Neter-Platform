@@ -3,7 +3,7 @@
 import csv
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
-from src.main.bitUtils import bfsGraphs as ClassBFS
+from src.main.bitUtils import bfsGraphs as ClassGraph
 from BitVector import BitVector
 import time
 csvData = "../data/arquivoDados.csv"
@@ -70,7 +70,7 @@ for rule_id in classBitList.matchList:                  # Rule by rule
 
 # Making the BV network graph
 ''' graph_t is the topology test in a graph format'''
-graph_topology = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 
 ''' It's working
 // @DEBUG Topology Network Graph
@@ -78,7 +78,7 @@ graph_topology = ClassBFS.make_graph(classBitList.theSwitchList, classBitList.sw
 aux_listK = graph_topology.keys()
 print aux_listK[0]
 aux_listV = graph_topology.values()
-print aux_listV[2][0][1]
+print aux_listV[0][0][0][0]
 '''
 
 # Creating a package list
@@ -95,10 +95,19 @@ print "\n\n", package_t[1], "\n\n"
 *   XNOR gate between the package->match and the matches of
 *   node->rule_list->match (This node is a graph vertice that
 *   contains informations about a rule, these informations are
-*   match, destination and action of the rule)
+*   match, destination, switch and action of the rule)
 '''
-graphSearch(package_t, graph_topology)
+ClassGraph.graphSearch(package_t, graph_topology)
 
+''' The graph vertices has informations about the rules
+*   Each vertice of the network graph contais [i][j][0]
+*   [i]: It varies with the switch
+*   [j]: It varies with the rule
+*   [0]: Match  [1]: Destination  [2]: Switch  [3]:Action
+'''
+
+
+#print 2 ^ 3  # 10 xor 11 => 01    #xor
 
 end = time.time()
 print (end - start), "seconds"
