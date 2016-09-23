@@ -27,20 +27,28 @@ def find_isolated_nodes(graph):
 ''' Convert a list of rules and others informations in a graph
     @:parameter : BV Lists: switches, match, destination, action
     @:return    : BV Graph '''
+
+'''
+print classBitList.theSwitchList[0]
+print classBitList.switchList[0]
+print classBitList.matchList[0]
+print classBitList.dstList[0]
+print classBitList.actionList[0]
+'''
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
-    graph = {}
-    for i in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
-        i+=1                           # For the switch to start at one
-        ruleID = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+    graph = {}                         # __INIT the graph network topology
+    for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
+        rulesInTheSwith = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
                                        # __init__ the list each switch
-        ruleID.append([])              # Each list contains the rules of a switch
+        rulesInTheSwith.append([])              # Each list contains the rules of a switch
 
-        ruleID[i].append(Switch_rule[i])
-        ruleID[i].append(Match[i])
-        ruleID[i].append(Destination[i])
-        ruleID[i].append(Action[i])
+        rulesInTheSwith[switch].append(Switch_rule[switch])
+        rulesInTheSwith[switch].append(Match[switch])
+        rulesInTheSwith[switch].append(Destination[switch])
+        rulesInTheSwith[switch].append(Action[switch])
 
-        graph.update({classBit.makeBitVector(i):ruleID}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
+        graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
+        switch += 1  # For the switch to start at one
     return graph
 
 class NetQueue: # just an implementation of a queue
