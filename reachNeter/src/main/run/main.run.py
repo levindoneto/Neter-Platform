@@ -84,10 +84,9 @@ for rule_id in classBitList.matchList:                  # Rule by rule
 
 # Making the BV network graph
 ''' graph_t is the topology test in a graph format'''
-try:
-    graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-except:
-    pass
+
+
+
 ''' It's working
 // @DEBUG Topology Network Graph
 #print type(graph_topology)
@@ -113,7 +112,12 @@ print "\n\n", package_t[1], "\n\n"
 *   contains informations about a rule, these informations are
 *   match, destination, switch and action of the rule)
 '''
-ClassGraph.graphSearch(package_t, graph_topology)
+
+try:
+    graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+    ClassGraph.graphSearch(package_t, graph_topology)
+except:
+    pass
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
