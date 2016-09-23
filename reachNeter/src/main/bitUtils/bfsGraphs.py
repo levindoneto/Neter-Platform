@@ -33,12 +33,12 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
         i+=1                           # For the switch to start at one
         ruleID = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
                                        # __init__ the list each switch
-        for j in range(len(Switch_rule)):
-            ruleID.append([])          # Sublist
-            ruleID[j].append(Match[j])
-            ruleID[j].append(Destination[j])
-            ruleID[j].append(Switch_rule[j])
-            ruleID[j].append(Action[j])
+        ruleID.append([])              # Each list contains the rules of a switch
+
+        ruleID[i].append(Switch_rule[i])
+        ruleID[i].append(Match[i])
+        ruleID[i].append(Destination[i])
+        ruleID[i].append(Action[i])
 
         graph.update({classBit.makeBitVector(i):ruleID}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
     return graph
@@ -93,21 +93,6 @@ def BFS(graph,start,end,q):
     @:parameter : BV package, BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology):
-	vertices = network_topology.values()
-	''' The graph vertices has informations about the rules
-    *   Each vertice of the network graph contais [i][j][0]
-    *   [i]: It varies with the switch
-    *   [j]: It varies with the rule
-    *   [0]: Match  [1]: Destination  [2]: Switch  [3]: Action
-    '''
-
-	print vertices[0][0][0][0] # MODIFY
-    #TODO
-    '''
-	for i in range(len(vertices)):       # len(vertices)    = number of switches in the network topology
-		print "\n\nSWITCH: ", i
-		for j in range(len(vertices[i])): # len(vertices[i]) = number of rules in determined switch
-			print vertices[i][j][0]
-
-	#print vertices[0][0][0]
-'''
+    vertices = network_topology.values()
+    print "Thre are ", len(vertices), " switches in the network topology", "\n"
+    print len(vertices[1])

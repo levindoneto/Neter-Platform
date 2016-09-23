@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding: UTF-8
 
-# Bibliotecas utilizadas
+# Libraries utilized
 import os
 import sys
 import json
@@ -46,6 +46,7 @@ def makeBitVector(AtomicPredicate):
 '''Return a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
     @:parameter : String
     @:return    : BitVector '''
+
 def makePredicateVector(value):
     #Retirando caracteres nao numericos
     new_value = ""

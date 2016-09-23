@@ -34,26 +34,37 @@ with open(csvData, "rb") as csvfile:
             #print "swinc++"
         rule_index += 1
 
-predicate=0
-swinc = 1
+#print "\n\n\n(5): É ", classBitList.matchList[21][6], "\n\n\n"
+
+swinc = 0
 classBitList.theSwitchList.append(classBit.makeBitVector(swinc))
+classBitList.dstList.append([])
+classBitList.switchList.append([])
+classBitList.actionList.append([])
+#predicate=0
+
 for rule_index in range(len(classBitList.matchList)):
     if (len(classBitList.matchList[rule_index]) == 0): # Row == None
-        predicate+=1
         swinc+=1
-        classBitList.dstList.append(None)
-        classBitList.switchList.append(None)
-        classBitList.actionList.append(None)
+        classBitList.dstList.append([])
+        classBitList.switchList.append([])
+        classBitList.actionList.append([])
         classBitList.theSwitchList.append(classBit.makeBitVector(swinc)) # Add a different switch in the network topology
 
     else:
-        classBitList.dstList.append(classBitList.matchList[predicate][6])
-        classBitList.switchList.append(classBit.makeBitVector(swinc))
-        classBitList.actionList.append(classBitList.matchList[predicate][-1])
-        #classBitList.bitList[rule_index].insert(-1, classBit.makeBitVector(swinc))  # Penultimate position in the list with informations about a rule <- swinc
-        predicate+=1
+        try:
+            print "DST: ", classBitList.matchList[rule_index][6]
+            print "R.I.: ", rule_index
+
+            classBitList.dstList[swinc].append(classBitList.matchList[rule_index][6])
+            classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))
+            classBitList.actionList[swinc].append(classBitList.matchList[rule_index][-1])
+        except:
+            pass
 
 
+# ISSO VAI PRECISAR
+'''
 indexBV_rule = 0
 # Catch match informations and put this in a specific list
 for rule_id in classBitList.matchList:                  # Rule by rule
@@ -62,6 +73,9 @@ for rule_id in classBitList.matchList:                  # Rule by rule
         auxPredicate += info_id                       # Forming a BitVector mask predicate
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
+'''
+
+
 
 
 '''*************************************************************************************************
@@ -70,8 +84,10 @@ for rule_id in classBitList.matchList:                  # Rule by rule
 
 # Making the BV network graph
 ''' graph_t is the topology test in a graph format'''
-graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-
+try:
+    graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+except:
+    pass
 ''' It's working
 // @DEBUG Topology Network Graph
 #print type(graph_topology)
@@ -100,10 +116,10 @@ print "\n\n", package_t[1], "\n\n"
 ClassGraph.graphSearch(package_t, graph_topology)
 
 ''' The graph vertices has informations about the rules
-*   Each vertice of the network graph contais [i][j][0]
+*   Each vertice of the network graph contains [i][j][k][l]
 *   [i]: It varies with the switch
 *   [j]: It varies with the rule
-*   [0]: Match  [1]: Destination  [2]: Switch  [3]:Action
+*   [0]: Switch  [1]: Match  [2]: Destination  [3]:Action
 '''
 
 
