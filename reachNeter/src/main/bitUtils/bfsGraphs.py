@@ -36,16 +36,21 @@ print classBitList.dstList[0]
 print classBitList.actionList[0]
 '''
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
-    graph = {}                         # __INIT the graph network topology
+    graph = {}                              # __INIT the graph network topology
     for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
-        rulesInTheSwith = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
-                                       # __init__ the list each switch
-        rulesInTheSwith.append([])              # Each list contains the rules of a switch
+        rulesInTheSwith = []                # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+                                            # __init__ the list each switch
 
-        rulesInTheSwith[switch].append(Switch_rule[switch])
-        rulesInTheSwith[switch].append(Match[switch])
-        rulesInTheSwith[switch].append(Destination[switch])
-        rulesInTheSwith[switch].append(Action[switch])
+        for ruleVertice in range(len(Destination[switch])):
+            rulesInTheSwith.append([])      # Each list of that contains informations about one rule
+            ''' Access the position ruleVertice of rulesInTheSwitch (Dynamic allocation) and
+                add switch of the rule, getting a lists of information in this way:
+                information->switch->ruleVertice
+            '''
+            rulesInTheSwith[ruleVertice].append(Switch_rule[switch][ruleVertice])
+            #frulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
 
         graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
         switch += 1  # For the switch to start at one

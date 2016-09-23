@@ -111,7 +111,7 @@ print "\n\n", package_t[1], "\n\n"
 *   match, destination, switch and action of the rule)
 '''
 
-#graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 #ClassGraph.graphSearch(package_t, graph_topology)
 
 #print "keys: ", graph_topology.keys()
