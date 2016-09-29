@@ -52,27 +52,22 @@ for rule_index in range(len(classBitList.matchList)):
         classBitList.theSwitchList.append(classBit.makeBitVector(swinc)) # Add a different switch in the network topology
 
     else:
-        #print rule_index
-        #print "DST: ", classBitList.matchList[rule_index][6]
-        #print "R.I.: ", rule_index
-        #print "Swinc: ", swinc
-        #print classBitList.dstList
+        classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))          # Switch [0]
+        classBitList.dstList[swinc].append(classBitList.matchList[rule_index][6])     # Destination [2]
+        classBitList.actionList[swinc].append(classBitList.matchList[rule_index][-1]) # Action [3]
 
-        classBitList.dstList[swinc].append(classBitList.matchList[rule_index][6])
-        classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))
-        classBitList.actionList[swinc].append(classBitList.matchList[rule_index][-1])
-
-
+''' Making the match list'''
 indexBV_rule = 0
-# Catch match informations and put this in a specific list
+# Catch match's informations and put this in a specific list for it
 for rule_id in classBitList.matchList:                  # Rule by rule
     auxPredicate = BitVector(size=0)
-    for info_id in rule_id[0:-1]:                     # [information a information of a rule]
-        auxPredicate += info_id                       # Forming a BitVector mask predicate
+    for info_id in rule_id[0:-1]:                       # [information a information of a rule]
+        auxPredicate += info_id                         # Forming a BitVector mask predicate
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
-
+print "FIRST MATCH: ", classBitList.matchList[0]
+print "FIRST SWITCH: ",  classBitList.switchList[0]
 
 
 
@@ -82,8 +77,6 @@ for rule_id in classBitList.matchList:                  # Rule by rule
 
 # Making the BV network graph
 ''' graph_t is the topology test in a graph format'''
-
-
 
 ''' It's working
 // @DEBUG Topology Network Graph
@@ -114,8 +107,8 @@ print "\n\n", package_t[1], "\n\n"
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 #ClassGraph.graphSearch(package_t, graph_topology)
 
-#print "keys: ", graph_topology.keys()
-
+a = graph_topology.values()
+print "Something: ", a[0][0][0]
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]

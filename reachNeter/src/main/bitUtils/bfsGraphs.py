@@ -38,7 +38,7 @@ print classBitList.actionList[0]
 def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
     graph = {}                              # __INIT the graph network topology
     for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
-        rulesInTheSwith = []                # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
+        rulesInTheSwith = []                # Format: [[Switch0, Match0, Destination0, Action0],[Switch1, Match1, Destionation1, Action1],...] -> BitVector Elements
                                             # __init__ the list each switch
 
         for ruleVertice in range(len(Destination[switch])):
@@ -48,7 +48,7 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
                 information->switch->ruleVertice
             '''
             rulesInTheSwith[ruleVertice].append(Switch_rule[switch][ruleVertice])
-            #frulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
+            #rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
 
