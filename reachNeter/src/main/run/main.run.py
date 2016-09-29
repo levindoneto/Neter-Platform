@@ -49,13 +49,14 @@ for rule_index in range(len(classBitList.matchList)):
         classBitList.dstList.append([])
         classBitList.switchList.append([])
         classBitList.actionList.append([])
+        classBitList.switchMatch.append([])
         classBitList.theSwitchList.append(classBit.makeBitVector(swinc)) # Add a different switch in the network topology
 
     else:
         classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))          # Switch [0]
         classBitList.dstList[swinc].append(classBitList.matchList[rule_index][6])     # Destination [2]
         classBitList.actionList[swinc].append(classBitList.matchList[rule_index][-1]) # Action [3]
-
+        classBitList.switchMatch.append(classBit.makeBitVector(swinc))                # Switch <-> Match
 ''' Making the match list'''
 indexBV_rule = 0
 # Catch match's informations and put this in a specific list for it
@@ -65,9 +66,9 @@ for rule_id in classBitList.matchList:                  # Rule by rule
         auxPredicate += info_id                         # Forming a BitVector mask predicate
     classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
-
-print "FIRST MATCH: ", classBitList.matchList[0]
-print "FIRST SWITCH: ",  classBitList.switchList[0]
+''' Link between switches and matches '''
+for StoM in range(len(classBitList.switchMatch)):
+    print "test - list of switches"
 
 
 
