@@ -8,33 +8,26 @@ from BitVector import BitVector
 import time
 csvData = "../data/arquivoDados.csv"
 
-start = time.time()  #__init time
+start = time.time()                                                         # init time
 
 ALLOW = classBit.makeBitVector(1)
 DENY = classBit.makeBitVector(0)
 
-swinc = 0    # Switch counter (for csv file)
-# Parsing CSV (Regras)
-auxMatchKey = BitVector(size=0) # __init__ BitVect
+swinc = 0                                                                   # Switch counter (for CSV file)
+# Parsing CSV (Rules)
+auxMatchKey = BitVector(size=0)                                             # __init__ BitVect
 rule_index = 0
 with open(csvData, "rb") as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='\'')
-    for row in spamreader:   #Linha a linha do csv
-        info_index = 0           # Indice
-        classBitList.matchList.append([])
-        for ind in range(len(row)):          # Coluna a coluna do csv
-            row[info_index] = classBit.stringToIntFormated(row[info_index])  # String -> Int
-            row[info_index] = classBit.makeBitVector(row[info_index])        # Int -> BitVector
-            classBitList.matchList[rule_index].append(row[info_index])       # Add in the list the BitVectors
-
-            #adicionar mais uma coluna com o switch, talvez algo antes, que mexa direto no arquivo de maneira separada
-
+    for row in spamreader:                                                  # Line by line of CSV file
+        info_index = 0                                                      # Index of rule
+        classBitList.ruleList.append([])
+        for ind in range(len(row)):                                         # Column by column of CSV file
+            row[info_index] = classBit.stringToIntFormated(row[info_index]) # String -> Int
+            row[info_index] = classBit.makeBitVector(row[info_index])       # Int -> BitVector
+            classBitList.ruleList[rule_index].append(row[info_index])       # Add in the list the BitVectors
             info_index += 1
-        #if (len(classBitList.bitList[rule_index]) == 0):
-            #print "swinc++"
         rule_index += 1
-
-#print "\n\n\n(5): É ", classBitList.matchList[21][6], "\n\n\n"
 
 swinc = 0
 classBitList.theSwitchList.append(classBit.makeBitVector(swinc))
@@ -43,34 +36,41 @@ classBitList.switchList.append([])
 classBitList.actionList.append([])
 #predicate=0
 
-for rule_index in range(len(classBitList.matchList)):
-    if (len(classBitList.matchList[rule_index]) == 0): # Row == None
+for rule_index in range(len(classBitList.ruleList)):
+    if (len(classBitList.ruleList[rule_index]) == 0): # Row == None
         swinc+=1
         classBitList.dstList.append([])
         classBitList.switchList.append([])
         classBitList.actionList.append([])
         classBitList.switchMatch.append([])
-        classBitList.theSwitchList.append(classBit.makeBitVector(swinc)) # Add a different switch in the network topology
+        classBitList.theSwitchList.append(classBit.makeBitVector(swinc))             # Add a different switch in the network topology
 
     else:
-        classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))          # Switch [0]
-        classBitList.dstList[swinc].append(classBitList.matchList[rule_index][6])     # Destination [2]
-        classBitList.actionList[swinc].append(classBitList.matchList[rule_index][-1]) # Action [3]
-        classBitList.switchMatch.append(classBit.makeBitVector(swinc))                # Switch <-> Match
+        classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))         # Switch [0]
+        classBitList.dstList[swinc].append(classBitList.ruleList[rule_index][6])     # Destination [2]
+        classBitList.actionList[swinc].append(classBitList.ruleList[rule_index][-1]) # Action [3]
+        classBitList.switchMatch.append(classBit.makeBitVector(swinc))               # Switch <-> Match
 ''' Making the match list'''
 indexBV_rule = 0
 # Catch match's informations and put this in a specific list for it
-for rule_id in classBitList.matchList:                  # Rule by rule
+for rule_id in classBitList.ruleList:                  # Rule by rule
     auxPredicate = BitVector(size=0)
-    for info_id in rule_id[0:-1]:                       # [information a information of a rule]
-        auxPredicate += info_id                         # Forming a BitVector mask predicate
-    classBitList.matchList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
+    for info_id in rule_id[0:-1]:                      # [information a information of a rule]
+        auxPredicate += info_id                        # Forming a BitVector mask predicate
+    # Here the ruleList can be modified, because it has been used
+    classBitList.ruleList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
+
 ''' Link between switches and matches '''
+switchM = 0                                            # Switch of a match
+classBitList.matchList.append([])
 for StoM in range(len(classBitList.switchMatch)):
-    print "test - list of switches"
 
-
+    if len(classBitList.switchMatch[StoM]) == 0:       # Change switch
+        switchM += 1
+        classBitList.matchList.append([])
+    else:
+        classBitList.matchList[switchM].append(classBitList.ruleList[switchM])
 
 '''*************************************************************************************************
 ****  General execution of Reachability Verification with a network topology in a graph format  ****
@@ -108,16 +108,12 @@ print "\n\n", package_t[1], "\n\n"
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 #ClassGraph.graphSearch(package_t, graph_topology)
 
-a = graph_topology.values()
-print "Something: ", a[0][0][0]
-
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
 *   [i]: It varies with the switch
 *   [j]: It varies with the rule
 *   [0]: Switch  [1]: Match  [2]: Destination  [3]:Action
 '''
-
 
 #print 2 ^ 3  # 10 xor 11 => 01    #xor
 

@@ -31,7 +31,7 @@ def find_isolated_nodes(graph):
 '''
 print classBitList.theSwitchList[0]
 print classBitList.switchList[0]
-print classBitList.matchList[0]
+print classBitList.ruleList[0]
 print classBitList.dstList[0]
 print classBitList.actionList[0]
 '''
@@ -48,7 +48,7 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
                 information->switch->ruleVertice
             '''
             rulesInTheSwith[ruleVertice].append(Switch_rule[switch][ruleVertice])
-            #rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
 
