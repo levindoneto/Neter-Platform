@@ -121,11 +121,11 @@ def graphSearch(package, network_topology):
     # Searching package->match at the list of rules of all switches
     for s in range(len(switches)):
         for r in range(len(switches[s])):
-            if (package[0] in switches[s][match_info]):
-                print package[0]
-                print switches[s][match_info]
-                print "\n\nPackage founded in somewhere"
+            if (package[0] == switches[s][r][match_info]):
+                print "Package: ", package[0]
+                print "Match:___", switches[s][r][match_info]
+                #print switches[s][r][match_info]
+                #print "\n\nPackage founded in somewhere"
                 print "This was founded in the line ", r, "\n\n"
-    print len(switches[3])
     print "There are ", len(switches), " switches in the network topology", "\n"
     print len(switches[1])
