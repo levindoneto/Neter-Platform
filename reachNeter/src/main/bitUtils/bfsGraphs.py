@@ -51,6 +51,7 @@ def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of
             rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
+            #rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
 
         graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
         switch += 1  # For the switch to start at one

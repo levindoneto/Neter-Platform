@@ -112,7 +112,7 @@ graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.
 *   Each vertice of the network graph contains [i][j][k][l]
 *   [i]: It varies with the switch
 *   [j]: It varies with the rule
-*   [0]: Switch  [1]: Match  [2]: Destination  [3]:Action
+*   [0]: Switch  [1]: Match  [2]: Destination  [3]:Action [4]:Visited
 '''
 
 #print 2 ^ 3  # 10 xor 11 => 01    #xor
