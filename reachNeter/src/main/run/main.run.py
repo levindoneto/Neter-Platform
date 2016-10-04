@@ -6,6 +6,13 @@ from src.main.data import bitList as classBitList
 from src.main.bitUtils import bfsGraphs as ClassGraph
 from BitVector import BitVector
 import time
+'''Global Variables'''
+switch_info  = 0
+match_info   = 1
+dst_info     = 2
+action_info  = 3
+visited_info = 4
+
 csvData = "../data/arquivoDados.csv"
 
 start = time.time()                                                         # init time
@@ -106,7 +113,7 @@ print "\n\n", package_t[1], "\n\n"
 '''
 
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-#ClassGraph.graphSearch(package_t, graph_topology)
+ClassGraph.graphSearch(package_t, graph_topology)
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]

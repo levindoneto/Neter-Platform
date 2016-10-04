@@ -5,6 +5,14 @@ from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 import time
+'''Global Variables'''
+switch_info  = 0
+match_info   = 1
+dst_info     = 2
+action_info  = 3
+visited_info = 4
+
+
 csvData = "../data/data.csv"
 
 
@@ -104,9 +112,20 @@ def BFS(graph,start,end,q):
 
 ''' This method given a package, search this package in a network topology
 	(graph of rules).
-    @:parameter : BV package, BV graph
+    @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology):
-    vertices = network_topology.values()
-    print "Thre are ", len(vertices), " switches in the network topology", "\n"
-    print len(vertices[1])
+    switches   = network_topology.values()
+    print type(switches)
+    match_info = 1  # Position of match in the node rule
+    # Searching package->match at the list of rules of all switches
+    for s in range(len(switches)):
+        for r in range(len(switches[s])):
+            if (package[0] in switches[s][match_info]):
+                print package[0]
+                print switches[s][match_info]
+                print "\n\nPackage founded in somewhere"
+                print "This was founded in the line ", r, "\n\n"
+    print len(switches[3])
+    print "There are ", len(switches), " switches in the network topology", "\n"
+    print len(switches[1])

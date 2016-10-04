@@ -12,6 +12,13 @@ import time
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 from BitVector import BitVector
+'''Global Variables'''
+switch_info  = 0
+match_info   = 1
+dst_info     = 2
+action_info  = 3
+visited_info = 4
+
 
 ''' Convert a string atomic predicate in a integer atomic predicate
     @:parameter : Integer
@@ -87,7 +94,7 @@ def outputToAction(output):
 
 ''' Receive a list with informations about header of one rule and return a BitVector package test
     @:parameter: *List
-    @:return: BitVector package
+    @:return: BitVector package [match, dst]
 '''
 def makeTest(rule):
     dst = makeBitVector(rule[6])
