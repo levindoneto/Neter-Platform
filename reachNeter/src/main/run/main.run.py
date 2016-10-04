@@ -68,9 +68,6 @@ for rule_id in classBitList.ruleList:                  # Rule by rule
     classBitList.ruleList[indexBV_rule] = auxPredicate # list_rules(list of informations) <- list_rules(BV predicate mask)
     indexBV_rule += 1
 
-
-print "LEN: 01: ", classBitList.switchMatch[64]
-
 ''' Link between switches and matches '''
 switchM = 0                                            # Switch of a match
 classBitList.matchList.append([])
@@ -102,7 +99,7 @@ print aux_listV[0][0][0][0]
 *   of BitVector informations, that are Match and Destination
 *   of the package.
 '''
-package_t = [1,2,42,1,9007199254740992,4,2,806,3]
+package_t = [1,2,98,1,9007199254740992,3,4,800,3]
 package_t = classBit.makeTest(package_t)
 print "\n\n", package_t[1], "\n\n"
 
@@ -114,12 +111,8 @@ print "\n\n", package_t[1], "\n\n"
 *   match, destination, switch and action of the rule)
 '''
 
-
-print "Match 01: ", classBitList.matchList[0][0]
-print "Match 02: ", classBitList.matchList[0][1]
-
-#graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-#ClassGraph.graphSearch(package_t, graph_topology)
+graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
+ClassGraph.graphSearch(package_t, graph_topology)
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
