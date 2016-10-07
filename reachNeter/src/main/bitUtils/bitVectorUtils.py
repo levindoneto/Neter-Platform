@@ -123,6 +123,5 @@ def getLink(topology_link):
             row[1] = makeBitVector(row[1])                             # Int -> BitVector
 
             hashlink.update({row[0]:row[1]})
-
             info_index += 1
     return hashlink

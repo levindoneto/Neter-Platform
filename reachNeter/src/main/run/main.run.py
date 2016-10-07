@@ -115,7 +115,6 @@ print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 
 ClassGraph.graphSearch(package_t, graph_topology)
-
 topology_link = "../../../../topology_link.csv"
 classBit.getLink(topology_link)
 
