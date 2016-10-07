@@ -118,7 +118,6 @@ def getLink(topology_link):
         for row in spamreader:                                                  # Line by line of CSV file
             row[0] = stringToIntFormated(row[0])                       # String -> Int
             row[0] = makeBitVector(row[0])                             # Int -> BitVector
-
             row[1] = stringToIntFormated(row[1])                       # String -> Int
             row[1] = makeBitVector(row[1])                             # Int -> BitVector
 

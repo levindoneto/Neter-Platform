@@ -116,6 +116,7 @@ graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.
 
 ClassGraph.graphSearch(package_t, graph_topology)
 topology_link = "../../../../topology_link.csv"
+
 classBit.getLink(topology_link)
 
 
