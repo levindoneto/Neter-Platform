@@ -5,8 +5,14 @@ from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 import time
-csvData = "../data/data.csv"
+'''Global Variables'''
+switch_info  = 0
+match_info   = 1
+dst_info     = 2
+action_info  = 3
+visited_info = 4
 
+csvData = "../data/data.csv"
 
 def generate_edges(graph):
     edges = []
@@ -27,20 +33,34 @@ def find_isolated_nodes(graph):
 ''' Convert a list of rules and others informations in a graph
     @:parameter : BV Lists: switches, match, destination, action
     @:return    : BV Graph '''
-def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
-    graph = {}
-    for i in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
-        i+=1                           # For the switch to start at one
-        ruleID = []                    # Format: [[Match0, Destination0, Action0],[Match1, Destionation1, Action1],...] -> BitVector Elements
-                                       # __init__ the list each switch
-        for j in range(len(Switch_rule)):
-            ruleID.append([])          # Sublist
-            ruleID[j].append(Match[j])
-            ruleID[j].append(Destination[j])
-            ruleID[j].append(Switch_rule[j])
-            ruleID[j].append(Action[j])
 
-        graph.update({classBit.makeBitVector(i):ruleID}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
+'''
+print classBitList.theSwitchList[0]
+print classBitList.switchList[0]
+print classBitList.ruleList[0]
+print classBitList.dstList[0]
+print classBitList.actionList[0]
+'''
+def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
+    graph = {}                              # __INIT the graph network topology
+    for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
+        rulesInTheSwith = []                # Format: [[Switch0, Match0, Destination0, Action0],[Switch1, Match1, Destionation1, Action1],...] -> BitVector Elements
+                                            # __init__ the list each switch
+
+        for ruleVertice in range(len(Destination[switch])):
+            rulesInTheSwith.append([])      # Each list of that contains informations about one rule
+            ''' Access the position ruleVertice of rulesInTheSwitch (Dynamic allocation) and
+                add switch of the rule, getting a lists of information in this way:
+                information->switch->ruleVertice
+            '''
+            rulesInTheSwith[ruleVertice].append(Switch_rule[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
+            #rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
+
+        graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
+        switch += 1  # For the switch to start at one
     return graph
 
 class NetQueue: # just an implementation of a queue
@@ -69,7 +89,6 @@ class NetQueue: # just an implementation of a queue
 			result = True
 		return result
 
-#print(find_isolated_nodes(graph))
 
 def BFS(graph,start,end,q):
 	temp_path = [start]
@@ -90,24 +109,18 @@ def BFS(graph,start,end,q):
 
 ''' This method given a package, search this package in a network topology
 	(graph of rules).
-    @:parameter : BV package, BV graph
+    @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology):
-	vertices = network_topology.values()
-	''' The graph vertices has informations about the rules
-    *   Each vertice of the network graph contais [i][j][0]
-    *   [i]: It varies with the switch
-    *   [j]: It varies with the rule
-    *   [0]: Match  [1]: Destination  [2]: Switch  [3]: Action
-    '''
+    switches   = network_topology.values()
+    print type(switches)
+    match_info = 1  # Position of match in the node rule
+    # Searching package->match at the list of rules of all switches
+    for s in range(len(switches)):
+        for r in range(len(switches[s])):
+            if (package[0] == switches[s][r][match_info]):
+                #print "Package: ", package[0]
+                #print "Match:___", switches[s][r][match_info]
+                #print switches[s][r][match_info]
+                print "\n\nPackage was founded in ", r, "\n\n"
 
-	print vertices[0][0][0][0] # MODIFY
-    #TODO
-    '''
-	for i in range(len(vertices)):       # len(vertices)    = number of switches in the network topology
-		print "\n\nSWITCH: ", i
-		for j in range(len(vertices[i])): # len(vertices[i]) = number of rules in determined switch
-			print vertices[i][j][0]
-
-	#print vertices[0][0][0]
-'''

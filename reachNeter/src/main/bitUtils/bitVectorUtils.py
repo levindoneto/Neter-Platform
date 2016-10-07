@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding: UTF-8
 
-# Bibliotecas utilizadas
+# Libraries utilized
 import os
 import sys
 import json
@@ -12,6 +12,13 @@ import time
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 from BitVector import BitVector
+'''Global Variables'''
+switch_info  = 0
+match_info   = 1
+dst_info     = 2
+action_info  = 3
+visited_info = 4
+
 
 ''' Convert a string atomic predicate in a integer atomic predicate
     @:parameter : Integer
@@ -46,6 +53,7 @@ def makeBitVector(AtomicPredicate):
 '''Return a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
     @:parameter : String
     @:return    : BitVector '''
+
 def makePredicateVector(value):
     #Retirando caracteres nao numericos
     new_value = ""
@@ -86,7 +94,7 @@ def outputToAction(output):
 
 ''' Receive a list with informations about header of one rule and return a BitVector package test
     @:parameter: *List
-    @:return: BitVector package
+    @:return: BitVector package [match, dst]
 '''
 def makeTest(rule):
     dst = makeBitVector(rule[6])
@@ -97,3 +105,23 @@ def makeTest(rule):
     package.append(auxRule)
     package.append(dst)
     return package
+
+''' Receive a topology file and converts this in a hash table, where key->switch and value->host
+    for use in a dict.get(key) method
+    @:parameter: CSV file
+    @:return: BitVector hash table with switch:host
+'''
+def getLink(topology_link):
+    hashlink = {}
+    with open(topology_link, "rb") as csvlink:
+        spamreader = csv.reader(csvlink, delimiter=',', quotechar='\'')
+        info_index = 0
+        for row in spamreader:                                         # Line by line of CSV file
+            row[0] = stringToIntFormated(row[0])                       # String -> Int
+            row[0] = makeBitVector(row[0])                             # Int -> BitVector
+            row[1] = stringToIntFormated(row[1])                       # String -> Int
+            row[1] = makeBitVector(row[1])                             # Int -> BitVector
+
+            hashlink.update({row[0]:row[1]})
+            info_index += 1
+    return hashlink
