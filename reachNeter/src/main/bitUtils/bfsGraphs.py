@@ -12,9 +12,7 @@ dst_info     = 2
 action_info  = 3
 visited_info = 4
 
-
 csvData = "../data/data.csv"
-
 
 def generate_edges(graph):
     edges = []
@@ -91,7 +89,6 @@ class NetQueue: # just an implementation of a queue
 			result = True
 		return result
 
-#print(find_isolated_nodes(graph))
 
 def BFS(graph,start,end,q):
 	temp_path = [start]
@@ -125,5 +122,5 @@ def graphSearch(package, network_topology):
                 #print "Package: ", package[0]
                 #print "Match:___", switches[s][r][match_info]
                 #print switches[s][r][match_info]
-                print "\n\nPackage founded in somewhere"
-                print "This was founded in the line ", r, "\n\n"
+                print "\n\nPackage was founded in ", r, "\n\n"
+

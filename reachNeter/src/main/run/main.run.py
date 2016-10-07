@@ -101,7 +101,6 @@ print aux_listV[0][0][0][0]
 '''
 package_t = [1,2,98,1,9007199254740992,3,4,800,3]
 package_t = classBit.makeTest(package_t)
-print "\n\n", package_t[1], "\n\n"
 
 ''' Package enters in the topology network graph, the search is
 *   made by a iterative bitwise comparison, that is made by a
@@ -113,6 +112,9 @@ print "\n\n", package_t[1], "\n\n"
 
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 ClassGraph.graphSearch(package_t, graph_topology)
+
+print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
+
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
