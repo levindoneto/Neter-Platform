@@ -17,19 +17,21 @@ parser.add_argument("--ip", action = "store", dest = "ip", default = "localhost"
 def menu():
 
     system("clear")
+	
+	print("|------------------------------------|")
+	print("|------------- PLACIDUS -------------|")    
+	print("|------------------------------------|")
+    print("|------- MININET TEST TOPOLOGY ------|")
+    print("|------------------------------------|")
+    print("| 1 - Init of topology test          |")
+    print("| 2 - PingAll                        |")
+    print("| 3 - See the IPs                    |")
+    print("| 4 - Finalize the test topology     |")
+    print("| 5 - Atack the network              |")
+    print("| 0 - Close the Mininet              |")
+    print("|------------------------------------|")
 
-    print("|------------------------------------|")
-    print("|-------- MININET REDE TESTE --------|")
-    print("|------------------------------------|")
-    print("| 1 - Iniciar topologia de teste     |")
-    print("| 2 - Iniciar PingAll                |")
-    print("| 3 - Ver os IPs                     |")
-    print("| 4 - Finalizar topologia de teste   |")
-    print("| 5 - Ataque na rede                 |")
-    print("| 0 - Fechar Mininet                 |")
-    print("|------------------------------------|")
-
-    opt = raw_input("\nEscolha: ")
+    opt = raw_input("\nChoice: ")
 
     return opt
 
@@ -43,15 +45,15 @@ while opt != "0":
     opt = menu()
 
     if opt == "0":
-        print("Fechando Mininet")
+        print("Closing the Mininet")
 
     elif opt == "1":
         x = 1
 	#143.54.12.10
         net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = '143.54.12.10', port=6653))
 
-        #net.addController('c0')     # Para deixar controlador local, basta nao especificar o controlador
-        net.start()                  # Inicializando a rede
+        #net.addController('c0')     # For to let the controller in the local mode
+        net.start()                  # Init the network
 
 	''' Os ip's podem ser gerados automaticamente ou setados a partir daqui '''
 '''
@@ -71,10 +73,10 @@ while opt != "0":
 	h5 = net.getNodeByName("h5") # Setando ip no h5
         h5.setIP("10.0.0.5", 8)
 '''
-    elif opt == "2":                 # Da um ping entre todas as maquinas
+    elif opt == "2":                 # Ping between  all devices
         net.pingAll()
 
-    elif opt == "3":                 # Mostra todos os ips
+    elif opt == "3":                 # Show all IP's
 	print " Host    IP" 
         for host in net.hosts:
             print "  " + str(host) + "  " + host.IP()
@@ -88,4 +90,4 @@ while opt != "0":
     
 
 
-    raw_input("Pressione [Enter] para continuar...")
+    raw_input("Press [Enter] to continue...")
