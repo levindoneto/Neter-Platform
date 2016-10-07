@@ -106,16 +106,17 @@ def makeTest(rule):
     package.append(dst)
     return package
 
-''' Receive a topology file and converts this in a hash table, where
+''' Receive a topology file and converts this in a hash table, where key->switch and value->host
+    for use in a dict.get(key) method
     @:parameter: CSV file
-    @:return: BitVector hash table with switch:host, host:switch
+    @:return: BitVector hash table with switch:host
 '''
 def getLink(topology_link):
     hashlink = {}
     with open(topology_link, "rb") as csvlink:
         spamreader = csv.reader(csvlink, delimiter=',', quotechar='\'')
         info_index = 0
-        for row in spamreader:                                                  # Line by line of CSV file
+        for row in spamreader:                                         # Line by line of CSV file
             row[0] = stringToIntFormated(row[0])                       # String -> Int
             row[0] = makeBitVector(row[0])                             # Int -> BitVector
             row[1] = stringToIntFormated(row[1])                       # String -> Int
