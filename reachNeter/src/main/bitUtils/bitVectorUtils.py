@@ -105,3 +105,24 @@ def makeTest(rule):
     package.append(auxRule)
     package.append(dst)
     return package
+
+''' Receive a topology file and converts this in a hash table, where
+    @:parameter: CSV file
+    @:return: BitVector hash table with switch:host, host:switch
+'''
+def getLink(topology_link):
+    hashlink = {}
+    with open(topology_link, "rb") as csvlink:
+        spamreader = csv.reader(csvlink, delimiter=',', quotechar='\'')
+        info_index = 0
+        for row in spamreader:                                                  # Line by line of CSV file
+            row[0] = stringToIntFormated(row[0])                       # String -> Int
+            row[0] = makeBitVector(row[0])                             # Int -> BitVector
+
+            row[1] = stringToIntFormated(row[1])                       # String -> Int
+            row[1] = makeBitVector(row[1])                             # Int -> BitVector
+
+            hashlink.update({row[0]:row[1]})
+
+            info_index += 1
+    return hashlink
