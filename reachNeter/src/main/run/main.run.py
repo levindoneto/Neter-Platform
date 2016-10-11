@@ -118,15 +118,11 @@ graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.
 ClassGraph.graphSearch(package_t, graph_topology)
 topology_link = "../../../../topology_link.csv"
 
-hash_link = classBit.getLink(topology_link, is_ordered)
+link_sw_host = classBit.getLink(topology_link, is_ordered)
+print link_sw_host
 
 # Keys  : Switches
 # Values: Hosts
-
-print "\n\n"
-print ">>> ", hash_link.values()
-
-print "... ", type(classBitList.switchList[0][0])
 
 
 ''' The graph vertices has informations about the rules

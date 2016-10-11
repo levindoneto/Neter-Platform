@@ -114,25 +114,30 @@ def makeTest(rule):
     @:return: BitVector hash table with switch:host
 '''
 def getLink(topology_link, ordered):
-    link = []                    # List of switches and hosts for the link <-> index:switches, values:hosts
+    link = []          # List of switches and hosts for the link <-> index:switches, values:hosts
     if (ordered == 1):
-        link.append([],[])       # For the first switch be 1
+        link.append([])
+        link.append([])                                               # For the first switch be 1
     else:
-        for a in range(ordered): # Alloc a lot of switches, for segmentation fault prevention
+        for a in range(ordered):     # Alloc a lot of switches, for segmentation fault prevention
             link.append([])
     with open(topology_link, "rb") as csvlink:
         spamreader = csv.reader(csvlink, delimiter=',', quotechar='\'')
         info_index = 0
-        controller = 1
+        controller = 1                            # For to control when the append should be done
         for row in spamreader:                                         # Line by line of CSV file
+            # Switch
             row[0] = stringToIntFormated(row[0])                       # String -> Int
-            row[0] = makeBitVector(row[0])                             # Int -> BitVector
+            # Host
             row[1] = stringToIntFormated(row[1])                       # String -> Int
             row[1] = makeBitVector(row[1])                             # Int -> BitVector
 
-            link[row[0]].append(row[1])
-
-
+            if (controller == row[0]):
+                link[row[0]].append(row[1])    # Add hosts of a switch in the position of this switch at de list of link
+            else:
+                controller = row[0]
+                link.append([])
+                link[row[0]].append(row[1])
 
             info_index += 1
-    return hashlink
+    return link
