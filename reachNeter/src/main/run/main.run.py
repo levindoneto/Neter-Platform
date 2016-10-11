@@ -20,7 +20,7 @@ start = time.time()                                                         # in
 ALLOW = classBit.makeBitVector(1)
 DENY = classBit.makeBitVector(0)
 
-swinc = 0                                                                   # Switch counter (for CSV file)
+swinc = 1                                                                   # Switch counter (for CSV file)
 # Parsing CSV (Rules)
 auxMatchKey = BitVector(size=0)                                             # __init__ BitVect
 rule_index = 0
@@ -36,7 +36,7 @@ with open(csvData, "rb") as csvfile:
             info_index += 1
         rule_index += 1
 
-swinc = 0
+swinc = 1
 classBitList.theSwitchList.append(classBit.makeBitVector(swinc))
 classBitList.dstList.append([])
 classBitList.switchList.append([])
@@ -53,9 +53,9 @@ for rule_index in range(len(classBitList.ruleList)):
         classBitList.theSwitchList.append(classBit.makeBitVector(swinc))             # Add a different switch in the network topology
 
     else:
-        classBitList.switchList[swinc].append(classBit.makeBitVector(swinc))         # Switch [0]
-        classBitList.dstList[swinc].append(classBitList.ruleList[rule_index][6])     # Destination [2]
-        classBitList.actionList[swinc].append(classBitList.ruleList[rule_index][-1]) # Action [3]
+        classBitList.switchList[swinc-1].append(classBit.makeBitVector(swinc))         # Switch [0]
+        classBitList.dstList[swinc-1].append(classBitList.ruleList[rule_index][6])     # Destination [2]
+        classBitList.actionList[swinc-1].append(classBitList.ruleList[rule_index][-1]) # Action [3]
         classBitList.switchMatch.append(classBit.makeBitVector(swinc))               # Switch <-> Match
 ''' Making the match list'''
 indexBV_rule = 0
@@ -69,14 +69,14 @@ for rule_id in classBitList.ruleList:                  # Rule by rule
     indexBV_rule += 1
 
 ''' Link between switches and matches '''
-switchM = 0                                            # Switch of a match
+switchM = 1                                            # Switch of a match
 classBitList.matchList.append([])
 for StoM in range(len(classBitList.switchMatch)):
     if len(classBitList.switchMatch[StoM]) == 0:       # Change switch
         classBitList.matchList.append([])
         switchM += 1
     else:
-        classBitList.matchList[switchM].append(classBitList.ruleList[StoM])
+        classBitList.matchList[switchM-1].append(classBitList.ruleList[StoM])
 
 '''*************************************************************************************************
 ****  General execution of Reachability Verification with a network topology in a graph format  ****
@@ -119,6 +119,14 @@ topology_link = "../../../../topology_link.csv"
 
 hash_link = classBit.getLink(topology_link)
 
+# Keys  : Switches
+# Values: Hosts
+la =  hash_link.keys()
+
+print len(la)
+print "SWITCH: ", la[5]
+
+print "FIRST SWITCH TEST: ", classBitList.switchList[0][0]
 
 
 ''' The graph vertices has informations about the rules
