@@ -141,3 +141,11 @@ def getLink(topology_link, ordered):
 
             info_index += 1
     return link
+
+''' Convert a BitVector object in Integer
+    @:parameter : BitVector
+    @:return    : Integer '''
+def bvToInt(bitvector):
+    integer = bitvector.intValue()
+
+    return integer

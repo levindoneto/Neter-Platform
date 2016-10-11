@@ -116,14 +116,12 @@ print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
 
 ClassGraph.graphSearch(package_t, graph_topology)
+
 topology_link = "../../../../topology_link.csv"
 
 link_sw_host = classBit.getLink(topology_link, is_ordered)
-print link_sw_host
 
-# Keys  : Switches
-# Values: Hosts
-
+print link_sw_host[classBit.bvToInt(classBitList.theSwitchList[0])]
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
