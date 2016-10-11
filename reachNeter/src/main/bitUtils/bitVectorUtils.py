@@ -13,11 +13,13 @@ from src.main.data import bitList as classBitList
 from BitVector import BitVector
 from BitVector import BitVector
 '''Global Variables'''
-switch_info  = 0
-match_info   = 1
-dst_info     = 2
-action_info  = 3
-visited_info = 4
+switch_info    = 0
+match_info     = 1
+dst_info       = 2
+action_info    = 3
+visited_info   = 4
+is_ordered     = 1
+is_not_ordered = 0
 
 
 ''' Convert a string atomic predicate in a integer atomic predicate
@@ -108,20 +110,29 @@ def makeTest(rule):
 
 ''' Receive a topology file and converts this in a hash table, where key->switch and value->host
     for use in a dict.get(key) method
-    @:parameter: CSV file
+    @:parameter: CSV file, ordered(Integer)
     @:return: BitVector hash table with switch:host
 '''
-def getLink(topology_link):
-    hashlink = {}
+def getLink(topology_link, ordered):
+    link = []                    # List of switches and hosts for the link <-> index:switches, values:hosts
+    if (ordered == 1):
+        link.append([],[])       # For the first switch be 1
+    else:
+        for a in range(ordered): # Alloc a lot of switches, for segmentation fault prevention
+            link.append([])
     with open(topology_link, "rb") as csvlink:
         spamreader = csv.reader(csvlink, delimiter=',', quotechar='\'')
         info_index = 0
+        controller = 1
         for row in spamreader:                                         # Line by line of CSV file
             row[0] = stringToIntFormated(row[0])                       # String -> Int
             row[0] = makeBitVector(row[0])                             # Int -> BitVector
             row[1] = stringToIntFormated(row[1])                       # String -> Int
             row[1] = makeBitVector(row[1])                             # Int -> BitVector
 
-            hashlink.update({row[0]:row[1]})
+            link[row[0]].append(row[1])
+
+
+
             info_index += 1
     return hashlink

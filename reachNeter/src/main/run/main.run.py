@@ -7,12 +7,13 @@ from src.main.bitUtils import bfsGraphs as ClassGraph
 from BitVector import BitVector
 import time
 '''Global Variables'''
-switch_info  = 0
-match_info   = 1
-dst_info     = 2
-action_info  = 3
-visited_info = 4
-
+switch_info    = 0
+match_info     = 1
+dst_info       = 2
+action_info    = 3
+visited_info   = 4
+is_ordered     = 1
+is_not_ordered = 0
 csvData = "../data/arquivoDados.csv"
 
 start = time.time()                                                         # init time
@@ -117,16 +118,15 @@ graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.
 ClassGraph.graphSearch(package_t, graph_topology)
 topology_link = "../../../../topology_link.csv"
 
-hash_link = classBit.getLink(topology_link)
+hash_link = classBit.getLink(topology_link, is_ordered)
 
 # Keys  : Switches
 # Values: Hosts
-la =  hash_link.keys()
 
-print len(la)
-print "SWITCH: ", la[5]
+print "\n\n"
+print ">>> ", hash_link.values()
 
-print "FIRST SWITCH TEST: ", classBitList.switchList[0][0]
+print "... ", type(classBitList.switchList[0][0])
 
 
 ''' The graph vertices has informations about the rules
