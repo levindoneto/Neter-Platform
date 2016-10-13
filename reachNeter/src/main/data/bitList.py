@@ -4,7 +4,7 @@
 import collections
 import pickle
 
-ruleList      = []  #__init__ of BitVectorList, the lsb is a action bit # Match
+ruleList      = []  # __init__ of BitVectorList, the lsb is a action bit # Match
 matchList     = []  # This list contains informations about matches of all rules
 switchMatch   = []  # This list is used for to link match and switches of network topology
 dstList       = []  # This list contains only information about destination of packages in the network

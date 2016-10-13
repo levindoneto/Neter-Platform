@@ -42,22 +42,25 @@ classBitList.theSwitchList.append(classBit.makeBitVector(swinc))
 classBitList.dstList.append([])
 classBitList.switchList.append([])
 classBitList.actionList.append([])
-#predicate=0
+classBitList.visitedList.append([])
 
 for rule_index in range(len(classBitList.ruleList)):
     if (len(classBitList.ruleList[rule_index]) == 0): # Row == None
         swinc+=1
-        classBitList.dstList.append([])
         classBitList.switchList.append([])
-        classBitList.actionList.append([])
         classBitList.switchMatch.append([])
+        classBitList.dstList.append([])
+        classBitList.actionList.append([])
+        classBitList.visitedList.append([])
         classBitList.theSwitchList.append(classBit.makeBitVector(swinc))             # Add a different switch in the network topology
 
     else:
         classBitList.switchList[swinc-1].append(classBit.makeBitVector(swinc))         # Switch [0]
+        classBitList.switchMatch.append(classBit.makeBitVector(swinc))                 # Switch <-> Match
         classBitList.dstList[swinc-1].append(classBitList.ruleList[rule_index][6])     # Destination [2]
         classBitList.actionList[swinc-1].append(classBitList.ruleList[rule_index][-1]) # Action [3]
-        classBitList.switchMatch.append(classBit.makeBitVector(swinc))               # Switch <-> Match
+        classBitList.visitedList[swinc-1].append(classBit.makeBitVector(0))             # 0: Not visited (At first no node rule was visited yet)
+
 ''' Making the match list'''
 indexBV_rule = 0
 # Catch match's informations and put this in a specific list for it
@@ -100,8 +103,11 @@ print aux_listV[0][0][0][0]
 *   of BitVector informations, that are Match and Destination
 *   of the package.
 '''
+# 1101100010110000000000000000000000000000000000000000000000000000011100110010000011
 package_t = [1,2,98,1,9007199254740992,3,4,800,3]
 package_t = classBit.makeTest(package_t)
+
+print package_t[0]
 
 ''' Package enters in the topology network graph, the search is
 *   made by a iterative bitwise comparison, that is made by a
@@ -113,15 +119,15 @@ package_t = classBit.makeTest(package_t)
 
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
-graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList)
-
+graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
 ClassGraph.graphSearch(package_t, graph_topology)
-
 topology_link = "../../../../topology_link.csv"
-
 link_sw_host = classBit.getLink(topology_link, is_ordered)
 
-print link_sw_host[classBit.bvToInt(classBitList.theSwitchList[0])]
+''' Stop condition '''
+if (classBit.makeBitVector(2) in link_sw_host[classBit.bvToInt(classBitList.theSwitchList[0])]):
+    print "It was founded"
+
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]

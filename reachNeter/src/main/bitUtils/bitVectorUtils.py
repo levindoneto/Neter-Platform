@@ -147,5 +147,4 @@ def getLink(topology_link, ordered):
     @:return    : Integer '''
 def bvToInt(bitvector):
     integer = bitvector.intValue()
-
     return integer

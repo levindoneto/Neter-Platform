@@ -16,55 +16,6 @@ is_not_ordered = 0
 
 csvData = "../data/data.csv"
 
-def generate_edges(graph):
-    edges = []
-    for node in graph:
-        for neighbour in graph[node]:
-            edges.append((node, neighbour))
-
-    return edges
-
-def find_isolated_nodes(graph):
-    """ returns a list of isolated nodes. """
-    isolated = []
-    for node in graph:
-        if not graph[node]:
-            isolated += node
-    return isolated
-
-''' Convert a list of rules and others informations in a graph
-    @:parameter : BV Lists: switches, match, destination, action
-    @:return    : BV Graph '''
-
-'''
-print classBitList.theSwitchList[0]
-print classBitList.switchList[0]
-print classBitList.ruleList[0]
-print classBitList.dstList[0]
-print classBitList.actionList[0]
-'''
-def make_graph(diffSwitches, Switch_rule, Match, Destination, Action): # Type of all parameters -> List of BitVectors
-    graph = {}                              # __INIT the graph network topology
-    for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
-        rulesInTheSwith = []                # Format: [[Switch0, Match0, Destination0, Action0],[Switch1, Match1, Destionation1, Action1],...] -> BitVector Elements
-                                            # __init__ the list each switch
-
-        for ruleVertice in range(len(Destination[switch])):
-            rulesInTheSwith.append([])      # Each list of that contains informations about one rule
-            ''' Access the position ruleVertice of rulesInTheSwitch (Dynamic allocation) and
-                add switch of the rule, getting a lists of information in this way:
-                information->switch->ruleVertice
-            '''
-            rulesInTheSwith[ruleVertice].append(Switch_rule[switch][ruleVertice])
-            rulesInTheSwith[ruleVertice].append(Match[switch][ruleVertice])
-            rulesInTheSwith[ruleVertice].append(Destination[switch][ruleVertice])
-            rulesInTheSwith[ruleVertice].append(Action[switch][ruleVertice])
-            #rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
-
-        graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
-        switch += 1  # For the switch to start at one
-    return graph
-
 class NetQueue: # just an implementation of a queue
 	def __init__(self):
 		self.holder = []
@@ -91,6 +42,46 @@ class NetQueue: # just an implementation of a queue
 			result = True
 		return result
 
+def generate_edges(graph):
+    edges = []
+    for node in graph:
+        for neighbour in graph[node]:
+            edges.append((node, neighbour))
+
+    return edges
+
+def find_isolated_nodes(graph):
+    """ returns a list of isolated nodes. """
+    isolated = []
+    for node in graph:
+        if not graph[node]:
+            isolated += node
+    return isolated
+
+''' Convert a list of rules and others informations in a graph
+    @:parameter : BV Lists: switches, match, destination, action
+    @:return    : BV Graph '''
+def make_graph(diffSwitches, switch_rule, match, destination, action, visited): # Type of all parameters -> List of BitVectors
+    graph = {}                              # __INIT the graph network topology
+    for switch in range(len(diffSwitches)): # Iterations = Number of rules in the network topology
+        rulesInTheSwith = []                # Format: [[Switch0, Match0, Destination0, Action0],[Switch1, Match1, Destionation1, Action1],...] -> BitVector Elements
+                                            # __init__ the list each switch
+
+        for ruleVertice in range(len(destination[switch])):
+            rulesInTheSwith.append([])      # Each list of that contains informations about one rule
+            ''' Access the position ruleVertice of rulesInTheSwitch (Dynamic allocation) and
+                add switch of the rule, getting a lists of information in this way:
+                information->switch->ruleVertice
+            '''
+            rulesInTheSwith[ruleVertice].append(switch_rule[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(match[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(destination[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(action[switch][ruleVertice])
+            rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
+
+        graph.update({classBit.makeBitVector(switch):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
+        switch += 1  # For the switch to start at one
+    return graph
 
 def BFS(graph,start,end,q):
 	temp_path = [start]
@@ -109,6 +100,9 @@ def BFS(graph,start,end,q):
 				new_path = tmp_path + [link_node]
 				q.enqueue(new_path)
 
+
+
+
 ''' This method given a package, search this package in a network topology
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
@@ -124,5 +118,5 @@ def graphSearch(package, network_topology):
                 #print "Package: ", package[0]
                 #print "Match:___", switches[s][r][match_info]
                 #print switches[s][r][match_info]
-                print "\n\nPackage was founded in ", r, "\n\n"
+                print "\n\nPackage was founded in ", r, "at the switch", s, "\n\n"
 
