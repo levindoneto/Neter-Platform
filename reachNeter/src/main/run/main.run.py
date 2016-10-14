@@ -9,11 +9,14 @@ import time
 '''Global Variables'''
 switch_info    = 0
 match_info     = 1
+match_pack     = 0
+dst_pack       = 1
 dst_info       = 2
 action_info    = 3
 visited_info   = 4
 is_ordered     = 1
 is_not_ordered = 0
+
 csvData = "../data/arquivoDados.csv"
 
 start = time.time()                                                         # init time

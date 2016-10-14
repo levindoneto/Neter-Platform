@@ -8,6 +8,8 @@ import time
 '''Global Variables'''
 switch_info    = 0
 match_info     = 1
+match_pack     = 0
+dst_pack       = 1
 dst_info       = 2
 action_info    = 3
 visited_info   = 4
@@ -113,9 +115,14 @@ def graphSearch(package, network_topology):
             if (package[0] == switches[s][r][match_info]):
                 print "Package was founded in ", r, "at the switch", s
                 switches[4][20][visited_info] = 1      # node[s]->rule[r]->visited = 1
-                sought = switches[s][r][match_info]  # sought = node[s]->rule[r]->match
+                sought = switches[s][r][match_info]    # sought = node[s]->rule[r]->match
 
                 rule_action = switches[s][r][action_info]
+
+                print "ACAO: ", rule_action
+                print "DESTINO DA REGRA: ", switches[s][r][dst_info]
+                print "DESTINO DO PACOTE:", package[1]
+
                 rule_match = switches[s][r][match_info]
                 graph_Search(rule_match, network_topology, rule_action)
 
@@ -125,15 +132,15 @@ def graphSearch(package, network_topology):
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
-def graph_Search(match, network_topology, action):
+def graph_Search(rule_match, network_topology, rule_action):
     switches = network_topology.values()
     sought = BitVector(size=0) # Init of a BitVector with size 0
     # Searching package->match at the list of rules of all switches
     for s in range(len(switches)):
         for r in range(len(switches[s])):
-            if (match == switches[s][r][match_info]):
+            if (rule_match == switches[s][r][match_info]):
                 print "Package was founded in ", r, "at the switch", s
-                switches[4][20][visited_info] = 1      # node[s]->rule[r]->visited = 1
+                switches[s][r][visited_info] = 1      # node[s]->rule[r]->visited = 1
                 sought = switches[s][r][match_info]  # sought = node[s]->rule[r]->match
                 #graphSearch(switches[s][r][match_info], network_topology, switches[s][r][action_info])
 

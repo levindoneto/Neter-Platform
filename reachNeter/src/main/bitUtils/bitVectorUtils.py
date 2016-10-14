@@ -15,11 +15,14 @@ from BitVector import BitVector
 '''Global Variables'''
 switch_info    = 0
 match_info     = 1
+match_pack     = 0
+dst_pack       = 1
 dst_info       = 2
 action_info    = 3
 visited_info   = 4
 is_ordered     = 1
 is_not_ordered = 0
+
 
 
 ''' Convert a string atomic predicate in a integer atomic predicate
