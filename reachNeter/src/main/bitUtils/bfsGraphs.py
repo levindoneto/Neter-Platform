@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # coding: UTF-8
 import csv
+import collections
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
@@ -80,7 +81,7 @@ def make_graph(diffSwitches, switch_rule, match, destination, action, visited): 
             rulesInTheSwith[ruleVertice].append(destination[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(action[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
-
+        #print "PRIMEIRO DST COOL: ", rulesInTheSwith[0][0]
         graph.update({classBit.makeBitVector(switch+1):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
     return graph
 
@@ -106,13 +107,28 @@ def BFS(graph,start,end,q):
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology):
-    switches   = network_topology.values()
+
+    print "SOMETHING: ", network_topology
+
+    network_topology = collections.OrderedDict(sorted(network_topology.items()))
+
+    switches   = network_topology.values()  # Can be done like this:: print "KEY DO DICT: ", network_topology[n]
+    keys   = network_topology.keys()
+
+    # Switch test keys
+    print "PRINT SWITCHES NA GRAPH_SEARCH:"
+    i=0
+
+    for n in keys:
+        print "KEY DO DICT: ", keys[i]
+        i+=1
+
     sought = BitVector(size=0) # Init of a BitVector with size 0
     # Searching package->match at the list of rules of all switches
     for s in range(len(switches)):
         for r in range(len(switches[s])):
             if (package[0] == switches[s][r][match_info]):
-                print "Package was founded in ", r, "at the switch", s
+                print "\n\nPackage was founded in ", r, "at the switch", s+1
                 switches[4][20][visited_info] = 1                          # node[s]->rule[r]->visited = 1
                 sought = switches[s][r][match_info]                        # sought = node[s]->rule[r]->match
 
@@ -123,7 +139,7 @@ def graphSearch(package, network_topology):
                 print "DESTINO DO PACOTE:", package[1]
 
                 rule_match = switches[s][r][match_info]
-                graph_Search(rule_match, network_topology, rule_action)
+                #graph_Search(rule_match, network_topology, rule_action)
 
                 print "Visited information: ", switches[s][r][visited_info]
 
@@ -139,7 +155,7 @@ def graph_Search(rule_match, network_topology, rule_action):
     for s in range(len(switches)):
         for r in range(len(switches[s])):
             if (rule_match == switches[s][r][match_info]):
-                print "Package was founded in ", r, "at the switch", s      # Switch starts at one
+                print "Package was founded in ", r, "at the switch", s+1      # Switch starts at one
                 switches[s][r][visited_info] = 1                            # node[s]->rule[r]->visited = 1
                 sought = switches[s][r][match_info]                         # sought = node[s]->rule[r]->match
 
