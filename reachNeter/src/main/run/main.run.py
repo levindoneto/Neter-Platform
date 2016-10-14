@@ -120,6 +120,10 @@ print package_t[0]
 *   match, destination, switch and action of the rule)
 '''
 
+print "\nThe switches: "
+for switch in range(len(classBitList.theSwitchList)):
+    print "SWITCH::", classBitList.theSwitchList[switch]
+
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)

@@ -23,8 +23,6 @@ visited_info   = 4
 is_ordered     = 1
 is_not_ordered = 0
 
-
-
 ''' Convert a string atomic predicate in a integer atomic predicate
     @:parameter : Integer
     @:return    : BitVector '''
