@@ -55,7 +55,6 @@ def makeBitVector(AtomicPredicate):
 '''Return a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
     @:parameter : String
     @:return    : BitVector '''
-
 def makePredicateVector(value):
     #Retirando caracteres nao numericos
     new_value = ""
@@ -101,7 +100,7 @@ def outputToAction(output):
 def makeTest(rule):
     dst = makeBitVector(rule[6])
     package = []  # Informations: rule, destination
-    auxRule = BitVector(size=0)
+    auxRule = BitVector(size=0) # Init of a BitVector with size 0
     for j in range(len(rule)):
         auxRule += makeBitVector(rule[j]) # Concatenating for to generate a package (int)
     package.append(auxRule)

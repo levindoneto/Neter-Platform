@@ -100,23 +100,40 @@ def BFS(graph,start,end,q):
 				new_path = tmp_path + [link_node]
 				q.enqueue(new_path)
 
-
-
-
 ''' This method given a package, search this package in a network topology
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology):
     switches   = network_topology.values()
-    print type(switches)
-    match_info = 1  # Position of match in the node rule
+    sought = BitVector(size=0) # Init of a BitVector with size 0
     # Searching package->match at the list of rules of all switches
     for s in range(len(switches)):
         for r in range(len(switches[s])):
             if (package[0] == switches[s][r][match_info]):
-                #print "Package: ", package[0]
-                #print "Match:___", switches[s][r][match_info]
-                #print switches[s][r][match_info]
-                print "\n\nPackage was founded in ", r, "at the switch", s, "\n\n"
+                print "Package was founded in ", r, "at the switch", s
+                switches[4][20][visited_info] = 1      # node[s]->rule[r]->visited = 1
+                sought = switches[s][r][match_info]  # sought = node[s]->rule[r]->match
+
+                rule_action = switches[s][r][action_info]
+                rule_match = switches[s][r][match_info]
+                graph_Search(rule_match, network_topology, rule_action)
+
+                print "Visited information: ", switches[s][r][visited_info]
+
+''' Overloading of graphSearch method
+	(graph of rules).
+    @:parameter : BV package(list[match, dst]), BV graph
+    @:return    : BV Graph '''
+def graph_Search(match, network_topology, action):
+    switches = network_topology.values()
+    sought = BitVector(size=0) # Init of a BitVector with size 0
+    # Searching package->match at the list of rules of all switches
+    for s in range(len(switches)):
+        for r in range(len(switches[s])):
+            if (match == switches[s][r][match_info]):
+                print "Package was founded in ", r, "at the switch", s
+                switches[4][20][visited_info] = 1      # node[s]->rule[r]->visited = 1
+                sought = switches[s][r][match_info]  # sought = node[s]->rule[r]->match
+                #graphSearch(switches[s][r][match_info], network_topology, switches[s][r][action_info])
 
