@@ -152,7 +152,7 @@ def graphSearch(package, network_topology):
 
                 #rule_match = switches[s][r][match_info]
                 #rule_action = switches[s][r][action_info]
-                sw_index_sought = s
+                sw_index_sought   = s
                 rule_index_sought = r
                 graph_Search(switches, rule_index_sought, sw_index_sought, network_topology)
 
