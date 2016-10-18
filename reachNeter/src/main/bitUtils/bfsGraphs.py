@@ -126,13 +126,33 @@ def graphSearch(package, network_topology):
 
     ''' If it was sought
         switches[s]->rule[r]->visited = 1
-        graph_Search(switches, topology)
+        graph_Search(switches, sw_index_sought, rule_index_sought, topology)
     '''
     '''
+
+    route_action = []  # List that contains a route of package | action view
+    route_switch = []  # List that contains a route of package | switch view
+    *** In each interation:
+        route_action.append(switches[sw_index_sought]->rule[rule_index_sought]->action_action)
+        route_switch.append(switches[sw_index_sought]->rule[rule_index_sought]->switch_info)
+
+    So, to see:
+        for r in range(len(route_action)):
+            print "PACKAGE ROUTE"
+            print route_switch[r] + "-- Output: " + route_action[r]
+
     graph_Search(switches, topology) {
         for sw:
             for rule:
                 if (switches[sw_index_sought]->rule[rule_index_sought]->match == switches[s][r][match_info] and switches[s][r][visited_info] != 1):
+                    switches[s][r][visited_info] = 1
+
+                    >>>> test stop condition
+                    if (package->dst in link[switches[s][r][switch_info]] and switches[s][r][dst_info] == package->dst)    # Link was made at de start of topology
+                        return true
+                    else:
+                        graph_Search(switches, sw_index_sought, rule_index_sought, topology)
+        return false # Package didn't arrive'
     }
     '''
 
