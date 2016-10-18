@@ -3,6 +3,8 @@ __Autor:__ Levindo Gabriel Taschetto Neto
 
 The Placidus is a formal verification platform for Software Defined Networks (SDN), and it has two modules that check the following properties: Conflicts and Redundancies logical rules formed from a network topology, and Reachability in a network topology.
 
+![Logo of Placidus](resources/Logo-Placidus.jpg)
+
 ## Reachability verifier 
 
 ### Data Structure
