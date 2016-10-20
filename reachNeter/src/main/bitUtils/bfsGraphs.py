@@ -126,7 +126,7 @@ def graphSearch(package, network_topology):
                 print "\n\nPackage was founded in ", r, "at the switch", s+1
                 classBitList.route_action.append(node[s][r][action_info])
                 classBitList.route_switch.append(node[s][r][switch_info])
-                node[s][r][visited_info] = 1           # node[s]->rule[r]->visited = 1
+                node[s][r][visited_info] = classBit.makeBitVector(1)           # node[s]->rule[r]->visited = 1
                 sw_index_sought   = s
                 print ">>", s
                 rule_index_sought = r
@@ -147,7 +147,7 @@ def graph_Search(node, sw_sought, rule_sought, network_topology):
         for r in range(len(node[s])):
             if (node[s][rule_sought][match_info] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)):
                 print "Package was founded in ", r, "at the switch", s+1 # Switch starts at one
-                node[s][r][visited_info] = 1                             # node[s]->rule[r]->visited = 1
+                node[s][r][visited_info] = classBit.makeBitVector(1)     # node[s]->rule[r]->visited = 1
                 print "I got here!"
                 sought = node[s][r][match_info]                          # sought = node[s]->rule[r]->match
 
