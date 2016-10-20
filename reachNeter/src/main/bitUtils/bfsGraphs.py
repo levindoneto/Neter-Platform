@@ -112,7 +112,7 @@ def graphSearch(package, network_topology):
 
     print type(network_topology)
 
-    switches   = network_rtopology.values()  # Can be done like this:: print "KEY DO DICT: ", network_topology[n]
+    node   = network_topology.values()  # Can be done like this:: print "KEY DO DICT: ", network_topology[n]
     keys   = network_topology.keys()
 
     # Switch test keys
@@ -123,60 +123,26 @@ def graphSearch(package, network_topology):
         print "KEY DO DICT: ", keys[i]
         i+=1
 
-
-    ''' If it was sought
-        switches[s]->rule[r]->visited = 1
-        graph_Search(switches, sw_index_sought, rule_index_sought, topology)
-    '''
-    '''
-
-    route_action = []  # List that contains a route of package | action view
-    route_switch = []  # List that contains a route of package | switch view
-    *** In each interation:
-        route_action.append(switches[sw_index_sought]->rule[rule_index_sought]->action_action)
-        route_switch.append(switches[sw_index_sought]->rule[rule_index_sought]->switch_info)
-
-    So, to see:
-        for r in range(len(route_action)):
-            print "PACKAGE ROUTE"
-            print route_switch[r] + "-- Output: " + route_action[r]
-
-    graph_Search(switches, topology) {
-        for sw:
-            for rule:
-                if (switches[sw_index_sought]->rule[rule_index_sought]->match == switches[s][r][match_info] and switches[s][r][visited_info] != 1):
-                    switches[s][r][visited_info] = 1
-
-                    >>>> test stop condition
-                    if (package->dst in link[switches[s][r][switch_info]] and switches[s][r][dst_info] == package->dst)    # Link was made at de start of topology
-                        return true
-                    else:
-                        graph_Search(switches, sw_index_sought, rule_index_sought, topology)
-        return false # Package didn't arrive'
-    }
-    '''
-
-
     sought = BitVector(size=0) # Init of a BitVector with size 0
     # Searching package->match at the list of rules of all switches
-    for s in range(len(switches)):
-        for r in range(len(switches[s])):
-            if (package[0] == switches[s][r][match_info]):
+    for s in range(len(node)):
+        for r in range(len(node[s])):
+            if (package[0] == node[s][r][match_info]):
                 print "\n\nPackage was founded in ", r, "at the switch", s+1
-                switches[4][20][visited_info] = 1                          # node[s]->rule[r]->visited = 1
-                sought = switches[s][r][match_info]                        # sought = node[s]->rule[r]->match
-
-                print "DESTINO DA REGRA: ", switches[s][r][dst_info]
+                node[s][r][visited_info] = 1                          # node[s]->rule[r]->visited = 1
+                sought = node[s][r][match_info]                        # sought = node[s]->rule[r]->match
+                graph_Search(node, rule_index_sought, sw_index_sought, network_topology)
+                print "DESTINO DA REGRA: ", node[s][r][dst_info]
                 print "DESTINO DO PACOTE:", package[1]
-                print "ACAO DA REGRA", switches[s][r][action_info]
+                print "ACAO DA REGRA", node[s][r][action_info]
 
                 #rule_match = switches[s][r][match_info]
                 #rule_action = switches[s][r][action_info]
                 sw_index_sought   = s
                 rule_index_sought = r
-                graph_Search(switches, rule_index_sought, sw_index_sought, network_topology)
 
-                print "Visited information: ", switches[s][r][visited_info]
+
+                print "Visited information: ", node[s][r][visited_info]
 
 ''' Overloading of graphSearch method
 	(graph of rules).
