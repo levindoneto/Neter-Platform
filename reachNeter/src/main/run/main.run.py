@@ -146,4 +146,13 @@ if (classBit.makeBitVector(2) in link_sw_host[classBit.bvToInt(classBitList.theS
 #print 2 ^ 3  # 10 xor 11 => 01    #xor
 
 end = time.time()
+
+see_route = raw_input("Do you wanna to see the route of the package? [Y] or [N] ")
+if (see_route == "y" or see_route=="Y"):
+    print ">> Package Route <<"
+    for r in range(len(classBitList.route_switch)):
+        print "Switch: ", classBitList.route_switch[r], "-- Output: ", classBitList.route_action[r]
+elif(see_route == "n" or see_route=="N"):
+    pass
+
 print (end - start), "seconds"
