@@ -6,7 +6,7 @@ from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 import time
-'''Global Variables'''
+'''#Define'''
 switch_info    = 0
 match_info     = 1
 match_pack     = 0
