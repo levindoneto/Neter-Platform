@@ -12,3 +12,5 @@ actionList    = []  # This list contains only information about actions of predi
 switchList    = []  # This list contains only information about switches according the network topology {switch : rule}
 theSwitchList = []  # List of switches in the network topology
 visitedList   = []  # List that saves the flag about a node, 1:visited  0:not visited
+route_action  = []  # List that contais the route of the package in the action view
+route_switch  = []  # List that contais the route of the package in the switch view
