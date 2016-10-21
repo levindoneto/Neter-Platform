@@ -114,23 +114,25 @@ def graphSearch(package, network_topology):
     switches   = network_topology.keys()
 
     # Switch tests
+    '''
     i=0
     for n in switches:                  # Print the switches (ordered) at the topology
         print "Switch of the topology: ", switches[i]
         i+=1
-
+    '''
     # Searching package->match at the list of rules of all switches
     for s in range(len(node)):
+        #print "LOOK: ", s
         for r in range(len(node[s])):
             if (package[0] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
-                print "\n\nPackage was founded in ", r, "at the switch", s+1
+                #print "\n\nPackage was founded in ", r, "at the switch", s+1
                 classBitList.route_action.append(node[s][r][action_info])
                 classBitList.route_switch.append(node[s][r][switch_info])
                 node[s][r][visited_info] = classBit.makeBitVector(1)           # node[s]->rule[r]->visited = 1
                 sw_index_sought   = s
-                print ">>", s
+                #print ">>", s
                 rule_index_sought = r
-                print ">>", r
+                #print ">>", r
                 graph_Search(node, rule_index_sought, sw_index_sought, network_topology)
 
 ''' Overloading of graphSearch method
@@ -140,15 +142,15 @@ def graphSearch(package, network_topology):
 def graph_Search(node, sw_sought, rule_sought, network_topology):
     stop = classBit.makeBitVector(0)
 
-    print "Was here that the switch was founded: ", sw_sought
+    #print "It was here that the switch was founded: ", sw_sought
 
     # Searching package->match at the list of rules of all switches
     for s in range(len(node)):
         for r in range(len(node[s])):
             if (node[s][rule_sought][match_info] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)):
-                print "Package was founded in ", r, "at the switch", s+1 # Switch starts at one
+                #print "Package was founded in ", r, "at the switch", s+1 # Switch starts at one
                 node[s][r][visited_info] = classBit.makeBitVector(1)     # node[s]->rule[r]->visited = 1
-                print "I got here!"
+                #print "I got here!"
                 sought = node[s][r][match_info]                          # sought = node[s]->rule[r]->match
 
                 rule_action = node[s][r][action_info]
