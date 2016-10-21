@@ -110,19 +110,19 @@ print aux_listV[0][0][0][0]
 package_t = [1,2,0,0,9007199254740992,3,6,806,3]
 package_t = classBit.makeTest(package_t)
 
-print "Package->match: ", package_t[0]
+print "Package->match: ", package_t[MATCH_PACK]
 
 ''' Package enters in the topology network graph, the search is
 *   made by a iterative bitwise comparison, that is made by a
 *   XNOR gate between the package->match and the matches of
 *   node->rule_list->match (This node is a graph vertice that
 *   contains informations about a rule, these informations are
-*   match, destination, switch and action of the rule)
+*   match, destination, switch, action and visited of the node)
 '''
 
 print "\nThe switches: "
 for switch in range(len(classBitList.theSwitchList)):
-    print "SWITCH::", classBitList.theSwitchList[switch]
+    print "Switch:", classBitList.theSwitchList[switch]
 
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
