@@ -107,10 +107,10 @@ print aux_listV[0][0][0][0]
 *   of the package.
 '''
 # 1101100010110000000000000000000000000000000000000000000000000000011100110010000011
-package_t = [1,2,0,0,9007199254740992,3,2,806,3]
+package_t = [1,2,0,0,9007199254740992,3,6,806,3]
 package_t = classBit.makeTest(package_t)
 
-print package_t[0]
+print "Package->match: ", package_t[0]
 
 ''' Package enters in the topology network graph, the search is
 *   made by a iterative bitwise comparison, that is made by a
@@ -126,15 +126,15 @@ for switch in range(len(classBitList.theSwitchList)):
 
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
-graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
-ClassGraph.graphSearch(package_t, graph_topology)
 topology_link = "../../../../topology_link.csv"
 link_sw_host = classBit.getLink(topology_link, is_ordered)
+graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
 
-''' Stop condition '''
-if (classBit.makeBitVector(2) in link_sw_host[classBit.bvToInt(classBitList.theSwitchList[0])]):
-    print "It was founded"
-
+Reachability = ClassGraph.graphSearch(package_t, graph_topology, link_sw_host)
+if (Reachability):
+    print "Reachability is ok"
+else:
+    print "Reachability is not ok"
 
 ''' The graph vertices has informations about the rules
 *   Each vertice of the network graph contains [i][j][k][l]
@@ -155,4 +155,4 @@ if (see_route == "y" or see_route=="Y"):
 elif(see_route == "n" or see_route=="N"):
     pass
 
-print (end - start), "seconds"
+print "Time to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"

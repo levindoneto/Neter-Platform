@@ -107,7 +107,7 @@ def BFS(graph,start,end,q):
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
 def graphSearch(package, network_topology, link_sw_host):
-
+    Reachability = False   # False: Reachability isn't ok, True: Reachability is ok
     network_topology = collections.OrderedDict(sorted(network_topology.items()))
     print "This is the destination of the package: ", package[dst_pack]
     node   = network_topology.values()
@@ -123,11 +123,11 @@ def graphSearch(package, network_topology, link_sw_host):
     for s in range(len(node)):
         #print "LOOK: ", s
         for r in range(len(node[s])):
-            if (package[0] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
+            if (package[match_pack] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
                 #print "\n\nPackage was founded in ", r, "at the switch", s+1
                 classBitList.route_action.append(node[s][r][action_info])
                 classBitList.route_switch.append(node[s][r][switch_info])
-                node[s][r][visited_info] = classBit.makeBitVector(1)           # node[s]->rule[r]->visited = 1
+                node[s][r][visited_info] = classBit.makeBitVector(1)         # node[s]->rule[r]->visited = 1
                 sw_index_sought   = s
                 #print ">>", s
                 rule_index_sought = r
@@ -135,19 +135,16 @@ def graphSearch(package, network_topology, link_sw_host):
                 graph_Search(node, rule_index_sought, sw_index_sought, network_topology)
 
                 if(package[dst_pack] in link_sw_host[classBit.bvToInt(node[s][r][switch_info])] and node[s][r][dst_info]==package[dst_pack] and node[s][r][visited_info] == classBit.makeBitVector(1)):
-                    print "Reachability is ok"
-                    return True
+                    Reachability = True
                 else:
                     pass
-    
+    return Reachability                                                             # Package didn't arrives to its destination
 ''' Overloading of graphSearch method
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : Bit Vector (stop can 0 or 1) '''
 def graph_Search(node, sw_sought, rule_sought, network_topology):
     stop = classBit.makeBitVector(0)
-
-    #print "It was here that the switch was founded: ", sw_sought
 
     # Searching package->match at the list of rules of all switches
     for s in range(len(node)):
@@ -162,5 +159,4 @@ def graph_Search(node, sw_sought, rule_sought, network_topology):
                 rule_match = node[s][r][match_info]
 
                 #graph_Search(switches[s][r][match_info], network_topology, switches[s][r][action_info])
-
     return stop
