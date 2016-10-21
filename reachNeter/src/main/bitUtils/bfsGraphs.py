@@ -106,13 +106,12 @@ def BFS(graph,start,end,q):
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
     @:return    : BV Graph '''
-def graphSearch(package, network_topology):
+def graphSearch(package, network_topology, link_sw_host):
 
     network_topology = collections.OrderedDict(sorted(network_topology.items()))
-
-    node   = network_topology.values()  # Can be done like this:: print "KEY DO DICT: ", network_topology[n]
+    print "This is the destination of the package: ", package[dst_pack]
+    node   = network_topology.values()
     switches   = network_topology.keys()
-
     # Switch tests
     '''
     i=0
@@ -135,6 +134,12 @@ def graphSearch(package, network_topology):
                 #print ">>", r
                 graph_Search(node, rule_index_sought, sw_index_sought, network_topology)
 
+                if(package[dst_pack] in link_sw_host[classBit.bvToInt(node[s][r][switch_info])] and node[s][r][dst_info]==package[dst_pack] and node[s][r][visited_info] == classBit.makeBitVector(1)):
+                    print "Reachability is ok"
+                    return True
+                else:
+                    pass
+    
 ''' Overloading of graphSearch method
 	(graph of rules).
     @:parameter : BV package(list[match, dst]), BV graph
