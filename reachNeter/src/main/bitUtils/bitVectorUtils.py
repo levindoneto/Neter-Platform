@@ -2,26 +2,18 @@
 # coding: UTF-8
 
 # Libraries utilized
-import os
-import sys
-import json
 import csv
-from os import system
-import time
-#from bitarray import bitarray
-from src.main.data import bitList as classBitList
-from BitVector import BitVector
 from BitVector import BitVector
 '''#Define'''
-switch_info    = 0
-match_info     = 1
-match_pack     = 0
-dst_pack       = 1
-dst_info       = 2
-action_info    = 3
-visited_info   = 4
-is_ordered     = 1
-is_not_ordered = 0
+SWITCH_INFO    = 0
+MATCH_INFO     = 1
+MATCH_PACK     = 0
+DST_PACK       = 1
+DST_INFO       = 2
+ACTION_INFO    = 3
+VISITED_INFO   = 4
+IS_ORDERED     = 1
+IS_NOT_ORDERED = 0
 
 ''' Convert a string atomic predicate in a integer atomic predicate
     @:parameter : Integer

@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # coding: UTF-8
-import csv
+
 import collections
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from BitVector import BitVector
 import time
 '''#Define'''
-switch_info    = 0
-match_info     = 1
-match_pack     = 0
-dst_pack       = 1
-dst_info       = 2
-action_info    = 3
-visited_info   = 4
-is_ordered     = 1
-is_not_ordered = 0
+SWITCH_INFO    = 0
+MATCH_INFO     = 1
+MATCH_PACK     = 0
+DST_PACK       = 1
+DST_INFO       = 2
+ACTION_INFO    = 3
+VISITED_INFO   = 4
+IS_ORDERED     = 1
+IS_NOT_ORDERED = 0
 
 csvData = "../data/data.csv"
 
@@ -109,7 +109,7 @@ def BFS(graph,start,end,q):
 def graphSearch(package, network_topology, link_sw_host):
     Reachability = False   # False: Reachability isn't ok, True: Reachability is ok
     network_topology = collections.OrderedDict(sorted(network_topology.items()))
-    print "This is the destination of the package: ", package[dst_pack]
+    print "This is the destination of the package: ", package[DST_PACK]
     node   = network_topology.values()
     switches   = network_topology.keys()
     # Switch tests
@@ -123,18 +123,18 @@ def graphSearch(package, network_topology, link_sw_host):
     for s in range(len(node)):
         #print "LOOK: ", s
         for r in range(len(node[s])):
-            if (package[match_pack] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
+            if (package[MATCH_PACK] == node[s][r][MATCH_INFO] and node[s][r][VISITED_INFO] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
                 #print "\n\nPackage was founded in ", r, "at the switch", s+1
-                classBitList.route_action.append(node[s][r][action_info])
-                classBitList.route_switch.append(node[s][r][switch_info])
-                node[s][r][visited_info] = classBit.makeBitVector(1)         # node[s]->rule[r]->visited = 1
+                classBitList.route_action.append(node[s][r][ACTION_INFO])
+                classBitList.route_switch.append(node[s][r][SWITCH_INFO])
+                node[s][r][VISITED_INFO] = classBit.makeBitVector(1)         # node[s]->rule[r]->visited = 1
                 sw_index_sought   = s
                 #print ">>", s
                 rule_index_sought = r
                 #print ">>", r
                 graph_Search(node, rule_index_sought, sw_index_sought, network_topology)
 
-                if(package[dst_pack] in link_sw_host[classBit.bvToInt(node[s][r][switch_info])] and node[s][r][dst_info]==package[dst_pack] and node[s][r][visited_info] == classBit.makeBitVector(1)):
+                if(package[DST_PACK] in link_sw_host[classBit.bvToInt(node[s][r][SWITCH_INFO])] and node[s][r][DST_INFO]==package[DST_PACK] and node[s][r][VISITED_INFO] == classBit.makeBitVector(1)):
                     Reachability = True
                 else:
                     pass
@@ -149,14 +149,14 @@ def graph_Search(node, sw_sought, rule_sought, network_topology):
     # Searching package->match at the list of rules of all switches
     for s in range(len(node)):
         for r in range(len(node[s])):
-            if (node[s][rule_sought][match_info] == node[s][r][match_info] and node[s][r][visited_info] != classBit.makeBitVector(1)):
+            if (node[s][rule_sought][MATCH_INFO] == node[s][r][MATCH_INFO] and node[s][r][VISITED_INFO] != classBit.makeBitVector(1)):
                 #print "Package was founded in ", r, "at the switch", s+1 # Switch starts at one
-                node[s][r][visited_info] = classBit.makeBitVector(1)     # node[s]->rule[r]->visited = 1
+                node[s][r][VISITED_INFO] = classBit.makeBitVector(1)     # node[s]->rule[r]->visited = 1
                 #print "I got here!"
-                sought = node[s][r][match_info]                          # sought = node[s]->rule[r]->match
+                sought = node[s][r][MATCH_INFO]                          # sought = node[s]->rule[r]->match
 
-                rule_action = node[s][r][action_info]
-                rule_match = node[s][r][match_info]
+                rule_action = node[s][r][ACTION_INFO]
+                rule_match = node[s][r][MATCH_INFO]
 
                 #graph_Search(switches[s][r][match_info], network_topology, switches[s][r][action_info])
     return stop

@@ -7,15 +7,15 @@ from src.main.bitUtils import bfsGraphs as ClassGraph
 from BitVector import BitVector
 import time
 '''#Define'''
-switch_info    = 0
-match_info     = 1
-match_pack     = 0
-dst_pack       = 1
-dst_info       = 2
-action_info    = 3
-visited_info   = 4
-is_ordered     = 1
-is_not_ordered = 0
+SWITCH_INFO    = 0
+MATCH_INFO     = 1
+MATCH_PACK     = 0
+DST_PACK       = 1
+DST_INFO       = 2
+ACTION_INFO    = 3
+VISITED_INFO   = 4
+IS_ORDERED     = 1
+IS_NOT_ORDERED = 0
 
 csvData = "../data/arquivoDados.csv"
 
@@ -127,7 +127,7 @@ for switch in range(len(classBitList.theSwitchList)):
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
 topology_link = "../../../../topology_link.csv"
-link_sw_host = classBit.getLink(topology_link, is_ordered)
+link_sw_host = classBit.getLink(topology_link, IS_ORDERED)
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
 
 Reachability = ClassGraph.graphSearch(package_t, graph_topology, link_sw_host)
@@ -143,8 +143,6 @@ else:
 *   [0]: Switch  [1]: Match  [2]: Destination  [3]:Action [4]:Visited
 '''
 
-#print 2 ^ 3  # 10 xor 11 => 01    #xor
-
 end = time.time()
 
 see_route = raw_input("Do you wanna to see the route of the package? [Y] or [N] ")
@@ -155,4 +153,4 @@ if (see_route == "y" or see_route=="Y"):
 elif(see_route == "n" or see_route=="N"):
     pass
 
-print "Time to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"
+print "\nTime to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"
