@@ -1,14 +1,6 @@
 #!/usr/bin/python
 # coding: UTF-8
-import csv
-from src.main.bitUtils import bitVectorUtils as classBit
-from src.main.data import bitList as classBitList
-from src.main.bitUtils import bfsGraphs as ClassGraph
-from BitVector import BitVector
-from os import system
-import time
 import json
-import sys
 import os
 
 

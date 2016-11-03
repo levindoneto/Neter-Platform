@@ -164,11 +164,13 @@ while opt != "0":
         start = time.time()
         print "\n"
 
-        #ip = raw_input("|----- Insira o IP da maquina: ")
-        #porta = raw_input("|----- Insira a porta: ")
-        #command = "curl -s http://" + ip + ":" + porta + "/wm/core/switch/all/flow/json"
+        ip = raw_input("|----- Insira o IP da maquina: ")
+        porta = raw_input("|----- Insira a porta: ")
 
-        command = "curl -s http://143.54.12.10:8080/wm/core/switch/all/flow/json"
+        if (ip=='i' and porta=='p'):
+            command = "curl -s http://143.54.12.10:8080/wm/core/switch/all/flow/json"
+        else:
+            command = "curl -s http://" + ip + ":" + porta + "/wm/core/switch/all/flow/json"
 
         command_output = os.popen(command).read()
         topology = json.loads(command_output)
@@ -212,8 +214,11 @@ while opt != "0":
                 data = f.read()
                 json_data = json.loads(data)
 
-            json_data = json_data[str(s)] # Tem que salvar isso no nome do switch
-            json_data = json_data["flows"]
+            try:
+                json_data = json_data[str(s)] # Tem que salvar isso no nome do switch
+                json_data = json_data["flows"]
+            except:
+                pass
 
             # Listas organizadas por indice
             lista_prioridade =      []
