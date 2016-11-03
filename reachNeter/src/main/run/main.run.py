@@ -4,6 +4,7 @@ import csv
 from src.main.bitUtils import bitVectorUtils as classBit
 from src.main.data import bitList as classBitList
 from src.main.bitUtils import bfsGraphs as ClassGraph
+from src.main.data import Network as ClassNetwork
 from BitVector import BitVector
 import time
 '''#Define'''
@@ -18,6 +19,7 @@ IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
 csvData = "../data/arquivoDados.csv"
+ClassNetwork.tableGenerator('i','p')
 
 start = time.time()                                                         # init time
 
