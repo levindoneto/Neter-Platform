@@ -9,13 +9,13 @@ The Placidus is a formal verification platform for Software Defined Networks (SD
 
 ### Data Structure
 http://prntscr.com/cixbjh
-![Graph Network](reachNeter/src/main/resources/graph_network.png)
+![Graph Network](reachability-module/src/main/resources/graph_network.png)
 
 ### Algorithm Proposed for the Verification of Reachability with the Graph Approach
-![Algorithm proposed for Reachability Graph Verification](reachNeter/src/main/resources/algorithm_reachability_graph.jpg)
+![Algorithm proposed for Reachability Graph Verification](reachability-module/src/main/resources/algorithm_reachability_graph.jpg)
 
 ### Network topology for the tests
-![Network for tests](reachNeter/src/main/resources/topology_network.png)
+![Network for tests](reachability-module/src/main/resources/topology_network.png)
 
 ### Steps of execution:
 * The input package is converted to a vector of bits, using the method makeTest of class bitVectorUtils.
