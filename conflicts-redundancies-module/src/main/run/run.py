@@ -82,58 +82,58 @@ action = ""
 ''' Funcoes principais '''
 # Para formatacao de arquivos json gerados pela rede
 def formatarJson(nome_do_arquivo):
-	arquivo_json = nome_do_arquivo
-	var_buffer = open(arquivo_json, "r")
-	dicionario = ""
+    arquivo_json = nome_do_arquivo
+    var_buffer = open(arquivo_json, "r")
+    dicionario = ""
 
-	for i in var_buffer:
-		dicionario += i
+    for i in var_buffer:
+        dicionario += i
 
-	strings = ""
-	cont = 0
+    strings = ""
+    cont = 0
 
-	for j in dicionario:
-	    if j == "u":
-		    if dicionario[cont+1] == "'":
-		        strings +=""
-		    else:
-		        strings += j
-	    else:
-		    strings += j
-	    cont += 1
+    for j in dicionario:
+        if j == "u":
+            if dicionario[cont+1] == "'":
+                strings +=""
+            else:
+                strings += j
+        else:
+            strings += j
+        cont += 1
 
-	dicionario = ""
+    dicionario = ""
 
-	for k in strings:
-	    if k!= "'":
-		    dicionario += k
-	    else:
-		    dicionario += '"'
+    for k in strings:
+        if k!= "'":
+            dicionario += k
+        else:
+            dicionario += '"'
 
-	strings = ""
-	for l in dicionario:
-	    if l=="]" or l=="}":
-		    strings += "\n" + l
-	    elif l==",":
-		    strings += l + "\n"
-	    elif l=="{" or l=="[":
-		    strings += "\n" + l + "\n"
-	    else:
-		    strings += l
+    strings = ""
+    for l in dicionario:
+        if l=="]" or l=="}":
+            strings += "\n" + l
+        elif l==",":
+            strings += l + "\n"
+        elif l=="{" or l=="[":
+            strings += "\n" + l + "\n"
+        else:
+            strings += l
 
-	var_buffer = open(arquivoFormatadoJsonVB, "w")
-	var_buffer.write(strings)
-	var_buffer.close()
+    var_buffer = open(arquivoFormatadoJsonVB, "w")
+    var_buffer.write(strings)
+    var_buffer.close()
 ###########################################################
 
 # Para deteccao de conflito entre dois fluxos
 def conflito(fluxoCI, fluxoCJ, SwitchC):
-	print "Detectado conflito entre o fluxo " + str(fluxoCI) + " e entre o fluxo " + str(fluxoCJ) + " no switch " + str(SwitchC)
+    print "Detectado conflito entre o fluxo " + str(fluxoCI) + " e entre o fluxo " + str(fluxoCJ) + " no switch " + str(SwitchC)
 ###########################################################
 
 # Para deteccao de redundancia entre dois fluxos
 def redundancia(fluxoRI, fluxoRJ, SwitchR):
-	print "Detectado redundancia entre o fluxo " + str(fluxoRI) + " e entre o fluxo " + str(fluxoRJ) + " no switch " + str(SwitchR)
+    print "Detectado redundancia entre o fluxo " + str(fluxoRI) + " e entre o fluxo " + str(fluxoRJ) + " no switch " + str(SwitchR)
 ###########################################################
 
 
@@ -163,7 +163,7 @@ while opt != "0":
     if opt=="1":
         start = time.time()
         print "\n"
-
+        '''
         ip = raw_input("|----- Insira o IP da maquina: ")
         porta = raw_input("|----- Insira a porta: ")
 
@@ -171,6 +171,10 @@ while opt != "0":
             command = "curl -s http://143.54.12.10:8080/wm/core/switch/all/flow/json"
         else:
             command = "curl -s http://" + ip + ":" + porta + "/wm/core/switch/all/flow/json"
+
+        '''
+
+        command = "curl -s http://143.54.12.10:8080/wm/core/switch/all/flow/json"
 
         command_output = os.popen(command).read()
         topology = json.loads(command_output)
@@ -183,6 +187,11 @@ while opt != "0":
 
         ################################################################ >>>>>> DESCOMENTAR PORQUE TA FORMATANDO O ARQUIVO A CADA EXECUCAO
         formatarJson("dataflow.json")
+
+
+
+        #####################################################################
+
 
         flag_confRed = 0
 
@@ -209,8 +218,8 @@ while opt != "0":
         contSwitch = 0
         for s in lista_switches:
             dicFlows = {}                             #Inicia/limpa dicFlows a cada execucao
-                                  # Tabela com os fluxos sendo as linhas e as informacoes sendo as colunas
-            with open(arquivoFormatadoJson) as f:
+            # Tabela com os fluxos sendo as linhas e as informacoes sendo as colunas
+            with open(arquivoFormatadoJsonVB) as f:
                 data = f.read()
                 json_data = json.loads(data)
 
@@ -331,7 +340,7 @@ while opt != "0":
                         lista_ethType.append("x")
 
                     if dicAux.has_key('in_port') == True:
-                            lista_inPort.append(str(json_data[cont]['match']['in_port']))
+                        lista_inPort.append(str(json_data[cont]['match']['in_port']))
                     else:
                         lista_inPort.append("x")
 
@@ -341,12 +350,12 @@ while opt != "0":
                         lista_eth_vlan_vid.append("x")
 
                     if dicAux.has_key('eth_vlan_pcp') == True:
-                            lista_eth_vlan_pcp.append(str(json_data[cont]['match']['eth_vlan_pcp']))
+                        lista_eth_vlan_pcp.append(str(json_data[cont]['match']['eth_vlan_pcp']))
                     else:
                         lista_eth_vlan_pcp.append("x")
 
                     if dicAux.has_key('ip_proto') == True:
-                            lista_ip_proto.append(str(json_data[cont]['match']['ip_proto']))
+                        lista_ip_proto.append(str(json_data[cont]['match']['ip_proto']))
                     else:
                         lista_ip_proto.append("x")
 
@@ -371,37 +380,37 @@ while opt != "0":
                         lista_ipv6_dst.append("x")
 
                     if dicAux.has_key('ipv6_label') == True:
-                            lista_ipv6_label.append(str(json_data[cont]['match']['ipv6_label']))
+                        lista_ipv6_label.append(str(json_data[cont]['match']['ipv6_label']))
                     else:
                         lista_ipv6_label.append("x")
 
                     if dicAux.has_key('ip_tos') == True:
-                            lista_ip_tos.append(str(json_data[cont]['match']['ip_tos']))
+                        lista_ip_tos.append(str(json_data[cont]['match']['ip_tos']))
                     else:
                         lista_ip_tos.append("x")
 
                     if dicAux.has_key('ip_ecn') == True:
-                            lista_ip_ecn.append(str(json_data[cont]['match']['ip_ecn']))
+                        lista_ip_ecn.append(str(json_data[cont]['match']['ip_ecn']))
                     else:
                         lista_ip_ecn.append("x")
 
                     if dicAux.has_key('ip_dscp') == True:
-                            lista_ip_dscp.append(str(json_data[cont]['match']['ip_dscp']))
+                        lista_ip_dscp.append(str(json_data[cont]['match']['ip_dscp']))
                     else:
                         lista_ip_dscp.append("x")
 
                     if dicAux.has_key('tp_src') == True:
-                            lista_tp_src.append(str(json_data[cont]['match']['tp_src']))
+                        lista_tp_src.append(str(json_data[cont]['match']['tp_src']))
                     else:
                         lista_tp_src.append("x")
 
                     if dicAux.has_key('tp_dst') == True:
-                            lista_tp_dst.append(str(json_data[cont]['match']['tp_dst']))
+                        lista_tp_dst.append(str(json_data[cont]['match']['tp_dst']))
                     else:
                         lista_tp_dst.append("x")
 
                     if dicAux.has_key('udp_src') == True:
-                            lista_udp_src.append(str(json_data[cont]['match']['udp_src']))
+                        lista_udp_src.append(str(json_data[cont]['match']['udp_src']))
                     else:
                         lista_udp_src.append("x")
 
@@ -736,7 +745,7 @@ while opt != "0":
         print (end-start), "seconds"
         raw_input("\nPressione [Enter] para voltar ao menu principal\n")
         #system("clear")
-####################################################################################################
+    ####################################################################################################
     elif opt == "2":                                                   # Adicionar regra no firewall da rede
         print "- Para seguir adicionando regras: [Enter]"
         print "- Para pular para adicionar regras especificas: [@]"
@@ -1085,7 +1094,7 @@ while opt != "0":
             else:
                 system("clear")
                 print "\nOpcao nao existente\n"
-####################################################################################################
+                ####################################################################################################
     elif opt == "3":
         string_regraFirewall = raw_input("Insira a string com a regra: ")
 
@@ -1122,7 +1131,7 @@ while opt != "0":
             system("clear")
             print "\nOpcao nao existente\n"
 
-####################################################################################################
+            ####################################################################################################
     elif opt == "4":
         print "\n"
         ruleId = raw_input("Informe o Rule ID da regra a ser excluida: ")
@@ -1133,7 +1142,7 @@ while opt != "0":
         print "\n", status_regraDeletada
         raw_input("\nPressione [Enter] para voltar ao menu principal\n")
         #system("clear")
-###################################################################################################
+    ###################################################################################################
     elif opt == "5":
         command = "curl http://143.54.12.10:8080/wm/staticflowpusher/list/all/json"
         command_output = os.popen(command).read()
@@ -1141,7 +1150,8 @@ while opt != "0":
         print "\n", status_todasRegras
         raw_input("\nPressione [Enter] para voltar ao menu principal\n")
         #system("clear")
-####################################################################################################
+    ####################################################################################################
+
     elif opt == "6":
         start_fw = time.time()
         print "\n"
@@ -1515,7 +1525,7 @@ while opt != "0":
                         lista_ip_tos.append("x")
 
                     if dicAuxFW.has_key('ip_ecn') == True:
-                     lista_ip_ecn.append(str(json_dataFW[contFW]['ip_ecn']))
+                        lista_ip_ecn.append(str(json_dataFW[contFW]['ip_ecn']))
                     else:
                         lista_ip_ecn.append("x")
 
@@ -1830,7 +1840,7 @@ while opt != "0":
                     if (lista_any_dpid[ifw] == 'x'):
                         lista_any_dpid[ifw] = lista_any_dpid[jfw]
                     if (lista_dl_src[ifw] == 'x'):
-                            lista_dl_src[ifw] = lista_dl_src[jfw]
+                        lista_dl_src[ifw] = lista_dl_src[jfw]
                     if (lista_dpid[ifw] == 'x'):
                         lista_dpid[ifw] = lista_dpid[jfw]
                     if (lista_tp_src[ifw] == 'x'):
@@ -1868,29 +1878,30 @@ while opt != "0":
                         flag_confRedFW = 1
                 jfw += 1
             ifw += 1
+
+        arquivo_regrasFW.close()
+        arquivo_regras_conflitantesFW.close()
+        arquivo_regras_redundantesFW.close()
         lista_csvFW.append(dicFlowsFW)
-    arquivo_regrasFW.close()
-    arquivo_regras_conflitantesFW.close()
-    arquivo_regras_redundantesFW.close()
-    arquivoDadosCSVFW = open("../data/arquivoDadosFW.csv", "w")
+        arquivoDadosCSVFW = open("../data/arquivoDadosFW.csv", "w")
 
-    if flag_confRed != 1:
-        print "\nNenhum conflito e nenhuma redundancia foram encontrados no Firewall!\n"
+        if flag_confRed != 1:
+            print "\nNenhum conflito e nenhuma redundancia foram encontrados no Firewall!\n"
 
-    # len(lista_csvFW[rfw]) e' igual ao numero de fluxos contidos na lista_csv[r]
-    for rfw in range(len(lista_csvFW)):
-        dicAux_CSV = lista_csvFW[r]
-        # print dicAux_CSVFW
-        for nfw in range(len(lista_csvFW[r])):
-            arquivoDadosCSVFW.write(str(dicAux_CSVFW[str(nfw)]) + "\n")
-        arquivoDadosCSVFW.write("\n")
+        # len(lista_csvFW[rfw]) e' igual ao numero de fluxos contidos na lista_csv[r]
+        for rfw in range(len(lista_csvFW)):
+            dicAux_CSV = lista_csvFW[r]
+            # print dicAux_CSVFW
+            for nfw in range(len(lista_csvFW[r])):
+                arquivoDadosCSVFW.write(str(dicAux_CSVFW[str(nfw)]) + "\n")
+            arquivoDadosCSVFW.write("\n")
 
-    arquivoDadosCSVFW.close()
-
+        arquivoDadosCSVFW.close()
+        raw_input("\nPressione [Enter] para voltar ao menu principal\n")
+        system("clear")
 
     end_fw = time.time()
 
-        ############+++++++++++++++++++++++++++++++++++++++++++++++++++####
+    ############+++++++++++++++++++++++++++++++++++++++++++++++++++####
 
-    raw_input("\nPressione [Enter] para voltar ao menu principal\n")
-    system("clear")
+
