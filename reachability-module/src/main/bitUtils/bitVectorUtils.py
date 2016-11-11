@@ -16,7 +16,7 @@ IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
 ''' Convert a string atomic predicate in a integer atomic predicate
-    @:parameter : Integer
+    @:parameter : String
     @:return    : BitVector '''
 def stringToIntFormated (stringp):
     #Retirando caracteres nao numericos
@@ -140,6 +140,22 @@ def getLink(topology_link, ordered):
 def bvToInt(bitvector):
     integer = bitvector.intValue()
     return integer
+
+
+''' Convert a hexadecimal string atomic predicate in a hexadecimal atomic predicate
+    (Remove the different symbols)
+    @:parameter : Hexadecimal String (no formatted)
+    @:return    : Hexadecimal String (no formatted) '''
+def hexaToIntFormated (stringH):
+    #Retirando caracteres nao numericos
+    if (stringH == ''):
+        return None
+    else:
+        newAtomicPredicate = ""
+        for j in stringH:
+            if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
+                newAtomicPredicate += j
+        return newAtomicPredicate
 
 ''' Convert a Hexadecimal string in a BitVector object
     This is necessary because de all informations in the floodlight

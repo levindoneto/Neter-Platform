@@ -19,11 +19,10 @@ VISITED_INFO   = 4
 IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
-csvData = "../topologyTests/csv/5s35h.csv"
+csvData = "../topologyTests/csv/s05h35.csv"
 #ClassNetwork.tableGenerator('i','p')
 
 start = time.time()                                                         # init time
-
 
 ALLOW = classBit.makeBitVector(1)
 DENY = classBit.makeBitVector(0)
@@ -32,15 +31,18 @@ swinc = 1                                                                   # Sw
 # Parsing CSV (Rules)
 auxMatchKey = BitVector(size=0)                                             # __init__ BitVect
 rule_index = 0
-with open(csvData, "rb"s) as csvfile:
+with open(csvData, "rb") as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='\'')
     for row in spamreader:                                                  # Line by line of CSV file
         info_index = 0                                                      # Index of rule
         classBitList.ruleList.append([])
         for ind in range(len(row)):                                         # Column by column of CSV file
-            row[info_index] = classBit.stringToIntFormated(row[info_index]) # Hexadecimal String -> BitVector
-            row[info_index] = classBit.stringToIntFormated(row[info_index]) # String -> Int
-            row[info_index] = classBit.makeBitVector(row[info_index])       # Int -> BitVector
+            row[info_index] = classBit.hexaToIntFormated(row[info_index])   # String Hexa -> String Hexa Formated
+            row[info_index] = classBit.hexaToBV(row[info_index])            # Hexa -> BV with zeros in the MSB
+            ''' To remove the most significative zeros '''
+            row[info_index] = classBit.bvToInt(row[info_index])
+            row[info_index] = classBit.makeBitVector(row[info_index])
+
             classBitList.ruleList[rule_index].append(row[info_index])       # Add in the list the BitVectors
             info_index += 1
         rule_index += 1
@@ -68,6 +70,9 @@ for rule_index in range(len(classBitList.ruleList)):
         classBitList.dstList[swinc-1].append(classBitList.ruleList[rule_index][6])     # Destination [2]
         classBitList.actionList[swinc-1].append(classBitList.ruleList[rule_index][-1]) # Action [3]
         classBitList.visitedList[swinc-1].append(classBit.makeBitVector(0))             # 0: Not visited (At first no node rule was visited yet)
+
+print "THE 1C: ", classBitList.dstList[0][0]
+
 
 ''' Making the match list'''
 indexBV_rule = 0
