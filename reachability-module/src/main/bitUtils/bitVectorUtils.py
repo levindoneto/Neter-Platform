@@ -140,3 +140,13 @@ def getLink(topology_link, ordered):
 def bvToInt(bitvector):
     integer = bitvector.intValue()
     return integer
+
+''' Convert a Hexadecimal string in a BitVector object
+    This is necessary because de all informations in the floodlight
+    controller is in hexadecimal format
+    @:parameter : Hexadecimal string
+    @:return    : BitVector '''
+def hexaToBV(argh):
+    bvh = BitVector(size=0) # Init of a BitVector with size 0
+    bvh = BitVector(hexstring = str(argh))
+    return bvh

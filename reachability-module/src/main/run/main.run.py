@@ -19,10 +19,11 @@ VISITED_INFO   = 4
 IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
-csvData = "../data/arquivoDados.csv"
+csvData = "../topologyTests/csv/5s35h.csv"
 #ClassNetwork.tableGenerator('i','p')
 
 start = time.time()                                                         # init time
+
 
 ALLOW = classBit.makeBitVector(1)
 DENY = classBit.makeBitVector(0)
@@ -31,12 +32,13 @@ swinc = 1                                                                   # Sw
 # Parsing CSV (Rules)
 auxMatchKey = BitVector(size=0)                                             # __init__ BitVect
 rule_index = 0
-with open(csvData, "rb") as csvfile:
+with open(csvData, "rb"s) as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='\'')
     for row in spamreader:                                                  # Line by line of CSV file
         info_index = 0                                                      # Index of rule
         classBitList.ruleList.append([])
         for ind in range(len(row)):                                         # Column by column of CSV file
+            row[info_index] = classBit.stringToIntFormated(row[info_index]) # Hexadecimal String -> BitVector
             row[info_index] = classBit.stringToIntFormated(row[info_index]) # String -> Int
             row[info_index] = classBit.makeBitVector(row[info_index])       # Int -> BitVector
             classBitList.ruleList[rule_index].append(row[info_index])       # Add in the list the BitVectors
