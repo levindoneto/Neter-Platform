@@ -3,6 +3,7 @@
     <extensionMap>
       <mapping pattern="5s35h.csv" type="PLAIN_TEXT" />
       <mapping pattern="5s35h" type="PLAIN_TEXT" />
+      <mapping ext="dat" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
