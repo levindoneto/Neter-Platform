@@ -90,6 +90,7 @@ def outputToAction(output):
     @:parameter: *List (Each index has a hexadecimal string)
     @:return: BitVector package [match, dst]
 '''
+
 def makeTest(rule):
     rule[6] = hexaToIntFormated(rule[6])
     rule[6] = hexaToBV(rule[6])
@@ -160,10 +161,9 @@ def hexaToIntFormated (stringH):
         return None
     else:
         newAtomicPredicate = ""
-        if (len(str(stringH)) > 1):
-            for j in stringH:
-                if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
-                    newAtomicPredicate += j
+        for j in str(stringH):
+            if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
+                newAtomicPredicate += j
         return newAtomicPredicate
 
 ''' Convert a Hexadecimal string in a BitVector object

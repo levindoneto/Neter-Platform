@@ -117,7 +117,10 @@ print aux_listV[0][0][0][0]
 *   of the package.
 '''
 # 1101100010110000000000000000000000000000000000000000000000000000011100110010000011
-package_t = ['1','4','42','1',"9007199254740992",'e','6','806','8']
+package_t = ["1", "4", "42", "1", "9007199254740992", "00:00:00:00:00:0e", "00:00:00:00:00:06", "0x0x806", "8"]
+#110001000010111101101000000001101000
+#001 00001000010000001010 1000
+
 #['1', '4', '42', '1', '9007199254740992', '00:00:00:00:00:0e', '00:00:00:00:00:06', '0x0x806', '8', 'output=6']
 package_t = classBit.makeTest(package_t)
 
@@ -137,8 +140,11 @@ for switch in range(len(classBitList.theSwitchList)):
 
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
 
-topology_link = "../../../../topology_link.csv"
+topology_link = "../../../../topology_link_s5h35.csv"
 link_sw_host = classBit.getLink(topology_link, IS_ORDERED)
+print "LINK: \n", link_sw_host[1]
+for i in link_sw_host[1]:
+    print "HOST: ", i
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
 
 Reachability = ClassGraph.graphSearch(package_t, graph_topology, link_sw_host)

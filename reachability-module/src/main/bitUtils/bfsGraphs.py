@@ -81,7 +81,6 @@ def make_graph(diffSwitches, switch_rule, match, destination, action, visited): 
             rulesInTheSwith[ruleVertice].append(destination[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(action[switch][ruleVertice])
             rulesInTheSwith[ruleVertice].append(visited[switch][ruleVertice])
-        #print "PRIMEIRO DST COOL: ", rulesInTheSwith[0][0]
         graph.update({classBit.makeBitVector(switch+1):rulesInTheSwith}) # Update at graph with Sw : rule_list->rule_information->(match, dst, action)
     return graph
 
@@ -123,6 +122,8 @@ def graphSearch(package, network_topology, link_sw_host):
     for s in range(len(node)):
         #print "LOOK: ", s
         for r in range(len(node[s])):
+
+            #print "\nPACKAGE: ", package[MATCH_PACK], "NODE: ", node[s][r][MATCH_INFO], "\n"
             if (package[MATCH_PACK] == node[s][r][MATCH_INFO] and node[s][r][VISITED_INFO] != classBit.makeBitVector(1)): # package->match == node[s]->rule[r]->match_info
                 #print "\n\nPackage was founded in ", r, "at the switch", s+1
                 classBitList.route_action.append(node[s][r][ACTION_INFO])
