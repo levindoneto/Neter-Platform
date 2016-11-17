@@ -87,14 +87,22 @@ def outputToAction(output):
     return action
 
 ''' Receive a list with informations about header of one rule and return a BitVector package test
-    @:parameter: *List
+    @:parameter: *List (Each index has a hexadecimal string)
     @:return: BitVector package [match, dst]
 '''
 def makeTest(rule):
+    rule[6] = hexaToIntFormated(rule[6])
+    rule[6] = hexaToBV(rule[6])
+    ''' To remove the most significative zeros '''
+    rule[6] = bvToInt(rule[6])
     dst = makeBitVector(rule[6])
     package = []  # Informations: rule, destination
     auxRule = BitVector(size=0) # Init of a BitVector with size 0
     for j in range(len(rule)):
+        rule[j] = hexaToIntFormated(rule[j])
+        rule[j] = hexaToBV(rule[j])
+        ''' To remove the most significative zeros '''
+        rule[j] = bvToInt(rule[j])
         auxRule += makeBitVector(rule[j]) # Concatenating for to generate a package (int)
     package.append(auxRule)
     package.append(dst)
@@ -152,9 +160,10 @@ def hexaToIntFormated (stringH):
         return None
     else:
         newAtomicPredicate = ""
-        for j in stringH:
-            if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
-                newAtomicPredicate += j
+        if (len(str(stringH)) > 1):
+            for j in stringH:
+                if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
+                    newAtomicPredicate += j
         return newAtomicPredicate
 
 ''' Convert a Hexadecimal string in a BitVector object
