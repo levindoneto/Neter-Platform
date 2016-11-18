@@ -1,4 +1,5 @@
 Times (Flowtable to BitVector + Make graph + Reachability Verification)(seconds):
+
 1284 flows:
 
 1.34605097771
@@ -13,6 +14,7 @@ Times (Flowtable to BitVector + Make graph + Reachability Verification)(seconds)
 1.37078499794
 Average: 1.39925789833 seconds
 
+
 6193 flows:
 
 6.00824713707
@@ -26,3 +28,18 @@ Average: 1.39925789833 seconds
 5.93189191818
 5.9123249054
 Average: 5.99061393738 seconds
+
+6193 flows:
+
+3.07956719398
+3.06224894524
+3.01839089394
+3.0956299305
+3.02913308144
+3.05395913124
+3.08377122879
+3.05240488052
+3.04906392097
+3.05014014244
+
+Average: 3.05743093491 seconds
