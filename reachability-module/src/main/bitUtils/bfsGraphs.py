@@ -108,7 +108,7 @@ def BFS(graph,start,end,q):
 def graphSearch(package, network_topology, link_sw_host):
     Reachability = False   # False: Reachability isn't ok, True: Reachability is ok
     network_topology = collections.OrderedDict(sorted(network_topology.items()))
-    print "This is the destination of the package: ", package[DST_PACK]
+    #print "This is the destination of the package: ", package[DST_PACK]
     node   = network_topology.values()
     switches   = network_topology.keys()
     # Switch tests
