@@ -19,7 +19,7 @@ VISITED_INFO   = 4
 IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
-csvData = "../data/arquivoDados.csv"
+csvData = "../topologyTests/csv/s20h140.csv"
 #ClassNetwork.tableGenerator('i','p')
 
 start = time.time()                                                         # init time
@@ -37,8 +37,12 @@ with open(csvData, "rb") as csvfile:
         info_index = 0                                                      # Index of rule
         classBitList.ruleList.append([])
         for ind in range(len(row)):                                         # Column by column of CSV file
-            row[info_index] = classBit.stringToIntFormated(row[info_index]) # String -> Int
-            row[info_index] = classBit.makeBitVector(row[info_index])       # Int -> BitVector
+            row[info_index] = classBit.hexaToIntFormated(row[info_index])   # String Hexa -> String Hexa Formated
+            row[info_index] = classBit.hexaToBV(row[info_index])            # Hexa -> BV with zeros in the MSB
+            ''' To remove the most significative zeros '''
+            row[info_index] = classBit.bvToInt(row[info_index])
+            row[info_index] = classBit.makeBitVector(row[info_index])
+
             classBitList.ruleList[rule_index].append(row[info_index])       # Add in the list the BitVectors
             info_index += 1
         rule_index += 1
@@ -66,6 +70,9 @@ for rule_index in range(len(classBitList.ruleList)):
         classBitList.dstList[swinc-1].append(classBitList.ruleList[rule_index][6])     # Destination [2]
         classBitList.actionList[swinc-1].append(classBitList.ruleList[rule_index][-1]) # Action [3]
         classBitList.visitedList[swinc-1].append(classBit.makeBitVector(0))             # 0: Not visited (At first no node rule was visited yet)
+
+#print "THE 1C: ", classBitList.dstList[0][0]
+
 
 ''' Making the match list'''
 indexBV_rule = 0
@@ -110,10 +117,15 @@ print aux_listV[0][0][0][0]
 *   of the package.
 '''
 # 1101100010110000000000000000000000000000000000000000000000000000011100110010000011
-package_t = [1,2,0,0,9007199254740992,3,6,806,3]
+package_t = ["1", "4", "42", "1", "9007199254740992", "00:00:00:00:00:0e", "00:00:00:00:00:0a", "0x0x806", "1"]
+
+
+#110001000010111101101000000001101000
+#001 00001000010000001010 1000
+
 package_t = classBit.makeTest(package_t)
 
-print "Package->match: ", package_t[MATCH_PACK]
+#print "Package->match: ", package_t[MATCH_PACK]
 
 ''' Package enters in the topology network graph, the search is
 *   made by a iterative bitwise comparison, that is made by a
@@ -123,17 +135,25 @@ print "Package->match: ", package_t[MATCH_PACK]
 *   match, destination, switch, action and visited of the node)
 '''
 
+'''
 print "\nThe switches: "
 for switch in range(len(classBitList.theSwitchList)):
-    print "Switch:", classBitList.theSwitchList[switch]
+    print "Switch:", classBit.bvToInt(classBitList.theSwitchList[switch])
 
 print "There are ", len(classBitList.theSwitchList), "in the network topology\n"
+'''
 
-topology_link = "../../../../topology_link.csv"
+topology_link = "../../../../topology_link_s20h140.csv"
 link_sw_host = classBit.getLink(topology_link, IS_ORDERED)
+'''
+print "LINK: \n", link_sw_host[1]
+for i in link_sw_host[1]:
+    print "HOST: ", i
+'''
 graph_topology = ClassGraph.make_graph(classBitList.theSwitchList, classBitList.switchList, classBitList.matchList, classBitList.dstList, classBitList.actionList, classBitList.visitedList)
 
 Reachability = ClassGraph.graphSearch(package_t, graph_topology, link_sw_host)
+
 if (Reachability):
     print "Reachability is ok"
 else:
@@ -147,7 +167,7 @@ else:
 '''
 
 end = time.time()
-
+'''
 see_route = raw_input("Do you wanna to see the route of the package? [Y] or [N] ")
 if (see_route == "y" or see_route=="Y"):
     print "\n>> Package Route <<"
@@ -155,5 +175,17 @@ if (see_route == "y" or see_route=="Y"):
         print "Switch: ", classBitList.route_switch[r], "-- Output: ", classBitList.route_action[r]
 elif(see_route == "n" or see_route=="N"):
     pass
+'''
 
-print "\nTime to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"
+#print "\nTime to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"
+print (end - start)
+
+
+j = 0.0
+for i in range(10):
+    l = [2.27986693382, 2.33909201622, 2.26916408539, 2.28890299797, 2.27716088295, 2.28421401978, 2.29981398582, 2.32533192635, 2.39926290512, 2.27383708954]
+
+    j+=(l[i])
+    media = j/10.0
+print "media:", media
+

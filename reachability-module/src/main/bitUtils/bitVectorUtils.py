@@ -16,7 +16,7 @@ IS_ORDERED     = 1
 IS_NOT_ORDERED = 0
 
 ''' Convert a string atomic predicate in a integer atomic predicate
-    @:parameter : Integer
+    @:parameter : String
     @:return    : BitVector '''
 def stringToIntFormated (stringp):
     #Retirando caracteres nao numericos
@@ -87,14 +87,23 @@ def outputToAction(output):
     return action
 
 ''' Receive a list with informations about header of one rule and return a BitVector package test
-    @:parameter: *List
+    @:parameter: *List (Each index has a hexadecimal string)
     @:return: BitVector package [match, dst]
 '''
+
 def makeTest(rule):
+    rule[6] = hexaToIntFormated(rule[6])
+    rule[6] = hexaToBV(rule[6])
+    ''' To remove the most significative zeros '''
+    rule[6] = bvToInt(rule[6])
     dst = makeBitVector(rule[6])
     package = []  # Informations: rule, destination
     auxRule = BitVector(size=0) # Init of a BitVector with size 0
     for j in range(len(rule)):
+        rule[j] = hexaToIntFormated(rule[j])
+        rule[j] = hexaToBV(rule[j])
+        ''' To remove the most significative zeros '''
+        rule[j] = bvToInt(rule[j])
         auxRule += makeBitVector(rule[j]) # Concatenating for to generate a package (int)
     package.append(auxRule)
     package.append(dst)
@@ -140,3 +149,29 @@ def getLink(topology_link, ordered):
 def bvToInt(bitvector):
     integer = bitvector.intValue()
     return integer
+
+
+''' Convert a hexadecimal string atomic predicate in a hexadecimal atomic predicate
+    (Remove the different symbols)
+    @:parameter : Hexadecimal String (no formatted)
+    @:return    : Hexadecimal String (no formatted) '''
+def hexaToIntFormated (stringH):
+    #Retirando caracteres nao numericos
+    if (stringH == ''):
+        return None
+    else:
+        newAtomicPredicate = ""
+        for j in str(stringH):
+            if (((j>='0' and j<='9') or j=='a' or j=='b' or j=='c' or j=='d' or j=='e' or j=='f')) : # 0 until F
+                newAtomicPredicate += j
+        return newAtomicPredicate
+
+''' Convert a Hexadecimal string in a BitVector object
+    This is necessary because de all informations in the floodlight
+    controller is in hexadecimal format
+    @:parameter : Hexadecimal string
+    @:return    : BitVector '''
+def hexaToBV(argh):
+    bvh = BitVector(size=0) # Init of a BitVector with size 0
+    bvh = BitVector(hexstring = str(argh))
+    return bvh
