@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt,twoside]{article}
+%\usepackage{xltxtra}
+%%\usepackage{xltxtra}
+%%\setmainfont{Liberation Serif}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}%%comentar se usar xeLatex
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}%%comentar se usar xeLatex
+%\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{times}
+
+\usepackage{mathtools}
+\pagenumbering{Roman}%%numero de páginas com numeros romano
+\title{
+Verificação formal em redes definidas por software \\ ~ \\
+\normalsize Levindo Gabriel Taschetto Neto \\ Professor Alberto Egon Schaeffer-Filho \\
+\small Instituto de Informática - Universidade Federal do Rio Grande do Sul
+}
+
+
+\date{}
+
+
+\begin{document}
+
+\maketitle
+\vspace{-1.7cm}
+
+
+% quebra de linha a mais (/% - simbolo de porcentagem)
+
+%    Bloco #1 - contexto: Descrever o contexto no qual o trabalho está inserido para quem não é da área… algo como: “Redes de computadores fazem isso e aquilo. Nesse contexto, redes definidas por software (software-defined networking, SDN) fazem isso e aquilo…." Podem incluir NFV também. **OK**
+
+%    Bloco #2 - problema: Descrever aqui o problema que vocês estão abordando. No caso do Levindo, é a necessidade de verificar formalmente e garantir que as configurações de rede satisfazem algumas propriedades e não apresentam conflitos. No caso do Pedro, é a necessidade de detectar alguns tipos de ataques e reagir da forma mais apropriada para mitigar o problema.**OK**
+
+%    Bloco #3 - metodologia/solução/resultados: Descrever aqui o trabalho de fato que vocês têm feito.**OK**
+
+%    Bloco #4 - conclusão/trabalhos futuros: Descrever aqui o benefício esperado (esse trabalho tornará as redes mais seguras, ou mais robustas, etc) e os planos para trabalhos futuros (a ideia é mostrar que essa linha de pesquisa não é um “dead-end”, e que pode sim gerar mais desdobramentos)
+
+\thispagestyle{empty}
+%------------------------------------------- Introdução [Contexto] ------------------------------------------
+Atualmente a necessidade por mais programabilidade e flexibilidade encoraja a utilização de abstrações de software para realizar atividades relacionadas à operação da rede, como por exemplo, algoritmos de roteamento e balanceadores de carga.
+Concomitante, a centralização do plano de controle torna-se necessária para flexibilizar o gerenciamento da rede, principalmente no que diz respeito à lógica de encaminhamento de pacotes executada por \textit{switches} e roteadores. Um conceito que visa centralizar o plano de controle da rede, e permitir sua programabilidade, é o de redes definidas por software (ou \textit{Software Defined Networking (SDN)}). SDN é uma abordagem que propõe separar o plano de controle e os dispositivos de encaminhamento de dados.
+
+%------------------------------------------------ Problema----------------------------------------------------
+O foco do presente trabalho é investigar métodos para verificar formalmente, em tempo real, propriedades em redes definidas por software, tais como \textit{isolation} e ausência de \textit{loops}.
+Nosso estudo inclui a verificação de conflitos e redundâncias entre regras de encaminhamento de pacotes na rede, e a verificação de propriedades de cunho global, tais como \textit{reachability} (verificar se um determinado pacote que sai de um \textit{switch} A chega em um \textit{switch} B) e \textit{isolation} (verificar quais pacotes conseguem alcançar determinado dispositivo na rede).
+
+
+%--------------------------------------- Metodologia/Solução/Resultados --------------------------------------
+Como primeiro estudo de caso, foi abordado o problema de encontrar redundâncias e conflitos em uma rede e em regras de um \textit{Firewall}, com o uso de uma aplicação criada na linguagem de programação \textit{Python}.
+Os testes foram realizados com a utilização do emulador de rede, \textit{Mininet}, e com o \textit{Floodlight OpenFlow Controller}.
+A aplicação desenvolvida para detecção de conflitos e redundâncias em SDN faz um \textit{snapshot} da rede para capturar seu estado atual, e retorna os dados referentes a cada \textit{switch} em uma topologia de rede qualquer.
+Esses dados estão contidos na \textit{flow-table}, a qual é uma tabela com as regras de encaminhamento de pacotes.
+Os dados podem ser, por exemplo, \textit{match}, que são dados de reconhecimento de pacotes, e \textit{action}, que se referem a ações a serem tomadas pelo \textit{switch} para cada pacote que chega no mesmo. 
+
+
+Na aplicação desenvolvida é possível manipular os dados coletados e formar uma tabela de fácil visualização com eles, a fim de utilizá-la para encontrar regras redundantes e conflitantes na rede, no formato de expressões lógicas. 
+O algoritmo proposto para essa aplicação é baseado na comparação de todas combinações entre regras de encaminhamento da rede, verificando quais combinações de regras possuem mesmo \textit{match} e diferente \textit{action} (conflito), e quais possuem mesmo \textit{match} e mesmo \textit{action} (redundância).
+Esse algoritmo apresenta complexidade $O(n^{2})$. 
+
+%----------------------------------------- Conclusão/Trabalhos futuros ----------------------------------------
+
+Nossa pesquisa na área de verificação formal de redes SDN tem o propósito de tornar a rede mais robusta e confiável em tempo real.
+Atualmente estamos investigando a verificação de \textit{reachability} em redes definidas por software, com a utilização de dados na forma de vetores de \textit{bits} e com o uso de operações lógicas \textit{bit} a \textit{bit}, visando performance.
+Trabalhos futuros incluem implementar a aplicação de verificação de \textit{reachability}, além de explorar outras propriedades globais de redes, como detecção de \textit{loops} e \textit{black holes} (verificar se existe sumidouros de pacotes na rede), e trabalhar no aprimoramento do algoritmo proposto para detecção de conflitos e redundâncias na rede.
+
+
+\end{document}
