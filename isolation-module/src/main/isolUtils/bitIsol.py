@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # coding: UTF-8
 
+# Libraries utilized
+import csv
 from BitVector import BitVector
-from src.main.isolUtils import bitIsol as sliceIsolUtils
-
 
 '''#Define'''
 IS_NOT_ORDERED = 0
@@ -17,5 +17,6 @@ DST_INFO       = 2
 ACTION_INFO    = 3
 VISITED_INFO   = 4
 
-DENY = sliceIsolUtils.makeBitVector(0)
-ALLOW = sliceIsolUtils.makeBitVector(1)
+def makeBitVector(AtomicPredicate):
+    AtomicPredicate = BitVector(intVal=AtomicPredicate)
+    return AtomicPredicate
