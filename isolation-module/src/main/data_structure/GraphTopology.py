@@ -23,13 +23,7 @@ DENY = SliceIsolUtils.makeBitVector(0)   # Low Logical Level
 ALLOW = SliceIsolUtils.makeBitVector(1)  # High Logical Level
 
 
+'''
 
-
-
-
-
-
-
-
-
-
+'''
+def makeGraphTopology ():
