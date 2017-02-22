@@ -9,8 +9,8 @@ def menu():
     system("clear")
     print("|---------------------------------------------|")
     print("|--------- SCRIPT FLOWTABLE FIREWALL ---------|")
-    print("| 7 - Ler arquivo de dados [.csv]             |")
-    print("| 2 - Verificar reachability                  |")
+    print("| 1 - Read the network  file [.csv]           |")
+    print("| 2 - Verify reachability                     |")
     print("|---------------------------------------------|")
-    opt = input("\nEscolha: ")
+    opt = input("\nChoice an option: ")
     return opt

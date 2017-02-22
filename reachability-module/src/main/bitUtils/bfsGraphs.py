@@ -19,7 +19,8 @@ IS_NOT_ORDERED = 0
 
 csvData = "../data/data.csv"
 
-class NetQueue: # just an implementation of a queue
+# Implementation of a queue class
+class NetQueue:
 	def __init__(self):
 		self.holder = []
 
@@ -54,7 +55,7 @@ def generate_edges(graph):
     return edges
 
 def find_isolated_nodes(graph):
-    """ returns a list of isolated nodes. """
+    # Returns a list of isolated nodes
     isolated = []
     for node in graph:
         if not graph[node]:
@@ -120,7 +121,7 @@ def graphSearch(package, network_topology, link_sw_host):
     '''
     # Searching package->match at the list of rules of all switches
     for s in range(len(node)):
-        #print "LOOK: ", s
+
         for r in range(len(node[s])):
 
             #print "\nPACKAGE: ", package[MATCH_PACK], "NODE: ", node[s][r][MATCH_INFO], "\n"
@@ -154,6 +155,7 @@ def graph_Search(node, sw_sought, rule_sought, network_topology):
                 #print "Package was founded in ", r, "at the switch", s+1 # Switch starts at one
                 node[s][r][VISITED_INFO] = classBit.makeBitVector(1)     # node[s]->rule[r]->visited = 1
                 #print "I got here!"
+
                 sought = node[s][r][MATCH_INFO]                          # sought = node[s]->rule[r]->match
 
                 rule_action = node[s][r][ACTION_INFO]

@@ -4,9 +4,6 @@ import json
 import os
 
 
-# LER ARQUIVO E PARSEAR PRO FORMATO CERTO
-# FAZER MAKE FILE PRA LIMPAR OS ~
-
 ''' Given an IP and Port, this method makes the csv table file that
     represents the networks flows. The IP:Port default is: 143.54.12.10:8080,
     this is used if the user pass i,p as a parameter for this method.

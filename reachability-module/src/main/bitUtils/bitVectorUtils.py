@@ -45,7 +45,7 @@ def makeBitVector(AtomicPredicate):
     AtomicPredicate = BitVector(intVal=AtomicPredicate)
     return AtomicPredicate
 
-'''Return a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
+'''ReturnS a in-predicate in form of vector with n bits [n-1: match, 1(lLSB): action ]
     @:parameter : String
     @:return    : BitVector '''
 def makePredicateVector(value):
@@ -58,35 +58,35 @@ def makePredicateVector(value):
     new_value = BitVector(intVal=new_value)
     return new_value
 
-'''Return the MSB (n-1, Match) bits of a vector with n bits
+'''Returns the MSB (n-1, Match) bits of a vector with n bits
     @:parameter : BitVector
     @:return    : BitVector '''
 def sliceMatch(predicadoM):
     predicadoM = predicadoM[0:((len(predicadoM))-1)]
     return predicadoM
 
-''' Return the LSB (Action) of a vector with n bits
+''' Returns the LSB (Action) of a vector with n bits
     @:parameter : BitVector
     @:return    : BitVector '''
 def sliceAction(predicadoA):
     predicadoA = predicadoA[((len(predicadoA))-1):len(predicadoA)]
     return predicadoA
 
-''' Convert a bit string in BitVector
+''' Converts a bit string in BitVector
     @:parameter : String
     @:return    : BitVector '''
 def stringToBit(bvstring):
     bvstring = BitVector(bitstring=str(bvstring))
     return bvstring
 
-''' Convert a integer output in a BitVector Action with 8 bits width
+''' Converts a integer output in a BitVector Action with 8 bits width
     @:parameter: Integer
     @:return: BitVector '''
 def outputToAction(output):
     action = classBit.makeBitVector(output)
     return action
 
-''' Receive a list with informations about header of one rule and return a BitVector package test
+''' Receives a list with informations about header of one rule and return a BitVector package test
     @:parameter: *List (Each index has a hexadecimal string)
     @:return: BitVector package [match, dst]
 '''
@@ -109,7 +109,7 @@ def makeTest(rule):
     package.append(dst)
     return package
 
-''' Receive a topology file and converts this in a hash table, where key->switch and value->host
+''' Receives a topology file and converts this in a hash table, where key->switch and value->host
     for use in a dict.get(key) method
     @:parameter: CSV file, ordered(Integer)
     @:return: BitVector hash table with switch:host
@@ -143,7 +143,7 @@ def getLink(topology_link, ordered):
             info_index += 1
     return link
 
-''' Convert a BitVector object in Integer
+''' Converts a BitVector object in Integer
     @:parameter : BitVector
     @:return    : Integer '''
 def bvToInt(bitvector):
@@ -151,7 +151,7 @@ def bvToInt(bitvector):
     return integer
 
 
-''' Convert a hexadecimal string atomic predicate in a hexadecimal atomic predicate
+''' Converts a hexadecimal string atomic predicate in a hexadecimal atomic predicate
     (Remove the different symbols)
     @:parameter : Hexadecimal String (no formatted)
     @:return    : Hexadecimal String (no formatted) '''
@@ -166,7 +166,7 @@ def hexaToIntFormated (stringH):
                 newAtomicPredicate += j
         return newAtomicPredicate
 
-''' Convert a Hexadecimal string in a BitVector object
+''' Converts a Hexadecimal string in a BitVector object
     This is necessary because de all informations in the floodlight
     controller is in hexadecimal format
     @:parameter : Hexadecimal string

@@ -178,14 +178,4 @@ elif(see_route == "n" or see_route=="N"):
 '''
 
 #print "\nTime to verificate the Reachability property in this topology with the package: ", (end - start), "seconds"
-print (end - start)
-
-
-j = 0.0
-for i in range(10):
-    l = [2.27986693382, 2.33909201622, 2.26916408539, 2.28890299797, 2.27716088295, 2.28421401978, 2.29981398582, 2.32533192635, 2.39926290512, 2.27383708954]
-
-    j+=(l[i])
-    media = j/10.0
-print "media:", media
-
+print "Time: "(end - start)
