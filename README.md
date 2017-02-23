@@ -5,17 +5,29 @@ Placidus is a formal verification platform for Software Defined Networks (SDN), 
 
 ![Logo of Placidus](resources/Logo-Placidus.jpg)
 
-## Reachability verifier 
+## Conflicts and Redundancies Verifier
 
-### Data Structure
-http://prntscr.com/cixbjh
-![Graph Network](reachability-module/src/main/resources/graph_network.png)
+A conflict between two rules is detected when two rules have the same match (Packet forwarding data) and different actions (outputs).
 
-### Algorithm Proposed for the Verification of Reachability with the Graph Approach
-![Algorithm proposed for Reachability Graph Verification](reachability-module/src/main/resources/algorithm_reachability_graph.jpg)
+A redundancy between two rules is detected when two rules have the same match (Packet forwarding data) and the same actions (outputs).
 
-### Network topology for the tests
-![Network for tests](reachability-module/src/main/resources/topology_network.png)
+The data structure utilized was a list of rules.
+
+The algorithmic for the verification module of the properties of conflicts and redundancies in SDN can be see in the image below.
+
+![Conflicts and Redundancies Module](resources/conflicts_redundancies_algorithmic.jpg)
+
+## Reachability Verifier 
+
+The reachability is verified when:
+
+Given a package by a source address, it can arrive in its destination in a right way, without lose itself in the network topology.
+
+The data structure utilized was a BitVector graph of rules.
+
+The algorithmic for the verification module of the properties of conflicts and redundancies in SDN can be see in the image below.
+
+![Redundancy Module](resources/reachability_algorithmic.jpg)
 
 ### Steps of execution:
 * The input package is converted to a vector of bits, using the method makeTest of class bitVectorUtils.
@@ -37,25 +49,26 @@ This lists is used to put informations at the nodes of the network topology grap
 
 * The reachability property is tested by a graph search at the topology network. One more information was added to the nodes of the graph of topology network, the visited information. This information is one of the informations used as a stop condition of breadth-first search that is made to verify if the package come in its destination of correct way.
 
+### Network topology for the tests
+![Network for tests](reachability-module/src/main/resources/topology_network.png)
+
+
 ### Mininet commands
 
 #### Start the mininet in the linux terminal
 ```terminal
 ssh -X mininet@VM_IP
 ```
-
 #### Clear the network
 ```terminal
 sudo mn -c
 ```
-
 #### Copy source-destiny
 ```terminal
 scp user@IP:/source_address/file.format /destiny_address
 ```
 
 ### Floodlight commands
-
 #### Install the Floodlight Controller
 ```terminal
 cd /address/z3-master  (Just in the first time)
@@ -63,17 +76,14 @@ cd ~/floodlight
 sudo ant               (Just in the first time)
 java -jar target/floodlight.jar
 ```
-
 #### Catch Rest Api informations from floodlight
 ```terminal
 curl -s http://143.54.12.11:8080/wm/core/controller/switches/json
 ```
-
 The informations of the network are in the: 
 http://Ip:Port/ui/index.html
 
 ### Firewall
-
 ### Delete a Rule
 ```terminal
 curl -X DELETE -d '{"ruleid":RULE_ID}' http://Ip:Port/wm/firewall/rules/json
@@ -82,22 +92,7 @@ curl -X DELETE -d '{"ruleid":RULE_ID}' http://Ip:Port/wm/firewall/rules/json
 ``` terminal
 curl -s -d '{"switch":"00:00:00:00:00:00:00:02","ether-type":"0x0800","name":"flow-mod-5","nw_proto":"50","priority":"1","eth_src":"00:00:00:00:00:04","eth_dst":"00:00:00:00:00:02"}' http://Ip:Port/wm/staticflowpusher/json
 ```
-
 ### See all Rules
 ``` terminal
 curl http://Ip:Port/wm/staticflowpusher/list/all/json
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
