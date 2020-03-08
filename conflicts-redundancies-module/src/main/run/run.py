@@ -12,6 +12,7 @@ cont_time = 0
 
 arquivoFormatadoJsonVB = "../data/dataflow_formatoVB.json"
 arquivoFormatadoJson = "../data/dataflow_formato.json"  # VB: Variable buffer
+print("oi")
 
 # Inicializando variaveis - Adicionar regras no Firewall (opt 2)
 #-> Informações - Match - Flowtable

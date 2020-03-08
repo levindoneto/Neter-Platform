@@ -1,0 +1,114 @@
+\documentclass[a4paper]{article}
+
+\usepackage{lscape}
+\usepackage{algpseudocode,algorithm}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\begin{document}
+% Declaracoes em Português
+\algrenewcommand\algorithmicend{\textbf{fim}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicreturn{\textbf{devolve}}
+\algrenewcommand\algorithmicfunction{\textbf{função}}
+
+% Rearranja os finais de cada estrutura
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+%**************************************************************% 
+
+% Algoritmo de busca no Grafo
+%**************************************************************% 
+\begin{algorithm}
+\caption{Algoritmo de busca no Grafo - Placidus}
+\begin{algorithmic}[1]
+\Function{buscaLarguraGrafo}{$pacote, topologia, linkSwitchHost$}
+\For{switch}{ }{switches} 
+    \For{regra}{ }{regras} 
+        \State {Verifica match do nodo}
+        \State {Verifica bit de visitado}
+        \State \Return BuscaLarguraGrafo ($nodo, regra, Switch, topologia$)
+    \EndFor
+\EndFor
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+%**************************************************************% 
+
+
+% Algoritmo do verificador de conflitos e redundâncias
+%**************************************************************% 
+\begin{algorithm}
+\caption{Algoritmo de verificação de conflitos e redundâncias - Placidus}
+\begin{algorithmic}[1]
+\For{l}{ }{tamanho(listaAções)-1} 
+    \State {$j \gets i + 1$}
+    \For{regra}{ }{tamanho(listaAções)-(i+1)}
+        \If {PredicadoAtômico[i] == 'x'}
+            \State {PredicadoAtômico[i] $\gets$ PredicadoAtômico[j]}
+        \EndIf    
+        \If {Match[i] == Match[j]}
+            \If {Ação[i] != Ação[j]}
+                \State{Conflito detectado}
+            \Else
+                \State{Redundância detectada}
+            \EndIf
+        \EndIf
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+%**************************************************************%
+
+% Remoção de uma regra a cada iteração% 
+%**************************************************************% 
+\begin{algorithm}
+\caption{Remoção de uma regra a cada iteração}
+\begin{algorithmic}[1]
+\For{regra}{ }{tamanho(Regras)} 
+    \State {$cont2 \gets cont1 + 1$}
+    \For{predicado}{ }{tamanho(Regras)-(cont1+1)}
+        
+        \State {Os parâmetros utilizados nesse for fazem com que a} 
+        \State{cada iteração, uma regra seja descartada na verificação.}
+        
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+%**************************************************************% 
+
+
+% Produtório de regras gerados nos arquivos do verificador de conflitos
+% e redundâncias
+
+\prod_{i = 0}^{rules} infoRule $ \implies $ Output 
+
+
+\begin{algorithmic}
+\Function{BFSGraph}{package, topology, linkSwitchHost}
+\For{switch}{switches}{1}
+\For{switch}{switches}{1}
+gg
+\EndFor
+\EndFor
+\If {$i\geq maxval$}
+    \State $i\gets 0$
+\Else
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndIf
+
+\end{algorithmic}
+
+\end{document}

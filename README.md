@@ -29,6 +29,8 @@ The algorithm for the properties of conflicts and redundancies' verification mod
 
 ![Conflicts and Redundancies Module](resources/conflicts_redundancies_algorithmic.jpg)
 
+**Python needed version:** 2.7
+
 ## Reachability's Verifier 
 
 The reachability property is validadeted when:
@@ -39,6 +41,8 @@ The used data structure is a BitVector graph of rules.
 The algorithm for the verification module of reachability in SDN is shown in the following image.
 
 ![Redundancy Module](resources/reachability_algorithmic.jpg)
+
+**Python needed version:** 3.6+
 
 ### Steps of execution
 
