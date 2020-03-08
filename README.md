@@ -96,7 +96,7 @@ A tutorial on how to install *ant* on Windows may be found [here](https://mkyong
 
 The port that floodlight is set to run within this project is **8010**, so the web gui can be accessed from [http://localhost:8010/ui/pages/index.html](http://localhost:8010/ui/pages/index.html).
 
-![Floodlight](floodlight/resources/floodlight.png)
+![Floodlight](sdn-controller/resources/run.png)
 
 ```
 #### Catch Rest Api information from floodlight
