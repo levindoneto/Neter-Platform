@@ -85,12 +85,19 @@ scp user@IP:/source_address/file.format /destiny_address
 ```
 
 ### Floodlight's commands
-#### Install the Floodlight Controller
+#### Install the Floodlight Controller (Windows)
 ```terminal
-cd /address/z3-master  (Just in the first time)
-cd ~/floodlight
-sudo ant               (Just in the first time)
+cd /floodlight
+ant
 java -jar target/floodlight.jar
+```
+
+A tutorial on how to install *ant* on Windows may be found [here](https://mkyong.com/ant/how-to-install-apache-ant-on-windows)
+
+The port that floodlight is set to run within this project is **8010**, so the web gui can be accessed from [http://localhost:8010/ui/pages/index.html](http://localhost:8010/ui/pages/index.html).
+
+![Floodlight](floodlight/resources/floodlight.png)
+
 ```
 #### Catch Rest Api information from floodlight
 ```terminal
