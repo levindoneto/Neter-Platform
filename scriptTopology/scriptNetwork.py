@@ -3,7 +3,7 @@
 import time
 import topology
 import argparse
-from functools import partial #to can use the RemoteController
+from functools import partial # for using the RemoteController
 
 from mininet.net import Mininet
 from mininet.topo import Topo
@@ -17,9 +17,9 @@ parser.add_argument("--ip", action = "store", dest = "ip", default = "localhost"
 def menu():
 
     system("clear")
-	
+
     print("|------------------------------------|")
-    print("|------------- PLACIDUS -------------|")    
+    print("|------------- PLACIDUS -------------|")
     print("|------------------------------------|")
     print("|------- MININET TEST TOPOLOGY ------|")
     print("|------------------------------------|")
@@ -49,9 +49,8 @@ while opt != "0":
 
     elif opt == "1":
         x = 1
-	#143.54.12.10
-        net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = '143.54.12.10', port=6653))
-
+        net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = 'localhost', port=6653))
+	print("net: ", net)
         #net.addController('c0')     # For to let the controller in the local mode
         net.start()                  # Init the network
 
@@ -59,16 +58,15 @@ while opt != "0":
         net.pingAll()
 
     elif opt == "3":                 # Show all IP's
-	print " Host    IP" 
+	print " Host    IP"
         for host in net.hosts:
             print "  " + str(host) + "  " + host.IP()
 
     elif opt == "4":
         net.stop()
 
-    elif opt == "5":    
+    elif opt == "5":
        for i in range(1, 5000):
        	    print h3.cmd('ping -c1 %s' % h4.IP())
-    
 
     raw_input("Press [Enter] to continue...")
