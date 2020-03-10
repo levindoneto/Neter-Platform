@@ -17,3 +17,17 @@ sudo add-apt-repository ppa:deadsnakes/ppa;
 sudo apt update;
 sudo apt install python3.6;
 python3.6 -V;
+
+echo "INSTALLING ANT";
+sudo apt install ant;
+ant -version;
+
+echo "INSTALLING JAVA 8";
+sudo apt update;
+sudo apt install openjdk-8-jdk openjdk-8-jre;
+java -version;
+
+echo "BUILDING FLOODLIGHT"
+cd sdn-controller;
+ant;
+cd ..;
