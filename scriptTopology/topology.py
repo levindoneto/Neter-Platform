@@ -20,6 +20,7 @@ class topo_test(Topo):
 		s3 = self.addSwitch('s3')
 		s4 = self.addSwitch('s4')
 		s5 = self.addSwitch('s5')
+		s6 = self.addSwitch('s6')
 		# Link the hosts and the swithces
 		self.addLink(h1, s1)
 		self.addLink(h2, s1)
@@ -33,3 +34,4 @@ class topo_test(Topo):
 		self.addLink(s4, h7)
 		self.addLink(s4, s5)
 		self.addLink(s5, h8)
+		self.addLink(s5, s6)

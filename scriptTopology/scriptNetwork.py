@@ -12,7 +12,7 @@ from mininet.node import RemoteController
 from os import system
 
 parser = argparse.ArgumentParser(description = "Mininet Script")
-parser.add_argument("--ip", action = "store", dest = "ip", default = "localhost", required = False, help = "Controller IP")
+parser.add_argument("--ip", action = "store", dest = "ip", default = "127.0.0.1", required = False, help = "Controller IP")
 
 def menu():
 
@@ -49,9 +49,9 @@ while opt != "0":
 
     elif opt == "1":
         x = 1
-        net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = 'localhost', port=6653))
+        net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = '127.0.0.1'))
 	print("net: ", net)
-        #net.addController('c0')     # For to let the controller in the local mode
+        #net.addController('c0')     # To let the controller in the local mode
         net.start()                  # Init the network
 
     elif opt == "2":                 # Ping between  all devices
