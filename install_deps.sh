@@ -34,3 +34,4 @@ cd ..;
 
 echo "INSTALLING PYTHON DEPENDENCIES";
 pip install Flask;
+pip install logging;
