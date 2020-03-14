@@ -31,3 +31,6 @@ echo "BUILDING FLOODLIGHT"
 cd sdn-controller;
 ant;
 cd ..;
+
+echo "INSTALLING PYTHON DEPENDENCIES";
+pip install Flask;
