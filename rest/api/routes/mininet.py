@@ -26,7 +26,8 @@ def get_ips():
 
 @mininet_route.route('/mininet/stop', methods=['POST'])
 def stop():
-    return "NOT IMPLEMENTED"
+    Mininet.stopNetwork()
+    return jsonify({"status": "Network stopped"})
 
 @mininet_route.route('/mininet/attack', methods=['POST'])
 def attack():
