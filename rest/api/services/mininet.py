@@ -39,9 +39,9 @@ def stopNetwork():
     return True
 
 def attackNetwork():
-    for i in range(1, 5000):
-        print(h3.cmd('ping -c1 %s' % h4.IP()))
-    return True
+    # for i in range(1, 5000):
+        # print(h3.cmd('ping -c1 %s' % h4.IP()))
+    return "NOT IMPLEMENTED"
 
 def closeNetwork():
     import os
