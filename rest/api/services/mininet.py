@@ -9,16 +9,16 @@ from mininet.topo import Topo
 from mininet.log import setLogLevel
 from mininet.node import RemoteController
 from logging import Log
-IP = "127.0.0.1"
+
+DEFAULT_IP = "127.0.0.1"
 
 parser = argparse.ArgumentParser(description = "Mininet Script")
-parser.add_argument("--ip", action = "store", dest = "ip", default = IP, required = False, help = "Controller IP")
+parser.add_argument("--ip", action = "store", dest = "ip", default = DEFAULT_IP, required = False, help = "Controller IP")
 net = None
-opt = 1
 setLogLevel('info')
 
-def startNetwork():
-    net = Mininet(topo = topology.topo_test(), build = False, autoSetMacs = True, controller = partial(RemoteController, ip = IP))
+def startNetwork(auto_set_macs, hosts, ip, links, switches):
+    net = Mininet(topo = topology.topologyMininet(hosts, switches, links), build = False, autoSetMacs = auto_set_macs, controller = partial(RemoteController, ip = ip))
     #net.addController('c0') # To let the controller in the local mode
     net.start() # Init the network
     return True

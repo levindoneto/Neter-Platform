@@ -16,7 +16,7 @@ from mininet.topo import Topo
 }
 '''
 class topologyMininet(Topo, hosts, switches, links):
-	def __init__(self):
+	def __init__(self, hosts, switches, links):
 		Topo.__init__(self)
 		listHosts = []
 		listSwitches = []
@@ -26,5 +26,5 @@ class topologyMininet(Topo, hosts, switches, links):
 			listSwitches.append(self.addSwitch('s' + str(swiches[i])))
 		# Link the hosts and the swithces
 		for i in links:
-            for j in links[i]:
-                self.addLink(i, j)
+			for j in links[i]:
+				self.addLink(i, j)
