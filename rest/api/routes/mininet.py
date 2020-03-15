@@ -1,10 +1,10 @@
 from flask import Blueprint, request, jsonify
-# from services import mininet as Mininet
+from services import mininet as Mininet
 
 mininet_route = Blueprint('mininet_route', __name__)
 
 @mininet_route.route('/mininet/start', methods=['POST'])
-def topology():
+def start():
     content = request.json
     auto_set_macs = content['autoSetMacs']
     hosts = content['hosts']
@@ -16,7 +16,8 @@ def topology():
 
 @mininet_route.route('/mininet/ping', methods=['POST'])
 def ping():
-    return "NOT IMPLEMENTED"
+    Mininet.pingAll()
+    return jsonify({"status": "Ping all completed"})
 
 @mininet_route.route('/mininet/ips', methods=['GET'])
 def get_ips():
