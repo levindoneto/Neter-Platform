@@ -33,5 +33,6 @@ ant;
 cd ..;
 
 echo "INSTALLING PYTHON DEPENDENCIES";
+sudo easy_install pip;
 pip install Flask;
 pip install logging;
