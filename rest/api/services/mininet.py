@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import time
-import topology
+from models import topology
 import argparse
 from functools import partial # for using the RemoteController
 from mininet.net import Mininet
