@@ -8,7 +8,6 @@ from mininet.net import Mininet
 from mininet.topo import Topo
 from mininet.log import setLogLevel
 from mininet.node import RemoteController
-from logging import Log
 
 DEFAULT_IP = "127.0.0.1"
 
@@ -24,7 +23,7 @@ def startNetwork(auto_set_macs, hosts, ip, links, switches):
     return True
 
 # Ping between all devices
-def pingAll():  
+def pingAll():
     net.pingAll()
     return True
 

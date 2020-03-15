@@ -15,15 +15,15 @@ from mininet.topo import Topo
     links: <OBJECT> // e.g.: h1: [h1, h2], s1: [h1, h2]
 }
 '''
-class topologyMininet(Topo, hosts, switches, links):
+class topologyMininet(Topo):
 	def __init__(self, hosts, switches, links):
 		Topo.__init__(self)
 		listHosts = []
 		listSwitches = []
 		for i in range(len(hosts)):
-			listHosts[i].append(self.addHost('h' + str(hosts[i])))
+			listHosts.append(self.addHost('h' + str(hosts[i])))
 		for i in range(len(hosts)):
-			listSwitches.append(self.addSwitch('s' + str(swiches[i])))
+			listSwitches.append(self.addSwitch('s' + str(switches[i])))
 		# Link the hosts and the swithces
 		for i in links:
 			for j in links[i]:

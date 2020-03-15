@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services import mininet as Mininet
+from services import mininet_service as Mininet
 
 mininet_route = Blueprint('mininet_route', __name__)
 
