@@ -21,7 +21,8 @@ def ping():
 
 @mininet_route.route('/mininet/ips', methods=['GET'])
 def get_ips():
-    return "NOT IMPLEMENTED"
+    ips = Mininet.getHosts()
+    return jsonify({"ips": ips})
 
 @mininet_route.route('/mininet/stop', methods=['POST'])
 def stop():
