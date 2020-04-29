@@ -54,7 +54,7 @@ Nosso estudo inclui a verificação de conflitos e redundâncias entre regras de
 
 %--------------------------------------- Metodologia/Solução/Resultados --------------------------------------
 Como primeiro estudo de caso, foi abordado o problema de encontrar redundâncias e conflitos em uma rede e em regras de um \textit{Firewall}, com o uso de uma aplicação criada na linguagem de programação \textit{Python}.
-Os testes foram realizados com a utilização do emulador de rede, \textit{Mininet}, e com o \textit{Floodlight OpenFlow Controller}.
+Os testes foram realizados com a utilização do emulador de rede, \textit{Mininet}, e com o \textit{Placidus SDN Manager}.
 A aplicação desenvolvida para detecção de conflitos e redundâncias em SDN faz um \textit{snapshot} da rede para capturar seu estado atual, e retorna os dados referentes a cada \textit{switch} em uma topologia de rede qualquer.
 Esses dados estão contidos na \textit{flow-table}, a qual é uma tabela com as regras de encaminhamento de pacotes.
 Os dados podem ser, por exemplo, \textit{match}, que são dados de reconhecimento de pacotes, e \textit{action}, que se referem a ações a serem tomadas pelo \textit{switch} para cada pacote que chega no mesmo. 

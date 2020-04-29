@@ -20,4 +20,4 @@ if (ipaddress == null || ipaddress == "") window.location.href = "login.html";
 var restport = $.cookie('cport');
 if (restport == null || restport == "") window.location.href = "login.html";
 
-document.getElementById("home-button-title").innerHTML = "Floodlight OpenFlow Controller - " + ipaddress + ":" + restport;
+document.getElementById("home-button-title").innerHTML = "Placidus SDN Manager - " + ipaddress + ":" + restport;
