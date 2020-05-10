@@ -19,7 +19,9 @@ net = None
 def startNetwork(auto_set_macs, hosts, ip, links, switches):
     net = Mininet(topo = topology.topologyMininet(hosts, switches, links), build = False, autoSetMacs = auto_set_macs, controller = partial(RemoteController, ip = ip))
     #net.addController('c0') # To let the controller in the local mode
-    logger.info("Starting network with the hosts: ", hosts, " within the switches: ", switches)
+    logger.info("Starting network")
+    logger.info("- Hosts: %s" % str(hosts))
+    logger.info("- Switches: %s" % switches)
     try:
         net.start() # Init the network
     except:
@@ -41,7 +43,7 @@ def getHosts():
     try:
         for host in net.hosts:
             hosts.update({str(host):host.IP()})
-        logger.info("Hosts: ", hosts)
+        logger.info("Hosts: %s" % str(hosts))
     except:
         logger.error("On getting hosts")
     return hosts
@@ -55,8 +57,8 @@ def stopNetwork():
     return True
 
 def attackNetwork(level=5000):
-    logger.info("Attacking network with level ", level)
-    try:
+    logger.info("Attacking network with level %s " % str(level))
+    try: 
         hosts = net.hosts
         for i in range(1, level):
             print(hosts[0].cmd('ping -c1 %s' % hosts[0].IP()))
