@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 from mininet.topo import Topo
+import logging
+
+logger = logging.getLogger("topology")
 
 ''' Class to create the topology object based on the parameters from the POST request.
     @:parameter: mininet.topo: Topo
@@ -20,11 +23,21 @@ class topologyMininet(Topo):
 		Topo.__init__(self)
 		listHosts = []
 		listSwitches = []
-		for i in range(len(hosts)):
-			listHosts.append(self.addHost('h' + str(hosts[i])))
-		for i in range(len(hosts)):
-			listSwitches.append(self.addSwitch('s' + str(switches[i])))
-		# Link the hosts and the swithces
+		logger.info("Init Mininet topology")
+		try:
+			for i in range(len(hosts)):
+				listHosts.append(self.addHost('h' + str(hosts[i])))
+			for i in range(len(hosts)):
+				listSwitches.append(self.addSwitch('s' + str(switches[i])))
+			logger.info("Added Hosts: {h}".format(str(listHosts)))
+			logger.info("Added Switches: {s}".format(str(listSwitches)))
+		except:
+			logger.error("On creating devices for the topology")
+		# Link the hosts and the switches
 		for i in links:
 			for j in links[i]:
-				self.addLink(i, j)
+				try:
+					self.addLink(i, j)
+					logger.info("Added link of {i} to {j}".format(i, j))
+				except:
+					logger.error("On adding link of {i} to {j}".format(i, j))
