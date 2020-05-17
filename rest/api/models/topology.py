@@ -2,6 +2,7 @@
 
 from mininet.topo import Topo
 import logging
+import time
 
 logger = logging.getLogger("topology")
 
@@ -28,8 +29,10 @@ class topologyMininet(Topo):
 		logger.info("Init Mininet topology")
  		#try:
 		for i in range(len(hosts)):
+			time.sleep(1)
 			listHosts.append(self.addHost('h' + str(hosts[i])))
 		for i in range(len(hosts)):
+			time.sleep(1)
 			listSwitches.append(self.addSwitch('s' + str(switches[i])))
 		logger.info("Added Hosts: %s" % str(listHosts))
 		logger.info("Added Switches: %s" % str(listSwitches))
@@ -39,6 +42,7 @@ class topologyMininet(Topo):
 		for i in links:
 			for j in links[i]:
 				try:
+					time.sleep(1)
 					self.addLink(i, j)
 					logger.info("Added link of " + i + " to " + j)
 				except:

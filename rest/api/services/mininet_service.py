@@ -20,11 +20,14 @@ net = None
 def startNetwork(auto_set_macs, hosts, ip, links, switches):
     net = Mininet(topo = topology.topologyMininet(hosts, switches, links), build = False, autoSetMacs = auto_set_macs, controller = partial(RemoteController, ip = ip))
     #net.addController('c0') # To let the controller in the local mode
-    logger.info("Starting network")
+    logger.info("Starting network,\nNET:\n", str(net))
     logger.info("- Hosts: %s" % str(hosts))
     logger.info("- Switches: %s" % str(switches))
+    logger.info("- Links: %s" % str(links))
+    logger.info("- RemoteController: %s" % str(ip))
     #try:
     net.start() # Init the network
+    logger.info("Network started")
     #logger.error("On starting network")
     return True
 
