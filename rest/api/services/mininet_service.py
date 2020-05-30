@@ -18,10 +18,12 @@ parser.add_argument("--ip", action = "store", dest = "ip", default = DEFAULT_IP,
 net = None
 
 def startNetwork(auto_set_macs, hosts, ip, links, switches):
+    global net
     net = Mininet(topo = topology.topologyMininet(hosts, switches, links), build = False, autoSetMacs = auto_set_macs, controller = partial(RemoteController, ip = ip))
     #net.addController('c0') # To let the controller in the local mode
     closeNetwork()
-    logger.info("Starting network,\nNET:\n", str(net))
+    logger.info("\nStarting network,\nNET:")
+    logger.info(net)
     logger.info("- Hosts: %s" % str(hosts))
     logger.info("- Switches: %s" % str(switches))
     logger.info("- Links: %s" % str(links))
@@ -34,7 +36,8 @@ def startNetwork(auto_set_macs, hosts, ip, links, switches):
 
 # Ping all devices
 def pingAll():
-    logger.info("Pinging network")
+    logger.info("\nPinging network,\nNET:")
+    logger.info(net)
     try:
         net.pingAll()
     except:
@@ -43,7 +46,7 @@ def pingAll():
 
 def getHosts():
     hosts = dict()
-    logger.info("Getting hosts")
+    logger.info("\nGetting hosts")
     try:
         for host in net.hosts:
             hosts.update({str(host):host.IP()})
@@ -53,7 +56,7 @@ def getHosts():
     return hosts
 
 def stopNetwork():
-    logger.info("Stoping network")
+    logger.info("\nStoping network")
     try:
         net.stop()
     except:
