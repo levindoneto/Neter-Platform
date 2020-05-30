@@ -31,7 +31,8 @@ def stop():
 
 @mininet_route.route('/mininet/attack', methods=['POST'])
 def attack():
-    return "NOT IMPLEMENTED"
+    Mininet.attackNetwork()
+    return jsonify({"status": "Network attacked"})
 
 @mininet_route.route('/mininet/close', methods=['POST'])
 def close():
