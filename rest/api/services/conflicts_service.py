@@ -75,6 +75,10 @@ dl_dst = ""
 any_tp_src = ""
 action = ""
 
+def getConflictMessage(flowCI, flowCJ, SwitchC):
+    return "Conflict detected between the flow " + str(flowCI) \
+        + " and the flow " + str(flowCJ) + " on the switch " + str(SwitchC)
+
 def startNetwork(auto_set_macs, hosts, ip, links, switches):
     
     return True
