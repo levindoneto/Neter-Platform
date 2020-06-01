@@ -15,6 +15,7 @@ logging.basicConfig(level = logging.INFO)
 def areRulesAvailable(objRule):
     for i in objRule.keys():
         return False if (!(i in FIREWALL_RULES.RULES) or !(i in FLOWTABLE_RULES.RULES))
+
     return True
 
 """
@@ -39,6 +40,7 @@ def addRule(objRule, ip, port):
         command = "curl -s -d " + rules + " http://" + ip + ":" + port + "/wm/staticflowpusher/json"
         command_output = os.popen(command).read()
         status = json.loads(command_output)
+        
         return {"status": status}
 
 """
@@ -48,4 +50,15 @@ def deleteRule(ruleId, ip, port):
     command = "curl -X DELETE -d " + "'{" + '"ruleid"' +  ":" + ruleId + "}' http:// + " + ip + ":" + port + "/wm/firewall/rules/json"
     command_output = os.popen(command).read()
     status = json.loads(command_output)
+    
+    return {"status": status}
+
+"""
+Get all rules from firewall
+"""
+def getRules(ip, port):
+    command = "curl http://" + ip + ":" + port + "/wm/staticflowpusher/list/all/json"
+    command_output = os.popen(command).read()
+    status = json.loads(command_output)
+
     return {"status": status}
