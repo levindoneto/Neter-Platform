@@ -1,4 +1,4 @@
-FLOWTABLE_RULES = [
+RULES = [
     "eth_src",
     "eth_dst",
     "eth_type",

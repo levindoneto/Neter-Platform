@@ -1,4 +1,4 @@
-FIREWALL_RULES = [
+RULES = [
     "dl_type",
     "nw_src_prefix",
     "any_nw_dst",
