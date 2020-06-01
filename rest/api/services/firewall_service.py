@@ -35,19 +35,8 @@ def addRule(objRule, ip, port):
         logger.error("New rule has no addressed switch")
         return {"error": "New rule has no addressed switch"}
     elif(areRulesAvailable(objRule)):
-        print("TODO")
-        
-    string_regraFirewall = raw_input("Insira a string com a regra: ")
-
-    # Colocar IP:PORTA
-    command = "curl -s -d '{" + string_regraFirewall + "}' http://143.54.12.10:8080/wm/staticflowpusher/json"
-
-    verificaMenu = raw_input("\n\n[1] - Ver opcao desejada (Durante 5 segundos)\n[2] - Menu\n[3] - Adicionar mais regras ao Firewall\n[4] - Sair\n-> ")
-
-    command_output = os.popen(command).read()
-    status_regraAdicionada = json.loads(command_output)
-    print "\nStatus da regra adicionada: ", status_regraAdicionada, "\n"
-
-def startNetwork(auto_set_macs, hosts, ip, links, switches):
-    
-    return True
+        rules = json.dumps(objRule)
+        command = "curl -s -d " + rules + " http://" + ip + ":" + port + "/wm/staticflowpusher/json"
+        command_output = os.popen(command).read()
+        status = json.loads(command_output)
+        return {"status": status}
