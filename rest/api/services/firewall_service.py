@@ -40,3 +40,12 @@ def addRule(objRule, ip, port):
         command_output = os.popen(command).read()
         status = json.loads(command_output)
         return {"status": status}
+
+"""
+Delete rule from firewall
+"""
+def deleteRule(ruleId, ip, port):
+    command = "curl -X DELETE -d " + "'{" + '"ruleid"' +  ":" + ruleId + "}' http:// + " + ip + ":" + port + "/wm/firewall/rules/json"
+    command_output = os.popen(command).read()
+    status = json.loads(command_output)
+    return {"status": status}
