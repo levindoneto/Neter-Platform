@@ -12,7 +12,6 @@ cont_time = 0
 
 arquivoFormatadoJsonVB = "../data/dataflow_formatoVB.json"
 arquivoFormatadoJson = "../data/dataflow_formato.json"  # VB: Variable buffer
-print("oi")
 
 # Inicializando variaveis - Adicionar regras no Firewall (opt 2)
 #-> Informações - Match - Flowtable
@@ -746,7 +745,7 @@ while opt != "0":
         print (end-start), "seconds"
         raw_input("\nPressione [Enter] para voltar ao menu principal\n")
         #system("clear")
-    ####################################################################################################
+    #################################################################################################### 
     elif opt == "2":                                                   # Adicionar regra no firewall da rede
         print "- Para seguir adicionando regras: [Enter]"
         print "- Para pular para adicionar regras especificas: [@]"
