@@ -6,8 +6,6 @@ import sys
 import json
 from os import system
 import time
-import firewall_rules from ../constants as FIREWALL_RULES
-import flowtable_rules from ../constants as FLOWTABLE_RULES
 
 logger = logging.getLogger("flowtable_service")
 logging.basicConfig(level = logging.INFO)
@@ -26,6 +24,9 @@ def getFlows(ip, port):
 Create data flow file
 """
 def createDataFlow(topology):
-    dataFlow = open("rest/api/data/dataflow", "w")
+    dataFlowPath = "rest/api/data/dataflow"
+    dataFlow = open(dataFlowPath, "w")
     dataFlow.write(str(topology))
     dataFlow.close()
+    
+    return dataFlowPath
