@@ -22,3 +22,10 @@ def getFlows(ip, port):
 
     return {"topology": topology}
 
+"""
+Create data flow file
+"""
+def createDataFlow(topology):
+    dataFlow = open("rest/api/data/dataflow", "w")
+    dataFlow.write(str(topology))
+    dataFlow.close()
