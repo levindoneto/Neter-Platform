@@ -28,13 +28,3 @@ def get_ips():
 def stop():
     Mininet.stopNetwork()
     return jsonify({"status": "Network stopped"})
-
-@mininet_route.route("/mininet/attack", methods=["POST"])
-def attack():
-    Mininet.attackNetwork()
-    return jsonify({"status": "Network attacked"})
-
-@mininet_route.route("/mininet/close", methods=["POST"])
-def close():
-    Mininet.closeNetwork()
-    return jsonify({"status": "Mininet closed"})

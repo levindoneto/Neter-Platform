@@ -17,6 +17,9 @@ parser = argparse.ArgumentParser(description = "Mininet Script")
 parser.add_argument("--ip", action = "store", dest = "ip", default = DEFAULT_IP, required = False, help = "Controller IP")
 net = None
 
+"""
+Create topology.
+"""
 def startNetwork(auto_set_macs, hosts, ip, links, switches):
     global net
     net = Mininet(topo = topology.topologyMininet(hosts, switches, links), build = False, autoSetMacs = auto_set_macs, controller = partial(RemoteController, ip = ip))
@@ -34,7 +37,9 @@ def startNetwork(auto_set_macs, hosts, ip, links, switches):
     #logger.error("On starting network")
     return True
 
-# Ping all devices
+"""
+Ping all devices.
+"""
 def pingAll():
     logger.info("\nPinging network,\nNET:")
     logger.info(net)
@@ -44,6 +49,9 @@ def pingAll():
         logger.error("On pinging network")
     return True
 
+"""
+Get active hosts' ips.
+"""
 def getHosts():
     hosts = dict()
     logger.info("\nGetting hosts")
@@ -55,6 +63,9 @@ def getHosts():
         logger.error("On getting hosts")
     return hosts
 
+"""
+Stop current network.
+"""
 def stopNetwork():
     logger.info("\nStoping network")
     try:
@@ -63,16 +74,9 @@ def stopNetwork():
         logger.error("On stoping network")
     return True
 
-def attackNetwork(level=5000):
-    logger.info("Attacking network with level %s" % str(level))
-    try:
-        hosts = net.hosts
-        for i in range(1, level):
-            print(hosts[0].cmd("ping -c1 %s" % str(hosts[0].IP())))
-    except:
-        logger.error("On attacking network")
-    return True
-
+"""
+Stop mininet.
+"""
 def closeNetwork():
     logger.info("Closing network")
     try:
