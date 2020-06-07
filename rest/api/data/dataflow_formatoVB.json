@@ -10,11 +10,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "1316",
+ "byte_count": "690",
  "idle_timeout_s": "0",
- "duration_nsec": "228000000",
- "packet_count": "18",
- "duration_sec": "19478",
+ "duration_nsec": "635000000",
+ "packet_count": "9",
+ "duration_sec": "196",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 
@@ -44,11 +44,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "111556",
+ "byte_count": "6352",
  "idle_timeout_s": "0",
- "duration_nsec": "220000000",
- "packet_count": "1440",
- "duration_sec": "19478",
+ "duration_nsec": "612000000",
+ "packet_count": "59",
+ "duration_sec": "196",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 
@@ -78,11 +78,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "111556",
+ "byte_count": "6262",
  "idle_timeout_s": "0",
- "duration_nsec": "214000000",
- "packet_count": "1440",
- "duration_sec": "19478",
+ "duration_nsec": "611000000",
+ "packet_count": "58",
+ "duration_sec": "196",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 

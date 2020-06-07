@@ -79,6 +79,11 @@ action = ""
 arquivoFormatadoJsonVB = "rest/api/data/dataflow_formatoVB.json"
 arquivoFormatadoJson = "rest/api/data/dataflow_formato.json"  # VB: Variable buffer
 
+def getId():
+    import random
+
+    return str(random.randint(1,100000000))
+
 def formatJson(filename):
     jsonFile = filename
     var_buffer = open(jsonFile, "r")
@@ -150,9 +155,10 @@ def verifyFlowtable(ip, port):
 
     lista_switches = json_data[json_data.keys()[0]].keys() # json_data.keys()[0] is the topology key
 
-    arquivo_regras = open("rest/api/data/regras.txt", "w")
-    arquivo_regras_conflitantes = open("rest/api/data/regras_conflitantes.txt", "w")
-    arquivo_regras_redundantes = open("rest/api/data/regras_redundantes.txt", "w")
+    fileId = getId()
+    arquivo_regras = open("rest/api/data/flowtable_" + fileId + ".txt", "w")
+    arquivo_regras_conflitantes = open("rest/api/data/conflicts_" + fileId + ".txt", "w")
+    arquivo_regras_redundantes = open("rest/api/data/redundancies_" + fileId + ".txt", "w")
 
     flowList = []
 
@@ -703,32 +709,41 @@ def verifyFlowtable(ip, port):
         arquivoDadosCSV.write(str(switch.keys()[0]) + "," + str(switch.values()[0])[1:-1] + "\n")
 
     arquivoDadosCSV.close()
-    return True
+    
+    return fileId
 
+"""
+Get conflicts within flowtable.
+"""
 def getConflictsFlowtable(verificationId):
-    filename = "rest/api/data/conflicts_" + verificationId
+    filename = "rest/api/data/conflicts_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "No conflicts detected for the current topology"}
+        return {"status": "No conflicts detected for the current topology."}
     else:
         conflictsFile = open(filename, "r")
         return {"status": conflictsFile.read()}
 
-
+"""
+Get redundancies within flowtable.
+"""
 def getRedundanciesFlowtable(verificationId):
-    filename = "rest/api/data/redundancies_" + verificationId
+    filename = "rest/api/data/redundancies_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "No redundancies detected for the current topology"}
+        return {"status": "No redundancies detected for the current topology."}
     else:
         redundanciesFile = open(filename, "r")
         return {"status": redundanciesFile.read()}
 
+"""
+Get whole flowtable.
+"""
 def getFlowtable(verificationId):
-    filename = "rest/api/data/flowtable_" + verificationId
+    filename = "rest/api/data/flowtable_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "Flowtable not found"}
+        return {"status": "Flowtable not found."}
     else:
         flowtableFile = open(filename, "r")
         return {"status": flowtableFile.read()}
