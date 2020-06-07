@@ -5,7 +5,7 @@ rules_route = Blueprint('rules_route', __name__)
 
 @rules_route.route("/rules/verifyRulesFlowtable", methods=["GET"])
 def verifyRulesFlowtable():
-    return jsonify(Rules.verifyFlowtable())
+    return jsonify(Rules.verifyFlowtable('127.0.0.1', '8010'))
 
 @rules_route.route("/rules/verifyRulesFirewall", methods=["GET"])
 def verifyRulesFirewall():

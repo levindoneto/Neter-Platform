@@ -1,0 +1,108 @@
+
+{
+"topology": 
+{
+"00:00:00:00:00:00:00:01": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "1106",
+ "idle_timeout_s": "0",
+ "duration_nsec": "598000000",
+ "packet_count": "15",
+ "duration_sec": "8458",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:03": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "54322",
+ "idle_timeout_s": "0",
+ "duration_nsec": "590000000",
+ "packet_count": "683",
+ "duration_sec": "8458",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:02": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "54322",
+ "idle_timeout_s": "0",
+ "duration_nsec": "584000000",
+ "packet_count": "683",
+ "duration_sec": "8458",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+}
+}
+}
