@@ -714,3 +714,13 @@ def getConflictsFlowtable(verificationId):
         conflictsFile = open(filename, "r")
         return {"status": conflictsFile.read()}
 
+
+def getRedundanciesFlowtable(verificationId):
+    filename = "rest/api/data/redundancies_" + verificationId
+    filesize = os.path.getsize(filename)
+    if (0 == filesize):
+        return {"status": "No redundancies detected for the current topology"}
+    else:
+        redundanciesFile = open(filename, "r")
+        return {"status": redundanciesFile.read()}
+
