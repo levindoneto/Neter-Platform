@@ -705,3 +705,12 @@ def verifyFlowtable(ip, port):
     arquivoDadosCSV.close()
     return True
 
+def getConflictsFlowtable(verificationId):
+    filename = "rest/api/data/conflicts_" + verificationId
+    filesize = os.path.getsize(filename)
+    if (0 == filesize):
+        return {"status": "No conflicts detected for the current topology"}
+    else:
+        conflictsFile = open(filename, "r")
+        return {"status": conflictsFile.read()}
+
