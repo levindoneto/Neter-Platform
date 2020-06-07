@@ -724,3 +724,11 @@ def getRedundanciesFlowtable(verificationId):
         redundanciesFile = open(filename, "r")
         return {"status": redundanciesFile.read()}
 
+def getFlowtable(verificationId):
+    filename = "rest/api/data/flowtable_" + verificationId
+    filesize = os.path.getsize(filename)
+    if (0 == filesize):
+        return {"status": "Flowtable not found"}
+    else:
+        flowtableFile = open(filename, "r")
+        return {"status": flowtableFile.read()}
