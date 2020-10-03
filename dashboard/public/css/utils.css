@@ -1,0 +1,732 @@
+.DigitalEnvironment {
+    height: 400px;
+    width: 100%;
+}
+
+/*Pre Loader*/
+.cssload-loader {
+    position: relative;
+    left: calc(50% - 188px);
+    width: 376px;
+    height: 376px;
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    perspective: 4700px;
+}
+
+.cssload-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.cssload-inner.cssload-one {
+    left: 0%;
+    top: 0%;
+    animation: cssload-rotate-one 1.15s linear infinite;
+    -o-animation: cssload-rotate-one 1.15s linear infinite;
+    -ms-animation: cssload-rotate-one 1.15s linear infinite;
+    -webkit-animation: cssload-rotate-one 1.15s linear infinite;
+    -moz-animation: cssload-rotate-one 1.15s linear infinite;
+    border-bottom: 30px solid rgb(255,255,255); /*Color 1*/
+}
+
+.cssload-inner.cssload-two {
+    right: 0%;
+    top: 0%;
+    animation: cssload-rotate-two 1.15s linear infinite;
+    -o-animation: cssload-rotate-two 1.15s linear infinite;
+    -ms-animation: cssload-rotate-two 1.15s linear infinite;
+    -webkit-animation: cssload-rotate-two 1.15s linear infinite;
+    -moz-animation: cssload-rotate-two 1.15s linear infinite;
+    border-right: 30px solid rgb(0,0,0); /*Color 2*/
+}
+
+.cssload-inner.cssload-three {
+    right: 0%;
+    bottom: 0%;
+    animation: cssload-rotate-three 1.15s linear infinite;
+    -o-animation: cssload-rotate-three 1.15s linear infinite;
+    -ms-animation: cssload-rotate-three 1.15s linear infinite;
+    -webkit-animation: cssload-rotate-three 1.15s linear infinite;
+    -moz-animation: cssload-rotate-three 1.15s linear infinite;
+    border-top: 18px solid rgb(133,129,133);
+}
+
+@keyframes cssload-rotate-one {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate-one {
+    0% {
+        -o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        -o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate-one {
+    0% {
+        -ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        -ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate-one {
+    0% {
+        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate-one {
+    0% {
+        -moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        -moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@keyframes cssload-rotate-two {
+    0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate-two {
+    0% {
+        -o-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        -o-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate-two {
+    0% {
+        -ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        -ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate-two {
+    0% {
+        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate-two {
+    0% {
+        -moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        -moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@keyframes cssload-rotate-three {
+    0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate-three {
+    0% {
+        -o-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        -o-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate-three {
+    0% {
+        -ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        -ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate-three {
+    0% {
+        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate-three {
+    0% {
+        -moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        -moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+/* End of pre loader */
+
+/* Button of login/register in the modelpp*/
+.button {
+  display: inline-block;
+  /* border-radius: 70px; */
+  background-color:#099496;
+  border: 5px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+  margin: auto;
+  width: 80%;
+  height: 40%;
+  transition: all 0.5s;
+  cursor: pointer;
+  webkit-justify-content: center;
+
+}
+
+.button span {
+  cursor: pointer;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+
+}
+
+.aboutpage {
+    background-color: rgba(31, 43, 58, 0.4);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* My Account */
+.Titlemyaccount {
+    background-color: rgba(31, 43, 58, 0.4);
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: black;
+}
+
+.titleMYACC {
+    margin-left: 4px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.InfoAccount {
+    font-size: 18px;
+    color: #099496;
+}
+
+.EditInfoField {
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.AddProperty{
+    background-color: #099496;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: -110px;
+    margin-left: 2px;
+    font-size: 18px;
+    color: white;
+    display: inline;
+    align: left;
+}
+
+.DataEdit {
+    background-color: #099496;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 8px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+    /* Horizontal centralizing */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    color: white;
+    display: block;
+    align: center;
+}
+
+.DataEdit:hover{
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.AddElementBtn {
+    background-color: #099496;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 8px;
+    margin-top: 6px;
+    /* Horizontal centralizing */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    color: white;
+    display: block;
+    align: center;
+}
+
+.AddElementBtn:hover {
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.Refresh {
+    background-color: #099496;
+    padding: 7px;
+    border-radius: 4px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+    color: white;
+    display: block;
+    align: center;
+}
+
+.Refresh:hover{
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+
+.Warnings {
+    background-color: #099496;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+    margin-top: -10px;
+    margin-bottom: -50px;
+    font-size: 14px;
+    color: white;
+    display: inline;
+}
+
+.Warnings:hover {
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.WarningsDiv {
+    margin-bottom: -25px;
+}
+
+.AddSpecificPropButton {
+    background-color: #099496;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 15px;
+    font-size: 13px;
+    color: white;
+    margin-top: auto;
+    align: center;
+}
+
+.AddSpecificPropButton:hover{
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.AddProperty:hover{
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.RmvButtonaddbelonging {
+    background-color: #099496;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: white;
+    display: block;
+    margin: auto;
+    align: center;
+}
+
+.RmvButtonaddbelonging:hover {
+    background-color: #099496;
+    align: center;
+}
+
+.MyInfo {
+    color: #0D47A1;
+    font-size: 18px;
+    font-weight: bold;
+}
+.MyInfoP {
+    color: black;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* Add model */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+    padding-left: 6px;
+    border: 1px;
+    background-color: #099496;
+    font-size: 15px;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.custom-file-upload:hover {
+    background-color: #099496;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.BoxInput {
+    color: black;
+    font-size: 14px;
+    width: 100%;
+}
+
+.BoxInputDefaultObjects {
+    color: black;
+    word-break: break-word;
+    font-size: 14px;
+    height: 250px;
+    width: 100%;
+}
+
+/* Search */
+.SearchFilter {
+    font-size: 18px;
+    color: black;
+}
+
+.titleSearch {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.BtnCloseSearch {
+    border: 1px;
+    background-color: #099496;
+    color: white;
+    border-radius: 8px;
+    margin: auto
+    margin: 2px 2px 2px 2px;
+}
+
+.BtnCloseSearch:hover {
+    background-color: #099496;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.DetailsmodelSearch {
+    border: 1px;
+    background-color: #099496;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.DetailsmodelSearch:hover {
+    background-color: #099496;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.DetailsUserSearch {
+    border: 1px;
+    background-color: #099496;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-left: 4px;
+    padding: 5px;
+}
+
+.editDataPopUpUpdate {
+    background-color: #099496;
+    color: white;
+}
+
+.editDataPopUpUpdate:hover {
+    background-color: #00BCD4;
+}
+
+.editDataPopUpCancel {
+    background-color: #099496;
+    color: white;
+}
+
+.editDataPopUpCancel:hover {
+    background-color: #00BCD4;
+}
+
+.DetailsUserSearch:hover {
+    background-color: #00BCD4;
+    color: white;
+    cursor: pointer;
+    
+}
+
+.ImgSearch {
+    border: 1px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 1px grey;
+}
+
+/*My Contexts*/
+.BtnmyContexts {
+    background-color: #099496;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 3px;
+    margin-bottom: 4px;
+    /* To centralize the button */
+    margin-left: auto;
+    margin-right: auto;
+    /****************************/
+    font-size: 17px;
+    color: white;
+    display: block;
+    align: center;
+}
+
+.BtnmyContexts:hover{
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+/*My models*/
+.Btnmybelongings {
+    border: 1px;
+    background-color: #099496;
+    padding: 4px 6px;
+    margin-left: 1px;
+    border-radius: 8px;
+}
+
+.Btnmybelongings:hover {
+    background-color: #00BCD4;
+    transition: all 0.5s;
+}
+
+.BtnClosemybelongings {
+    border: 1px;
+    background-color: #099496;
+    color: white;
+    border-radius: 8px;
+    margin: auto
+}
+
+.BtnClosemybelongings:hover {
+    background-color: #00BCD4;
+    cursor: pointer;
+}
+
+.Imgmybelongings {
+    border: 1px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+h6.TitleWithlist {
+    font-size: 16px;
+    color: black;
+}
+
+.KeyWordWithlist {
+    color: black;
+    font-size: 14px;
+}
+
+p.Withlist {
+    color: #262f28;
+    font-size: 14px;
+}
+
+/* General Style */
+h, button {
+    margin: 2px 2px 2px 2px;
+}
+
+button {
+    box-shadow: 1px 1px 1px grey;
+    transition: all 0.5s;
+}
+
+button:hover {
+    box-shadow: 1px 1px 1px black;
+    transition: all 0.5s;
+}
+
+h5.H5Trades, h5.ReportedTrades, .Adm {
+    font-size: 16px;
+    color: black;
+}
+
+.nameApp {
+    font-size: 30px;
+    color: white;
+}
+
+.MenuUP {
+    font-size: 18px;
+    color: black;
+}
+
+.exampleDefaultGraph {
+    color: #006495;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 14px;
+}
+
+.exampleDefaultGraph:hover {
+    color: black;
+    transition: all 0.5s;
+}
+
+.checkbox-list__item {
+    position: relative;
+    padding: 10px 0;
+    display: block;
+    cursor: pointer;
+    margin: 0 0 0 34px;
+    border-bottom: 1px solid #b4bcc2;
+  
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+  
+  /* Checkbox - Add Additional Properties */
+  input[type=checkbox] {
+    transform: scale(1.8);
+    margin-left: 6px;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .NestedType {
+      color:#3f535a;
+  }
+
+  /* Button for changing views (admin <-> normal user) */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #099496;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #099496;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .WarningsSec {
+      margin-top: -40px;
+  }
+
+  .LoginDesign {
+      background-color: #099496;
+      color: white;
+  }

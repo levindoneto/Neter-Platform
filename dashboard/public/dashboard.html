@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placidus</title>
+    <meta name="description" content="Angular Bootstrap Dashboard"/>
+    <link rel="shortcut icon" href="img/icon.png" type="img/x-icon">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="plugins/angular-material/angular-material.min.css" rel="stylesheet" />
+    <!--CSS-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/nga.all.min.css" rel="stylesheet" />
+    <link href="css/themes.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="plugins/bootstrap-slider/slider.css" rel="stylesheet" />
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link href="plugins/owl-carousel/owl.transitions.css" rel="stylesheet" />
+    <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="css/loginUtils.css" rel="stylesheet" />
+    <link href="css/utils.css" rel="stylesheet" />
+</head>
+<body ng-app="app" class="hold-transition sidebar-mini {{theme}} {{layout}}">
+    <!--Scripts-->
+    <script src="plugins/vendor/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <script src="plugins/bootstrap-slider/bootstrap-slider.js"></script>
+    <!-- Order matters here, otherwise an error would appear in the first ngReact module loaded -->
+    <script src="js/angular.min.js"></script>
+    <!-- <script src="bower_components/angular/angular.js"></script> -->
+    <!-- ReactJS -->
+    <script src="bower_components/react/react.js"></script>
+    <!-- ReactDOM -->
+    <script src="bower_components/react/react-dom.js"></script>
+    <!-- React Components -> AngularJS -->
+    <script src="bower_components/ngReact/ngReact.min.js"></script>
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-ui-router-min.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="plugins/knob/jquery.knob.js"></script>
+    <script src="plugins/Chart.min.js"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="js/angular-material.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+
+    <script src="js/angular-flash.js"></script>
+    <script src="js/angular-sanitize.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyDv0iDA3PM_1bigREZ7LM1T3njA2Y329Js",
+        authDomain: "dash-placidus.firebaseapp.com",
+        databaseURL: "https://dash-placidus.firebaseio.com",
+        projectId: "dash-placidus",
+        storageBucket: "dash-placidus.appspot.com",
+        messagingSenderId: "55478081187",
+        appId: "1:55478081187:web:25e01fcd813deee384d116",
+        measurementId: "G-PMBMR877K9"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!--Common-->
+
+    <script src="app/common/config.js"></script>
+
+    <!--main app-->
+    <script src="app/app.js"></script>
+    <script src="app/common/appCtrl.js"></script>
+    <script src="app/services/apiService.js"></script>
+
+    <!--Login Module-->
+    <script src="app/modules/login/loginMgmt.js"></script>
+    <script src="app/modules/login/loginService.js"></script>
+    <script src="app/modules/login/loginCtrl.js"></script>
+
+    <!--Dashboard Module-->
+    <script src="app/modules/dashboard/dashboardApplication.js"></script>
+    <script src="app/modules/dashboard/dashboardService.js"></script>
+
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+
+    <!-- Controllers -->
+    <script src="app/modules/dashboard/controllers/myaccount.js"></script>
+    <script src="app/modules/dashboard/controllers/mybelongings.js"></script>
+
+    <div flash-message="5000"></div>
+
+<ui-view></ui-view>
+
+</body>
+</html>
