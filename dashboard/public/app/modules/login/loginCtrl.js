@@ -33,10 +33,12 @@ login.controller(
                     .$signInWithEmailAndPassword(data.Email, data.Password)
                     .then(firebaseUser => {})
                     .catch(error => {
-                        Flash.create(
-                            `Danger: Fail in the autentication->${error}`,
-                            'large-text'
-                        );
+                        swal({
+                            title: 'Incorrect login information, please try again',
+                            text: "Wrong informed email or password",
+                            icon: 'error',
+                            button: true
+                        });
                     });
             };
 
