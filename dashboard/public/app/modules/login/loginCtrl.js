@@ -74,7 +74,7 @@ login.controller(
 
             auth.$onAuthStateChanged(firebaseUser => {
                 if (firebaseUser) {
-                    $state.go('app.myaccount'); // Go to my account when the user is allowed to access the platform
+                    $state.go('app.account'); // Go to my account when the user is allowed to access the platform
                 }
             });
         }

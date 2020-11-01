@@ -1,0 +1,38 @@
+<!-- Content Header (Page header) -->
+<script>
+</script>
+<section class="content-header">
+    <h1 class="titleMYACC">
+        Add Topology
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <form name="myForm" ng-submit="vm.addTopology(vm.hosts,vm.switches,vm.links,vm.isDefault)">
+                        <h4 class="Titlemyaccount">Hosts</h4>
+                        <input class="BoxInput" min="0" type="number" ng-model="vm.hosts">
+                        <h4 class="Titlemyaccount">Switches</h4>
+                        <input class="BoxInput" min="0" type="number" ng-model="vm.switches">
+                        <h4 class="Titlemyaccount">Links</h4>
+                        <input class="BoxInput" placeholder="Links" type="text" ng-model="vm.links">
+                        <h4 class="Titlemyaccount">Default</h4>
+                        <input type="checkbox" ng-model="vm.isDefault">
+                        <button class="AddElementBtn" type="submit">
+                            <div>
+                                Add Topology
+                            </div>
+                        </button>
+                        </br>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

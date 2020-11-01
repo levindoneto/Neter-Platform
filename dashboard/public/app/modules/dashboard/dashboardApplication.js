@@ -23,23 +23,53 @@ dashboard.factory('notification', ($firebaseArray, $firebaseObject) => ({
 dashboard.config([
     '$stateProvider',
     function ($stateProvider) {
-        $stateProvider.state('app.myaccount', {
-            url: '/myaccount',
-            templateUrl: 'app/modules/dashboard/views/myaccount.html',
-            controller: 'myaccountController',
+        $stateProvider.state('app.account', {
+            url: '/account',
+            templateUrl: 'app/modules/dashboard/views/account.html',
+            controller: 'accountController',
             controllerAs: 'vm',
             data: {
-                pageTitle: 'My Account'
+                pageTitle: 'Account'
             }
         });
 
-        $stateProvider.state('app.mybelongings', {
-            url: '/evaluations',
-            templateUrl: 'app/modules/dashboard/views/mybelongings.html',
-            controller: 'mybelongingsController',
+        $stateProvider.state('app.addtopology', {
+            url: '/addtopology',
+            templateUrl: 'app/modules/dashboard/views/addtopology.html',
+            controller: 'addtopologyController',
             controllerAs: 'vm',
             data: {
-                pageTitle: 'My Topologies'
+                pageTitle: 'Add Topology'
+            }
+        });
+
+        $stateProvider.state('app.controller', {
+            url: '/controller',
+            templateUrl: 'app/modules/dashboard/views/controller.html',
+            controller: 'controllerController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'SDN Controller'
+            }
+        });
+
+        $stateProvider.state('app.firewall', {
+            url: '/firewall',
+            templateUrl: 'app/modules/dashboard/views/firewall.html',
+            controller: 'firewallController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Firewall'
+            }
+        });
+
+        $stateProvider.state('app.topologies', {
+            url: '/topologies',
+            templateUrl: 'app/modules/dashboard/views/topologies.html',
+            controller: 'topologiesController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Topologies'
             }
         });
     }
