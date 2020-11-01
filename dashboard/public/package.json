@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "http-server ./Implementierung -a localhost -p 8010"
+    "start": "http-server . -a localhost -p 8087"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
