@@ -1,5 +1,3 @@
-
-
 app.controller('appCtrl', ['$rootScope', '$scope', '$state', '$location', 'Flash', 'appSettings', '$firebaseAuth', '$firebaseObject',
 function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAuth, $firebaseObject) {
     const vm = this;
@@ -114,32 +112,36 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
         },
     ];
 
-
-    // Admins' menu items
     vm.menuItems = [
         {
-            title: 'My Account',
+            title: 'Account',
             icon: 'user',
-            state: 'myaccount'
+            state: 'account'
         },
         {
-            title: 'My Topologies',
+            title: 'Controller', // http://localhost:8010/ui/pages/index.html
             icon: 'tablet',
-            state: 'mybelongings'
-        },
-    ];
-
-    // Normal users' menu items
-    vm.menuItemsNormalUser = [
-        {
-            title: 'My Account',
-            icon: 'user',
-            state: 'myaccount'
+            state: 'controller'
         },
         {
-            title: 'My Topologies',
-            icon: 'tablet',
-            state: 'mybelongings'
+            title: 'Topologies',
+            icon: 'table',
+            state: 'topologies'
+        },
+        {
+            title: 'Add Topology',
+            icon: 'plus-circle',
+            state: 'addtopology'
+        },
+        {
+            title: 'Firewall', // http://localhost:8010/ui/pages/firewall.html
+            icon: 'shield',
+            state: 'firewall'
+        },
+        {
+            title: 'Formal Verification',
+            icon: 'check-circle-o',
+            state: 'formalverification'
         },
     ];
 

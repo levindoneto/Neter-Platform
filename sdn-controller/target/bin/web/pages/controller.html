@@ -40,160 +40,43 @@
         </div>
 
         <div class="row">
-
             <div class="col-lg-4 col-md-12">
                 <div class="panel" id="controllerStatusPanel">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-5">
                                 <i id="controllerStatusIcon"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-12 text-right">
                                 <div class="huge" id="controllerStatus">...</div>
-                                <div>Controller Status</div>
+                                <div>Status</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-12">
                 <div class="panel-yellow">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-5">
                                 <i class="glyphicon glyphicon-time fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-12 text-right">
                                 <div class="huge" id="controllerUpTime">...</div>
-                                <div>Uptime (HH-mm-ss)</div>
+                                <div>Uptime (in hours)</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
-                <div class="panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-user fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="controllerRole">...</div>
-                                <div>Controller Role <a href="#" class="btn btn-xs btn-success"
-                                                        data-toggle="modal"
-                                                        data-target=".bs-example-modal-sm">Change</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-random fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="switchCountDiv">0</div>
-                                <div>Switches</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="switches.html">
-                        <div class="panel-footer">
-                            <span class="pull-left">See All</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-laptop fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="hostCountDiv">0</div>
-                                <div>Hosts</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="hosts.html">
-                        <div class="panel-footer">
-                            <span class="pull-left">See All</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-expand fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="linkCountDiv">0</div>
-                                <div>Connections (Links)</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="links.html">
-                        <div class="panel-footer">
-                            <span class="pull-left">See All</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-check-square-o fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="portCountDiv">0</div>
-                                <div>Reserved Ports</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left">See All</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-4 col-md-4">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <i class="fa fa-dashboard fa-fw"></i>JVM Memory Bloat
-                    </div>
                     <!-- /.panel-heading -->
+                    <div class="panel-heading">
+                        <i class="fa fa-dashboard fa-fw"></i>Internal Memory Use
+                    </div>
                     <div class="panel-body">
-
                         <div class="sidebar-widget">
                             <canvas width="150" height="80" id="foo" class=""
                                     style="width: 160px; height: 100px;"></canvas>
@@ -203,96 +86,82 @@
                                 <span id="goal-text" class="goal-value pull-right"></span>
                             </div>
                         </div>
-
                     </div>
                     <!-- /.panel-body -->
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <i class="fa fa-signal fa-fw"></i> Consumption Detail
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item">
-                                <i class="fa fa-info fa-fw"></i> Total:
-                                    <span class="pull-right text-muted small">
-                                        <em>
-                                            <div id="totalMemoryDiv"></div>
-                                        </em>
-                                    </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <i class="fa fa-info fa-fw"></i> Used:
-                                    <span class="pull-right text-muted small">
-                                        <em>
-                                            <div id="usedMemoryDiv"></div>
-                                        </em>
-                                    </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <i class="fa fa-info fa-fw"></i> Free:
-                                    <span class="pull-right text-muted small">
-                                        <em>
-                                            <div id="freeMemoryDiv"></div>
-                                        </em>
-                                    </span>
-                            </a>
-
-                        </div>
-                        <!-- /.list-group -->
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <i class="fa fa-table fa-fw"></i> Storage Tables
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div id="storageTables"></div>
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-            </div>
-
         </div>
 
+        <!-- /.row -->
         <div class="row">
-            <div class="col-md-6 col-lg-6">
-                <div class="panel panel-primary">
+            <div class="col-lg-4 col-md-12">
+                <div class="panel panel-red">
                     <div class="panel-heading">
-                        <i class="fa fa-table fa-fw"></i> Modules Loaded
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <i class="fa fa-random fa-5x"></i>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <div class="huge" id="switchCountDiv">0</div>
+                                <div>Switches</div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div id="loadedModules"></div>
-                    </div>
-                    <!-- /.panel-body -->
+                    <a href="switches.html">
+                        <div class="panel-footer">
+                            <span class="pull-left">See</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
                 </div>
-
             </div>
-
-            <div class="col-md-6 col-lg-6">
-
-                <div class="panel panel-primary">
+            <div class="col-lg-4 col-md-12">
+                <div class="panel panel-red">
                     <div class="panel-heading">
-                        <i class="fa fa-table fa-fw"></i> All Modules
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <i class="fa fa-laptop fa-5x"></i>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <div class="huge" id="hostCountDiv">0</div>
+                                <div>Hosts</div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div id="allModules"></div>
+                    <a href="hosts.html">
+                        <div class="panel-footer">
+                            <span class="pull-left">See</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <i class="fa fa-expand fa-5x"></i>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <div class="huge" id="linkCountDiv">0</div>
+                                <div>Links</div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.panel-body -->
+                    <a href="links.html">
+                        <div class="panel-footer">
+                            <span class="pull-left">See</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
+        <!-- /.row -->
 
         <!-- Small modal -->
         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
