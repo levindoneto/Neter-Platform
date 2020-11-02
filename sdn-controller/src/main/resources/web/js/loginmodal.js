@@ -17,7 +17,7 @@ $('#login-modal button').on('click', function (e) {
     var $target = $(e.target);
     console.log($target);
     //$(this).closest('.modal').on('hidden.bs.modal', function (e) {
-    //    alert('The buttons id that closed the modal is: #' + $target[0].id);
+    //    console.error('The buttons id that closed the modal is: #' + $target[0].id);
     //});
     if ($target[0].id == "start-button") {
         $('#login-modal').on('hide.bs.modal', function (e) {

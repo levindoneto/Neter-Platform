@@ -426,7 +426,7 @@
             $("#dpid").html(data["dpid"]);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+            console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
         }
     });
 
@@ -453,7 +453,7 @@
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+            console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
         }
     });
 
@@ -475,7 +475,7 @@
             $("#actionsFf").html(data.group_features["actions_ff"]);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+            console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
         }
     });
 
@@ -493,7 +493,7 @@
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+            console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
         }
     });
 
@@ -537,7 +537,7 @@
         }
         ,
         error: function (xhr, status, error) {
-            alert("Hata==" + xhr.responseText);
+            console.error("Hata==" + xhr.responseText);
             return "";
         }
 
@@ -568,7 +568,7 @@
         }
         ,
         error: function (xhr, status, error) {
-            alert("Hata==" + xhr.responseText);
+            console.error("Hata==" + xhr.responseText);
             return "";
         }
     });
@@ -594,7 +594,7 @@
                 $("#rb" + role).prop("checked", true);
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+                console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
             }
         });
     }
@@ -641,7 +641,7 @@
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
+                console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
             }
         });
     }
@@ -665,7 +665,7 @@
         }
         ,
         error: function (xhr, status, error) {
-            alert("Hata==" + xhr.responseText);
+            console.error("Hata==" + xhr.responseText);
             return "";
         }
     });
@@ -694,7 +694,7 @@
             }
             ,
             error: function (xhr, status, error) {
-                alert("Hata==" + xhr.responseText);
+                console.error("Hata==" + xhr.responseText);
                 return "";
             }
         });
