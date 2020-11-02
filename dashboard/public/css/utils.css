@@ -2,11 +2,6 @@ body {
     overflow: hidden;
 }
 
-.DigitalEnvironment {
-    height: 400px;
-    width: 100%;
-}
-
 /*Pre Loader*/
 .cssload-loader {
     position: relative;
@@ -740,5 +735,5 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
     display: block;
     overflow: hidden;
     width: 100%;
-    height: 500px;
+    height: 650px;
 }
