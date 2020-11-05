@@ -132,42 +132,52 @@
                     </div>
                 </div>
 
+            </div>
 
-                <div class="col-lg-3">
+
+            <div class="row">
+                <div class="col-md-1">
+                    <input type="button" id="btnFlowPusher" class="btn btn-sm btn-primary"
+                           value="Edit Flow (Rules)"/>
+                </div>
+                <br/>
+                <br/>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-user fa-fw"></i> Role Info
+                            <i class="fa fa-info fa-fw"></i> Flow Table
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            <table class='table table-bordered table-striped table-hover responsive-utilities'
+                                   id="flowTable">
+                                <thead>
+                                <tr>
+                                    <th>Table No</th>
+                                    <th>Pkt.Count</th>
+                                    <th>Byte</th>
+                                    <th>Duration(s)</th>
+                                    <th>Priority</th>
+                                    <th>IdleTimeoutSec</th>
+                                    <th>HardTimeoutSec</th>
+                                    <th>Flags</th>
+                                    <th>Instructions</th>
+                                </tr>
+                                </thead>
+                            </table>
 
-                            <div class="form-group">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" id="rbMASTER" name="iCheck"> MASTER
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" id="rbSLAVE" name="iCheck"> SLAVE
-                                    </label>
-                                </div>
-
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" id="rbEQUAL" name="iCheck"> EQUAL
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="button" id="btnChangeRole" class="btn btn-primary">Change</button>
                         </div>
                         <!-- /.panel-body -->
                     </div>
+
+
                 </div>
 
-
             </div>
-
 
             <div class="row">
                 <div class="col-lg-12">
@@ -207,52 +217,6 @@
 
 
             <div class="row">
-                <div class="col-md-1">
-                    <input type="button" id="btnFlowPusher" class="btn btn-sm btn-primary"
-                           value="Edit Static Flow Entries"/>
-                </div>
-                <br/>
-                <br/>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-info fa-fw"></i> Flow Table
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table class='table table-bordered table-striped table-hover responsive-utilities'
-                                   id="flowTable">
-                                <thead>
-                                <tr>
-                                    <th>Table No</th>
-                                    <th>Pkt.Count</th>
-                                    <th>Byte</th>
-                                    <th>Duration(s)</th>
-                                    <th>Priority</th>
-                                    <th>IdleTimeoutSec</th>
-                                    <th>HardTimeoutSec</th>
-                                    <th>Flags</th>
-                                    <th>Instructions</th>
-                                </tr>
-                                </thead>
-                            </table>
-
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <div class="row">
                 <div class="col-md-8">
 
                     <div class="panel panel-primary">
@@ -275,60 +239,6 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
-
-
-                </div>
-                <div class="col-md-4">
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-info fa-fw"></i> Groups
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <tr>
-                                    <td><b>capabilities</b></td>
-                                    <td>: <span id="capabilities"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>maxGroupsAll</b></td>
-                                    <td>: <span id="maxGroupsAll"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>maxGroupsSelect</b></td>
-                                    <td>: <span id="maxGroupsSelect"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>maxGroupsIndirect</b></td>
-                                    <td>: <span id="maxGroupsIndirect"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>maxGroupsFf</b></td>
-                                    <td>: <span id="maxGroupsFf"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>actionsAll</b></td>
-                                    <td>: <span id="actionsAll"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>actionsSelect</b></td>
-                                    <td>: <span id="actionsSelect"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>actionsIndirect</b></td>
-                                    <td>: <span id="actionsIndirect"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>actionsFf</b></td>
-                                    <td>: <span id="actionsFf"></span></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-
-
                 </div>
             </div>
 
@@ -456,29 +366,6 @@
             console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
         }
     });
-
-
-    //GROUP BİLGİSİ
-    $.ajax({
-        url: " http://" + ipaddress + ":" + restport + "/wm/core/switch/" + sId + "/group-features/json",
-        success: function (data) {
-            console.log(data);
-            $("#capabilities").html(data.group_features["capabilities"]);
-            $("#maxGroupsAll").html(data.group_features["max_groups_all"]);
-            $("#maxGroupsSelect").html(data.group_features["max_groups_select"]);
-            $("#maxGroupsIndirect").html(data.group_features["max_groups_indirect"]);
-            $("#maxGroupsFf").html(data.group_features["max_groups_ff"]);
-
-            $("#actionsAll").html(data.group_features["actions_all"]);
-            $("#actionsSelect").html(data.group_features["actions_select"]);
-            $("#actionsIndirect").html(data.group_features["actions_indirect"]);
-            $("#actionsFf").html(data.group_features["actions_ff"]);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error('Hata: ' + " " + jqXHR.responseText + " \n Status: " + textStatus + " \n Error Thrown: " + errorThrown);
-        }
-    });
-
 
     ///ANAHTAR DETAY BİLGİSİ
     $.ajax({
