@@ -19,7 +19,7 @@
   </style>
   <script>
     function bridge(e) {
-      window.alert(JSON.stringify(e));
+      window.console.info(JSON.stringify(e));
     }
     window.snapshot = function () {
       bridge({ fn: "snapshot" });

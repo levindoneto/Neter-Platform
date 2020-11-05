@@ -24,7 +24,7 @@
  *    } );
  *
  *    // This will show 2
- *    alert( 'Visible Column 1 data index: '+table.fnVisibleToColumnIndex(1) );
+ *    console.info( 'Visible Column 1 data index: '+table.fnVisibleToColumnIndex(1) );
  */
 
 jQuery.fn.dataTableExt.oApi.fnVisibleToColumnIndex = function ( oSettings, iMatch )

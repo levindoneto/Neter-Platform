@@ -86,7 +86,7 @@ def outputToAction(output):
     action = classBit.makeBitVector(output)
     return action
 
-''' Receives a list with informations about header of one rule and return a BitVector package test
+''' Receives a list with information about header of one rule and return a BitVector package test
     @:parameter: *List (Each index has a hexadecimal string)
     @:return: BitVector package [match, dst]
 '''

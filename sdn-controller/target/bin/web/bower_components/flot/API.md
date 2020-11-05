@@ -541,7 +541,7 @@ in milliseconds, so remember to multiply by 1000!
 You can see a timestamp like this
 
 ```js
-alert((new Date()).getTime())
+console.info((new Date()).getTime())
 ```
 
 There are different schools of thought when it comes to display of
@@ -981,13 +981,13 @@ You can use "plotclick" and "plothover" events like this:
 $.plot($("#placeholder"), [ d ], { grid: { clickable: true } });
 
 $("#placeholder").bind("plotclick", function (event, pos, item) {
-    alert("You clicked at " + pos.x + ", " + pos.y);
+    console.info("You clicked at " + pos.x + ", " + pos.y);
     // axis coordinates for other axes, if present, are in pos.x2, pos.x3, ...
     // if you need global screen coordinates, they are pos.pageX, pos.pageY
 
     if (item) {
         highlight(item.series, item.datapoint);
-        alert("You clicked a point!");
+        console.info("You clicked a point!");
     }
 });
 ```
@@ -1189,7 +1189,7 @@ Flot to keep track of its state, so be careful.
     ```js
     var series = plot.getData();
     for (var i = 0; i < series.length; ++i)
-        alert(series[i].color);
+        console.info(series[i].color);
     ```
 
     A notable other interesting field besides color is datapoints
@@ -1279,7 +1279,7 @@ plot object, e.g.
 
 ```js
   // define a simple draw hook
-  function hellohook(plot, canvascontext) { alert("hello!"); };
+  function hellohook(plot, canvascontext) { console.info("hello!"); };
 
   // pass it in, in an array since we might want to specify several
   var plot = $.plot(placeholder, data, { hooks: { draw: [hellohook] } });
@@ -1420,7 +1420,7 @@ hooks in the plugins bundled with Flot.
     ```js
     function (plot, eventHolder) {
         eventHolder.mousedown(function (e) {
-            alert("You pressed the mouse at " + e.pageX + " " + e.pageY);
+            console.info("You pressed the mouse at " + e.pageX + " " + e.pageY);
         });
     }
     ```
