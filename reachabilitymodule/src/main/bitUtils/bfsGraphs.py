@@ -2,8 +2,8 @@
 # coding: UTF-8
 
 import collections
-from src.main.bitUtils import bitVectorUtils as classBit
-from src.main.data import bitList as classBitList
+import bitVectorUtils as classBit
+import bitList as classBitList
 from BitVector import BitVector
 import time
 '''#Define'''
