@@ -3501,7 +3501,7 @@
      |          .attr({fill: "#000"})
      |          .data("i", i)
      |          .click(function () {
-     |             alert(this.data("i"));
+     |             console.info(this.data("i"));
      |          });
      | }
     \*/

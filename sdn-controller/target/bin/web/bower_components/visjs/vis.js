@@ -10306,7 +10306,7 @@ return /******/ (function(modules) { // webpackBootstrap
    *   var step = new StepNumber(0, 10, 2.5, true);
    *   step.start();
    *   while (!step.end()) {
-   *   alert(step.getCurrent());
+   *   console.info(step.getCurrent());
    *   step.next();
    *   }
    *
@@ -23149,7 +23149,7 @@ return /******/ (function(modules) { // webpackBootstrap
         if (this.previousColor !== undefined) {
           this.setColor(this.previousColor, false);
         } else {
-          alert("There is no last color to load...");
+          console.info("There is no last color to load...");
         }
       }
 
@@ -41118,7 +41118,7 @@ return /******/ (function(modules) { // webpackBootstrap
                 throw new Error('The function for edit does not support two arguments (data, callback)');
               }
             } else {
-              alert(this.options.locales[this.options.locale]['editClusterError'] || this.options.locales['en']['editClusterError']);
+              console.info(this.options.locales[this.options.locale]['editClusterError'] || this.options.locales['en']['editClusterError']);
             }
           } else {
             throw new Error('No function has been configured to handle the editing of nodes.');
@@ -41262,7 +41262,7 @@ return /******/ (function(modules) { // webpackBootstrap
         if (selectedNodes.length > 0) {
           for (var i = 0; i < selectedNodes.length; i++) {
             if (this.body.nodes[selectedNodes[i]].isCluster === true) {
-              alert(this.options.locales[this.options.locale]['deleteClusterError'] || this.options.locales['en']['deleteClusterError']);
+              console.info(this.options.locales[this.options.locale]['deleteClusterError'] || this.options.locales['en']['deleteClusterError']);
               return;
             }
           }
@@ -41779,7 +41779,7 @@ return /******/ (function(modules) { // webpackBootstrap
         // perform the connection
         if (node !== undefined && this.selectedControlNode !== undefined) {
           if (node.isCluster === true) {
-            alert(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
+            console.info(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
           } else {
             var from = this.body.nodes[this.temporaryIds.nodes[0]];
             if (this.selectedControlNode.id === from.id) {
@@ -41817,7 +41817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
           if (node !== undefined) {
             if (node.isCluster === true) {
-              alert(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
+              console.info(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
             } else {
               // create a node the temporary line can look at
               var targetNode = this._getNewTargetNode(node.x, node.y);
@@ -41896,7 +41896,7 @@ return /******/ (function(modules) { // webpackBootstrap
         // perform the connection
         if (node !== undefined) {
           if (node.isCluster === true) {
-            alert(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
+            console.info(this.options.locales[this.options.locale]['createEdgeError'] || this.options.locales['en']['createEdgeError']);
           } else {
             if (this.body.nodes[connectFromId] !== undefined && this.body.nodes[node.id] !== undefined) {
               this._performAddEdge(connectFromId, node.id);

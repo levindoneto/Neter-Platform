@@ -36,7 +36,7 @@ jQuery.fn.dataTableExt.oApi.fnAddTr = function ( oSettings, nTr, bRedraw ) {
     var nTds = nTr.getElementsByTagName('td');
     if ( nTds.length != oSettings.aoColumns.length )
     {
-        alert( 'Warning: not adding new TR - columns and TD elements must match' );
+        console.info( 'Warning: not adding new TR - columns and TD elements must match' );
         return;
     }
 

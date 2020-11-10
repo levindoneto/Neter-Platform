@@ -17,7 +17,7 @@
  *    $(document).ready(function() {
  *        $('#example').dataTable( {
  *            "fnDrawCallback": function () {
- *            alert( 'Now on page'+ this.fnPagingInfo().iPage );
+ *            console.info( 'Now on page'+ this.fnPagingInfo().iPage );
  *          }
  *        } );
  *    } );

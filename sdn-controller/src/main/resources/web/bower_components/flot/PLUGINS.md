@@ -55,7 +55,7 @@ how much info to output:
             var msg = "series " + series.label;
             if (debugLevel > 1) {
                 msg += " with " + series.data.length + " points";
-                alert(msg);
+                console.info(msg);
             }
         }
 
