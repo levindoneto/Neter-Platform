@@ -1,5 +1,6 @@
 body {
     overflow: hidden;
+    background-color: #0f7689;
 }
 
 /*Pre Loader*/
@@ -205,7 +206,7 @@ body {
 .button {
   display: inline-block;
   /* border-radius: 70px; */
-  background-color:#099496;
+  background-color:#0f7689;
   border: 5px;
   color: white;
   text-align: center;
@@ -252,7 +253,7 @@ body {
 
 .InfoAccount {
     font-size: 18px;
-    color: #099496;
+    color: #0f7689;
 }
 
 .EditInfoField {
@@ -262,7 +263,7 @@ body {
 }
 
 .AddProperty{
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 4px;
     border-radius: 8px;
     margin-bottom: -110px;
@@ -274,7 +275,7 @@ body {
 }
 
 .DataEdit {
-    background-color: #099496;
+    background-color: #0f7689;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 6px;
@@ -292,12 +293,12 @@ body {
 }
 
 .DataEdit:hover{
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 .AddElementBtn {
-    background-color: #099496;
+    background-color: #0f7689;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 6px;
@@ -314,12 +315,12 @@ body {
 }
 
 .AddElementBtn:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 .Refresh {
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 7px;
     border-radius: 4px;
     margin-bottom: auto;
@@ -332,13 +333,13 @@ body {
 }
 
 .Refresh:hover{
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 
 .Warnings {
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 5px;
     padding-left: 7px;
     padding-right: 7px;
@@ -351,7 +352,7 @@ body {
 }
 
 .Warnings:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
@@ -360,7 +361,7 @@ body {
 }
 
 .AddSpecificPropButton {
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 5px;
     border-radius: 3px;
     margin-top: 15px;
@@ -371,17 +372,17 @@ body {
 }
 
 .AddSpecificPropButton:hover{
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 .AddProperty:hover{
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 .RmvButtonaddbelonging {
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 5px;
     border-radius: 8px;
     margin-top: 10px;
@@ -393,7 +394,7 @@ body {
 }
 
 .RmvButtonaddbelonging:hover {
-    background-color: #099496;
+    background-color: #0f7689;
     align: center;
 }
 
@@ -416,7 +417,7 @@ input[type="file"] {
 .custom-file-upload {
     padding-left: 6px;
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     font-size: 15px;
     color: white;
     padding: 5px;
@@ -425,7 +426,7 @@ input[type="file"] {
 }
 
 .custom-file-upload:hover {
-    background-color: #099496;
+    background-color: #0f7689;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -457,7 +458,7 @@ input[type="file"] {
 
 .BtnCloseSearch {
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
     border-radius: 8px;
     margin: auto
@@ -465,14 +466,14 @@ input[type="file"] {
 }
 
 .BtnCloseSearch:hover {
-    background-color: #099496;
+    background-color: #0f7689;
     transition: all 0.5s;
     cursor: pointer;
 }
 
 .DetailsmodelSearch {
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
     font-size: 20px;
     border-radius: 8px;
@@ -480,14 +481,14 @@ input[type="file"] {
 }
 
 .DetailsmodelSearch:hover {
-    background-color: #099496;
+    background-color: #0f7689;
     transition: all 0.5s;
     cursor: pointer;
 }
 
 .DetailsUserSearch {
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
     font-size: 20px;
     border-radius: 8px;
@@ -496,25 +497,25 @@ input[type="file"] {
 }
 
 .editDataPopUpUpdate {
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
 }
 
 .editDataPopUpUpdate:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
 }
 
 .editDataPopUpCancel {
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
 }
 
 .editDataPopUpCancel:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
 }
 
 .DetailsUserSearch:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     color: white;
     cursor: pointer;
     
@@ -528,7 +529,7 @@ input[type="file"] {
 
 /*My Contexts*/
 .BtnmyContexts {
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 5px;
     border-radius: 8px;
     margin-top: 3px;
@@ -544,34 +545,34 @@ input[type="file"] {
 }
 
 .BtnmyContexts:hover{
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 /*My models*/
 .Btnmybelongings {
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     padding: 4px 6px;
     margin-left: 1px;
     border-radius: 8px;
 }
 
 .Btnmybelongings:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     transition: all 0.5s;
 }
 
 .BtnClosemybelongings {
     border: 1px;
-    background-color: #099496;
+    background-color: #0f7689;
     color: white;
     border-radius: 8px;
     margin: auto
 }
 
 .BtnClosemybelongings:hover {
-    background-color: #00BCD4;
+    background-color: #0d6a7a;
     cursor: pointer;
 }
 
@@ -699,11 +700,11 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
   }
   
   input:checked + .slider {
-    background-color: #099496;
+    background-color: #0f7689;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #099496;
+    box-shadow: 0 0 1px #0f7689;
   }
   
   input:checked + .slider:before {
@@ -726,7 +727,7 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
   }
 
   .LoginDesign {
-      background-color: #099496;
+      background-color: #0f7689;
       color: white;
   }
 

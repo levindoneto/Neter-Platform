@@ -23,76 +23,10 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
     //avalilable themes
     vm.themes = [
         {
-            theme: 'black',
-            color: 'skin-black',
-            title: 'Dark Blue',
-            icon:''
-        },
-        {
-            theme: 'purple',
-            color: 'skin-purple',
-            title: 'Gray and Purple',
-            icon: ''
-        },
-        {
-            theme: 'black',
-            color: 'skin-black-light',
-            title: 'White',
-            icon:'-o'
-        },
-        {
-            theme: 'blue',
-            color: 'skin-blue',
-            title: 'Blue and Gray',
-            icon:''
-        },
-        {
             theme: 'blue',
             color: 'skin-blue-light',
             title: 'White and Blue',
             icon:'-o'
-        },
-        {
-            theme: 'green',
-            color: 'skin-green',
-            title: 'Gray and Green',
-            icon:''
-        },
-        {
-            theme: 'green',
-            color: 'skin-green-light',
-            title: 'White and Green',
-            icon:'-o'
-        },
-        {
-            theme: 'yellow',
-            color: 'skin-yellow',
-            title: 'Yellow and Gray',
-            icon:''
-        },
-        {
-            theme: 'yellow',
-            color: 'skin-yellow-light',
-            title: 'White and Yellow',
-            icon:'-o'
-        },
-        {
-            theme: 'red',
-            color: 'skin-red',
-            title: 'Red and Gray',
-            icon: ''
-        },
-        {
-            theme: 'red',
-            color: 'skin-red-light',
-            title: 'White and Red',
-            icon: '-o'
-        },
-        {
-            theme: 'purple',
-            color: 'skin-purple-light',
-            title: 'Purple and White',
-            icon: '-o'
         }
     ];
 
@@ -113,11 +47,6 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
     ];
 
     vm.menuItems = [
-        {
-            title: 'Account',
-            icon: 'user',
-            state: 'account'
-        },
         {
             title: 'Controller', // http://dawntech.brazilsouth.cloudapp.azure.com:8010/ui/pages/index.html
             icon: 'tablet',
@@ -147,7 +76,7 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
 
     // Set the theme selected
     vm.setTheme = function (value) {
-        $rootScope.theme = value;
+        $rootScope.theme = vm.themes[0];
     };
 
 
