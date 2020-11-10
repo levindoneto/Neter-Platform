@@ -6,7 +6,7 @@
     <div class="wrapper">
         <header class="main-header">
             <a class="navbar-brand page-scroll hidden-xs hidden-sm" href="../../../../index.html">
-                <i> <img src="img/icon.png"  height="30" width="30"> </i> <span style="color: black;font-size: 22px;">&nbsp;Placidus Platform</span>
+                <i> <img src="img/icon.png"  height="30" width="30"> </i> <span style="color: white;font-size: 22px;">&nbsp;Placidus Platform</span>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -100,7 +100,7 @@
                     </div>
                     <div class="" align="center">
                         <a ng-if="ui-sref-active!='active'">
-                            <h4 style="white-space: normal; color: black;">▞ &nbsp;{{user.Username}} &nbsp;▚</h4>
+                            <h4 style="white-space: normal; color: white;">▞ &nbsp;{{user.Username}} &nbsp;▚</h4>
                         </a>
                     </div>
                 </div>
@@ -108,8 +108,8 @@
                 <ul  ng-if="user.isAdmin" class="sidebar-menu">
                     <li class="treeview" ui-sref-active="active" ng-click="vm.sideBar();" data-ng-repeat="menu in vm.menuItems">                        
                         <a ui-sref="app.{{menu.state}}">
-                            <i style="color:black;font-size: 18px;" class="fa fa-{{menu.icon}}"></i>
-                            <span style="color:black;font-size: 18px;">{{menu.title}}</span>
+                            <i style="color:white;font-size: 18px;" class="fa fa-{{menu.icon}}"></i>
+                            <span style="color:white;font-size: 18px;">{{menu.title}}</span>
                         </a>
                     </li>
                 </ul>

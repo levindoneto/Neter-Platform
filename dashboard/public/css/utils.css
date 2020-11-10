@@ -1,6 +1,6 @@
 body {
     overflow: hidden;
-    background-color: #0f7689;
+    background-color: #337ab7;
 }
 
 /*Pre Loader*/
@@ -205,8 +205,7 @@ body {
 /* Button of login/register in the modelpp*/
 .button {
   display: inline-block;
-  /* border-radius: 70px; */
-  background-color:#0f7689;
+  background-color:#337ab7;
   border: 5px;
   color: white;
   text-align: center;
@@ -223,7 +222,6 @@ body {
 
 .button span {
   cursor: pointer;
-  border-radius: 50px;
   display: inline-block;
   position: relative;
   transition: 0.5s;
@@ -231,18 +229,23 @@ body {
 }
 
 .aboutpage {
-    background-color: rgba(31, 43, 58, 0.4);
+    background-color: #337ab7;
     padding: 20px;
-    border-radius: 4px;
 }
 
 /* My Account */
 .Titlemyaccount {
-    background-color: rgba(31, 43, 58, 0.4);
+    background-color: #337ab7;
     padding: 14px;
-    border-radius: 4px;
     font-size: 18px;
-    color: black;
+    color: white;
+}
+
+.TitleLinks {
+    background-color: #609bce;
+    padding: 8px;
+    font-size: 14px;
+    color: white;
 }
 
 .titleMYACC {
@@ -253,7 +256,7 @@ body {
 
 .InfoAccount {
     font-size: 18px;
-    color: #0f7689;
+    color: #337ab7;
 }
 
 .EditInfoField {
@@ -263,9 +266,8 @@ body {
 }
 
 .AddProperty{
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 4px;
-    border-radius: 8px;
     margin-bottom: -110px;
     margin-left: 2px;
     font-size: 18px;
@@ -275,12 +277,11 @@ body {
 }
 
 .DataEdit {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 6px;
     padding-right: 6px;
-    border-radius: 8px;
     margin-top: -15px;
     margin-bottom: 5px;
     /* Horizontal centralizing */
@@ -293,17 +294,16 @@ body {
 }
 
 .DataEdit:hover{
-    background-color: #0d6a7a;
+    background-color: #105ea3;
     transition: all 0.5s;
 }
 
 .AddElementBtn {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 6px;
     padding-right: 6px;
-    border-radius: 8px;
     margin-top: 6px;
     /* Horizontal centralizing */
     margin-left: auto;
@@ -320,9 +320,8 @@ body {
 }
 
 .Refresh {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 7px;
-    border-radius: 4px;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -339,11 +338,10 @@ body {
 
 
 .Warnings {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 5px;
     padding-left: 7px;
     padding-right: 7px;
-    border-radius: 4px;
     margin-top: -10px;
     margin-bottom: -50px;
     font-size: 14px;
@@ -361,9 +359,8 @@ body {
 }
 
 .AddSpecificPropButton {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 5px;
-    border-radius: 3px;
     margin-top: 15px;
     font-size: 13px;
     color: white;
@@ -382,9 +379,8 @@ body {
 }
 
 .RmvButtonaddbelonging {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 5px;
-    border-radius: 8px;
     margin-top: 10px;
     font-size: 15px;
     color: white;
@@ -394,7 +390,7 @@ body {
 }
 
 .RmvButtonaddbelonging:hover {
-    background-color: #0f7689;
+    background-color: #337ab7;
     align: center;
 }
 
@@ -417,16 +413,15 @@ input[type="file"] {
 .custom-file-upload {
     padding-left: 6px;
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     font-size: 15px;
     color: white;
     padding: 5px;
-    border-radius: 8px;
     margin: auto;
 }
 
 .custom-file-upload:hover {
-    background-color: #0f7689;
+    background-color: #337ab7;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -458,46 +453,43 @@ input[type="file"] {
 
 .BtnCloseSearch {
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
-    border-radius: 8px;
-    margin: auto
+    margin: auto;
     margin: 2px 2px 2px 2px;
 }
 
 .BtnCloseSearch:hover {
-    background-color: #0f7689;
+    background-color: #337ab7;
     transition: all 0.5s;
     cursor: pointer;
 }
 
 .DetailsmodelSearch {
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
     font-size: 20px;
-    border-radius: 8px;
     padding: 5px;
 }
 
 .DetailsmodelSearch:hover {
-    background-color: #0f7689;
+    background-color: #337ab7;
     transition: all 0.5s;
     cursor: pointer;
 }
 
 .DetailsUserSearch {
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
     font-size: 20px;
-    border-radius: 8px;
     margin-left: 4px;
     padding: 5px;
 }
 
 .editDataPopUpUpdate {
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
 }
 
@@ -506,7 +498,7 @@ input[type="file"] {
 }
 
 .editDataPopUpCancel {
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
 }
 
@@ -523,15 +515,13 @@ input[type="file"] {
 
 .ImgSearch {
     border: 1px;
-    border-radius: 8px;
     box-shadow: 3px 3px 1px grey;
 }
 
 /*My Contexts*/
 .BtnmyContexts {
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 5px;
-    border-radius: 8px;
     margin-top: 3px;
     margin-bottom: 4px;
     /* To centralize the button */
@@ -552,10 +542,9 @@ input[type="file"] {
 /*My models*/
 .Btnmybelongings {
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     padding: 4px 6px;
     margin-left: 1px;
-    border-radius: 8px;
 }
 
 .Btnmybelongings:hover {
@@ -565,9 +554,8 @@ input[type="file"] {
 
 .BtnClosemybelongings {
     border: 1px;
-    background-color: #0f7689;
+    background-color: #337ab7;
     color: white;
-    border-radius: 8px;
     margin: auto
 }
 
@@ -663,7 +651,8 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
 
   .NestedType {
       color:#3f535a;
-  }
+  }y
+  
 
   /* Button for changing views (admin <-> normal user) */
   .switch {
@@ -700,11 +689,11 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
   }
   
   input:checked + .slider {
-    background-color: #0f7689;
+    background-color: #337ab7;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #0f7689;
+    box-shadow: 0 0 1px #337ab7;
   }
   
   input:checked + .slider:before {
@@ -715,7 +704,6 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
   
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
   }
   
   .slider.round:before {
@@ -727,7 +715,7 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
   }
 
   .LoginDesign {
-      background-color: #0f7689;
+      background-color: #337ab7;
       color: white;
   }
 

@@ -19,8 +19,22 @@
                         <input class="BoxInput" min="0" type="number" ng-model="vm.hosts">
                         <h4 class="Titlemyaccount">Switches</h4>
                         <input class="BoxInput" min="0" type="number" ng-model="vm.switches">
-                        <h4 class="Titlemyaccount">Links</h4>
-                        <input class="BoxInput" placeholder="Links" type="text" ng-model="vm.links">
+
+                        <div ng-repeat="n in range(vm.hosts)">
+                            <h4 class="TitleLinks">Host {{n+1}}</h4>
+                            <select name="multipleSelect" id="linkHostsSelect" ng-model="data.multipleSelect" multiple>
+                                <option ng-repeat="l in getAvailableLinksHosts(n+1)" ng-value="i">{{i}}</option>
+                            </select><br>
+                        </div>
+
+                        <div ng-repeat="n in range(vm.switches)">
+                            <h4 class="TitleLinks">Switch {{n+1}}</h4>
+                            <select name="multipleSelect" id="linkHostsSelect" ng-model="data.multipleSelect" multiple>
+                                <option ng-repeat="l in getAvailableLinksSwitchesdr
+                                (n+1)" ng-value="i">{{i}}</option>
+                            </select><br>
+                        </div>
+
                         <button class="AddElementBtn" type="submit">
                             <div>
                                 Add Topology

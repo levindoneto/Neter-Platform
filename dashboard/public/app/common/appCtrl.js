@@ -48,7 +48,7 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
 
     vm.menuItems = [
         {
-            title: 'Controller', // http://dawntech.brazilsouth.cloudapp.azure.com:8010/ui/pages/index.html
+            title: 'Controller', // http://localhost:8010/ui/pages/index.html
             icon: 'tablet',
             state: 'controller'
         },
@@ -63,7 +63,7 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
             state: 'addtopology'
         },
         {
-            title: 'Firewall', // http://dawntech.brazilsouth.cloudapp.azure.com:8010/ui/pages/firewall.html
+            title: 'Firewall', // http://localhost:8010/ui/pages/firewall.html
             icon: 'shield',
             state: 'firewall'
         },

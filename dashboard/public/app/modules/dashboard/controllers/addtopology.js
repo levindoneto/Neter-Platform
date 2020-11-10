@@ -20,6 +20,16 @@ dashboard.controller(
             $scope.addTopology = function (hosts, switches, links, isDefault) {
                 alert('addTopology to db and start it if isDefault==true');
             };
+
+            $scope.range = function (sizeArray) {
+                if (sizeArray) {
+                    var list = Array.from(Array(sizeArray).keys());
+                    console.log(list)
+                    return list;
+                } else {
+                    return [];
+                }
+            };
         }
     ]
 );
