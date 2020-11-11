@@ -16,21 +16,22 @@ dashboard.controller(
                 switches: [], // numbers
                 autoSetMacs: false,
                 ip: '127.0.0.1',
-                links: {} // 'h1': ['s1']
+                links: {}, // 'h1': ['s1'],
+                availableOptions: {} // 's1': 's1'
             };
 
-            $scope.getCurrentOptionsHosts = function() {
-                return {
-                    's1': 's1',
-                    's2': 's2'
-                }
+            $scope.getCurrentOptionsHosts = function(hostNumber) {
+                var auxOptions = $scope.topology.availableOptions;
+                delete auxOptions['h'.concat(String(hostNumber))]; // to avoid link from hostY to hostY
+                
+                return auxOptions;
             };
 
-            $scope.getCurrentOptionsSwitch = function() {
-                return {
-                    's1': 's1',
-                    's2': 's2'
-                }
+            $scope.getCurrentOptionsSwitch = function(switchNumber) {
+                var auxOptions = $scope.topology.availableOptions;
+                delete auxOptions['s'.concat(String(switchNumber))]; // to avoid link from switchY to switchY
+                
+                return auxOptions;
             };
             
             // const topologies = firebase.database().ref(`/users/${userId}/topologies/`);
@@ -46,7 +47,7 @@ dashboard.controller(
 
             $scope.addHost = function() {
                 swal({
-                  title: 'Add Link for the Host ' + $scope.currentHostNumber,
+                  title: 'Add Link for Host ' + $scope.currentHostNumber,
                   input: 'select',
                   inputOptions: $scope.getCurrentOptionsHosts(),
                   inputPlaceholder: 'Select Device',
@@ -54,6 +55,7 @@ dashboard.controller(
                 }).then(function (link) {
                     $scope.topology.hosts.push($scope.currentHostNumber);
                     $scope.topology.links['h'.concat(String($scope.currentHostNumber))] = [link];
+                    $scope.topology.availableOptions['h'.concat(String($scope.currentHostNumber))] = 'h'.concat(String($scope.currentHostNumber));
                   swal({
                     type: 'success',
                     html: 'Host '.concat($scope.currentHostNumber, ' has been added'),
@@ -66,7 +68,7 @@ dashboard.controller(
 
             $scope.addSwitch = function() {
                 swal({
-                  title: 'Add Link for the Switch ' + $scope.currentSwitchNumber,
+                  title: 'Add Link for Switch ' + $scope.currentSwitchNumber,
                   input: 'select',
                   inputOptions: $scope.getCurrentOptionsSwitch(),
                   inputPlaceholder: 'Select Device',
@@ -74,6 +76,7 @@ dashboard.controller(
                 }).then(function (link) {
                     $scope.topology.switches.push($scope.currentSwitchNumber);
                     $scope.topology.links['s'.concat(String($scope.currentSwitchNumber))] = [link];
+                    $scope.topology.availableOptions['s'.concat(String($scope.currentSwitchNumber))] = 's'.concat(String($scope.currentSwitchNumber));
                     swal({
                         type: 'success',
                         html: 'Switch '.concat($scope.currentSwitchNumber, ' has been added'),
