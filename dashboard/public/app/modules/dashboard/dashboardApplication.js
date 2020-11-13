@@ -72,5 +72,15 @@ dashboard.config([
                 pageTitle: 'Topologies'
             }
         });
+
+        $stateProvider.state('app.formalverification', {
+            url: '/formalverification',
+            templateUrl: 'app/modules/dashboard/views/formalverification.html',
+            controller: 'formalverificationController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification'
+            }
+        });
     }
 ]);
