@@ -42,11 +42,25 @@ dashboard.controller(
             //     $scope.userTopologies = topologiesList;
             // });
 
-            $scope.addTopology = function (hosts, switches, links, isDefault) {
-                
-                
-
-                
+            $scope.addTopology = function () {
+                topologiesList.$loaded().then(() => {
+                    /* $add function:
+                     * It creates a new record in the database and it adds the record to a 
+                     * local synchronized array.
+                     * This method returns a promise, which is resolved after the data has been 
+                     * saved to the server. The promise resolves to the Firebase reference 
+                     * for the newly added record, providing an easy access to its key. */
+                    swal({
+                        title: 'The topology has been added successfully!\n',
+                        text: 'To deploy it, please access the topologies page.',
+                        icon: 'success',
+                        button: false,
+                        timer: 3000
+                    });
+                    topologiesList.$add($scope.topology).then(ref => {
+                        console.log('Reference of the added to the db:\n', ref.toString());
+                    });
+                });
             };
 
             $scope.addHost = function() {

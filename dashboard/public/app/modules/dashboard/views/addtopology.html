@@ -14,7 +14,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <form name="myForm" ng-submit="vm.addTopology(vm.hosts,vm.switches,vm.links,vm.isDefault)">
                         <button class="BoxInput"ng-click="addHost()"><h4 class="Titlemyaccount">Add Host</h4></button>
                         <button class="BoxInput"ng-click="addSwitch()"><h4 class="Titlemyaccount">Add Switch</h4></button>
                         <h3 class="Titlemyaccount">Topology</h3>
@@ -22,14 +21,13 @@
                             {{key}} ⇆ <span ng-repeat="link in value"> {{link}} </span>
                         </h4>
                         
-                        <button class="AddElementBtn" type="submit">
+                        <button ng-click="addTopology()" class="AddElementBtn" type="submit">
                             <div>
                                 Add Topology
                             </div>
                         </button>
                         </br>
                 </div>
-                </form>
             </div>
         </div>
     </div>
