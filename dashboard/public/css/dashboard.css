@@ -12,11 +12,14 @@
  */
 html,
 body {
-  min-height: 100%;
+  min-height: 1000px;
 }
 .layout-boxed html,
 .layout-boxed body {
-  height: 100%;
+  min-height: 1000px;
+}
+.content-wrapper {
+  min-height: 1024px !important;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -28,7 +31,7 @@ body {
 }
 /* Layout */
 .wrapper {
-  min-height: 100%;
+  min-height: 1000px;
   position: static;
   overflow: hidden;
 }
