@@ -12,14 +12,14 @@
  */
 html,
 body {
-  min-height: 1000px;
+  min-height: 10000px;
 }
 .layout-boxed html,
 .layout-boxed body {
-  min-height: 1000px;
+  min-height: 10000px;
 }
 .content-wrapper {
-  min-height: 1024px !important;
+  min-height: 10000px !important;
 }
 body {
   -webkit-font-smoothing: antialiased;
