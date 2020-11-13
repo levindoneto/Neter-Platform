@@ -10,10 +10,10 @@ dashboard.controller(
         ) {
             const vm = this;
             
-            const topologies = firebase.database().ref(`/users/${userId}/topologies/`);
-            const topologiesList = $firebaseArray(topologies);
-            const topologiesObj = $firebaseObject(topologies);
-            
+            // const topologies = firebase.database().ref(`/users/${userId}/topologies/`);
+            // const topologiesList = $firebaseArray(topologies);
+            // const topologiesObj = $firebaseObject(topologies);
+
             
             // TODO: Add topology
         }
