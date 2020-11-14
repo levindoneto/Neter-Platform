@@ -35,32 +35,41 @@ dashboard.controller(
             };
 
             const topologies = firebase.database().ref(`/users/${$scope.userId}/topologies/`);
-            console.log('topologies: ', topologies);
             const topologiesList = $firebaseArray(topologies);
             const topologiesObj = $firebaseObject(topologies);
+            console.log('topologies: ', topologiesList);
             // topologiesList.$loaded().then(() => {
             //     $scope.userTopologies = topologiesList;
             // });
 
             $scope.addTopology = function () {
-                topologiesList.$loaded().then(() => {
-                    /* $add function:
-                     * It creates a new record in the database and it adds the record to a 
-                     * local synchronized array.
-                     * This method returns a promise, which is resolved after the data has been 
-                     * saved to the server. The promise resolves to the Firebase reference 
-                     * for the newly added record, providing an easy access to its key. */
-                    swal({
-                        title: 'The topology has been added successfully!\n',
-                        text: 'To deploy it, please access the topologies page.',
-                        icon: 'success',
-                        button: false,
-                        timer: 3000
+                swal({
+                    title: "Name the Topology",
+                    text: "The name is used as a topology identifier",
+                    input: 'text',
+                    showCancelButton: true,
+                    inputPlaceholder: 'Topology '.concat(topologiesList.length)
+                }).then(function(inputValue) {
+                    $scope.topology.name = inputValue;
+                    topologiesList.$loaded().then(() => {
+                        /* $add function:
+                         * It creates a new record in the database and it adds the record to a 
+                         * local synchronized array.
+                         * This method returns a promise, which is resolved after the data has been 
+                         * saved to the server. The promise resolves to the Firebase reference 
+                         * for the newly added record, providing an easy access to its key. */
+                        swal({
+                            title: 'The topology has been added successfully!\n',
+                            text: 'To deploy it, please access the topologies page.',
+                            icon: 'success',
+                            button: false,
+                            timer: 5000
+                        });
+                        topologiesList.$add($scope.topology).then(ref => {
+                            console.log('Reference of the added to the db:\n', ref.toString());
+                        });
                     });
-                    topologiesList.$add($scope.topology).then(ref => {
-                        console.log('Reference of the added to the db:\n', ref.toString());
-                    });
-                });
+                })
             };
 
             $scope.addHost = function() {

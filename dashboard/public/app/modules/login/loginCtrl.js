@@ -59,7 +59,6 @@ login.controller(
                             var ref = firebase.database().ref(`users/${firebaseUser.uid}`);
                             var obj = $firebaseObject(ref);
                             obj.$bindTo($rootScope, 'user').then(() => {
-                                vm.setUser.isAdmin = Boolean(false | vm.setUser.isAdmin);
                                 $rootScope.user = vm.setUser;
                             });
                         })

@@ -15,7 +15,7 @@ dashboard.controller(
             };
             $scope.editFormSubmit = function (userId, username) {
                 const refUser = firebase.database().ref(`users/${userId}`);
-                const auxUserUsername = {}; // isAdmin: Boolean
+                const auxUserUsername = {};
                 auxUserUsername.Username = username;
                 refUser.update(auxUserUsername);
                 swal({
