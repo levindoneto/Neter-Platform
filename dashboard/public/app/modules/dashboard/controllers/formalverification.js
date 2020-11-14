@@ -1,5 +1,5 @@
 dashboard.controller(
-    'formalverificationController', [
+    'formalVerificationController', [
         '$scope',
         '$firebaseObject',
         '$firebaseArray',

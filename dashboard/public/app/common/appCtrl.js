@@ -48,29 +48,24 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
 
     vm.menuItems = [
         {
-            title: 'Controller', // http://localhost8010/ui/pages/index.html
-            icon: 'tablet',
-            state: 'controller'
-        },
-        {
             title: 'Topologies',
             icon: 'table',
             state: 'topologies'
         },
         {
-            title: 'Add Topology',
-            icon: 'plus-circle',
-            state: 'addtopology'
+            title: 'Controller',
+            icon: 'tablet',
+            state: 'controller'
         },
         {
-            title: 'Firewall', // http://localhost8010/ui/pages/firewall.html
+            title: 'Firewall',
             icon: 'shield',
             state: 'firewall'
         },
         {
             title: 'Formal Verification',
             icon: 'check-circle-o',
-            state: 'formalverification'
+            state: 'formalVerification'
         },
     ];
 
@@ -101,10 +96,5 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings, $firebaseAu
                     $('body').addClass('sidebar-collapse');
             }
         }
-    };
-
-    // Navigate to search page
-    vm.search = function () {
-        $state.go('app.search');
     };
 }]);

@@ -1,0 +1,37 @@
+<!-- Content Header (Page header) -->
+<script>
+</script>
+<section class="content-header">
+    <h1 class="titleMYACC">
+        Add Topology
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <button class="BoxInput"ng-click="addHost()"><h4 class="Titlemyaccount">Add Host</h4></button>
+                    <button class="BoxInput"ng-click="addSwitch()"><h4 class="Titlemyaccount">Add Switch</h4></button>
+                    <div ng-if="currentHostNumber > 1 || currentSwitchNumber > 1">
+                        <h3 class="Titlemyaccount">Topology</h3>
+                        <h4 class="InfoAccount" ng-repeat="(key, value) in topology.links" ng-click="addNewLink(key)">
+                            {{key}} ⇆ <span ng-repeat="link in value"> {{link}} </span>
+                        </h4>
+                        
+                        <button ng-click="addTopology()" class="AddElementBtn" type="submit">
+                            <div>
+                                Add Topology
+                            </div>
+                        </button>
+                        </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

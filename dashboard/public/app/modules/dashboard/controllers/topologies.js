@@ -1,21 +1,24 @@
 dashboard.controller(
     'topologiesController', [
         '$scope',
-        '$firebaseObject',
-        '$firebaseArray',
+        '$state',
         function (
             $scope,
-            $firebaseObject,
-            $firebaseArray
+            $state
         ) {
             const vm = this;
-            
-            // const topologies = firebase.database().ref(`/users/${userId}/topologies/`);
-            // const topologiesList = $firebaseArray(topologies);
-            // const topologiesObj = $firebaseObject(topologies);
 
-            
-            // TODO: Add topology
+            $scope.redirectToSavedTopologies = function() {
+                $state.go('app.savedTopologies');
+            };
+
+            $scope.redirectToCurrentTopology = function() {
+                $state.go('app.currentTopology');
+            };
+
+            $scope.redirectToAddTopology = function() {
+                $state.go('app.addTopology');
+            };
         }
     ]
 );

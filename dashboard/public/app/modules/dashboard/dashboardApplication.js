@@ -33,16 +33,6 @@ dashboard.config([
             }
         });
 
-        $stateProvider.state('app.addtopology', {
-            url: '/addtopology',
-            templateUrl: 'app/modules/dashboard/views/addtopology.html',
-            controller: 'addtopologyController',
-            controllerAs: 'vm',
-            data: {
-                pageTitle: 'Add Topology'
-            }
-        });
-
         $stateProvider.state('app.controller', {
             url: '/controller',
             templateUrl: 'app/modules/dashboard/views/controller.html',
@@ -73,10 +63,40 @@ dashboard.config([
             }
         });
 
-        $stateProvider.state('app.formalverification', {
-            url: '/formalverification',
-            templateUrl: 'app/modules/dashboard/views/formalverification.html',
-            controller: 'formalverificationController',
+        $stateProvider.state('app.savedTopologies', {
+            url: '/savedtopologies',
+            templateUrl: 'app/modules/dashboard/views/savedTopologies.html',
+            controller: 'savedTopologiesController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Saved Topologies'
+            }
+        });
+
+        $stateProvider.state('app.currentTopology', {
+            url: '/currenttopology',
+            templateUrl: 'app/modules/dashboard/views/currentTopology.html',
+            controller: 'currentTopologyController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Current Topology'
+            }
+        });
+
+        $stateProvider.state('app.addTopology', {
+            url: '/addTopology',
+            templateUrl: 'app/modules/dashboard/views/addTopology.html',
+            controller: 'addTopologyController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Add Topology'
+            }
+        });
+
+        $stateProvider.state('app.formalVerification', {
+            url: '/formalVerification',
+            templateUrl: 'app/modules/dashboard/views/formalVerification.html',
+            controller: 'formalVerificationController',
             controllerAs: 'vm',
             data: {
                 pageTitle: 'Formal Verification'
