@@ -50,6 +50,7 @@ dashboard.controller(
                     showCancelButton: true,
                     inputPlaceholder: 'Topology '.concat(topologiesList.length)
                 }).then(function(inputValue) {
+                    $scope.topology.fullName = inputValue.substr(0,24);
                     $scope.topology.name = inputValue.substr(0,24);
                     topologiesList.$loaded().then(() => {
                         /* $add function:

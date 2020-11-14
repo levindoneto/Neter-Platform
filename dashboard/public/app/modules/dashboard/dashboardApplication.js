@@ -102,5 +102,35 @@ dashboard.config([
                 pageTitle: 'Formal Verification'
             }
         });
+
+        $stateProvider.state('app.conflictsRedundanciesFlowtable', {
+            url: '/conflictsredundanciesflowtable',
+            templateUrl: 'app/modules/dashboard/views/conflictsRedundanciesFlowtable.html',
+            controller: 'conflictsRedundanciesFlowtableController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Conflicts and Redundancies | Flowtable'
+            }
+        });
+
+        $stateProvider.state('app.conflictsRedundanciesFirewall', {
+            url: '/conflictsredundanciesfirewall',
+            templateUrl: 'app/modules/dashboard/views/conflictsRedundanciesFirewall.html',
+            controller: 'conflictsRedundanciesFirewallController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Conflicts and Redundancies | Firewall'
+            }
+        });
+
+        $stateProvider.state('app.reachability', {
+            url: '/reachability',
+            templateUrl: 'app/modules/dashboard/views/reachability.html',
+            controller: 'reachabilityController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Reachability'
+            }
+        });
     }
 ]);
