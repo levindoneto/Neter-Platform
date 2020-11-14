@@ -13,7 +13,7 @@
         <div class="panel panel-default">
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
-                    <li ng-repeat="(key, value) in topologies">
+                    <li ng-repeat="(key, value) in verifications">
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
@@ -77,6 +77,12 @@
                             </div>
                         </div>
                 </ul>
+            </h4>
+            <button ng-click="verifyRulesFlowtable()" class="AddElementBtn" type="submit">
+                <div>
+                    Verify Conflicts and Redundancies in the Current Flowtable
+                </div>
+            </button>
         </div>
     </div>
 </section>

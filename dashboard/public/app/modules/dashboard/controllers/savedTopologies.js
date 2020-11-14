@@ -18,9 +18,6 @@ dashboard.controller(
             topologiesList.$loaded().then(() => {
                 $scope.topologies = topologiesList;
             });
-
-            
-            // TODO: Add topology
         }
     ]
 );

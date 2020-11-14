@@ -3,16 +3,26 @@ dashboard.controller(
         '$scope',
         '$firebaseObject',
         '$firebaseArray',
+        '$rootScope',
         function (
             $scope,
             $firebaseObject,
-            $firebaseArray
+            $firebaseArray,
+            $rootScope
         ) {
             const vm = this;
             
-            // const verifications = firebase.database().ref(`/users/${userId}/verifications/`);
-            // const verificationsList = $firebaseArray(verifications);
-            // const verificationsObj = $firebaseObject(verifications);
+            $scope.userId = $rootScope.userDB?$rootScope.userDB.uid: localStorage.loggedUser;
+            const verifications = firebase.database().ref(`/users/${$scope.userId}/verifications/`);
+            const verificationsList = $firebaseArray(verifications);
+            const verificationsObj = $firebaseObject(verifications);
+            verificationsList.$loaded().then(() => {
+                $scope.verifications = verificationsList;
+            });
+
+            $scope.verifyReachability = function() {
+                return true;
+            };
         }
     ]
 );
