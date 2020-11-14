@@ -13,16 +13,32 @@
         <div class="panel panel-default">
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
-                    <li ng-repeat="(id, keyModel) in child">
-                        <h4>{{child[id].names}}
-                            <button type="button" data-toggle="modal"
-                                ng-click="modal(child[id]);getInfo(child[id].imageFile)" data-target="#popUp"
-                                class="fa fa-info-circle Btnmybelongings">
-                            </button>
-                            <button ng-click="remove(child[id].imageFile, child[id].prefixCompany, child[id].type, id)"
-                                type="button" class="fa fa-trash Btnmybelongings">
-                            </button>
+                    <li ng-repeat="(key, value) in topologies">
+                        <h4>{{value.name}}
+                            <div class="pull-right">
+                                <button title="See topology's details" type="button" data-toggle="modal"
+                                    ng-click="modal(child[id])" data-target="#popUp"
+                                    class="fa fa-info-circle Btnmybelongings">
+                                </button>
+                                <button title="Deploy topology" ng-click="deploy(id)"
+                                    type="button" class="fa fa-power-off Btnmybelongings">
+                                </button>
+                                <button title="Download topology" ng-click="download(id)"
+                                    type="button" class="fa fa-download Btnmybelongings">
+                                </button>
+                                <button title="Remove topology" ng-click="remove(id)"
+                                    type="button" class="fa fa-trash Btnmybelongings">
+                                </button>
+                            </div>
                         </h4>
+
+
+
+
+
+
+
+                        
                         <div id="popUp" class="modal fade" role="dialog">
                             <!-- Box with all information -->
                             <div class="modal-dialog">

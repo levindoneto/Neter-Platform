@@ -3,16 +3,21 @@ dashboard.controller(
         '$scope',
         '$firebaseObject',
         '$firebaseArray',
+        '$rootScope',
         function (
             $scope,
             $firebaseObject,
-            $firebaseArray
+            $firebaseArray,
+            $rootScope
         ) {
             const vm = this;
-            
-            // const topologies = firebase.database().ref(`/users/${userId}/topologies/`);
-            // const topologiesList = $firebaseArray(topologies);
-            // const topologiesObj = $firebaseObject(topologies);
+            $scope.userId = $rootScope.userDB?$rootScope.userDB.uid: localStorage.loggedUser;
+            const topologies = firebase.database().ref(`/users/${$scope.userId}/topologies/`);
+            const topologiesList = $firebaseArray(topologies);
+            const topologiesObj = $firebaseObject(topologies);
+            topologiesList.$loaded().then(() => {
+                $scope.topologies = topologiesList;
+            });
 
             
             // TODO: Add topology

@@ -545,6 +545,8 @@ input[type="file"] {
     background-color: #337ab7;
     padding: 4px 6px;
     margin-left: 1px;
+    margin-right: 4px !important;
+    margin: auto;
 }
 
 .Btnmybelongings:hover {
