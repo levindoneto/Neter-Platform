@@ -50,7 +50,7 @@ dashboard.controller(
                     showCancelButton: true,
                     inputPlaceholder: 'Topology '.concat(topologiesList.length)
                 }).then(function(inputValue) {
-                    $scope.topology.name = inputValue;
+                    $scope.topology.name = inputValue.substr(0,24);
                     topologiesList.$loaded().then(() => {
                         /* $add function:
                          * It creates a new record in the database and it adds the record to a 

@@ -14,7 +14,7 @@
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
                     <li ng-repeat="(key, value) in topologies">
-                        <h4>{{value.name}}
+                        <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
                                     ng-click="modal(child[id])" data-target="#popUp"
@@ -33,12 +33,6 @@
                         </h4>
 
 
-
-
-
-
-
-                        
                         <div id="popUp" class="modal fade" role="dialog">
                             <!-- Box with all information -->
                             <div class="modal-dialog">

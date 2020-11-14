@@ -544,9 +544,10 @@ input[type="file"] {
     border: 1px;
     background-color: #337ab7;
     padding: 4px 6px;
-    margin-left: 1px;
+    margin-left: -2px !important;
     margin-right: 4px !important;
     margin: auto;
+    margin-top: -2px;
 }
 
 .Btnmybelongings:hover {
@@ -731,4 +732,8 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
 
 .menu-footer {
     font-size: 12pt !important;
+}
+
+.valueTopo {
+    word-wrap: break-word;
 }
