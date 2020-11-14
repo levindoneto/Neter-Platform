@@ -3,7 +3,7 @@
 </script>
 <section class="content-header">
     <h1 class="titleMYACC">
-        Formal Verification | Conflicts and Redundancies | Firewall
+        <span class="urlTitle" ng-click="redirectToFormalVerification()">Formal Verification / </span>Redundancies Flowtable
     </h1>
 </section>
 
@@ -13,7 +13,7 @@
         <div class="panel panel-default">
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
-                    <li ng-repeat="(key, value) in topologies">
+                    <li ng-repeat="(key, value) in verifications">
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
@@ -79,9 +79,9 @@
                 </ul>
             </h4>
         </div>
-        <button ng-click="verifyRulesFirewall()" class="AddElementBtn" type="submit">
+        <button ng-click="verifyRulesFlowtable()" class="AddElementBtn" type="submit">
             <div>
-                Verify Conflicts and Redundancies in the Firewall
+                Verify Redundancies in the Current Flowtable
             </div>
         </button>
     </div>

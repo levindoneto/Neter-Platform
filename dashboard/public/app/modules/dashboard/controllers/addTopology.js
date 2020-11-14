@@ -4,11 +4,13 @@ dashboard.controller(
         '$firebaseObject',
         '$firebaseArray',
         '$rootScope',
+        '$state',
         function (
             $scope,
             $firebaseObject,
             $firebaseArray,
-            $rootScope
+            $rootScope,
+            $state
         ) {
             const vm = this;
             $scope.userId = $rootScope.userDB?$rootScope.userDB.uid: localStorage.loggedUser;
@@ -168,6 +170,10 @@ dashboard.controller(
                         $scope.$apply(); // start digestion
                     })
                 })
+            };
+
+            $scope.redirectToTopologies = function() {
+                $state.go('app.topologies');
             };
         }
     ]

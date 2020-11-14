@@ -4,11 +4,13 @@ dashboard.controller(
         '$firebaseObject',
         '$firebaseArray',
         '$rootScope',
+        '$state',
         function (
             $scope,
             $firebaseObject,
             $firebaseArray,
-            $rootScope
+            $rootScope,
+            $state
         ) {
             const vm = this;
             $scope.userId = $rootScope.userDB?$rootScope.userDB.uid: localStorage.loggedUser;
@@ -18,6 +20,10 @@ dashboard.controller(
             topologiesList.$loaded().then(() => {
                 $scope.topologies = topologiesList;
             });
+
+            $scope.redirectToTopologies = function() {
+                $state.go('app.topologies');
+            };
         }
     ]
 );

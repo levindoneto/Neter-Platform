@@ -4,11 +4,13 @@ dashboard.controller(
         '$firebaseObject',
         '$firebaseArray',
         '$rootScope',
+        '$state',
         function (
             $scope,
             $firebaseObject,
             $firebaseArray,
-            $rootScope
+            $rootScope,
+            $state
         ) {
             const vm = this;
             
@@ -22,6 +24,10 @@ dashboard.controller(
 
             $scope.verifyReachability = function() {
                 return true;
+            };
+
+            $scope.redirectToFormalVerification = function() {
+                $state.go('app.formalVerification');
             };
         }
     ]

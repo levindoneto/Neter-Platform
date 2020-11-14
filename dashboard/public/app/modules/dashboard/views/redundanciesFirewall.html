@@ -3,7 +3,7 @@
 </script>
 <section class="content-header">
     <h1 class="titleMYACC">
-        <span class="urlTitle" ng-click="redirectToTopologies()">Topologies / </span>Saved Topologies
+        <span class="urlTitle" ng-click="redirectToFormalVerification()">Formal Verification / </span>Redundancies Firewall
     </h1>
 </section>
 
@@ -77,7 +77,13 @@
                             </div>
                         </div>
                 </ul>
+            </h4>
         </div>
+        <button ng-click="verifyRulesFirewall()" class="AddElementBtn" type="submit">
+            <div>
+                Verify Redundancies in the Firewall
+            </div>
+        </button>
     </div>
 </section>
 <!-- /.content -->

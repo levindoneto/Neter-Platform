@@ -743,7 +743,7 @@ def getFlowtable(verificationId):
     filename = "rest/api/data/flowtable_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "Flowtable not found."}
+        return {"data": "Flowtable not found."}
     else:
         flowtableFile = open(filename, "r")
-        return {"status": flowtableFile.read()}
+        return {"data": flowtableFile.read()}

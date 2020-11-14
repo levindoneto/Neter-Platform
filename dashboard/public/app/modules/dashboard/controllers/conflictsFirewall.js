@@ -1,14 +1,16 @@
 dashboard.controller(
-    'conflictsRedundanciesFlowtableController', [
+    'conflictsFirewallController', [
         '$scope',
         '$firebaseObject',
         '$firebaseArray',
         '$rootScope',
+        '$state',
         function (
             $scope,
             $firebaseObject,
             $firebaseArray,
-            $rootScope
+            $rootScope,
+            $state
         ) {
             const vm = this;
             
@@ -20,8 +22,12 @@ dashboard.controller(
                 $scope.verifications = verificationsList;
             });
 
-            $scope.verifyRulesFlowtable = function() {
+            $scope.verifyRulesFirewall = function() {
                 return true;
+            };
+
+            $scope.redirectToFormalVerification = function() {
+                $state.go('app.formalVerification');
             };
         }
     ]

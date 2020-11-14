@@ -8,12 +8,20 @@ dashboard.controller(
         ) {
             const vm = this;
 
-            $scope.redirectToConflictsRedundanciesFlowtable = function() {
-                $state.go('app.conflictsRedundanciesFlowtable');
+            $scope.redirectToConflictsFlowtable = function() {
+                $state.go('app.conflictsFlowtable');
             };
 
-            $scope.redirectToConflictsRedundanciesFirewall = function() {
-                $state.go('app.conflictsRedundanciesFirewall');
+            $scope.redirectToRedundanciesFlowtable = function() {
+                $state.go('app.redundanciesFlowtable');
+            };
+
+            $scope.redirectToConflictsFirewall = function() {
+                $state.go('app.conflictsFirewall');
+            };
+
+            $scope.redirectToRedundanciesFirewall = function() {
+                $state.go('app.redundanciesFirewall');
             };
 
             $scope.redirectToReachability = function() {

@@ -746,3 +746,12 @@ h5.H5Trades, h5.ReportedTrades, .Adm {
     margin-left: auto;
     margin-right: auto;
 }
+
+.urlTitle {
+    color: #337ab7;
+}
+
+.urlTitle:hover {
+    color: #006495;
+    transition: all 0.5s;
+}

@@ -10,11 +10,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "690",
+ "byte_count": "687427",
  "idle_timeout_s": "0",
- "duration_nsec": "635000000",
- "packet_count": "9",
- "duration_sec": "196",
+ "duration_nsec": "138000000",
+ "packet_count": "9106",
+ "duration_sec": "67490",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 
@@ -44,11 +44,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "6352",
+ "byte_count": "345632",
  "idle_timeout_s": "0",
- "duration_nsec": "612000000",
- "packet_count": "59",
- "duration_sec": "196",
+ "duration_nsec": "146000000",
+ "packet_count": "4580",
+ "duration_sec": "67490",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 
@@ -78,11 +78,45 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "6262",
+ "byte_count": "687601",
  "idle_timeout_s": "0",
- "duration_nsec": "611000000",
- "packet_count": "58",
- "duration_sec": "196",
+ "duration_nsec": "141000000",
+ "packet_count": "9108",
+ "duration_sec": "67490",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:04": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "344945",
+ "idle_timeout_s": "0",
+ "duration_nsec": "139000000",
+ "packet_count": "4570",
+ "duration_sec": "67490",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 

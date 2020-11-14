@@ -103,23 +103,43 @@ dashboard.config([
             }
         });
 
-        $stateProvider.state('app.conflictsRedundanciesFlowtable', {
-            url: '/conflictsredundanciesflowtable',
-            templateUrl: 'app/modules/dashboard/views/conflictsRedundanciesFlowtable.html',
-            controller: 'conflictsRedundanciesFlowtableController',
+        $stateProvider.state('app.conflictsFlowtable', {
+            url: '/conflictsflowtable',
+            templateUrl: 'app/modules/dashboard/views/conflictsFlowtable.html',
+            controller: 'conflictsFlowtableController',
             controllerAs: 'vm',
             data: {
                 pageTitle: 'Formal Verification | Conflicts and Redundancies | Flowtable'
             }
         });
 
-        $stateProvider.state('app.conflictsRedundanciesFirewall', {
-            url: '/conflictsredundanciesfirewall',
-            templateUrl: 'app/modules/dashboard/views/conflictsRedundanciesFirewall.html',
-            controller: 'conflictsRedundanciesFirewallController',
+        $stateProvider.state('app.redundanciesFlowtable', {
+            url: '/redundanciesflowtable',
+            templateUrl: 'app/modules/dashboard/views/redundanciesFlowtable.html',
+            controller: 'redundanciesFlowtableController',
             controllerAs: 'vm',
             data: {
-                pageTitle: 'Formal Verification | Conflicts and Redundancies | Firewall'
+                pageTitle: 'Formal Verification | Redundancies | Flowtable'
+            }
+        });
+
+        $stateProvider.state('app.conflictsFirewall', {
+            url: '/conflictsfirewall',
+            templateUrl: 'app/modules/dashboard/views/conflictsFirewall.html',
+            controller: 'conflictsFirewallController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Conflicts | Firewall'
+            }
+        });
+
+        $stateProvider.state('app.redundanciesFirewall', {
+            url: '/redundanciesfirewall',
+            templateUrl: 'app/modules/dashboard/views/redundanciesFirewall.html',
+            controller: 'redundanciesFirewallController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Redundancies | Firewall'
             }
         });
 
