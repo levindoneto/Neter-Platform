@@ -10,16 +10,17 @@ dashboard.controller(
                 $scope.show = true;
                 $scope.Username = user.Username;
                 $scope.Email = user.Email;
-                $scope.addr = user.addr;
+                $scope.Photo = user.Photo;
                 $scope.id = user.$id;
             };
-            $scope.editFormSubmit = function (userId, username) {
+            $scope.editFormSubmit = function (userId, username, photo) {
                 const refUser = firebase.database().ref(`users/${userId}`);
                 const auxUserUsername = {};
                 auxUserUsername.Username = username;
+                auxUserUsername.Photo = photo;
                 refUser.update(auxUserUsername);
                 swal({
-                    title: 'Your username has been modified successfully',
+                    title: 'Your profile information has been successfully modified!',
                     icon: 'success',
                     timer: 3000,
                     button: false
