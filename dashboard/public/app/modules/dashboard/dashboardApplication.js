@@ -94,12 +94,42 @@ dashboard.config([
         });
 
         $stateProvider.state('app.formalVerification', {
-            url: '/formalVerification',
+            url: '/formalverification',
             templateUrl: 'app/modules/dashboard/views/formalVerification.html',
             controller: 'formalVerificationController',
             controllerAs: 'vm',
             data: {
                 pageTitle: 'Formal Verification'
+            }
+        });
+
+        $stateProvider.state('app.formalVerificationFlowtable', {
+            url: '/formalverificationflowtable',
+            templateUrl: 'app/modules/dashboard/views/fvFlowtable.html',
+            controller: 'formalVerificationFlowtableController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Flowtable'
+            }
+        });
+
+        $stateProvider.state('app.formalVerificationFirewall', {
+            url: '/formalverificationfirewall',
+            templateUrl: 'app/modules/dashboard/views/fvFirewall.html',
+            controller: 'formalVerificationFirewallController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Firewall'
+            }
+        });
+
+        $stateProvider.state('app.formalVerificationTopology', {
+            url: '/formalverificationtopology',
+            templateUrl: 'app/modules/dashboard/views/fvTopology.html',
+            controller: 'formalVerificationTopologyController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Formal Verification | Topology'
             }
         });
 

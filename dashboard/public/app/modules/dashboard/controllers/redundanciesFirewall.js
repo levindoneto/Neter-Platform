@@ -29,6 +29,10 @@ dashboard.controller(
             $scope.redirectToFormalVerification = function() {
                 $state.go('app.formalVerification');
             };
+
+            $scope.redirectToFormalVerificationFirewall = function() {
+                $state.go('app.formalVerificationFirewall');
+            };
         }
     ]
 );

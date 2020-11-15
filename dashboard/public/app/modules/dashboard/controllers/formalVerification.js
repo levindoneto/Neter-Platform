@@ -8,25 +8,18 @@ dashboard.controller(
         ) {
             const vm = this;
 
-            $scope.redirectToConflictsFlowtable = function() {
-                $state.go('app.conflictsFlowtable');
+            $scope.redirectToFormalVerificationFlowtable = function() {
+                $state.go('app.formalVerificationFlowtable');
             };
 
-            $scope.redirectToRedundanciesFlowtable = function() {
-                $state.go('app.redundanciesFlowtable');
+            $scope.redirectToFormalVerificationFirewall = function() {
+                $state.go('app.formalVerificationFirewall');
             };
 
-            $scope.redirectToConflictsFirewall = function() {
-                $state.go('app.conflictsFirewall');
+            $scope.redirectToFormalVerificationTopology = function() {
+                $state.go('app.formalVerificationTopology');
             };
 
-            $scope.redirectToRedundanciesFirewall = function() {
-                $state.go('app.redundanciesFirewall');
-            };
-
-            $scope.redirectToReachability = function() {
-                $state.go('app.reachability');
-            };
         }
     ]
 );
