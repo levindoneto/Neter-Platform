@@ -140,43 +140,6 @@
 
 
             <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-info fa-fw"></i> Port Table
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-
-                            <table class='table table-bordered table-striped table-hover responsive-utilities'
-                                   id="portTable">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>R. Packets</th>
-                                    <th>Tran. Packets</th>
-                                    <th>R. Bytes</th>
-                                    <th>Tran. Bytes</th>
-                                    <th>R. Dropped</th>
-                                    <th>Tran. Dropped</th>
-                                    <th>Coll.</th>
-                                    <th>Duration(s)</th>
-
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <div class="row">
                 <div class="col-md-1">
                     <input type="button" id="btnFlowPusher" class="btn btn-sm btn-primary"
                            value="Edit Static Flow Entries"/>
@@ -221,24 +184,30 @@
 
             </div>
 
-
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-lg-12">
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-table fa-fw"></i>Tables
+                            <i class="fa fa-info fa-fw"></i> Port Table
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+
                             <table class='table table-bordered table-striped table-hover responsive-utilities'
-                                   id="switchTables">
+                                   id="portTable">
                                 <thead>
                                 <tr>
-                                    <th>table_id</th>
-                                    <th>activeCount</th>
-                                    <th>lookUpCount</th>
-                                    <th>matchCount</th>
+                                    <th>No</th>
+                                    <th>R. Packets</th>
+                                    <th>Tran. Packets</th>
+                                    <th>R. Bytes</th>
+                                    <th>Tran. Bytes</th>
+                                    <th>R. Dropped</th>
+                                    <th>Tran. Dropped</th>
+                                    <th>Coll.</th>
+                                    <th>Duration(s)</th>
+
                                 </tr>
                                 </thead>
                             </table>
@@ -248,8 +217,8 @@
 
 
                 </div>
-            </div>
 
+            </div>
 
             <!-- Small modal -->
             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">

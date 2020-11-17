@@ -39,60 +39,7 @@
             <!-- /.col-lg-12 -->
         </div>
 
-        <div class="row">
-            <div class="col-lg-4 col-md-12">
-                <div class="panel" id="controllerStatusPanel">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <i id="controllerStatusIcon"></i>
-                            </div>
-                            <div class="col-xs-12 text-right">
-                                <div class="huge" id="controllerStatus">...</div>
-                                <div>Status</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <i class="glyphicon glyphicon-time fa-5x"></i>
-                            </div>
-                            <div class="col-xs-12 text-right">
-                                <div class="huge" id="controllerUpTime">...</div>
-                                <div>Uptime (in hours)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="panel panel-primary">
-                    <!-- /.panel-heading -->
-                    <div class="panel-heading">
-                        <i class="fa fa-dashboard fa-fw"></i>Internal Memory Use
-                    </div>
-                    <div class="panel-body">
-                        <div class="sidebar-widget">
-                            <canvas width="150" height="80" id="foo" class=""
-                                    style="width: 160px; height: 100px;"></canvas>
-                            <div class="goal-wrapper">
-                                <span class="gauge-value pull-left"></span>
-                                <span id="gauge-text" class="gauge-value pull-left"></span>
-                                <span id="goal-text" class="goal-value pull-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-            </div>
-        </div>
 
-        <!-- /.row -->
         <div class="row">
             <div class="col-lg-4 col-md-12">
                 <div class="panel panel-red">
@@ -158,6 +105,44 @@
                             <div class="clearfix"></div>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="panel" id="controllerStatusPanel">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <i id="controllerStatusIcon"></i>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <div class="huge" id="controllerStatus">...</div>
+                                <div>Status</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="panel panel-primary">
+                    <!-- /.panel-heading -->
+                    <div class="panel-heading">
+                        <i class="fa fa-dashboard fa-fw"></i>Internal Memory Use
+                    </div>
+                    <div class="panel-body">
+                        <div class="sidebar-widget">
+                            <canvas width="150" height="80" id="foo" class=""
+                                    style="width: 160px; height: 100px;"></canvas>
+                            <div class="goal-wrapper">
+                                <span class="gauge-value pull-left"></span>
+                                <span id="gauge-text" class="gauge-value pull-left"></span>
+                                <span id="goal-text" class="goal-value pull-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
                 </div>
             </div>
         </div>

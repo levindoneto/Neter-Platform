@@ -31,7 +31,7 @@ class topologyMininet(Topo):
 		for i in range(len(hosts)):
 			time.sleep(1)
 			listHosts.append(self.addHost('h' + str(hosts[i])))
-		for i in range(len(hosts)):
+		for i in range(len(switches)):
 			time.sleep(1)
 			listSwitches.append(self.addSwitch('s' + str(switches[i])))
 		logger.info("Added Hosts: %s" % str(listHosts))

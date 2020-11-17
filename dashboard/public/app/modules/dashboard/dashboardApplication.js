@@ -39,7 +39,7 @@ dashboard.config([
             controller: 'controllerController',
             controllerAs: 'vm',
             data: {
-                pageTitle: 'SDN Controller'
+                pageTitle: 'Controller'
             }
         });
 
