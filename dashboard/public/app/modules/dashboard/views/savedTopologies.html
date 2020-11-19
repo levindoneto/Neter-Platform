@@ -18,6 +18,7 @@
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
+                                    ng-click="modal(value.$id)"
                                     data-target="#popUp" class="fa fa-info-circle Btnmybelongings">
                                 </button>
                                 <button title="Deploy topology" ng-click="deploy(id)"
@@ -44,21 +45,19 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 align="center">
-                                            <div ng-repeat="(key, value) in topologies">
-                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{value.fullName.toString()}}</span>
+                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{currentTopology.fullName.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Auto Set Macs: </span><span class="MyInfoP">{{value.autoSetMacs.toString()}}</span>
+                                                <span class="MyInfo">Auto Set Macs: </span><span class="MyInfoP">{{currentTopology.autoSetMacs.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Hosts: </span><span class="MyInfoP">{{value.hosts.toString()}}</span>
+                                                <span class="MyInfo">Hosts: </span><span class="MyInfoP">{{currentTopology.hosts.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Switches: </span><span class="MyInfoP">{{value.switches.toString()}}</span>
+                                                <span class="MyInfo">Switches: </span><span class="MyInfoP">{{currentTopology.switches.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Links: </span><span class="MyInfoP">{{getLinks(value.links)}}</span>
+                                                <span class="MyInfo">Links: </span><span class="MyInfoP">{{getLinks(currentTopology.links)}}</span>
                                                 </br>
-                                                <span class="MyInfo">IP: </span><span class="MyInfoP">{{value.ip.toString()}}</span>
+                                                <span class="MyInfo">IP: </span><span class="MyInfoP">{{currentTopology.ip.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">When Added: </span><span class="MyInfoP">{{value.when.toString()}}</span>
-                                            </div>
+                                                <span class="MyInfo">When Added: </span><span class="MyInfoP">{{currentTopology.when.toString()}}</span>
                                         </h3>
                                     </div>
                                     <div class="modal-footer">

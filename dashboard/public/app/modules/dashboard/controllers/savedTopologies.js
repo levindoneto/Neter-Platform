@@ -19,7 +19,13 @@ dashboard.controller(
             const topologiesObj = $firebaseObject(topologies);
             topologiesList.$loaded().then(() => {
                 $scope.topologies = topologiesList;
+                $scope.topologiesObj = topologiesObj;
             });
+
+
+            $scope.modal = function(id) {
+                $scope.currentTopology = $scope.topologiesObj[id];
+            }
 
             $scope.getLinks = function(links) {
                 return JSON.stringify(links);

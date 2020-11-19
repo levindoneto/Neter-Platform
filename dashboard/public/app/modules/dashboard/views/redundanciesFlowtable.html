@@ -18,6 +18,7 @@
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See verification's details" type="button" data-toggle="modal"
+                                    ng-click="modal(value.$id)"
                                     data-target="#popUp" class="fa fa-info-circle Btnmybelongings">
                                 </button>
                                 <button title="Download details" ng-click="download(id)"
@@ -41,19 +42,17 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 align="center">
-                                            <div ng-repeat="(key, value) in verifications">
-                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{value.name.toString()}}</span>
+                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{currentVerification.name.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Number of Flows: </span><span class="MyInfoP">{{value.n_flows.toString()}}</span>
+                                                <span class="MyInfo">Number of Flows: </span><span class="MyInfoP">{{currentVerification.n_flows.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Status: </span><span class="MyInfoP">{{value.status.toString()}}</span>
+                                                <span class="MyInfo">Status: </span><span class="MyInfoP">{{currentVerification.status.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Topology: </span><span class="MyInfoP">{{topologies[value.topologyAssociatedId.toString()].name}}</span>
+                                                <span class="MyInfo">Topology: </span><span class="MyInfoP">{{topologies[currentVerification.topologyAssociatedId.toString()].name}}</span>
                                                 </br>
-                                                <span class="MyInfo">Date: </span><span class="MyInfoP">{{value.when.toString()}}</span>
+                                                <span class="MyInfo">Date: </span><span class="MyInfoP">{{currentVerification.when.toString()}}</span>
                                                 </br>
-                                                <span class="MyInfo">Details: </span><span class="MyInfoP">{{value.details.toString()}}</span>
-                                            </div>
+                                                <span class="MyInfo">Details: </span><span class="MyInfoP">{{currentVerification.details.toString()}}</span>
                                         </h3>
                                     </div>
                                     <div class="modal-footer">

@@ -20,6 +20,7 @@ dashboard.controller(
             const verificationsObj = $firebaseObject(verifications);
             verificationsList.$loaded().then(() => {
                 $scope.verifications = verificationsList;
+                $scope.verificationsObj = verificationsObj;
             });
 
             const topologies = firebase.database().ref(`/users/${$scope.userId}/topologies/`);
@@ -27,8 +28,11 @@ dashboard.controller(
             const topologiesObj = $firebaseObject(topologies);
             topologiesList.$loaded().then(() => {
                 $scope.topologies = topologiesObj;
-                console.log($scope.topologies);
             });
+
+            $scope.modal = function(id) {
+                $scope.currentVerification = $scope.verificationsObj[id];
+            }
 
             $scope.redirectToFormalVerification = function() {
                 $state.go('app.formalVerification');
