@@ -16,22 +16,17 @@
                     <li ng-repeat="(key, value) in verifications">
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
-                                <button title="See topology's details" type="button" data-toggle="modal"
-                                    ng-click="modal(child[id])" data-target="#popUp"
-                                    class="fa fa-info-circle Btnmybelongings">
+                                <button title="See verification's details" type="button" data-toggle="modal"
+                                    data-target="#popUp" class="fa fa-info-circle Btnmybelongings">
                                 </button>
-                                <button title="Deploy topology" ng-click="deploy(id)"
-                                    type="button" class="fa fa-power-off Btnmybelongings">
-                                </button>
-                                <button title="Download topology" ng-click="download(id)"
+                                <button title="Download details" ng-click="download(id)"
                                     type="button" class="fa fa-download Btnmybelongings">
                                 </button>
-                                <button title="Remove topology" ng-click="remove(id)"
+                                <button title="Remove verification" ng-click="remove(id)"
                                     type="button" class="fa fa-trash Btnmybelongings">
                                 </button>
                             </div>
                         </h4>
-
 
                         <div id="popUp" class="modal fade" role="dialog">
                             <!-- Box with all information -->
@@ -45,21 +40,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 align="center">
-                                            <div ng-repeat="(key, value) in objAddionalPropsCompDev">
-                                                <span
-                                                    ng-if="value.NewPropertyOwlType.toString() == 'owl:DatatypeProperty' && key.toString() != 'value'"
-                                                    class="MyInfo">{{key.toString()}}</span>
-                                                <span
-                                                    ng-if="key.toString() == 'numberOfPins' || key.toString() == 'pinConfiguration'"
-                                                    class="MyInfo">Number of Pins:</span>
-                                                <span ng-if="key.toString() == 'value'" class="MyInfo">Value:</span>
-                                                <span class="MyInfo"
-                                                    ng-if="value.NewPropertyOwlType.toString() != 'owl:DatatypeProperty' && key.toString() != 'numberOfPins' && key.toString() != 'pinConfiguration' && key.toString() != 'value'">
-                                                    {{key}}: </span>
-                                                <span ng-if="value.length === undefined" class="MyInfoP">
-                                                    {{value.NewPropertyValue}} </span>
-                                                <span ng-if="value.length > 0" class="MyInfoP"> {{value}} </span>
+                                            <div ng-repeat="(key, value) in verifications">
+                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{value.name.toString()}}</span>
                                                 </br>
+                                                <span class="MyInfo">Number of Flows: </span><span class="MyInfoP">{{value.n_flows.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Status: </span><span class="MyInfoP">{{value.status.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Topology: </span><span class="MyInfoP">{{topologies[value.topologyAssociatedId.toString()].name}}</span>
+                                                </br>
+                                                <span class="MyInfo">Date: </span><span class="MyInfoP">{{value.when.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Details: </span><span class="MyInfoP">{{value.details.toString()}}</span>
                                             </div>
                                         </h3>
                                     </div>
@@ -67,12 +59,6 @@
                                         <button type="button" class="BtnClosemybelongings"
                                             data-dismiss="modal">Close</button>
                                     </div>
-
-
-
-
-
-
                                 </div>
                             </div>
                         </div>
