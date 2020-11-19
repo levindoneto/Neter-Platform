@@ -11,19 +11,19 @@
 <section class="content">
     <div class="box-content">
         <div class="panel panel-default">
+            <h3 class="Titlemyaccount">My Topologies</h3>
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
                     <li ng-repeat="(key, value) in topologies">
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
-                                    ng-click="modal(child[id])" data-target="#popUp"
-                                    class="fa fa-info-circle Btnmybelongings">
+                                    data-target="#popUp" class="fa fa-info-circle Btnmybelongings">
                                 </button>
                                 <button title="Deploy topology" ng-click="deploy(id)"
                                     type="button" class="fa fa-power-off Btnmybelongings">
                                 </button>
-                                <button title="Download topology" ng-click="download(id)"
+                                <button title="Download details" ng-click="download(id)"
                                     type="button" class="fa fa-download Btnmybelongings">
                                 </button>
                                 <button title="Remove topology" ng-click="remove(id)"
@@ -31,7 +31,6 @@
                                 </button>
                             </div>
                         </h4>
-
 
                         <div id="popUp" class="modal fade" role="dialog">
                             <!-- Box with all information -->
@@ -45,21 +44,20 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 align="center">
-                                            <div ng-repeat="(key, value) in objAddionalPropsCompDev">
-                                                <span
-                                                    ng-if="value.NewPropertyOwlType.toString() == 'owl:DatatypeProperty' && key.toString() != 'value'"
-                                                    class="MyInfo">{{key.toString()}}</span>
-                                                <span
-                                                    ng-if="key.toString() == 'numberOfPins' || key.toString() == 'pinConfiguration'"
-                                                    class="MyInfo">Number of Pins:</span>
-                                                <span ng-if="key.toString() == 'value'" class="MyInfo">Value:</span>
-                                                <span class="MyInfo"
-                                                    ng-if="value.NewPropertyOwlType.toString() != 'owl:DatatypeProperty' && key.toString() != 'numberOfPins' && key.toString() != 'pinConfiguration' && key.toString() != 'value'">
-                                                    {{key}}: </span>
-                                                <span ng-if="value.length === undefined" class="MyInfoP">
-                                                    {{value.NewPropertyValue}} </span>
-                                                <span ng-if="value.length > 0" class="MyInfoP"> {{value}} </span>
+                                            <div ng-repeat="(key, value) in topologies">
+                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{value.fullName.toString()}}</span>
                                                 </br>
+                                                <span class="MyInfo">Auto Set Macs: </span><span class="MyInfoP">{{value.autoSetMacs.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Hosts: </span><span class="MyInfoP">{{value.hosts.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Switches: </span><span class="MyInfoP">{{value.switches.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">Links: </span><span class="MyInfoP">{{getLinks(value.links)}}</span>
+                                                </br>
+                                                <span class="MyInfo">IP: </span><span class="MyInfoP">{{value.ip.toString()}}</span>
+                                                </br>
+                                                <span class="MyInfo">When Added: </span><span class="MyInfoP">{{value.when.toString()}}</span>
                                             </div>
                                         </h3>
                                     </div>
@@ -67,16 +65,11 @@
                                         <button type="button" class="BtnClosemybelongings"
                                             data-dismiss="modal">Close</button>
                                     </div>
-
-
-
-
-
-
                                 </div>
                             </div>
                         </div>
                 </ul>
+            </h4>
         </div>
     </div>
 </section>

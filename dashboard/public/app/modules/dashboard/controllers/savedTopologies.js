@@ -21,6 +21,10 @@ dashboard.controller(
                 $scope.topologies = topologiesList;
             });
 
+            $scope.getLinks = function(links) {
+                return JSON.stringify(links);
+            }
+
             $scope.redirectToTopologies = function() {
                 $state.go('app.topologies');
             };
