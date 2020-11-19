@@ -54,6 +54,7 @@ dashboard.controller(
                 }).then(function(inputValue) {
                     $scope.topology.fullName = inputValue;
                     $scope.topology.name = inputValue.substr(0,24);
+                    $scope.topology.when = (new Date()).toString();
                     topologiesList.$loaded().then(() => {
                         /* $add function:
                          * It creates a new record in the database and it adds the record to a 
