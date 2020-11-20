@@ -154,6 +154,7 @@ def verifyFlowtable(ip, port):
         json_data = json.loads(data)
 
     lista_switches = json_data[json_data.keys()[0]].keys() # json_data.keys()[0] is the topology key
+    print("lista_switches: ", lista_switches)
 
     fileId = getId()
     arquivo_regras = open("rest/api/data/flowtable_" + fileId + ".txt", "w")
@@ -164,6 +165,8 @@ def verifyFlowtable(ip, port):
 
     contSwitch = 0
     lista_switches.sort()
+    time_init = time.time()
+    n_flows = 0
     for s in lista_switches:
         dicFlows = {}
         with open(arquivoFormatadoJsonVB) as f:
@@ -194,6 +197,7 @@ def verifyFlowtable(ip, port):
         lista_ethDst =          []
         lista_ethType =         []
         lista_inPort =          []
+        lista_outPort =          []
         lista_eth_vlan_vid =    []
         lista_eth_vlan_pcp =    []
         lista_ip_proto =        []
@@ -232,466 +236,181 @@ def verifyFlowtable(ip, port):
         lista_metadata =        []
         lista_actions =         []
         
-        # verification
-        if json_data[0].has_key('priority') == True:
-            lista_prioridade.append(json_data[0]['priority'])
-        else:
-            lista_prioridade.append("x") # wildcard
-        if json_data[0].has_key('hard_timeout_s') == True:
-            lista_hard_timeout_s.append(str(json_data[0]['hard_timeout_s']))
-        else:
-            lista_hard_timeout_s.append("x") # wildcard
+        print("LEN json_data: ", len(json_data))
         
-        if json_data[0].has_key('byte_count') == True:
-            lista_byte_count.append(str(json_data[0]['byte_count']))
-        else:
-            lista_byte_count.append("x") # wildcard
-        
-        if json_data[0].has_key('idle_timeout_s') == True:
-            lista_idle_timeout_s.append(str(json_data[0]['idle_timeout_s']))
-        else:
-            lista_idle_timeout_s.append("x") # wildcard
-        
-        if json_data[0].has_key('duration_nsec') == True:
-            lista_duration_nsec.append(str(json_data[0]['duration_nsec']))
-        else:
-            lista_duration_nsec.append("x") # wildcard
-        
-        if json_data[0].has_key('packet_count') == True:
-            lista_packet_count.append(str(json_data[0]['packet_count']))
-        else:
-            lista_packet_count.append("x") # wildcard
-        
-        if json_data[0].has_key('duration_sec') == True:
-            lista_duration_sec.append(str(json_data[0]['duration_sec']))
-        else:
-            lista_duration_sec.append("x") # wildcard
-        
-        if json_data[0].has_key('version') == True:
-            lista_version.append(str(json_data[0]['version']))
-        else:
-            lista_version.append("x") # wildcard
-        
-        if json_data[0].has_key('table_id') == True:
-            lista_table_id.append(str(json_data[0]['table_id']))
-        else:
-            lista_table_id.append("x") # wildcard
-
-        if json_data[0].has_key('instructions') == True:
-            lista_actions.append(str(json_data[0]['instructions']['instruction_apply_actions']['actions']))
-        else:
-            lista_actions.append("x")
-
-        if json_data[0].has_key('durationSeconds') == True:
-            lista_duracao.append(str(json_data[0]['durationSeconds']))
-        else:
-            lista_duracao.append("x")
-
-        if json_data[0].has_key('byteCount') == True:
-            lista_byteCount.append(str(json_data[0]['byteCount']))
-        else:
-            lista_byteCount.append("x")
-
-        if json_data[0].has_key('packetCount') == True:
-            lista_packetCount.append(str(json_data[0]['packetCount']))
-        else:
-            lista_packetCount.append("x")
-
-        if json_data[0].has_key('cookie') == True:
-            lista_cookie.append(str(json_data[0]['cookie']))
-        else:
-            lista_cookie.append("x")
-
-        if json_data[0].has_key('match') == True:
-            json_data[0] = json_data[0]["match"]
-
-            if json_data[0].has_key('eth_src') == True:
-                lista_ethSrc.append(str(json_data[0]['match']['eth_src']))
-            else:
-                lista_ethSrc.append("x")
-
-            if json_data[0].has_key('eth_dst') == True:
-                lista_ethDst.append(str(json_data[0]['match']['eth_dst']))
-            else:
-                lista_ethDst.append("x")
-
-            if json_data[0].has_key('eth_type') == True:
-                lista_ethType.append(str(json_data[0]['match']['eth_type']))
-            else:
-                lista_ethType.append("x")
-
-            if json_data[0].has_key('in_port') == True:
-                lista_inPort.append(str(json_data[0]['match']['in_port']))
-            else:
-                lista_inPort.append("x")
-
-            if json_data[0].has_key('eth_vlan_vid') == True:
-                lista_eth_vlan_vid.append(str(json_data[0]['match']['eth_vlan_vid']))
-            else:
-                lista_eth_vlan_vid.append("x")
-
-            if json_data[0].has_key('eth_vlan_pcp') == True:
-                lista_eth_vlan_pcp.append(str(json_data[0]['match']['eth_vlan_pcp']))
-            else:
-                lista_eth_vlan_pcp.append("x")
-
-            if json_data[0].has_key('ip_proto') == True:
-                lista_ip_proto.append(str(json_data[0]['match']['ip_proto']))
-            else:
-                lista_ip_proto.append("x")
-
-            if json_data[0].has_key('lista_ipv4_src') == True:
-                lista_ipv4_src.append(str(json_data[0]['match']['lista_ipv4_src']))
-            else:
-                lista_ipv4_src.append("x")
-
-            if json_data[0].has_key('lista_ipv4_dst') == True:
-                lista_ipv4_dst.append(str(json_data[0]['match']['lista_ipv4_dst']))
-            else:
-                lista_ipv4_dst.append("x")
-
-            if json_data[0].has_key('lista_ipv6_src') == True:
-                lista_ipv6_src.append(str(json_data[0]['match']['lista_ipv6_src']))
-            else:
-                lista_ipv6_src.append("x")
-
-            if json_data[0].has_key('lista_ipv6_dst') == True:
-                lista_ipv6_dst.append(str(json_data[0]['match']['lista_ipv6_dst']))
-            else:
-                lista_ipv6_dst.append("x")
-
-            if json_data[0].has_key('ipv6_label') == True:
-                lista_ipv6_label.append(str(json_data[0]['match']['ipv6_label']))
-            else:
-                lista_ipv6_label.append("x")
-
-            if json_data[0].has_key('ip_tos') == True:
-                lista_ip_tos.append(str(json_data[0]['match']['ip_tos']))
-            else:
-                lista_ip_tos.append("x")
-
-            if json_data[0].has_key('ip_ecn') == True:
-                lista_ip_ecn.append(str(json_data[0]['match']['ip_ecn']))
-            else:
-                lista_ip_ecn.append("x")
-
-            if json_data[0].has_key('ip_dscp') == True:
-                lista_ip_dscp.append(str(json_data[0]['match']['ip_dscp']))
-            else:
-                lista_ip_dscp.append("x")
-
-            if json_data[0].has_key('tp_src') == True:
-                lista_tp_src.append(str(json_data[0]['match']['tp_src']))
-            else:
-                lista_tp_src.append("x")
-
-            if json_data[0].has_key('tp_dst') == True:
-                lista_tp_dst.append(str(json_data[0]['match']['tp_dst']))
-            else:
-                lista_tp_dst.append("x")
-
-            if json_data[0].has_key('udp_src') == True:
-                lista_udp_src.append(str(json_data[0]['match']['udp_src']))
-            else:
-                lista_udp_src.append("x")
-
-            if json_data[0].has_key('udp_dst') == True:
-                lista_udp_dst.append(str(json_data[0]['match']['udp_dst']))
-            else:
-                lista_udp_dst.append("x")
-
-            if json_data[0].has_key('tcp_src') == True:
-                lista_tcp_src.append(str(json_data[0]['match']['tcp_src']))
-            else:
-                lista_tcp_src.append("x")
-
-            if json_data[0].has_key('tcp_dst') == True:
-                lista_tcp_dst.append(str(json_data[0]['match']['tcp_dst']))
-            else:
-                lista_tcp_dst.append("x")
-
-            if json_data[0].has_key('sctp_src') == True:
-                lista_sctp_src.append(str(json_data[0]['match']['sctp_src']))
-            else:
-                lista_sctp_src.append("x")
-
-            if json_data[0].has_key('sctp_dst') == True:
-                lista_sctp_dst.append(str(json_data[0]['match']['sctp_dst']))
-            else:
-                lista_sctp_dst.append("x")
-
-            if json_data[0].has_key('icmpv4_type') == True:
-                lista_icmpv4_type.append(str(json_data[0]['match']['icmpv4_type']))
-            else:
-                lista_icmpv4_type.append("x")
-            if json_data[0].has_key('icmpv4_code') == True:
-                lista_icmpv4_code.append(str(json_data[0]['match']['icmpv4_code']))
-            else:
-                lista_icmpv4_code.append("x")
-            if json_data[0].has_key('icmpv6_type') == True:
-                lista_icmpv6_type.append(str(json_data[0]['match']['icmpv6_type']))
-            else:
-                lista_icmpv6_type.append("x")
-
-            if json_data[0].has_key('icmpv6_code') == True:
-                lista_icmpv6_code.append(str(json_data[0]['match']['icmpv6_code']))
-            else:
-                lista_icmpv6_code.append("x")
-
-            if json_data[0].has_key('ipv6_nd_ssl') == True:
-                lista_ipv6_nd_ssl .append(str(json_data[0]['match']['ipv6_nd_ssl']))
-            else:
-                lista_ipv6_nd_ssl .append("x")
-
-            if json_data[0].has_key('ipv6_nd_ttl') == True:
-                lista_ipv6_nd_ttl.append(str(json_data[0]['match']['ipv6_nd_ttl']))
-            else:
-                lista_ipv6_nd_ttl.append("x")
-
-            if json_data[0].has_key('ipv6_nd_target') == True:
-                lista_ipv6_nd_target.append(str(json_data[0]['match']['ipv6_nd_target']))
-            else:
-                lista_ipv6_nd_target.append("x")
-
-            if json_data[0].has_key('arp_opcode') == True:
-                lista_arp_opcode.append(str(json_data[0]['match']['arp_opcode']))
-            else:
-                lista_arp_opcode.append("x")
-
-            if json_data[0].has_key('arp_tha') == True:
-                lista_arp_tha.append(str(json_data[0]['match']['arp_tha']))
-            else:
-                lista_arp_tha.append("x")
-
-            if json_data[0].has_key('arp_spa') == True:
-                lista_arp_spa.append(str(json_data[0]['match']['arp_spa']))
-            else:
-                lista_arp_spa.append("x")
-
-            if json_data[0].has_key('arp_tpa') == True:
-                lista_arp_tpa.append(str(json_data[0]['match']['arp_tpa']))
-            else:
-                lista_arp_tpa.append("x")
-
-            if json_data[0].has_key('mpls_label') == True:
-                lista_mpls_label.append(str(json_data[0]['match']['mpls_label']))
-            else:
-                lista_mpls_label.append("x")
-
-            if json_data[0].has_key('mpls_tc') == True:
-                lista_mpls_tc.append(str(json_data[0]['match']['mpls_tc']))
-            else:
-                lista_mpls_tc.append("x")
-
-            if json_data[0].has_key('mpls_bos') == True:
-                lista_mpls_bos.append(str(json_data[0]['match']['mpls_bos']))
-            else:
-                lista_mpls_bos.append("x")
-
-            if json_data[0].has_key('tunnel_id') == True:
-                lista_tunnel_id.append(str(json_data[0]['match']['tunnel_id']))
-            else:
-                lista_tunnel_id.append("x")
-
-            if json_data[0].has_key('metadata') == True:
-                lista_metadata.append(str(json_data[0]['match']['metadata']))
-            else:
-                lista_metadata.append("x")
-
-        # cont += 1
-
-        m = 0 # Flow Index
         arquivo_regras.write("[Switch: " + s + "]\n")
-        # for m in range(len(lista_switches)):
-        print("lista_ethDst[m]: ", m, lista_ethDst[m])
-        arquivo_regras.write("("+ str(lista_prioridade[m]) + " ^ " + str(lista_hard_timeout_s[m]) + " ^ " + str(lista_byte_count[m]) + " ^ " + str(lista_idle_timeout_s[m]) + " ^ " + str(lista_duration_nsec[m]) + " ^ " + str(lista_packet_count[m]) + " ^ " + str(lista_duration_sec[m]) + " ^ " + str(lista_version[m]) + " ^ " + str(lista_table_id[m])+str(lista_ethSrc[m]) + " ^ " + str(lista_ethDst[m]) + " ^ " + str(lista_ethType[m]) + " ^ " + str(lista_inPort[m]) + " ^ " + str(lista_eth_vlan_vid[m]) + " ^ " + str(lista_eth_vlan_pcp[m]) + " ^ " + str(lista_ip_proto[m]) + " ^ " + str(lista_ipv4_src[m]) + " ^ " + str(lista_ipv4_dst[m]) + " ^ " + str(lista_ipv6_src[m]) + " ^ " + str(lista_ipv6_dst[m]) + " ^ " + str(lista_ipv6_label[m]) + " ^ " + str(lista_ip_tos[m]) + " ^ " + str(lista_ip_ecn[m]) + " ^ " + str(lista_ip_dscp[m]) + " ^ " + str(lista_tp_src[m]) + " ^ " + str(lista_tp_dst[m]) + " ^ " + str(lista_udp_src[m]) + " ^ " + str(lista_udp_dst[m]) + " ^ " + str(lista_tcp_src[m]) + " ^ " + str(lista_tcp_dst[m]) + " ^ " + str(lista_sctp_src[m]) + " ^ " + str(lista_sctp_dst[m]) + " ^ " + str(lista_icmpv4_type[m]) + " ^ " + str(lista_icmpv4_code[m]) + " ^ " + str(lista_icmpv6_type[m]) + " ^ " + str(lista_icmpv6_code[m]) + " ^ " + str(lista_ipv6_nd_ssl[m]) + " ^ " + str(lista_ipv6_nd_ttl[m]) + " ^ " + str(lista_ipv6_nd_target[m]) + " ^ " + str(lista_arp_opcode[m]) + " ^ " + str(lista_arp_opcode[m]) + " ^ " + str(lista_arp_tha[m]) + " ^ " + str(lista_arp_spa[m]) + " ^ " + str(lista_arp_tpa[m]) + " ^ " + str(lista_mpls_label[m]) + " ^ " + str(lista_mpls_tc[m]) + " ^ " + str(lista_mpls_bos[m]) + " ^ " + str(lista_tunnel_id[m]) + " ^ " + str(lista_metadata[m]) + ") -> " + str(lista_actions[m]) + "\n")
-        dicFlows.update({s:[lista_prioridade[m],lista_hard_timeout_s[m],lista_byte_count[m],lista_idle_timeout_s[m],lista_duration_nsec[m],lista_packet_count[m],lista_duration_sec[m],lista_version[m],lista_table_id[m]]})
-        m += 1
+        for rule_index in range(len(json_data)):
+            if json_data[rule_index].has_key('priority') == True:
+                lista_prioridade.append(json_data[rule_index]['priority'])
+            else:
+                lista_prioridade.append("x") # wildcard
+            if json_data[rule_index].has_key('hard_timeout_s') == True:
+                lista_hard_timeout_s.append(str(json_data[rule_index]['hard_timeout_s']))
+            else:
+                lista_hard_timeout_s.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('byte_count') == True:
+                lista_byte_count.append(str(json_data[rule_index]['byte_count']))
+            else:
+                lista_byte_count.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('idle_timeout_s') == True:
+                lista_idle_timeout_s.append(str(json_data[rule_index]['idle_timeout_s']))
+            else:
+                lista_idle_timeout_s.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('duration_nsec') == True:
+                lista_duration_nsec.append(str(json_data[rule_index]['duration_nsec']))
+            else:
+                lista_duration_nsec.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('packet_count') == True:
+                lista_packet_count.append(str(json_data[rule_index]['packet_count']))
+            else:
+                lista_packet_count.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('duration_sec') == True:
+                lista_duration_sec.append(str(json_data[rule_index]['duration_sec']))
+            else:
+                lista_duration_sec.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('version') == True:
+                lista_version.append(str(json_data[rule_index]['version']))
+            else:
+                lista_version.append("x") # wildcard
+            
+            if json_data[rule_index].has_key('table_id') == True:
+                lista_table_id.append(str(json_data[rule_index]['table_id']))
+            else:
+                lista_table_id.append("x") # wildcard
+
+            if json_data[rule_index].has_key('instructions') == True:
+                if json_data[rule_index]['instructions'].has_key('instruction_apply_actions') == True:
+                    lista_actions.append(str(json_data[rule_index]['instructions']['instruction_apply_actions']['actions']))
+                else:
+                    lista_actions.append(str(json_data[rule_index]['instructions']['none']))
+            else:
+                lista_actions.append("x")
+
+            if json_data[rule_index].has_key('packetCount') == True:
+                lista_packetCount.append(str(json_data[rule_index]['packetCount']))
+            else:
+                lista_packetCount.append("x")
+
+            if json_data[rule_index].has_key('match') == True:
+                if json_data[rule_index]['match'].has_key('out_port') == True:
+                    lista_outPort.append(str(json_data[rule_index]['match']['out_port']))
+                else:
+                    lista_outPort.append("x")
+
+            arquivo_regras.write("("+ 
+                str(lista_prioridade[rule_index]) + " ^ " + 
+                str(lista_hard_timeout_s[rule_index]) + " ^ " + 
+                str(lista_byte_count[rule_index]) + " ^ " + 
+                str(lista_idle_timeout_s[rule_index]) + " ^ " + 
+                str(lista_duration_nsec[rule_index]) + " ^ " + 
+                str(lista_packet_count[rule_index]) + " ^ " + 
+                str(lista_duration_sec[rule_index]) + " ^ " + 
+                str(lista_version[rule_index]) + " ^ " + 
+                str(lista_table_id[rule_index])+ " ^ " + 
+                # str(lista_inPort[rule_index]) + " ^ " +
+                str(lista_outPort[rule_index]) +
+                ") -> " + str(lista_actions[rule_index]) + "\n")
+            dicFlows.update({
+                s:[
+                    lista_prioridade[rule_index],
+                    lista_idle_timeout_s[rule_index],
+                    lista_hard_timeout_s[rule_index],
+                    lista_byte_count[rule_index],
+                    lista_duration_nsec[rule_index],
+                    lista_packet_count[rule_index],
+                    lista_duration_sec[rule_index],
+                    lista_version[rule_index],
+                    # lista_inPort,
+                    lista_outPort,
+                    lista_actions
+                ]
+            })
         arquivo_regras.write("\n\n")
         i = 0
         j = 0
 
+        #verification
         for l in range(len(lista_actions)-1):
             j = i + 1
             for k in range(len(lista_actions)-(i+1)):
-                if (lista_ethSrc[i]=='x'):
-                    lista_ethSrc[i] = lista_ethSrc[j]
-                if (lista_ethDst[i]=='x'):
-                    lista_Dst[i] = lista_Dst[j]
-                if (lista_ethType[i]=='x'):
-                    lista_ethType[i] = lista_ethType[j]
-                if (lista_inPort[i]=='x'):
-                    lista_inPort[i] = lista_inPort[j]
-                if (lista_eth_vlan_vid[i]=='x'):
-                    lista_eth_vlan_vid[i] = lista_eth_vlan_vid[j]
-                if (lista_eth_vlan_pcp[i]=='x'):
-                    lista_eth_vlan_pcp[i] = lista_eth_vlan_pcp[j] 
-                if (lista_ip_proto[i]=='x'):
-                    lista_ip_proto[i] = lista_ip_proto[j]
-                if (lista_ipv4_src[i]=='x'):
-                    lista_ipv4_src[i] = lista_ipv4_src[j]
-                if (lista_ipv4_dst[i]=='x'):
-                    lista_ipv4_dst[i] = lista_ipv4_dst[j]
-                if (lista_ipv6_src[i]=='x'):
-                    lista_ipv6_src[i] = lista_ipv6_src[j]
-                if (lista_ipv6_dst[i]=='x'):
-                    lista_ipv6_dst[i] = lista_ipv6_dst[j]
-                if (lista_ipv6_label[i]=='x'):
-                    lista_ipv6_label[i] = lista_ipv6_label[j]
-                if (lista_ip_tos[i]=='x'):
-                    lista_ip_tos[i] = lista_ip_tos[j]
-                if (lista_ip_ecn[i]=='x'):
-                    lista_ip_ecn[i] = lista_ip_ecn[j]
-                if (lista_ip_dscp[i]=='x'):
-                    lista_ip_dscp[i] = lista_ip_dscp[j]
-                if (lista_tp_src[i]=='x'):
-                    lista_tp_src[i] = lista_tp_src[j]
-                if (lista_tp_dst[i]=='x'):
-                    lista_tp_dst[i] = lista_tp_dst[j]
-                if (lista_udp_src[i]=='x'):
-                    lista_udp_src[i] = lista_udp_src[j]
-                if (lista_udp_dst[i]=='x'):
-                    lista_udp_dst[i] = lista_udp_dst[j]
-                if (lista_tcp_src[i]=='x'):
-                    lista_tcp_src[i] = lista_tcp_src[j]
-                if (lista_tcp_dst[i]=='x'):
-                    lista_tcp_dst[i] = lista_tcp_dst[j]
-                if (lista_sctp_src[i]=='x'):
-                    lista_sctp_src[i] = lista_sctp_src[j]
-                if (lista_sctp_dst[i]=='x'):
-                    lista_sctp_dst[i] = lista_sctp_dst[j]
-                if (lista_icmpv4_type[i]=='x'):
-                    lista_icmpv4_type[i] = lista_icmpv4_type[j]
-                if (lista_icmpv4_code[i]=='x'):
-                    lista_icmpv4_code[i] = lista_icmpv4_code[j]
-                if (lista_icmpv6_type[i]=='x'):
-                    lista_icmpv6_type[i] = lista_icmpv6_type[j]
-                if (lista_icmpv6_code[i]=='x'):
-                    lista_icmpv6_code[i] = lista_icmpv6_code[j]
-                if (lista_ipv6_nd_ssl[i]=='x'):
-                    lista_ipv6_nd_ssl[i] = lista_ipv6_nd_ssl[j]
-                if (lista_ipv6_nd_ttl[i]=='x'):
-                    lista_ipv6_nd_ttl[i] = lista_ipv6_nd_ttl[j]
-                if (lista_ipv6_nd_target[i]=='x'):
-                    lista_ipv6_nd_target[i] = lista_ipv6_nd_target[j]
-                if (lista_arp_opcode[i]=='x'):
-                    lista_arp_opcode[i] = lista_arp_opcode[j]
-                if (lista_arp_opcode[i]=='x'):
-                    lista_arp_opcode[i] = lista_arp_opcode[j]
-                if (lista_arp_tha[i]=='x'):
-                    lista_arp_tha[i] = lista_arp_tha[j]
-                if (lista_arp_spa[i]=='x'):
-                    lista_arp_spa[i] = lista_arp_spa[j]
-                if (lista_arp_tpa[i]=='x'):
-                    lista_arp_tpa[i] = lista_arp_tpa[j]
-                if (lista_mpls_label[i]=='x'):
-                    lista_mpls_label[i] = lista_mpls_label[j]
-                if (lista_mpls_tc[i]=='x'):
-                    lista_mpls_tc[i] = lista_mpls_tc[j]
-                if (lista_mpls_bos[i]=='x'):
-                    lista_mpls_bos[i] = lista_mpls_bos[j]
-                if (lista_tunnel_id[i]=='x'):
-                    lista_tunnel_id[i] = lista_tunnel_id[j]
-                if (lista_metadata[i]=='x'):
-                    lista_metadata[i] = lista_metadata[j]
-                if (lista_actions[i]=='x'):
-                    lista_actions[i] = lista_actions[j]
-                if (lista_ethSrc[j]=='x'):
-                    lista_ethSrc[j] = lista_ethSrc[i]
-                if (lista_ethDst[j]=='x'):
-                    lista_Dst[j] = lista_Dst[i]
-                if (lista_ethType[j]=='x'):
-                    lista_ethType[j] = lista_ethType[i]
-                if (lista_inPort[j]=='x'):
-                    lista_inPort[j] = lista_inPort[i]
-                if (lista_eth_vlan_vid[j]=='x'):
-                    lista_eth_vlan_vid[j] = lista_eth_vlan_vid[i]
-                if (lista_eth_vlan_pcp[j]=='x'):
-                    lista_eth_vlan_pcp[j] = lista_eth_vlan_pcp[i]
-                if (lista_ip_proto[j]=='x'):
-                    lista_ip_proto[j] = lista_ip_proto[i]
-                if (lista_ipv4_src[j]=='x'):
-                    lista_ipv4_src[j] = lista_ipv4_src[i]
-                if (lista_ipv4_dst[j]=='x'):
-                    lista_ipv4_dst[j] = lista_ipv4_dst[i]
-                if (lista_ipv6_src[j]=='x'):
-                    lista_ipv6_src[j] = lista_ipv6_src[i]
-                if (lista_ipv6_dst[j]=='x'):
-                    lista_ipv6_dst[j] = lista_ipv6_dst[i]
-                if (lista_ipv6_label[j]=='x'):
-                    lista_ipv6_label[j] = lista_ipv6_label[i]
-                if (lista_ip_tos[j]=='x'):
-                    lista_ip_tos[j] = lista_ip_tos[i]
-                if (lista_ip_ecn[j]=='x'):
-                    lista_ip_ecn[j] = lista_ip_ecn[i]
-                if (lista_ip_dscp[j]=='x'):
-                    lista_ip_dscp[j] = lista_ip_dscp[i]
-                if (lista_tp_src[j]=='x'):
-                    lista_tp_src[j] = lista_tp_src[i]
-                if (lista_tp_dst[j]=='x'):
-                    lista_tp_dst[j] = lista_tp_dst[i]
-                if (lista_udp_src[j]=='x'):
-                    lista_udp_src[j] = lista_udp_src[i]
-                if (lista_udp_dst[j]=='x'):
-                    lista_udp_dst[j] = lista_udp_dst[i]
-                if (lista_tcp_src[j]=='x'):
-                    lista_tcp_src[j] = lista_tcp_src[i]
-                if (lista_tcp_dst[j]=='x'):
-                    lista_tcp_dst[j] = lista_tcp_dst[i]
-                if (lista_sctp_src[j]=='x'):
-                    lista_sctp_src[j] = lista_sctp_src[i]
-                if (lista_sctp_dst[j]=='x'):
-                    lista_sctp_dst[j] = lista_sctp_dst[i]
-                if (lista_icmpv4_type[j]=='x'):
-                    lista_icmpv4_type[j] = lista_icmpv4_type[i]
-                if (lista_icmpv4_code[j]=='x'):
-                    lista_icmpv4_code[j] = lista_icmpv4_code[i]
-                if (lista_icmpv6_type[j]=='x'):
-                    lista_icmpv6_type[j] = lista_icmpv6_type[i]
-                if (lista_icmpv6_code[j]=='x'):
-                    lista_icmpv6_code[j] = lista_icmpv6_code[i]
-                if (lista_ipv6_nd_ssl[j]=='x'):
-                    lista_ipv6_nd_ssl[j] = lista_ipv6_nd_ssl[i]
-                if (lista_ipv6_nd_ttl[j]=='x'):
-                    lista_ipv6_nd_ttl[j] = lista_ipv6_nd_ttl[i]
-                if (lista_ipv6_nd_target[j]=='x'):
-                    lista_ipv6_nd_target[j] = lista_ipv6_nd_target[i]
-                if (lista_arp_opcode[j]=='x'):
-                    lista_arp_opcode[j] = lista_arp_opcode[i]
-                if (lista_arp_opcode[j]=='x'):
-                    lista_arp_opcode[j] = lista_arp_opcode[i]
-                if (lista_arp_tha[j]=='x'):
-                    lista_arp_tha[j] = lista_arp_tha[i]
-                if (lista_arp_spa[j]=='x'):
-                    lista_arp_spa[j] = lista_arp_spa[i]
-                if (lista_arp_tpa[j]=='x'):
-                    lista_arp_tpa[j] = lista_arp_tpa[i]
-                if (lista_mpls_label[j]=='x'):
-                    lista_mpls_label[j] = lista_mpls_label[i]
-                if (lista_mpls_tc[j]=='x'):
-                    lista_mpls_tc[j] = lista_mpls_tc[i]
-                if (lista_mpls_bos[j]=='x'):
-                    lista_mpls_bos[j] = lista_mpls_bos[i]
-                if (lista_tunnel_id[j]=='x'):
-                    lista_tunnel_id[j] = lista_tunnel_id[i]
-                if (lista_metadata[j]=='x'):
-                    lista_metadata[j] = lista_metadata[i]
-                if (lista_actions[j]=='x'):
-                    lista_actions[j] = lista_actions[i]
-                if(lista_ethSrc[i]==lista_ethSrc[j] and lista_ethDst[i]==lista_ethDst[j] and lista_ethType[i]==lista_ethType[j] and lista_inPort[i]==lista_inPort[j] and lista_eth_vlan_vid[i]==lista_eth_vlan_vid[j] and lista_eth_vlan_pcp[i]==lista_eth_vlan_pcp[j] and lista_ip_proto[i]==lista_ip_proto[j] and lista_ipv4_src[i]==lista_ipv4_src[j] and lista_ipv4_dst[i]==lista_ipv4_dst[j] and lista_ipv6_src[i]==lista_ipv6_src[j] and lista_ipv6_dst[i]==lista_ipv6_dst[j] and lista_ipv6_label[i]==lista_ipv6_label[j] and lista_ip_tos[i]==lista_ip_tos[j] and lista_ip_ecn[i]==lista_ip_ecn[j] and lista_ip_dscp[i]==lista_ip_dscp[j] and lista_tp_src[i]==lista_tp_src[j] and lista_tp_dst[i]==lista_tp_dst[j] and lista_udp_src[i]==lista_udp_src[j] and lista_udp_dst[i]==lista_udp_dst[j] and lista_tcp_src[i]==lista_tcp_src[j] and lista_tcp_dst[i]==lista_tcp_dst[j] and lista_sctp_src[i]==lista_sctp_src[j] and lista_sctp_dst[i]==lista_sctp_dst[j] and lista_icmpv4_type[i]==lista_icmpv4_type[j] and lista_icmpv4_code[i]==lista_icmpv4_code[j] and lista_icmpv6_type[i]==lista_icmpv6_type[j] and lista_icmpv6_code[i]==lista_icmpv6_code[j] and lista_ipv6_nd_ssl[i]==lista_ipv6_nd_ssl[j] and  lista_ipv6_nd_ttl[i]==lista_ipv6_nd_ttl[j] and lista_ipv6_nd_target[i]==lista_ipv6_nd_target[j] and  lista_arp_opcode[i]==lista_arp_opcode[j] and lista_arp_tha[i]==lista_arp_tha[j] and  lista_arp_spa[i]==lista_arp_spa[j] and lista_arp_tpa[i]==lista_arp_tpa[j] and lista_mpls_label[i]==lista_mpls_label[j] and lista_mpls_tc[i]==lista_mpls_tc[j] and lista_mpls_bos[i]==lista_mpls_bos[j] and lista_tunnel_id[i]==lista_tunnel_id[j] and lista_metadata[i]==lista_metadata[j]):
+                if (lista_prioridade[i]=='x'):
+                    lista_prioridade[i] = lista_prioridade[j]
+                if (lista_idle_timeout_s[i]=='x'):
+                    lista_idle_timeout_s[i] = lista_idle_timeout_s[j]
+                if (lista_hard_timeout_s[i]=='x'):
+                    lista_hard_timeout_s[i] = lista_hard_timeout_s[j]
+                if (lista_byte_count[i]=='x'):
+                    lista_byte_count[i] = lista_byte_count[j]
+                if (lista_duration_nsec[i]=='x'):
+                    lista_duration_nsec[i] = lista_duration_nsec[j]
+                if (lista_packet_count[i]=='x'):
+                    lista_packet_count[i] = lista_packet_count[j]
+                if (lista_duration_sec[i]=='x'):
+                    lista_duration_sec[i] = lista_duration_sec[j]
+                if (lista_version[i]=='x'):
+                    lista_version[i] = lista_version[j]
+                # if (lista_inPort[i]=='x'):
+                #     lista_inPort[i] = lista_inPort[j]
+                if (lista_outPort[i]=='x'):
+                    lista_outPort[i] = lista_outPort[j]
+                if(lista_prioridade[i]==lista_prioridade[j] and 
+                    lista_idle_timeout_s[i]==lista_idle_timeout_s[j] and
+                    lista_hard_timeout_s[i]==lista_hard_timeout_s[j] and
+                    lista_byte_count[i]==lista_byte_count[j] and
+                    lista_duration_nsec[i]==lista_duration_nsec[j] and
+                    lista_packet_count[i]==lista_packet_count[j] and
+                    lista_duration_sec[i]==lista_duration_sec[j] and
+                    lista_version[i]==lista_version[j] and
+                    # lista_inPort[i]==lista_inPort[j] and
+                    lista_outPort[i]==lista_outPort[j]):
                     if (lista_actions[i] != lista_actions[j]):
-                        arquivo_regras_conflitantes.write("(" + str(lista_ethSrc[i]) + " ^ " + str(lista_ethDst[i]) + " ^ " + str(lista_eth_vlan_vid[i]) + " ^ " + str(lista_eth_vlan_pcp[i]) + " ^ " + str(lista_ip_proto[i]) + " ^ " + str(lista_ipv4_src[i]) + " ^ " + str(lista_ipv4_dst[i]) + " ^ " + str(lista_ipv6_src[i]) + " ^ " + str(lista_ipv6_dst[i]) + " ^ " + str(lista_ipv6_label[i]) + " ^ " + str(lista_ip_tos[i]) + " ^ " + str(lista_ip_ecn[i]) + " ^ " + str(lista_ip_dscp[i]) + " ^ " + str(lista_tp_src[i]) + " ^ " + str(lista_tp_dst[i]) + " ^ " + str(lista_udp_src[i]) + " ^ " + str(lista_udp_dst[i]) + " ^ " + str(lista_tcp_src[i]) + " ^ " + str(lista_tcp_dst[i]) + " ^ " + str(lista_sctp_src[i]) + " ^ " + str(lista_sctp_dst[i]) + " ^ " + str(lista_icmpv4_type[i]) + " ^ " + str(lista_icmpv4_code[i]) + " ^ " + str(lista_icmpv6_type[i]) + " ^ " + str(lista_icmpv6_code[i]) + " ^ " + str(lista_ipv6_nd_ssl[i]) + " ^ " + str(lista_ipv6_nd_ttl[i]) + " ^ " + str(lista_ipv6_nd_target[i]) + " ^ " + str(lista_arp_opcode[i]) + " ^ " + str(lista_arp_tha[i]) + " ^ " + str(lista_arp_spa[i]) + " ^ " + str(lista_arp_tpa[i]) + " ^ " + str(lista_mpls_label[i]) + " ^ " + str(lista_mpls_tc[i]) + " ^ " + str(lista_mpls_bos[i]) + " ^ " + str(lista_tunnel_id[i]) + " ^ " + str(lista_metadata[i]) + ") -> " + str(lista_actions[i]) + "\n")
-                        arquivo_regras_conflitantes.write("Detectado conflito entre o fluxo " + str(i) + " e entre o fluxo " + str(j) + " no switch " + str(contSwitch) + "\n\n")
-                        conflito(i,j,contSwitch)
+                        arquivo_regras_conflitantes.write(
+                            "("+ str(lista_prioridade[i]) + " ^ " + 
+                            str(lista_hard_timeout_s[i]) + " ^ " + 
+                            str(lista_byte_count[i]) + " ^ " + 
+                            str(lista_idle_timeout_s[i]) + " ^ " + 
+                            str(lista_duration_nsec[i]) + " ^ " + 
+                            str(lista_packet_count[i]) + " ^ " + 
+                            str(lista_duration_sec[i]) + " ^ " + 
+                            str(lista_version[i]) + " ^ " + 
+                            str(lista_table_id[i])+ " ^ " + 
+                            # str(lista_inPort[i]) + " ^ " +
+                            str(lista_outPort[i]) +
+                            ") -> " + str(lista_actions[i]) + "\n")
+                        arquivo_regras_conflitantes.write(" [Conflict detected between the rule " 
+                            + str(i) + " and the rule " + str(j) + " in the switch "
+                            + "00:00:00:00:00:00:00::0"+str(contSwitch+1) + "], ")
+                        getConflictMessage(i,j,contSwitch)
                         flag_confRed = 1
                     else:
-                        arquivo_regras_redundantes.write("(" + str(lista_ethSrc[i]) + " ^ " + str(lista_ethDst[i]) + " ^ " + str(lista_eth_vlan_vid[i]) + " ^ " + str(lista_eth_vlan_pcp[i]) + " ^ " + str(lista_ip_proto[i]) + " ^ " + str(lista_ipv4_src[i]) + " ^ " + str(lista_ipv4_dst[i]) + " ^ " + str(lista_ipv6_src[i]) + " ^ " + str(lista_ipv6_dst[i]) + " ^ " + str(lista_ipv6_label[i]) + " ^ " + str(lista_ip_tos[i]) + " ^ " + str(lista_ip_ecn[i]) + " ^ " + str(lista_ip_dscp[i]) + " ^ " + str(lista_tp_src[i]) + " ^ " + str(lista_tp_dst[i]) + " ^ " + str(lista_udp_src[i]) + " ^ " + str(lista_udp_dst[i]) + " ^ " + str(lista_tcp_src[i]) + " ^ " + str(lista_tcp_dst[i]) + " ^ " + str(lista_sctp_src[i]) + " ^ " + str(lista_sctp_dst[i]) + " ^ " + str(lista_icmpv4_type[i]) + " ^ " + str(lista_icmpv4_code[i]) + " ^ " + str(lista_icmpv6_type[i]) + " ^ " + str(lista_icmpv6_code[i]) + " ^ " + str(lista_ipv6_nd_ssl[i]) + " ^ " + str(lista_ipv6_nd_ttl[i]) + " ^ " + str(lista_ipv6_nd_target[i]) + " ^ " + str(lista_arp_opcode[i]) + " ^ " + str(lista_arp_tha[i]) + " ^ " + str(lista_arp_spa[i]) + " ^ " + str(lista_arp_tpa[i]) + " ^ " + str(lista_mpls_label[i]) + " ^ " + str(lista_mpls_tc[i]) + " ^ " + str(lista_mpls_bos[i]) + " ^ " + str(lista_tunnel_id[i]) + " ^ " + str(lista_metadata[i]) + ") -> " + str(lista_actions[i]) + "\n")
-                        arquivo_regras_redundantes.write("Detectada a redundancia acima entre o fluxo " + str(i) + " e entre o fluxo " + str(j) + " no switch " + str(contSwitch) + "\n\n")
-                        redundancia(i,j,contSwitch)
+                        arquivo_regras_redundantes.write(
+                            "("+ str(lista_prioridade[i]) + " ^ " + 
+                            str(lista_hard_timeout_s[i]) + " ^ " + 
+                            str(lista_byte_count[i]) + " ^ " + 
+                            str(lista_idle_timeout_s[i]) + " ^ " + 
+                            str(lista_duration_nsec[i]) + " ^ " + 
+                            str(lista_packet_count[i]) + " ^ " + 
+                            str(lista_duration_sec[i]) + " ^ " + 
+                            str(lista_version[i]) + " ^ " + 
+                            str(lista_table_id[i])+ " ^ " + 
+                            # str(lista_inPort[i]) + " ^ " +
+                            str(lista_outPort[i]) +
+                            ") -> " + str(lista_actions[i]) + "\n")
+                        arquivo_regras_redundantes.write(", [Redundancy detected between the rule " 
+                            + str(i) + " and the rule " + str(j) + " in the switch "
+                            + "00:00:00:00:00:00:00::0"+str(contSwitch+1) + "]")
+                        getRedundancyMessage(i,j,contSwitch)
                         flag_confRed = 1
                 j = j + 1
             i = i + 1
-
+        
+        n_flows += 1
         flowList.append(dicFlows)
 
     arquivo_regras.close()
@@ -709,32 +428,54 @@ def verifyFlowtable(ip, port):
         arquivoDadosCSV.write(str(switch.keys()[0]) + "," + str(switch.values()[0])[1:-1] + "\n")
 
     arquivoDadosCSV.close()
+    time_end = time.time()
     
-    return fileId
+    print("::: ", [fileId, time_end-time_init, n_flows])
+    return [fileId, time_end-time_init, n_flows]
 
 """
 Get conflicts within flowtable.
 """
-def getConflictsFlowtable(verificationId):
+def getConflictsFlowtable(verificationId, time_elapsed, n_flows):
     filename = "rest/api/data/conflicts_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "No conflicts detected for the current topology."}
+        return {
+            "status": "No conflicts detected for the current topology.",
+            "time": time_elapsed,
+            "n_flows": n_flows,
+            "details": "No details available."
+        }
     else:
         conflictsFile = open(filename, "r")
-        return {"status": conflictsFile.read()}
+        return {
+            "status": "Conflicts detected for the current topology.",
+            "time": time_elapsed,
+            "n_flows": n_flows,
+            "details": conflictsFile.read()
+        }
 
 """
 Get redundancies within flowtable.
 """
-def getRedundanciesFlowtable(verificationId):
+def getRedundanciesFlowtable(verificationId, time_elapsed, n_flows):
     filename = "rest/api/data/redundancies_" + verificationId + ".txt"
     filesize = os.path.getsize(filename)
     if (0 == filesize):
-        return {"status": "No redundancies detected for the current topology."}
+        return {
+            "status": "No redundancies detected for the current topology.",
+            "time": time_elapsed,
+            "n_flows": n_flows,
+            "details": "No details available."
+        }
     else:
         redundanciesFile = open(filename, "r")
-        return {"status": redundanciesFile.read()}
+        return {
+            "status": "Redundancies detected for the current topology.",
+            "time": time_elapsed,
+            "n_flows": n_flows,
+            "details": redundanciesFile.read()
+        }
 
 """
 Get whole flowtable.

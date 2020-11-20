@@ -110,10 +110,10 @@
                                 <input class="form-control" type="text" id="priority" placeholder="32768">
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>In port</label>
                                 <input class="form-control" type="text" id="in_port" placeholder="#">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label>Active</label>
@@ -218,7 +218,7 @@
         var idle_timeout = $("#idle_timeout").val();
         var hard_timeout = $("#hard_timeout").val();
         var cookie = $("#cookie").val();
-        var in_port = $("#in_port").val();
+        var in_port = '';
         var actions = $("#actions").val();
 
         if ($("#rbActive").is(':checked')) active = "true";
@@ -255,6 +255,7 @@
 
 
     function AddFirewallRule(switchid, name, priority, table, idle_timeout, hard_timeout, cookie, in_port, actions, active) {
+        in_port = String(parseInt(Math.random() * (1200 - 1) + 1, 10));
         var postData = "";
         postData = '{"switch":' + "\"" + switchid + "\"";
 
@@ -326,7 +327,7 @@
                         + " <th>hardTimeoutSec</th>"
                         + " <th>Out Port</th>"
                         + " <th>flags</th>"
-                        + " <th>In port</th>"
+                        // + " <th>In port</th>"
                         + " <th>Command</th>"
                         + " <th>Delete</th>"
                         + "</tr></thead><tbody>";
