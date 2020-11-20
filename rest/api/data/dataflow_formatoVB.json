@@ -1,0 +1,202 @@
+
+{
+"topology": 
+{
+"00:00:00:00:00:00:00:01": 
+{
+"flows": 
+[
+
+{
+"priority": "65535",
+ "hard_timeout_s": "0",
+ "byte_count": "0",
+ "idle_timeout_s": "0",
+ "duration_nsec": "134000000",
+ "packet_count": "0",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+"SEND_FLOW_REM"
+],
+ "cookie": "45035996376607810",
+ "match": 
+{
+"in_port": "939"
+},
+ "instructions": 
+{
+"none": "drop"
+}
+},
+ 
+{
+"priority": "65535",
+ "hard_timeout_s": "0",
+ "byte_count": "0",
+ "idle_timeout_s": "0",
+ "duration_nsec": "134000000",
+ "packet_count": "0",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+"SEND_FLOW_REM"
+],
+ "cookie": "45035996376607811",
+ "match": 
+{
+"in_port": "978"
+},
+ "instructions": 
+{
+"none": "drop"
+}
+},
+ 
+{
+"priority": "65535",
+ "hard_timeout_s": "0",
+ "byte_count": "0",
+ "idle_timeout_s": "0",
+ "duration_nsec": "134000000",
+ "packet_count": "0",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+"SEND_FLOW_REM"
+],
+ "cookie": "45035996376607812",
+ "match": 
+{
+"in_port": "1158"
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=2"
+}
+}
+},
+ 
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "41276",
+ "idle_timeout_s": "0",
+ "duration_nsec": "134000000",
+ "packet_count": "517",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:02": 
+{
+"flows": 
+[
+
+{
+"priority": "65535",
+ "hard_timeout_s": "0",
+ "byte_count": "0",
+ "idle_timeout_s": "0",
+ "duration_nsec": "136000000",
+ "packet_count": "0",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+"SEND_FLOW_REM"
+],
+ "cookie": "45035996376614562",
+ "match": 
+{
+"in_port": "1153"
+},
+ "instructions": 
+{
+"none": "drop"
+}
+},
+ 
+{
+"priority": "65535",
+ "hard_timeout_s": "0",
+ "byte_count": "0",
+ "idle_timeout_s": "0",
+ "duration_nsec": "136000000",
+ "packet_count": "0",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+"SEND_FLOW_REM"
+],
+ "cookie": "45035996376614563",
+ "match": 
+{
+"in_port": "1050"
+},
+ "instructions": 
+{
+"none": "drop"
+}
+},
+ 
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "41201",
+ "idle_timeout_s": "0",
+ "duration_nsec": "136000000",
+ "packet_count": "516",
+ "duration_sec": "6819",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+}
+}
+}
