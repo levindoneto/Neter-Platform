@@ -63,7 +63,7 @@ dashboard.controller(
                          * saved to the server. The promise resolves to the Firebase reference 
                          * for the newly added record, providing an easy access to its key. */
                         swal({
-                            title: 'The topology '.concat(inputValue, ' has been added successfully!'),
+                            title: 'The topology '.concat(inputValue, ' has been added successfully 😃'),
                             text: 'To deploy it, please access the topologies page.',
                             icon: 'success',
                             button: false,

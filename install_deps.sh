@@ -37,3 +37,4 @@ sudo easy_install pip;
 pip install Flask;
 pip install logging;
 pip install waitress;
+pip install -U flask-cors

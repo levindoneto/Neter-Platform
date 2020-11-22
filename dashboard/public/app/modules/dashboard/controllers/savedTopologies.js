@@ -22,7 +22,6 @@ dashboard.controller(
                 $scope.topologiesObj = topologiesObj;
             });
 
-
             $scope.modal = function(id) {
                 $scope.currentTopology = $scope.topologiesObj[id];
             }
@@ -34,6 +33,48 @@ dashboard.controller(
             $scope.redirectToTopologies = function() {
                 $state.go('app.topologies');
             };
+
+            $scope.deploy = function(id) {
+                $scope.currentTopology = $scope.topologiesObj[id];
+                swal({
+                    title: 'Are you sure you want to deploy topology '.concat($scope.currentTopology.fullName, '?'),
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'Cancel',
+                    showLoaderOnConfirm: true,
+                    preConfirm: function(result) {
+                        return new Promise(function(resolve, reject) {
+                            if (result) {
+                                axios.post('http://localhost:8060/mininet/start', {data:$scope.currentTopology})
+                                .then(function(response){
+                                    // resolve();
+                                    swal({
+                                        title: 'The topology '.concat($scope.currentTopology.fullName, ' has been deployed successfully 😃'),
+                                        text: 'To check it out, please click Ok',
+                                        icon: 'success',
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Ok',
+                                        cancelButtonText: 'Cancel',
+                                        timer: 5000
+                                    }).then(function(ok) {
+                                        $state.go('app.currentTopology');
+                                    });
+                                })
+                                .catch(function(error){
+                                    swal({
+                                        title: 'Error on deploying topology '.concat($scope.currentTopology.fullName, ' 😞'),
+                                        text: 'Please check its details and try again.',
+                                        icon: 'error',
+                                        button: false,
+                                        timer: 5000
+                                    });
+                                })
+                            }
+                        });
+                    },
+                    allowOutsideClick: () => !swal.isLoading(),
+                })
+            }
         }
     ]
 );
