@@ -27,5 +27,6 @@ def getRedundanciesFlowtable():
 
 @rules_route.route("/rules/flowtable", methods=["GET"])
 def getFlowtable():
-    verificationId = Rules.verifyFlowtable('127.0.0.1', '8010')
+    verificationId = Rules.verifyFlowtable('127.0.0.1', '8010')[0]
+    print("verificationId: ", verificationId)
     return jsonify(Rules.getFlowtable(verificationId))
