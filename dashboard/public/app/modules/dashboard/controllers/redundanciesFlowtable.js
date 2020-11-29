@@ -20,14 +20,18 @@ dashboard.controller(
             const verificationsObj = $firebaseObject(verifications);
             verificationsList.$loaded().then(() => {
                 $scope.verifications = verificationsList;
+                $scope.verificationsObj = verificationsObj;
             });
 
             const topologies = firebase.database().ref(`/users/${$scope.userId}/topologies/`);
             const topologiesList = $firebaseArray(topologies);
             const topologiesObj = $firebaseObject(topologies);
+            
             topologiesList.$loaded().then(() => {
                 $scope.topologies = topologiesObj;
-                console.log($scope.topologies);
+                $scope.currentTopologyId = topologiesObj.currentTopologyId;
+                $scope.currentTopology = topologiesObj[$scope.currentTopologyId];
+                console.log('$scope.currentTopology: ', $scope.currentTopology);
             });
 
             $scope.redirectToFormalVerification = function() {
@@ -38,54 +42,61 @@ dashboard.controller(
                 $state.go('app.formalVerificationFlowtable');
             };
 
+            $scope.modal = function(id) {
+                $scope.currentVerification = $scope.verificationsObj[id];
+            };
+
             $scope.verifyRulesFlowtable = function() {
-                var sweet_loader = '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
-                var urlVerifyRulesFlowtable = 'http://localhost:8060/mininet/ping'
-                $.ajax({
-                    type: 'POST',
-                    url:  urlVerifyRulesFlowtable,
-                    data: str,
-                    // here
-                    beforeSend: function() {
-                        swal.fire({
-                            html: '<h5>Loading...</h5>',
-                            showConfirmButton: false,
-                            onRender: function() {
-                                 // there will only ever be one sweet alert open.
-                                 $('.swal2-content').prepend(sweet_loader);
-                            }
-                        });
-                    },
-                    success: function(json) {
-                        try {
-                            json = JSON.parse(json);
-                        }
-                        catch(error) {
-                            swal.fire({
-                                icon: 'error',
-                                html: '<h5>Error!</h5>'
+                swal({
+                    title: "Name the Verification",
+                    text: "The name is used as a verification identifier",
+                    input: 'text',
+                    showCancelButton: true,
+                    inputPlaceholder: 'Verification '.concat(verificationsList.length + 1)
+                }).then(function(inputValue) {
+                    swal({
+                        title: 'Are you sure you want to verify redundancies in the flowtables of the topology '.concat($scope.currentTopology.fullName, '?'),
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: 'Cancel',
+                        showLoaderOnConfirm: true,
+                        preConfirm: function(result) {
+                            return new Promise(function(resolve, reject) {
+                                if (result) {
+                                    axios.get('http://localhost:8060/rules/flowtable/redundancies')
+                                    .then(function(response){
+                                        // save db
+                                        response.data.name = inputValue;
+                                        verificationsList.$add(response.data).then((verificationId) => {
+                                            auxVid = verificationId.toString().split('/');
+                                            verificationId = auxVid[auxVid[auxVid.length-1]];
+                                            swal({
+                                                title: 'The flowtables from the topology '.concat($scope.currentTopology.fullName, ' have been successfully verified!'),
+                                                text: (response.data.status).concat('\n', 'To check out the details, please check the verification history'),
+                                                icon: 'success',
+                                                showCancelButton: true,
+                                                confirmButtonText: 'Ok',
+                                                cancelButtonText: 'Cancel',
+                                                timer: 10000
+                                            }).then(function(ok) {
+                                                $scope.modal(verificationId);
+                                            });
+                                        });
+                                    })
+                                    .catch(function(error){
+                                        swal({
+                                            title: 'Error on verifying redundancies in the flowtables of the topology '.concat($scope.currentTopology.fullName),
+                                            text: 'Please check its details and try again.',
+                                            icon: 'error',
+                                            button: false,
+                                            timer: 5000
+                                        });
+                                    })
+                                }
                             });
-                            return false;
-                        }
-                        if(json.success) {
-                            swal.fire({
-                                icon: 'success',
-                                html: '<h5>Success!</h5>'
-                            });
-                        } else {
-                            swal.fire({
-                                icon: 'error',
-                                html: '<h5>Error!</h5>'
-                            });
-                        }
-                    },
-                    error: function() {
-                        swal.fire({
-                            icon: 'error',
-                            html: '<h5>Error!</h5>'
-                        });
-                        return false;
-                    }
+                        },
+                        allowOutsideClick: () => !swal.isLoading(),
+                    });
                 });
             };
         }

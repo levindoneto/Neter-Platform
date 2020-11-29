@@ -49,10 +49,10 @@ dashboard.controller(
                                 .then(function(response) {
                                     var refTopology = firebase.database().ref(`users/${$scope.userId}/topologies`);
                                     var auxTopology = {};
-                                    auxTopology.currentTopology = id;
+                                    auxTopology.currentTopologyId = id;
                                     refTopology.update(auxTopology); // update current topology
                                     swal({
-                                        title: 'The topology '.concat($scope.currentTopology.fullName, ' has been deployed successfully 😃'),
+                                        title: 'The topology '.concat($scope.currentTopology.fullName, ' has been successfully deployed!'),
                                         text: 'To check it out, please click Ok',
                                         icon: 'success',
                                         showCancelButton: true,
@@ -65,7 +65,7 @@ dashboard.controller(
                                 })
                                 .catch(function(error){
                                     swal({
-                                        title: 'Error on deploying topology '.concat($scope.currentTopology.fullName, ' 😞'),
+                                        title: 'Error on deploying topology '.concat($scope.currentTopology.fullName),
                                         text: 'Please check its details and try again.',
                                         icon: 'error',
                                         button: false,

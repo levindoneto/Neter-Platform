@@ -14,7 +14,7 @@
             <h3 class="Titlemyaccount">My Topologies</h3>
             <h4 class="NestedType">
                 <ul style="list-style-type: none;">
-                    <li ng-repeat="(key, value) in topologies">
+                    <li ng-if="value.name" ng-repeat="(key, value) in topologies">
                         <h4 class="valueTopo">{{value.name}}
                             <div class="pull-right">
                                 <button title="See topology's details" type="button" data-toggle="modal"
