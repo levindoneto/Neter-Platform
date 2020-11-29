@@ -45,9 +45,12 @@ dashboard.controller(
                     preConfirm: function(result) {
                         return new Promise(function(resolve, reject) {
                             if (result) {
-                                axios.post('http://dawntech.brazilsouth.cloudapp.azure.com:8060/mininet/start', {data:$scope.currentTopology})
-                                .then(function(response){
-                                    // resolve();
+                                axios.post('http://localhost:8060/mininet/start', {data:$scope.currentTopology})
+                                .then(function(response) {
+                                    var refTopology = firebase.database().ref(`users/${$scope.userId}/topologies`);
+                                    var auxTopology = {};
+                                    auxTopology.currentTopology = id;
+                                    refTopology.update(auxTopology); // update current topology
                                     swal({
                                         title: 'The topology '.concat($scope.currentTopology.fullName, ' has been deployed successfully 😃'),
                                         text: 'To check it out, please click Ok',
@@ -73,7 +76,7 @@ dashboard.controller(
                         });
                     },
                     allowOutsideClick: () => !swal.isLoading(),
-                })
+                });
             }
         }
     ]

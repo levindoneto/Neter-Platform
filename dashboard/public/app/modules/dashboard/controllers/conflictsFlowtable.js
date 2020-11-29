@@ -43,53 +43,45 @@ dashboard.controller(
             };
 
             $scope.verifyRulesFlowtable = function() {
-                var sweet_loader = '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
-                var urlVerifyRulesFlowtable = 'http://dawntech.brazilsouth.cloudapp.azure.com:8060/mininet/ping'
-                $.ajax({
-                    type: 'POST',
-                    url:  urlVerifyRulesFlowtable,
-                    data: str,
-                    // here
-                    beforeSend: function() {
-                        swal.fire({
-                            html: '<h5>Loading...</h5>',
-                            showConfirmButton: false,
-                            onRender: function() {
-                                 // there will only ever be one sweet alert open.
-                                 $('.swal2-content').prepend(sweet_loader);
+                $scope.currentTopology = $scope.topologiesObj[id];
+                swal({
+                    title: 'Are you sure you want to verify conflicts in the flowtables of the topology '.concat($scope.currentTopology.fullName, '?'),
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'Cancel',
+                    showLoaderOnConfirm: true,
+                    preConfirm: function(result) {
+                        return new Promise(function(resolve, reject) {
+                            if (result) {
+                                axios.get('http://localhost:8060/rules/flowtable/conflicts')
+                                .then(function(response){
+                                    // DB
+                                    console.log('response: ', response);
+                                    swal({
+                                        title: 'The flowtables from the topology '.concat($scope.currentTopology.fullName, ' have been successfully verified 😃'),
+                                        text: (response.status).concat('\n', 'To check out the details, please check the verification history or press Ok'),
+                                        icon: 'success',
+                                        showCancelButton: true,
+                                        confirmButtonText: 'Ok',
+                                        cancelButtonText: 'Cancel',
+                                        timer: 5000
+                                    }).then(function(ok) {
+                                        $scope.modal()
+                                    });
+                                })
+                                .catch(function(error){
+                                    swal({
+                                        title: 'Error on deploying topology '.concat($scope.currentTopology.fullName, ' 😞'),
+                                        text: 'Please check its details and try again.',
+                                        icon: 'error',
+                                        button: false,
+                                        timer: 5000
+                                    });
+                                })
                             }
                         });
                     },
-                    success: function(json) {
-                        try {
-                            json = JSON.parse(json);
-                        }
-                        catch(error) {
-                            swal.fire({
-                                icon: 'error',
-                                html: '<h5>Error!</h5>'
-                            });
-                            return false;
-                        }
-                        if(json.success) {
-                            swal.fire({
-                                icon: 'success',
-                                html: '<h5>Success!</h5>'
-                            });
-                        } else {
-                            swal.fire({
-                                icon: 'error',
-                                html: '<h5>Error!</h5>'
-                            });
-                        }
-                    },
-                    error: function() {
-                        swal.fire({
-                            icon: 'error',
-                            html: '<h5>Error!</h5>'
-                        });
-                        return false;
-                    }
+                    allowOutsideClick: () => !swal.isLoading(),
                 });
             };
         }

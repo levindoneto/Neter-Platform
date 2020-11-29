@@ -1,0 +1,74 @@
+
+{
+"topology": 
+{
+"00:00:00:00:00:00:00:01": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "344036",
+ "idle_timeout_s": "0",
+ "duration_nsec": "497000000",
+ "packet_count": "4554",
+ "duration_sec": "67578",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:02": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "344347",
+ "idle_timeout_s": "0",
+ "duration_nsec": "496000000",
+ "packet_count": "4558",
+ "duration_sec": "67578",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+}
+}
+}
