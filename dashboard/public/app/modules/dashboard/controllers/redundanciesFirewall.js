@@ -61,6 +61,8 @@ dashboard.controller(
                                     .then(function(response){
                                         // save db
                                         response.data.name = inputValue;
+                                        response.data.when = new Date().toString();
+                                        response.data.topologyId = $scope.currentTopologyId;
                                         verificationsList.$add(response.data).then((verificationId) => {
                                             auxVid = verificationId.toString().split('/');
                                             verificationId = auxVid[auxVid[auxVid.length-1]];
