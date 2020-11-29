@@ -61,7 +61,7 @@ dashboard.controller(
                         preConfirm: function(result) {
                             return new Promise(function(resolve, reject) {
                                 if (result) {
-                                    axios.get('http://localhost:8060/rules/flowtable/conflicts')
+                                    axios.get('http://dawntech.brazilsouth.cloudapp.azure.com:8060/rules/flowtable/conflicts')
                                     .then(function(response){
                                         // save db
                                         response.data.name = inputValue;
