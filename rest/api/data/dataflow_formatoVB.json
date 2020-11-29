@@ -10,11 +10,11 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "776",
+ "byte_count": "916",
  "idle_timeout_s": "0",
- "duration_nsec": "559000000",
- "packet_count": "10",
- "duration_sec": "219",
+ "duration_nsec": "547000000",
+ "packet_count": "12",
+ "duration_sec": "663",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 

@@ -52,6 +52,7 @@ dashboard.controller(
                     showCancelButton: true,
                     inputPlaceholder: 'Verification '.concat(verificationsList.length + 1)
                 }).then(function(inputValue) {
+                    inputValue = inputValue? inputValue: 'Verification '.concat(verificationsList.length + 1);
                     swal({
                         title: 'Are you sure you want to verify conflicts in the flowtables of the topology '.concat($scope.currentTopology.fullName, '?'),
                         showCancelButton: true,
@@ -61,7 +62,7 @@ dashboard.controller(
                         preConfirm: function(result) {
                             return new Promise(function(resolve, reject) {
                                 if (result) {
-                                    axios.get('http://dawntech.brazilsouth.cloudapp.azure.com:8060/rules/flowtable/conflicts')
+                                    axios.get('http://localhost:8060/rules/flowtable/conflicts')
                                     .then(function(response){
                                         // save db
                                         response.data.name = inputValue;
