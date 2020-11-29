@@ -42,18 +42,22 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 align="center">
-                                                <span class="MyInfo">Name: </span><span class="MyInfoP">{{currentVerification.name.toString()}}</span>
-                                                </br>
-                                                <span class="MyInfo">Number of Flows: </span><span class="MyInfoP">{{currentVerification.n_flows.toString()}}</span>
-                                                </br>
-                                                <span class="MyInfo">Status: </span><span class="MyInfoP">{{currentVerification.status.toString()}}</span>
-                                                </br>
-                                                <span class="MyInfo">Topology: </span><span class="MyInfoP">{{topologies[currentVerification.topologyAssociatedId.toString()].name}}</span>
-                                                </br>
-                                                <span class="MyInfo">Date: </span><span class="MyInfoP">{{currentVerification.when.toString()}}</span>
-                                                </br>
-                                                <span class="MyInfo">Details: </span><span class="MyInfoP">{{currentVerification.details.toString()}}</span>
-                                        </h3>
+                                            <span class="MyInfo">Name: </span><span class="MyInfoP">{{currentVerification.name.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Number of Flows: </span><span class="MyInfoP">{{currentVerification.n_flows.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Status: </span><span class="MyInfoP">{{currentVerification.status.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Time of Execution (ms): </span><span class="MyInfoP">{{(currentVerification.time_ms*1000).toString().substr(0,6)}}</span>
+                                            </br>
+                                            <span class="MyInfo">Used Memory (KB): </span><span class="MyInfoP">{{currentVerification.memory_kilobytes.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Topology: </span><span class="MyInfoP">{{currentVerification.topology.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Date: </span><span class="MyInfoP">{{currentVerification.when.toString()}}</span>
+                                            </br>
+                                            <span class="MyInfo">Details: </span><span class="MyInfoP">{{currentVerification.details.toString()}}</span>
+                                    </h3>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="BtnClosemybelongings"
