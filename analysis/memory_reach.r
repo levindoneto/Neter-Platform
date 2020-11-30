@@ -18,3 +18,4 @@ reach_plot <- qplot(x, y, xlab = "Número de Dispositivos", ylab = "Memória Uti
 #coord_trans(x = "log10")# + geom_errorbar(limits, position="dodge", width=0.25)
 reach_plot
 
+ 

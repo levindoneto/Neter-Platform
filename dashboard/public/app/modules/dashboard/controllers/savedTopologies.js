@@ -45,7 +45,7 @@ dashboard.controller(
                     preConfirm: function(result) {
                         return new Promise(function(resolve, reject) {
                             if (result) {
-                                axios.post('http://dawntech.brazilsouth.cloudapp.azure.com:8060/mininet/start', {data:$scope.currentTopology})
+                                axios.post('http://localhost:8060/mininet/start', {data:$scope.currentTopology})
                                 .then(function(response) {
                                     var refTopology = firebase.database().ref(`users/${$scope.userId}/topologies`);
                                     var auxTopology = {};
