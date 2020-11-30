@@ -19,6 +19,8 @@ def getPort(device):
 Verify reachability
 """
 def verifyReachability(topologyLinks, origin, destination):
+    for d in topologyLinks:
+        topologyLinks[d] = filter(lambda device: device.strip(), topologyLinks[d])
     time_init = time.time()
     graph = nx.Graph(topologyLinks)
     paths = nx.single_source_shortest_path(graph, origin)
@@ -26,11 +28,11 @@ def verifyReachability(topologyLinks, origin, destination):
     trace = ""
     if (not(destination in paths)):
         statusVerb = " not"
-        trace = ""
+        trace = "No trace available"
     else:
         for p in paths[destination]:
             trace += "[" + p + "]-(" + str(getPort(p)) + ")->"
-        trace = trace[:-2]
+        trace = trace[:-6]
     time_end = time.time()
     memory_kilobytes = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     return {
