@@ -38,3 +38,4 @@ pip install Flask;
 pip install logging;
 pip install waitress;
 pip install -U flask-cors
+pip install networkx
