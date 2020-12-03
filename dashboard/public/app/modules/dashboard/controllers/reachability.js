@@ -77,7 +77,7 @@ dashboard.controller(
                                         preConfirm: function(result) {
                                             return new Promise(function(resolve, reject) {
                                                 if (result) {
-                                                    axios.post('http://dawntech.brazilsouth.cloudapp.azure.com:8060/reachability', {
+                                                    axios.post('http://localhost:8060/reachability', {
                                                         data: {
                                                             'origin': origin,
                                                             'destination': destination,

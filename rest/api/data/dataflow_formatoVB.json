@@ -10,11 +10,45 @@
 {
 "priority": "0",
  "hard_timeout_s": "0",
- "byte_count": "1896",
+ "byte_count": "722",
  "idle_timeout_s": "0",
- "duration_nsec": "865000000",
- "packet_count": "26",
- "duration_sec": "45562",
+ "duration_nsec": "446000000",
+ "packet_count": "9",
+ "duration_sec": "41",
+ "version": "OF_14",
+ "table_id": "0x0",
+ "flags": 
+[
+
+],
+ "cookie": "0",
+ "match": 
+{
+
+},
+ "instructions": 
+{
+"instruction_apply_actions": 
+{
+"actions": "output=controller"
+}
+}
+}
+]
+},
+ "00:00:00:00:00:00:00:02": 
+{
+"flows": 
+[
+
+{
+"priority": "0",
+ "hard_timeout_s": "0",
+ "byte_count": "812",
+ "idle_timeout_s": "0",
+ "duration_nsec": "462000000",
+ "packet_count": "10",
+ "duration_sec": "41",
  "version": "OF_14",
  "table_id": "0x0",
  "flags": 

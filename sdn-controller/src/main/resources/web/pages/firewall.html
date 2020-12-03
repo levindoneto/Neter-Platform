@@ -173,11 +173,11 @@
                                 <th>MaskBit</th>
                                 <th>Dest. IP</th>
                                 <th>MaskBit</th>
-                                <th>Protocol</th>
+                                <th>InternalIdFirebase</th>
                                 <th>Source Port</th>
                                 <th>Dest. Port</th>
-                                <th>Pri.</th>
-                                <th>Act.</th>
+                                <th>Prio.</th>
+                                <th>Action</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
@@ -199,7 +199,7 @@
                                 aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel2">Create Rule</h4>
+                        <h4 class="modal-title" id="myModalLabel2">Add Rule</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -231,17 +231,17 @@
                             <label>Dest. IPv4</label>
                             <input class="form-control" type="text" id="dst-ip" placeholder="A.B.C.D/M">
 
-                            <label>Protocol</label>
+                            <label>Priority</label>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" id="rbTCP" name="check3" checked="checked"/> TCP
+                                    <input type="radio" id="rbTCP" name="check3" checked="checked"/> 0
                                 </label>
                                 <label>
-                                    <input type="radio" id="rbUDP" name="check3"> UDP
+                                    <input type="radio" id="rbUDP" name="check3"> 1
                                 </label>
 
                                 <label>
-                                    <input type="radio" id="rbICMP" name="check3"> ICMP
+                                    <input type="radio" id="rbICMP" name="check3"> 2
                                 </label>
                             </div>
 
@@ -257,10 +257,10 @@
                             <label>Action</label>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" id="rbAllow" name="check1" checked="checked"/> ALLOW
+                                    <input type="radio" id="rbAllow" name="check1" checked="checked"/> Allow
                                 </label>
                                 <label>
-                                    <input type="radio" id="rbDeny" name="check1"> DENY
+                                    <input type="radio" id="rbDeny" name="check1"> Deny
                                 </label>
                             </div>
 
